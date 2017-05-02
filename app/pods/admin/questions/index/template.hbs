@@ -1,0 +1,15 @@
+{{to-elsewhere named="navigation-bar-left" send=(component "link-to" 'Zurück' 'admin')}}
+{{to-elsewhere named="navigation-bar-title" send=(hash title="Fragen")}}
+{{to-elsewhere named="navigation-bar-right" send=(component "link-to" 'Add' 'admin.questions.new')}}
+
+{{ui/search-bar search=search active=searchBarActive toggleSearch=(route-action "toggleSearch")}}
+
+{{#if model}}
+  <ul>
+    {{#each model as |question|}}
+      <li>{{#link-to 'admin.questions.question' question}}{{question.label}}{{/link-to}}</li>
+    {{/each}}
+  </ul>
+{{else}}
+  Keine Fragen für diese Auswahl
+{{/if}}

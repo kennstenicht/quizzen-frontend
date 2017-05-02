@@ -1,0 +1,34 @@
+{{to-elsewhere named="navigation-bar-left" send=(component "link-to" 'Zurück' 'admin.questions')}}
+{{to-elsewhere named="navigation-bar-title" send=(hash title="Frage")}}
+{{to-elsewhere named="navigation-bar-right" send=(component "link-to" 'Delete' 'admin')}}
+
+Question:
+{{input
+  type="text"
+  value=model.label
+}}
+
+<br>
+<br>
+Answers:
+<ul>
+  {{#each model.answers as |answer|}}
+    <li>
+      {{input
+        type="text"
+        value=answer.label
+      }}
+      {{input
+        type="text"
+        value=answer.value
+      }}
+      {{input
+        type="text"
+        value=answer.information
+      }}
+    </li>
+  {{/each}}
+</ul>
+
+<div {{action 'addAnswer' model}}>Antwort hinzufügen</div>
+<div {{action 'save' model}}>Save</div>
