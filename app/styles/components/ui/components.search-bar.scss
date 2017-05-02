@@ -1,0 +1,48 @@
+.c-search-bar {
+  &__wrapper {
+    position: relative;
+    z-index: 2;
+    display: flex;
+
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  &--is-active &__wrapper{
+    background-color: blue;
+    height: 50px;
+
+  }
+
+    &__field {
+      position: relative;
+    }
+
+      &__clear {
+        position: absolute;
+        top: 0;
+        right: 0;
+        opacity: 0;
+      }
+
+      &--has-value &__clear{
+        opacity: 1;
+      }
+
+    &__cancel {
+      opacity: 0;
+    }
+
+    &--is-active &__cancel{
+      opacity: 1;
+    }
+
+  &--is-active#{&}--has-no-value &__overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    background-color: rgba(0,0,0,0.2);
+  }
+}
