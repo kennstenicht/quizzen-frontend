@@ -1,0 +1,18 @@
+.c-navigation-bar {
+  background: red;
+  width: 100%;
+  display: flex;
+  padding: 10px;
+
+  &__section {
+    flex-grow: 1;
+
+    &--title {
+      text-align: center;
+    }
+
+    &--right {
+      text-align: right;
+    }
+  }
+}
