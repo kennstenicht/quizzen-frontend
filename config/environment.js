@@ -3,22 +3,18 @@
 module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'quizzen',
+    podModulePrefix: 'quizzen/pods',
     environment: environment,
     rootURL: '/',
     locationType: 'auto',
-
-    firebase: {
-      apiKey: process.env.apiKey,
-      authDomain: process.env.authDomain,
-      databaseURL: process.env.databaseURL,
-      storageBucket: process.env.storageBucke,
-      messagingSenderId: process.env.messagingSenderId
-    },
+    host: 'http://localhost:3000',
 
     contentSecurityPolicy: {
-      'script-src': "'self' 'unsafe-eval' apis.google.com 'https://*.firebaseio.com",
-      'frame-src': "'self' https://*.firebaseapp.com",
-      'connect-src': "'self' wss://*.firebaseio.com https://*.googleapis.com"
+      'script-src':   ["'self'", "'unsafe-eval'"],
+      'font-src':     ["'self'"],
+      'frame-src':    ["'self'"],
+      'connect-src':  ["'self'", "http://localhost:3000"],
+      'font-src':     ["data:"]
     },
 
     EmberENV: {

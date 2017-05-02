@@ -1,7 +1,6 @@
 {
   "name": "quizzen",
   "dependencies": {
-    "inuitcss": "^6.0.0-beta.4",
-    "firebase": "^3.7.0"
+    "inuitcss": "^6.0.0-beta.4"
   }
 }
