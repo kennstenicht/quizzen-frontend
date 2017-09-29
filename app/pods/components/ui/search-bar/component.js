@@ -1,23 +1,21 @@
 import Ember from 'ember';
-import {
-  conditional,
-  tag
-} from 'ember-awesome-macros';
+import BEM from 'ember-cli-bem/mixins/bem';
 
 const {
   Component,
   set
 } = Ember;
 
-export default Component.extend({
-  classNameBindings: ['modifierActive', 'modifierHasValue'],
-
-  modifierActive: conditional('active', tag`${'block'}--is-active`),
-  modifierHasValue: conditional('search', tag`${'block'}--has-value`, tag`${'block'}--has-no-value`),
+export default Component.extend(BEM, {
+  blockName: 'c-search-bar',
+  mods: [
+    'active:is-active',
+    'search:has-value:has-no-value'
+  ],
 
   actions: {
     clear() {
-      set(this, 'search', '');
+      set(this, 'search', null);
     },
 
     activate() {

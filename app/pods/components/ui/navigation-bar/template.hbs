@@ -1,11 +1,11 @@
-<div class="{{bem block 'section' 'left'}}">
+<div class="{{elem 'section' left=true}}">
   {{multiple-from-elsewhere name="navigation-bar-left"}}
 </div>
-<div class="{{bem block 'section' 'title'}}">
+<div class="{{elem 'section' title=true}}">
   {{#from-elsewhere name="navigation-bar-title" as |header|}}
     {{header.title}}
   {{/from-elsewhere}}
 </div>
-<div class="{{bem block 'section' 'right'}}">
+<div class="{{elem 'section' right=true}}">
   {{multiple-from-elsewhere name="navigation-bar-right"}}
 </div>

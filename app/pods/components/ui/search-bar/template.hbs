@@ -1,12 +1,12 @@
-<div class="{{bem block 'wrapper'}}">
-  <div class="{{bem block 'field'}}">
+<div class="{{elem 'wrapper'}}">
+  <div class="{{elem 'field'}}">
     {{input value=search focus-in='activate'}}
-    <div class="{{bem block 'clear'}}" {{action 'clear'}}>
+    <div class="{{elem 'clear'}}" {{action 'clear'}}>
       Clear
     </div>
   </div>
-  <div class="{{bem block 'cancel'}}" {{action 'cancel'}}>
+  <div class="{{elem 'cancel'}}" {{action 'cancel'}}>
     Cancel
   </div>
 </div>
-<div class="{{bem block 'overlay'}}" {{action 'cancel'}}></div>
+<div class="{{elem 'overlay'}}" {{action 'cancel'}}></div>

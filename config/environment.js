@@ -9,12 +9,15 @@ module.exports = function(environment) {
     locationType: 'auto',
     host: 'http://localhost:3000',
 
+    'ember-cli-bem': {
+      modDelimiter: '--',
+    },
+
     contentSecurityPolicy: {
       'script-src':   ["'self'", "'unsafe-eval'"],
       'font-src':     ["'self'"],
       'frame-src':    ["'self'"],
-      'connect-src':  ["'self'", "http://localhost:3000"],
-      'font-src':     ["data:"]
+      'connect-src':  ["'self'", "http://localhost:3000"]
     },
 
     EmberENV: {
