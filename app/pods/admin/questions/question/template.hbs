@@ -29,6 +29,18 @@ Answers:
     </li>
   {{/each}}
 </ul>
-
 <div {{action 'addAnswer' model}}>Antwort hinzufügen</div>
+<br>
+<br>
+Quelle:
+{{input
+  type="text"
+  value=model.source
+}}
+<br>
+Stand:
+{{input
+  type="date"
+  value=model.date
+}}
 <div {{action 'save' model}}>Save</div>

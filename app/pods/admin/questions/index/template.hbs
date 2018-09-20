@@ -7,7 +7,7 @@
 {{#if model}}
   <ul>
     {{#each model as |question|}}
-      <li>{{#link-to 'admin.questions.question' question}}{{question.label}}{{/link-to}}</li>
+      <li>{{#link-to 'admin.questions.question' question}}{{question.label}} (Top {{question.answers.length}}){{/link-to}}</li>
     {{/each}}
   </ul>
 {{else}}

@@ -7,7 +7,6 @@ module.exports = function(environment) {
     environment: environment,
     rootURL: '/',
     locationType: 'auto',
-    host: 'http://localhost:3000',
 
     'ember-cli-bem': {
       modDelimiter: '--',

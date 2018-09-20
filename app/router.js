@@ -13,6 +13,10 @@ Router.map(function() {
       this.route('question', {path: '/:id'});
       this.route('new');
     });
+    this.route('categories', function() {
+      this.route('new');
+      this.route('category');
+    });
   });
 });
 

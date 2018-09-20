@@ -1,0 +1,13 @@
+{{to-elsewhere named="navigation-bar-left" send=(component "link-to" 'Zurück' 'admin')}}
+{{to-elsewhere named="navigation-bar-title" send=(hash title="Kategories")}}
+{{to-elsewhere named="navigation-bar-right" send=(component "link-to" 'Add' 'admin.categories.new')}}
+
+{{#if model}}
+  <ul>
+    {{#each model as |category|}}
+      <li>{{#link-to 'admin.categories.category' category}}{{category.label}}{{/link-to}}</li>
+    {{/each}}
+  </ul>
+{{else}}
+  Keine Kategory für diese Auswahl
+{{/if}}

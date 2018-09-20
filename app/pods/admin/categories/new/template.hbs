@@ -1,0 +1,10 @@
+{{to-elsewhere named="navigation-bar-left" send=(component "link-to" 'Zurück' 'admin.categories')}}
+{{to-elsewhere named="navigation-bar-title" send=(hash title="Neue Kategory")}}
+
+Kategory:
+{{input
+  type="text"
+  value=model.label
+}}
+
+<div {{action 'save' model}}>Save</div>
