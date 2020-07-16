@@ -1,28 +1,15 @@
-/* jshint node: true */
+'use strict';
 
 module.exports = function(environment) {
-  var ENV = {
+  let ENV = {
     modulePrefix: 'quizzen',
-    podModulePrefix: 'quizzen/pods',
-    environment: environment,
+    environment,
     rootURL: '/',
     locationType: 'auto',
-
-    'ember-cli-bem': {
-      modDelimiter: '--',
-    },
-
-    contentSecurityPolicy: {
-      'script-src':   ["'self'", "'unsafe-eval'"],
-      'font-src':     ["'self'"],
-      'frame-src':    ["'self'"],
-      'connect-src':  ["'self'", "http://localhost:3000"]
-    },
-
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
-        // e.g. 'with-controller': true
+        // e.g. EMBER_NATIVE_DECORATOR_SUPPORT: true
       },
       EXTEND_PROTOTYPES: {
         // Prevent Ember Data from overriding Date.parse.
@@ -53,10 +40,11 @@ module.exports = function(environment) {
     ENV.APP.LOG_VIEW_LOOKUPS = false;
 
     ENV.APP.rootElement = '#ember-testing';
+    ENV.APP.autoboot = false;
   }
 
   if (environment === 'production') {
-
+    // here you can enable a production-specific feature
   }
 
   return ENV;

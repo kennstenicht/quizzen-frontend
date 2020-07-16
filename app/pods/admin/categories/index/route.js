@@ -1,9 +1,4 @@
-import Ember from 'ember';
-
-const {
-  Route,
-  get
-} = Ember;
+import Route from '@ember/routing/route';
 
 export default Route.extend({
   queryParams: {
@@ -13,6 +8,6 @@ export default Route.extend({
   },
 
   model(params) {
-    return get(this, 'store').query('category', params);
+    return this.store.query('category', params);
   }
 });

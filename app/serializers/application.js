@@ -1,7 +1,4 @@
-import Ember from 'ember';
-import DS from 'ember-data';
-var underscore = Ember.String.underscore;
+import JSONAPISerializer from '@ember-data/serializer/json-api';
 
-export default DS.JSONAPISerializer.extend({
-
-});
+export default class ApplicationSerializer extends JSONAPISerializer {
+}

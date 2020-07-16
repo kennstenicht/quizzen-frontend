@@ -7,5 +7,6 @@
   */
   "disableAnalytics": false,
   "proxy": "http://localhost:3000",
-  "usePods": false
+  "usePods": false,
+  "yarn": true
 }

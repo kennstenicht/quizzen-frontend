@@ -7,7 +7,7 @@
 @import "inuitcss/tools/tools.font-size";
 @import "inuitcss/tools/tools.clearfix";
 @import "inuitcss/tools/tools.hidden";
-@import "inuitcss/tools/tools.rem";
+@import "tools/tools.rem";
 @import "sass-mq/mq";
 
 // GENERIC
@@ -33,7 +33,6 @@
 @import "inuitcss/objects/objects.media";
 @import "inuitcss/objects/objects.pack";
 @import "inuitcss/objects/objects.ratio";
-@import "inuitcss/objects/objects.tables";
 @import "inuitcss/objects/objects.wrapper";
 
 // COMPONENTS
@@ -46,5 +45,4 @@
 @import "inuitcss/utilities/utilities.headings";
 @import "inuitcss/utilities/utilities.hide";
 @import "inuitcss/utilities/utilities.print";
-@import "inuitcss/utilities/utilities.spacing";
 @import "inuitcss/utilities/utilities.widths";

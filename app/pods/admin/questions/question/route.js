@@ -1,9 +1,4 @@
-import Ember from 'ember';
-
-const {
-  Route,
-  get
-} = Ember;
+import Route from '@ember/routing/route';
 
 export default Route.extend({
   model(params) {
@@ -12,7 +7,7 @@ export default Route.extend({
 
   actions: {
     save(model) {
-      get(model, 'answers').forEach(function (answer) {
+      model.answers.forEach(function (answer) {
         answer.save();
       });
       model.save().then(() => this.transitionTo('admin.questions'));
@@ -21,7 +16,7 @@ export default Route.extend({
     addAnswer(model) {
       const answer = this.store.createRecord('answer');
 
-      model.get('answers').pushObject(answer);
+      model.answers.pushObject(answer);
     }
   }
 });

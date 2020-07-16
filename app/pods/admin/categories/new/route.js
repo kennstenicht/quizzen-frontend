@@ -1,11 +1,6 @@
-import Ember from 'ember';
+import Route from '@ember/routing/route';
 
-const {
-  Route,
-  get
-} = Ember;
-
-export default Ember.Route.extend({
+export default Route.extend({
   model() {
     return this.store.createRecord('category');
   },
