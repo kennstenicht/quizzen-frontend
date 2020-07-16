@@ -3,6 +3,7 @@
 module.exports = function(environment) {
   let ENV = {
     modulePrefix: 'quizzen',
+    podModulePrefix: 'quizzen/routes',
     environment,
     rootURL: '/',
     locationType: 'auto',
