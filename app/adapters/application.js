@@ -7,6 +7,7 @@ export default class ApplicationAdapter extends JSONAPIAdapter.extend(
   DataAdapterMixin
 ) {
   // Services
+  @service fastboot;
   @service session;
 
 
@@ -15,6 +16,20 @@ export default class ApplicationAdapter extends JSONAPIAdapter.extend(
 
 
   // Getter and setter
+  @computed('fastboot.request.{protocol,host}')
+  get host() {
+    const ENV = getOwner(this).resolveRegistration('config:environment');
+
+    if (ENV.environment !== 'development' && this.fastboot.isFastBoot) {
+      const protocol = this.fastboot.request.protocol;
+      const host = this.fastboot.request.host;
+
+      return `${protocol}//${host}`;
+    } else {
+      return null;
+    }
+  }
+
   @computed('session.{isAuthenticated,data.authenticated}')
   get headers() {
     let headers = {};

@@ -7,6 +7,11 @@ module.exports = function(environment) {
     environment,
     rootURL: '/',
     locationType: 'auto',
+
+
+    fastboot: {
+      hostWhitelist: ['staging.quizzen.jetzt','quizzen.jetzt', /^localhost:\d+$/, /^192.*:\d+$/]
+    },
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
