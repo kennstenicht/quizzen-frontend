@@ -1,0 +1,20 @@
+<div
+  block:scope
+  ...attributes
+>
+  <div block:class="notifications">
+    {{#each this.flashMessages.queue as |flash|}}
+      <Application::Notification @flash={{flash}} />
+    {{/each}}
+  </div>
+
+
+  {{yield}}
+
+  <Application::CookieNotice
+    @toggleCookieNotice={{this.toggleCookieNotice}}
+    @showCookieNotice={{this.showCookieNotice}}
+  />
+
+  <div id="tether-target"></div>
+</div>

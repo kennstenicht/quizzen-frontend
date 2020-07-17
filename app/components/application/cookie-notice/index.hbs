@@ -1,0 +1,66 @@
+<div
+  block:scope
+  block:is-visible={{@showCookieNotice}}
+  ...attributes
+>
+  <div block:class="header">
+    {{t "application.application.cookieNotice.headline"}}
+  </div>
+  <div block:class="content">
+    <div block:class="message">
+      {{t "application.cookieNotice.message" htmlSafe=true}}
+    </div>
+    <div block:class="settings">
+      <div block:class="option">
+        <Input
+          @id="allow-required-cookies"
+          @disabled={{true}}
+          @name="allow-required-cookies"
+          @type="checkbox"
+          @checked={{true}}
+        />
+        <label for="allow-required-cookies">
+          {{t "application.cookieNotice.options.required"}}
+        </label>
+      </div>
+      <div block:class="option">
+        <Input
+          @id="allow-analyse-cookies"
+          @name="allow-analyse-cookies"
+          @type="checkbox"
+          @checked={{this.allowAnalyseCookies}}
+        />
+        <label for="allow-analyse-cookies">
+          {{t "application.cookieNotice.options.analyse"}}
+        </label>
+      </div>
+      <div block:class="option">
+        <Input
+          @id="allow-marketing-cookies"
+          @name="allow-marketing-cookies"
+          @type="checkbox"
+          @checked={{this.allowMarketingCookies}}
+        />
+        <label for="allow-analyse-cookies">
+          {{t "application.cookieNotice.options.marketing"}}
+        </label>
+      </div>
+      <button
+        type="button"
+        button:scope
+        button:primary
+        {{on "click" this.allowAllCookies}}
+      >
+        {{t "application.cookieNotice.allowAllCookies"}}
+      </button>
+      <a
+        href="#"
+        button:scope
+        button:secondary
+        {{on "click" this.allowSelectedCookies}}
+      >
+        {{t "application.cookieNotice.allowSelectedCookies"}}
+      </a>
+    </div>
+  </div>
+</div>

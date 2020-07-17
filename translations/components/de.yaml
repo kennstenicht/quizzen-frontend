@@ -1,0 +1,11 @@
+application:
+  # Cookie Notice
+  cookieNotice:
+    allowAllCookies: Alle Cookies zulassen
+    allowSelectedCookies: Auswahl erlauben
+    headline: Diese Webseite verwendet Cookies
+    message: Wir verwenden Cookies um die Zugriffe auf unsere Webseite zu analysieren und Ihnen das bestmögliche Nutzererlebnis bieten zu können. Die Resultate helfen uns bei der stetigen Verbesserung unserer Webseite. Weitere Informationen finden Sie auch in der '<a href="/privacy">'Datenschutzerklärung'</a>' und im '<a href="/imprint">Impressum</a>'.
+    options:
+      analyse: Statistik
+      marketing: Marketing
+      required: Nur notwendige

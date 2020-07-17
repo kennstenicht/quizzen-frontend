@@ -1,0 +1,92 @@
+/* ==========================================================================
+   #COOCKIE NOTICE
+   ========================================================================== */
+
+@export button from '../../../styles/objects/objects.button.scss';
+
+:scope {
+  block-name: c-application-cookie-notice;
+  position: fixed;
+  right: var(--spacing-small);
+  bottom: var(--spacing-small);
+  left: var(--spacing-small);
+  z-index: 999;
+  padding: var(--spacing-small);
+  max-height: calc(100vh - var(--spacing-large));
+  border: 2px solid var(--color-black);
+  background-color: var(--color-white);
+  color: var(--color-black);
+  transition: transform 0.3s ease-in-out;
+  transform: translate(0, 150%);
+}
+
+:scope[is-visible] {
+  transform: translate(0, 0);
+}
+
+  .header {
+    font-weight: bold;
+  }
+
+  .content {
+    display: flex;
+    overflow: auto;
+  }
+
+    .message {
+      flex-grow: 1;
+    }
+
+    .settings {
+      flex-shrink: 0;
+    }
+
+      .option {
+        margin-bottom: 0;
+      }
+
+
+
+
+
+
+/* Media queries
+  ========================================================================== */
+
+// @include mq($until: desktop) {
+//   .c-cookie-notice {
+//     right: var(--spacing-small);
+//     left: var(--spacing-small);
+//     padding: var(--spacing-small);
+//     @include inuit-font-size($inuit-global-font-size--small);
+
+//     &__content {
+//       flex-direction: column;
+//     }
+
+//       &__settings {
+//         margin-top: var(--spacing-base);
+//         width: 100%;
+//       }
+//   }
+// }
+
+// @include mq($from: desktop) {
+//   .c-cookie-notice {
+//     right: $global-wrapper-offset/4 - spacing('base', 0, false);
+//     left: $global-wrapper-offset/2 - spacing('base', 0, false);
+//     padding: var(--spacing-base);
+
+//     &__settings {
+//       margin-left: var(--spacing-base);
+//       width: 300px;
+//     }
+//   }
+// }
+
+// @include mq($from: wide) {
+//   .c-cookie-notice {
+//     right: $global-wrapper-offset/2 - spacing('base', 0, false);
+//     left: $global-wrapper-offset - spacing('base', 0, false);
+//   }
+// }

@@ -1,0 +1,16 @@
+{{!-- template-lint-disable no-invalid-interactive --}}
+<div
+  block:scope
+  block:type={{@flash.type}}
+  block:is-exiting={{@flash.exiting}}
+  role="alert"
+  {{on "mouseenter" this.preventExiting}}
+  {{on "mouseleave" this.allowExiting}}
+  ...attributes
+>
+  {{#if hasBlock}}
+    {{yield this @flash}}
+  {{else}}
+    {{@flash.message}}
+  {{/if}}
+</div>

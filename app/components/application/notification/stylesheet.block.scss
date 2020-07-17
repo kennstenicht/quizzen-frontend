@@ -1,0 +1,25 @@
+/* ==========================================================================
+   # APPLICATION HEADER NOTIFICATION
+   ========================================================================== */
+
+:scope {
+  block-name: c-application-header-notification;
+  margin-bottom: var(--spacing-tiny);
+  padding: var(--spacing-tiny) var(--spacing-small);
+  transition: all 0.3s ease-in-out;
+}
+
+:scope[type='warning'] {
+  background-color: var(--color-error);
+  color: var(--color-black);
+}
+
+:scope[type='success'] {
+  background-color: var(--color-success);
+  color: var(--color-black);
+}
+
+:scope[is-exiting] {
+  opacity: 0;
+  transform: translateX(200%);
+}

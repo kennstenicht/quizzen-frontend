@@ -1,0 +1,27 @@
+/* ==========================================================================
+   # APPLICATION
+   ========================================================================== */
+
+:scope {
+  block-name: c-application;
+  min-height: 100vh;
+}
+
+  .notifications {
+    position: fixed;
+    top: var(--spacing-base);
+    right: var(--spacing-base);
+    z-index: 900;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
