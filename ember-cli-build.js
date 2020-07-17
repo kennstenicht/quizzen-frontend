@@ -1,10 +1,42 @@
 'use strict';
 
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
+const sass = require('node-sass');
+const eyeglass = require('eyeglass');
+
+function scssPreprocessor(file, data, _configuration, _sourceMap) {
+  return new Promise((resolve, reject) => {
+    const sassOptions = {
+      file,
+      data,
+      outputStyle: 'expanded',
+      sourceMap: true,
+      outFile: file,
+      eyeglass: {},
+    };
+    sass.render(eyeglass(sassOptions), (err, res) => {
+      if (err) {
+        reject(err)
+      } else {
+        resolve({
+          content: res.css.toString(),
+          sourceMap: res.map.toString(),
+          dependencies: [],
+        })
+      }
+    });
+  })
+}
 
 module.exports = function(defaults) {
   let app = new EmberApp(defaults, {
-    // Add options here
+    'css-blocks': {
+      parserOpts: {
+        preprocessors: {
+          scss: scssPreprocessor
+         }
+      }
+    }
   });
 
   // Use `app.import` to add additional libraries to the generated

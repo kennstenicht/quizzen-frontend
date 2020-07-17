@@ -5,6 +5,104 @@
 // The global settings file contains any project-wide variables; things that
 // need to be made available to the entire codebase.
 
-// Standardise some UI treatments.
-$global-radius: 3px !default;
-$global-transition: all 300ms ease-in-out !default;
+:root {
+  /* Spacing
+     ======================================================================== */
+
+  // Baseline
+  --baseline:               9px;
+
+  // Spacing
+  --spacing-tiny:           calc(var(--baseline) * 1);
+  --spacing-small:          calc(var(--baseline) * 2);
+  --spacing-small-tiny:     calc(var(--baseline) * 3);
+  --spacing-base:           calc(var(--baseline) * 4);
+  --spacing-base-tiny:      calc(var(--baseline) * 5);
+  --spacing-base-small:     calc(var(--baseline) * 6);
+  --spacing-large:          calc(var(--baseline) * 8);
+  --spacing-large-tiny:     calc(var(--baseline) * 9);
+  --spacing-large-small:    calc(var(--baseline) * 10);
+  --spacing-large-base:     calc(var(--baseline) * 12);
+  --spacing-huge:           calc(var(--baseline) * 16);
+
+
+
+
+
+  /* Typographic
+     ======================================================================== */
+
+  // Base font size
+  --font-size-huge:         48px;
+  --font-size-large:        20px;
+  --font-size:              18px;
+  --font-size-small:        16px;
+  --font-size-tiny:         14px;
+
+
+  // Heading sizes
+  --font-size-h1:           36px;
+  --font-size-h2:           27px;
+  --font-size-h3:           $font-size;
+  --font-size-h4:           $font-size-small;
+  --font-size-h5:           $font-size-small;
+  --font-size-h6:           $font-size-small;
+
+  // Line height
+  --line-height:            $spacing-base;
+
+  // Letter spacing
+  --letter-spacing:         0.1em;
+
+  // Font family
+  --font-family:            'Inconsolata', sans-serif;
+
+
+
+
+
+  /* Color
+     ======================================================================== */
+
+  // Main colors
+  --color-primary:         #49d29c;
+  --color-secondary:       #89929b;
+  --color-black:           #16171b;
+  --color-white:           #ffffff;
+
+  // Shades of grey
+  --color-grey-light:      #f8f9fb;
+  --color-grey:            #f4f4f4;
+  --color-grey-dark:       #e4e5e7;
+
+  // State colors
+  --color-error:           #da6848;
+  --color-warning:         #d4a958;
+  --color-success:         #33b96f;
+  --color-info:            #ffffe8;
+
+
+
+
+
+  /* Stuff
+     ======================================================================== */
+
+  // Border
+  --border-width-small:   1px;
+  --border-width:         2px;
+  --border-width-large:   4px;
+
+  // Transition
+  --transition-base:      0.3s ease-in-out;
+
+
+
+
+
+  /* Elements
+     ======================================================================== */
+
+  // Navigation
+  --navigation-width:      240px;
+}

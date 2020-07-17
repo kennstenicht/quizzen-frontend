@@ -1,0 +1,19 @@
+/* ==========================================================================
+   # WRAPPER
+   ========================================================================== */
+
+$wrapper-width: 1200px;
+$wrapper-padding: var(--spacing-base);
+
+/*
+* Page-level constraining and wrapping elements.
+*/
+
+:scope {
+  block-name: o-wrapper;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: $wrapper-padding;
+  padding-left: $wrapper-padding;
+  max-width: $wrapper-width;
+}

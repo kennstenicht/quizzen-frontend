@@ -1,0 +1,14 @@
+/* ==========================================================================
+   # LINKS
+   ========================================================================== */
+
+/**
+ * Simple default style for links. Anything more opinionated
+ * than simple font-size changes should likely be applied via classes
+ */
+
+a {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}

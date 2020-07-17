@@ -1,0 +1,86 @@
+/* ==========================================================================
+   #Forms
+   ========================================================================== */
+
+/**
+ * Simple default style for all form elements. Anything more opinionated
+ * than simple basic style changes should likely be applied via classes
+ */
+
+/* Input
+   ========================================================================== */
+
+input:not([type=submit])
+     :not([type=file])
+     :not([type=search])
+     :not([type=checkbox]) {
+  padding: var(--spacing-tiny) var(--spacing-small);
+  width: 100%;
+  border-width: var(--border-width-small);
+  border-style: solid;
+  border-color: var(--color-grey-dark);
+  background-color: var(--color-grey-light);
+
+  // @include inuit-font-size($inuit-global-font-size);
+
+  &:focus {
+    outline: none;
+    border-color: var(--color-grey-darker);
+  }
+}
+
+input:not([type=button]) {
+  border: 0;
+}
+
+
+
+
+
+/* Textarea
+   ========================================================================== */
+
+textarea {
+  padding: var(--spacing-small);
+  width: 100%;
+  border-width: var(--border-width-small);
+  border-style: solid;
+  border-color: var(--color-grey-dark);
+  background-color: var(--color-white);
+
+  // @include inuit-font-size($inuit-global-font-size);
+
+  &:focus {
+    outline: none;
+    border-color: var(--color-grey-dark);
+  }
+}
+
+
+
+
+
+/* Label
+   ========================================================================== */
+
+button {
+  border: 0;
+
+  -webkit-appearance: none;
+     -moz-appearance: none;
+}
+
+
+
+
+
+
+/* Label
+   ========================================================================== */
+
+label {
+  display: block;
+  color: var(--color-black);
+
+  // @include inuit-font-size($inuit-global-font-size--small);
+}

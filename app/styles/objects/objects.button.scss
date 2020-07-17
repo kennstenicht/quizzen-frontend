@@ -1,0 +1,27 @@
+/* ==========================================================================
+   # BUTTON
+   ========================================================================== */
+
+/*
+* Button Object for basic styling
+*/
+
+:scope {
+  block-name: o-btn;
+  display: inline-block;
+  padding: var(--spacing-tiny) var(--spacing-base);
+  border: 0;
+  color: var(--color-white);
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+:scope[primary] {
+  background-color: var(--color-primary);
+}
+
+:scope[secondary] {
+  background-color: var(--color-secondary);
+}

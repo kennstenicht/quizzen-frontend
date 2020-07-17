@@ -28,14 +28,12 @@
     "ember-cli": "3.19.0",
     "ember-cli-app-version": "^3.2.0",
     "ember-cli-babel": "^7.20.5",
-    "ember-cli-bem": "^1.0.0-beta.2 ",
     "ember-cli-content-security-policy": "^2.0.0-1",
     "ember-cli-dependency-checker": "^3.2.0",
     "ember-cli-dotenv": "1.2.0",
     "ember-cli-fastboot": "^2.2.3",
-    "ember-cli-htmlbars": "^5.1.2",
+    "ember-cli-htmlbars": "^4.3.1",
     "ember-cli-inject-live-reload": "^2.0.2",
-    "ember-cli-inuitcss": "1.0.2",
     "ember-cli-release": "^1.0.0-beta.2",
     "ember-cli-sass": "^10.0.1",
     "ember-cli-sri": "^2.1.1",
@@ -61,6 +59,11 @@
     "npm-run-all": "^4.1.5",
     "qunit-dom": "^1.2.0",
     "sass": "^1.26.10"
+  },
+  "dependencies": {
+    "@css-blocks/ember-cli": "^1.0.0",
+    "eyeglass": "^3.0.0",
+    "node-sass": "^4.14.0"
   },
   "engines": {
     "node": "10.* || >= 12"
