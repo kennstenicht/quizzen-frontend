@@ -1,0 +1,12 @@
+{{#if this.session.isAuthenticated}}
+  <button
+    block:scope
+    button:scope
+    button:primary
+    type="button"
+    {{on "click" this.signOut}}
+    ...attributes
+  >
+    {{t "signOut.button"}}
+  </button>
+{{/if}}

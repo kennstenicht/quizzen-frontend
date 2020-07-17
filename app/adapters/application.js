@@ -1,5 +1,6 @@
 import JSONAPIAdapter from '@ember-data/adapter/json-api';
 import { inject as service } from '@ember/service';
+import { getOwner } from '@ember/application';
 import { computed } from '@ember/object';
 import DataAdapterMixin from 'ember-simple-auth/mixins/data-adapter-mixin';
 

@@ -1,0 +1,14 @@
+/* ==========================================================================
+   # SIGN IN
+   ========================================================================== */
+
+@export form from '../../styles/objects/objects.form.scss';
+
+:scope {
+  block-name: c-sign-in;
+  padding: 20px;
+}
+
+  .headline {
+    color: var(--color-error);
+  }

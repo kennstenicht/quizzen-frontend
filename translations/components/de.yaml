@@ -9,3 +9,15 @@ application:
       analyse: Statistik
       marketing: Marketing
       required: Nur notwendige
+
+# Sign In
+signIn:
+  email: E-Mail
+  password: Passwort
+  submit: Einloggen
+  successMessage: Du hast dich erfolgreich eingeloggt
+
+# Sign Out
+signOut:
+  button: Ausloggen
+  successMessage: Du wurdest erfolgreich ausgeloggt

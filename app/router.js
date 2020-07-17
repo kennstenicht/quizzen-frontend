@@ -18,4 +18,6 @@ Router.map(function() {
       this.route('category');
     });
   });
+
+  this.route('login');
 });

@@ -1,0 +1,30 @@
+<div block:scope ...attributes>
+  <h2 block:class="headline">Login</h2>
+  <form
+    form:scope
+    {{on "submit" this.signIn}}
+  >
+    <div form:class="field">
+      <label>
+        {{t "signIn.email"}}
+      </label>
+      <Input
+        @type="text"
+        @value={{this.email}}
+      />
+    </div>
+    <div form:class="field">
+      <label>
+        {{t "signIn.password"}}
+      </label>
+      <Input
+        @type="password"
+        @value={{this.password}}
+      />
+    </div>
+    <div form:class="field">
+      <button type="submit">{{t "signIn.submit"}}</button>
+    </div>
+  </form>
+</div>
+
