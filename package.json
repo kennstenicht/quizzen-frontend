@@ -73,5 +73,9 @@
   "ember": {
     "edition": "octane"
   },
+  "fastbootDependencies": [
+    "node-fetch",
+    "crypto"
+  ],
   "private": true
 }
