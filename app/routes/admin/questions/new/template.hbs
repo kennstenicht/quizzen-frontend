@@ -1,14 +1,14 @@
 Question:
 {{input
   type="text"
-  value=model.label
+  value=@model.label
 }}
 
 <br>
 <br>
 Answers:
 <ul>
-  {{#each model.answers as |answer|}}
+  {{#each @model.answers as |answer|}}
     <li>
       {{input
         type="text"

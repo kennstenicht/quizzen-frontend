@@ -1,7 +1,11 @@
-{{#if model}}
+{{#if @model}}
   <ul>
-    {{#each model as |question|}}
-      <li>{{#link-to 'admin.questions.question' question}}{{question.label}} (Top {{question.answers.length}}){{/link-to}}</li>
+    {{#each @model as |question|}}
+      <li>
+        <LinkTo @route="admin.questions.question" @model={{question}}>
+          {{question.label}} (Top {{question.answers.length}})
+        </LinkTo>
+      </li>
     {{/each}}
   </ul>
 {{else}}

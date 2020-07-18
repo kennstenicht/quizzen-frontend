@@ -1,10 +1,8 @@
 import Route from '@ember/routing/route';
-import { set } from '@ember/object';
+import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 
-export default Route.extend({
-  actions: {
-    toggleSearch(active) {
-      set(this.controller, 'navigationBar', active);
-    }
-  }
-});
+export default class AdminRoute extends Route.extend(
+  AuthenticatedRouteMixin
+){
+
+}

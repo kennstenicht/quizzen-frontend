@@ -1,9 +1,0 @@
-{{#if model}}
-  <ul>
-    {{#each model as |category|}}
-      <li>{{#link-to 'admin.categories.category' category}}{{category.label}}{{/link-to}}</li>
-    {{/each}}
-  </ul>
-{{else}}
-  Keine Kategory für diese Auswahl
-{{/if}}
