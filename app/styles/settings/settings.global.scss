@@ -10,7 +10,7 @@
      ======================================================================== */
 
   // Baseline
-  --baseline:               9px;
+  --baseline:               7px;
 
   // Spacing
   --spacing-tiny:           calc(var(--baseline) * 1);
@@ -41,21 +41,19 @@
 
 
   // Heading sizes
-  --font-size-h1:           36px;
-  --font-size-h2:           27px;
-  --font-size-h3:           $font-size;
-  --font-size-h4:           $font-size-small;
-  --font-size-h5:           $font-size-small;
-  --font-size-h6:           $font-size-small;
-
-  // Line height
-  --line-height:            $spacing-base;
+  --font-size-h1:           52px;
+  --font-size-h2:           36px;
+  --font-size-h3:           24px;
+  --font-size-h4:           18px;
+  --font-size-h5:           18px;
+  --font-size-h6:           18px;
 
   // Letter spacing
-  --letter-spacing:         0.1em;
+  --letter-spacing:         0.05em;
 
   // Font family
   --font-family:            'Inconsolata', sans-serif;
+  --font-family-decoration: 'Playfair Display', serif;
 
 
 
@@ -65,8 +63,9 @@
      ======================================================================== */
 
   // Main colors
-  --color-primary:         #49d29c;
-  --color-secondary:       #89929b;
+  --color-primary:         #4F759B;
+  --color-primary-dark:    #5fa6af;
+  --color-secondary:       #80ae83;
   --color-black:           #16171b;
   --color-white:           #ffffff;
 
