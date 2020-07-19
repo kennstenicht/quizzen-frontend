@@ -2,8 +2,8 @@
   <ul>
     {{#each @model as |question|}}
       <li>
-        <LinkTo @route="admin.questions.question" @model={{question}}>
-          {{question.label}} (Top {{question.answers.length}})
+        <LinkTo @route="profil.questions.question" @model={{question}}>
+          {{question.label}}
         </LinkTo>
       </li>
     {{/each}}

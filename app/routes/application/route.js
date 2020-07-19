@@ -14,8 +14,8 @@ export default class ApplicationRoute extends Route.extend(
 
 
   // Defaults
-  routeAfterAuthentication = 'admin';
-
+  routeAfterAuthentication = 'profil.questions';
+  routeAfterInvalidation = 'login';
 
   // Hooks
   beforeModel() {

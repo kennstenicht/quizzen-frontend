@@ -1,0 +1,15 @@
+/* ==========================================================================
+   # ROUTE. PROFIL
+   ========================================================================== */
+
+@export wrapper from '../../styles/objects/objects.wrapper.scss';
+
+:scope {
+  block-name: c-profil;
+}
+
+  .navigation {
+    position: fixed;
+    top: var(--spacing-base);
+    right: var(--spacing-base);
+  }

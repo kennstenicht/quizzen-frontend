@@ -5,5 +5,5 @@ export default class LoginRoute extends Route.extend(
   UnauthenticatedRouteMixin
 ) {
   // Defaults
-  routeIfAlreadyAuthenticated = 'admin';
+  routeIfAlreadyAuthenticated = 'profil.questions';
 }
