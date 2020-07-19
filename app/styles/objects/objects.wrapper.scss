@@ -2,18 +2,20 @@
    # WRAPPER
    ========================================================================== */
 
-$wrapper-width: 1200px;
-$wrapper-padding: var(--spacing-base);
-
 /*
 * Page-level constraining and wrapping elements.
 */
 
 :scope {
   block-name: o-wrapper;
-  margin-right: auto;
+  margin-right: 0;
   margin-left: auto;
-  padding-right: $wrapper-padding;
-  padding-left: $wrapper-padding;
-  max-width: $wrapper-width;
+  background-color: var(--color-white);
+  border-radius: var(--spacing-base);
+  padding: var(--spacing-base-small);
+  width: 80%;
+}
+
+:scope[size=small] {
+  width: 40%;
 }

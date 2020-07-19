@@ -1,0 +1,17 @@
+/* ==========================================================================
+   # SIGN OUT
+   ========================================================================== */
+
+@export wrapper from '../../styles/objects/objects.wrapper.scss';
+
+:scope {
+  block-name: c-login;
+}
+
+  .headline {
+    font-size: 30px;
+    text-transform: uppercase;
+    position: fixed;
+    top: var(--spaicng-large);
+    left: var(--spaicng-large);
+  }
