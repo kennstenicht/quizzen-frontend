@@ -2,7 +2,7 @@ import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { isPresent } from '@ember/utils';
 
-export default class ApplicationHeaderNotificationComponent extends Component {
+export default class ApplicationNotificationComponent extends Component {
   // Actions
   @action
   preventExiting() {
