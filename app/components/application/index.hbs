@@ -2,6 +2,10 @@
   block:scope
   ...attributes
 >
+  {{#if this.isDevelopment}}
+    <AnimatedTools />
+  {{/if}}
+
   <div block:class="notifications">
     {{#each this.flashMessages.queue as |flash|}}
       <Application::Notification @flash={{flash}} />
