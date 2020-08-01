@@ -5,6 +5,7 @@ import { pluralize } from 'ember-inflector';
 
 export default class ProfilController extends Controller {
 // Services
+@service currentUser;
 @service flashMessages;
 @service intl;
 @service session;

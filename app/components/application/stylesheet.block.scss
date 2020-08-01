@@ -4,7 +4,12 @@
 
 :scope {
   block-name: c-application;
-  min-height: 100vh;
+  height: 100vh;
+  padding: var(--spacing-large);
+  background-image: url(/undraw_best_place_r685.svg);
+  background-size: 65% auto;
+  background-position: left -20% bottom -1%;
+  background-repeat: no-repeat;
 }
 
   .notifications {

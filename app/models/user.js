@@ -21,6 +21,6 @@ export default class UserModel extends Model {
   }
 
   get initials() {
-    return `${this.firstname.substring(1)}${this.lastname.substring(1)}`;
+    return `${this.firstname.substring(0,1)}${this.lastname.substring(0,1)}`;
   }
 }

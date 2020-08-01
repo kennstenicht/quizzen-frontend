@@ -1,12 +1,30 @@
 <div
   block:scope
 >
-  <div block:class="navigation">
-    <LinkTo @route="profil.games">Spiele</LinkTo>
-    <LinkTo @route="profil.categories">Kategorien</LinkTo>
-    <LinkTo @route="profil.questions">Questions</LinkTo>
+  <header block:class="header">
+    <div block:class="current-user">
+      <div block:class="initials">
+        {{this.currentUser.user.initials}}
+      </div>
+      <div block:class="display-label">
+        {{this.currentUser.user.displayLabel}}
+      </div>
+    </div>
     <SignOut />
-  </div>
+  </header>
+  <nav block:class="navigation">
+    <ul>
+      <li block:class="item">
+        <LinkTo @route="profil.games">Spiele</LinkTo>
+      </li>
+      <li block:class="item">
+        <LinkTo @route="profil.categories">Kategorien</LinkTo>
+      </li>
+      <li block:class="item">
+        <LinkTo @route="profil.questions">Questions</LinkTo>
+      </li>
+    </ul>
+  </nav>
   <div wrapper:scope>
     {{outlet}}
   </div>
