@@ -1,0 +1,10 @@
+<h1>Edit Games</h1>
+<LinkTo @route="profil.games.index">&lArr; Overview</LinkTo>
+<LinkTo @route="profil.games.new">New</LinkTo><br><br>
+
+<Form
+  @changeset={{this.changeset}}
+  @save={{this.save}}
+  @delete={{this.delete}}
+  @rollback={{this.rollback}}
+/>
