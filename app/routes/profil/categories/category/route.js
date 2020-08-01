@@ -4,16 +4,16 @@ import { action } from '@ember/object';
 import { Changeset } from 'ember-changeset';
 import lookupValidator from 'ember-changeset-validations';
 import confirmUnsavedChanges from 'quizzen/utils/confirm-unsaved-changes';
-import QuestionValidations from 'quizzen/validations/question';
+import QuestionValidations from 'quizzen/validations/category';
 
-export default class ProfilQuestionsQuestionRoute extends Route {
+export default class ProfilCategoriesCategoryRoute extends Route {
   // Services
   @service store;
 
 
   // Hooks
-  model({ question_id }) {
-    return this.store.findRecord('question', question_id);
+  model({ category_id }) {
+    return this.store.findRecord('category', category_id);
   }
 
   setupController(controller, model) {

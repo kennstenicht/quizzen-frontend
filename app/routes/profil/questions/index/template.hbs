@@ -6,7 +6,7 @@
     {{#each @model as |question|}}
       <li>
         <LinkTo @route="profil.questions.question" @model={{question}}>
-          {{question.label}}
+          {{question.displayLabel}}
         </LinkTo>
       </li>
     {{/each}}

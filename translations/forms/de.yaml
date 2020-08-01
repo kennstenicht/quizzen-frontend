@@ -8,3 +8,9 @@ forms:
       label: Frage eingeben
       source: Quelle eingeben
       data: Stand eingeben
+
+  category:
+    fields:
+      title: Title
+    placeholder:
+      title: Title der Kategorie eingeben

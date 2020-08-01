@@ -1,7 +1,9 @@
 models:
-  question: Frage
   answer: Antwort
+  category: Kategorie
+  question: Frage
 
   plurals:
-    question: Fragen
     answer: Antworten
+    category: Kategorien
+    question: Fragen
