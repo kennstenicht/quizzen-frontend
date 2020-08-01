@@ -1,0 +1,7 @@
+models:
+  question: Frage
+  answer: Antwort
+
+  plurals:
+    question: Fragen
+    answer: Antworten

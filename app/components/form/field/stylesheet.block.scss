@@ -1,0 +1,20 @@
+/* ==========================================================================
+   # FORM FIELD
+   ========================================================================== */
+
+:scope {
+  block-name: c-form-field;
+  margin-bottom: var(--spacing-small);
+}
+  .label {
+    margin-bottom: var(--spacing-tiny);
+  }
+
+  .errors {
+    color: red;
+    margin-top: var(--spacing-tiny);
+  }
+
+    .error {
+      margin-top: var(--spacing-tiny);
+    }

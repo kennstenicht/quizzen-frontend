@@ -1,0 +1,33 @@
+<div
+  block:scope
+  ...attributes
+>
+  {{#if this.label}}
+    <label block:class="label" for={{this.fieldId}}>
+      {{this.label}}
+    </label>
+  {{/if}}
+
+  {{#if this.isHasMany}}
+    <Form::Field::HasMany @records={{this.value}} @modelName={{@modelName}}/>
+  {{else}}
+    <input
+      id={{this.fieldId}}
+      name={{this.fieldId}}
+      placeholder={{this.placeholder}}
+      type={{this.type}}
+      value={{this.value}}
+      {{on "input" this.updateChangeset}}
+    />
+  {{/if}}
+
+  {{#if this.errors}}
+    <div block:class="errors">
+      {{#each (get this.errors "validation") as |error|}}
+        <div block:class="error">
+          {{error}}
+        </div>
+      {{/each}}
+    </div>
+  {{/if}}
+</div>

@@ -1,0 +1,10 @@
+forms:
+  question:
+    fields:
+      label: Frage
+      source: Quelle
+      date: Stand
+    placeholder:
+      label: Frage eingeben
+      source: Quelle eingeben
+      data: Stand eingeben

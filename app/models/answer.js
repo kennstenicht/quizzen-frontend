@@ -1,7 +1,22 @@
-import Model, { attr } from '@ember-data/model';
+import Model, { attr, belongsTo } from '@ember-data/model';
+import { alias } from '@ember/object/computed';
 
-export default Model.extend({
-  label: attr('string'),
-  value: attr('string'),
-  information: attr('string')
-});
+export default class QuestionModel extends Model {
+  // Attributes
+  @attr('string') label;
+  @attr('string') value;
+  @attr('string') information;
+
+
+  // Meta
+  @attr('date') createdAt;
+  @attr('date') updatedAt;
+
+
+  // Relations
+  @belongsTo answers;
+
+
+  // Getter and setter
+  @alias('label') displayLabel;
+}

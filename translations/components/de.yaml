@@ -10,6 +10,9 @@ application:
       marketing: Marketing
       required: Nur notwendige
 
+form:
+  saveRecord: '{title} wurde gespeichert'
+
 # Sign In
 signIn:
   email: E-Mail
