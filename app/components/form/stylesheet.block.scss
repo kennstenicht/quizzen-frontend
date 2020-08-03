@@ -1,0 +1,14 @@
+/* ==========================================================================
+   # FORM
+   ========================================================================== */
+
+@export form from '../../styles/objects/objects.form.scss';
+@export button from '../../styles/objects/objects.button.scss';
+
+:scope {
+  block-name: c-form;
+}
+
+  .actions {
+    margin-top: var(--spacing-base);
+  }

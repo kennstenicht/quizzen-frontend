@@ -1,0 +1,12 @@
+<div block:scope ...attributes>
+  {{#each @records as |record|}}
+    <Form::Field::HasMany::Record
+      @record={{record}}
+      @delete={{@delete}}
+      @save={{@save}}
+      @rollback={{@rollback}}
+    />
+  {{/each}}
+
+  <button type="button" button:scope {{on "click" this.addRecord}}>Add</button>
+</div>

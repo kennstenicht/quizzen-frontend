@@ -1,4 +1,6 @@
 <form
+  block:scope
+  form:scope
   {{on "submit" (fn @save @changeset)}}
   ...attributes
 >
@@ -8,12 +10,39 @@
     form=(hash
       field=(component "form/field"
         changeset=@changeset
+        delete=@delete
+        rollback=@rollback
         modelName=this.modelName
+        save=@save
       )
     )
   }}
 
-  <button type="submit">Save</button>
-  <button type="reset" {{on "click" (fn @rollback @changeset)}}>Reset</button>
-  <button type="button" {{on "click" (fn @delete @changeset)}}>Delete</button>
+  <div block:class="actions">
+    <button
+      button:scope
+      button:primary={{true}}
+      type="submit"
+    >
+      Save
+    </button>
+
+    <button
+      button:scope
+      button:secondary={{true}}
+      type="reset"
+      {{on "click" (fn @rollback @changeset)}}
+    >
+      Reset
+    </button>
+
+    <button
+      button:scope
+      button:secondary={{true}}
+      type="button"
+      {{on "click" (fn @delete @changeset)}}
+    >
+      Delete
+    </button>
+  </div>
 </form>

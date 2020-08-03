@@ -10,12 +10,14 @@ forms:
   category:
     fields:
       title: Title
+      questions: Fragen
     placeholder:
       title: Title der Kategorie eingeben
 
   game:
     fields:
       title: Spielname
+      categories: Kategorien
     placeholder:
       title: Spielname eingeben
 
@@ -24,6 +26,7 @@ forms:
       label: Frage
       source: Quelle
       date: Stand
+      answers: Antworten
     placeholder:
       label: Frage eingeben
       source: Quelle eingeben
