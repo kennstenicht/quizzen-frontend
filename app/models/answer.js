@@ -1,7 +1,10 @@
 import Model, { attr, belongsTo } from '@ember-data/model';
 import { alias } from '@ember/object/computed';
+import AnswerValidations from 'quizzen/validations/answer';
 
-export default class QuestionModel extends Model {
+export default class AnswerModel extends Model {
+  validations = AnswerValidations;
+
   // Attributes
   @attr('string') label;
   @attr('string') value;
@@ -14,7 +17,7 @@ export default class QuestionModel extends Model {
 
 
   // Relations
-  @belongsTo answers;
+  @belongsTo question;
 
 
   // Getter and setter

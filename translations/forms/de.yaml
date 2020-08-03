@@ -1,4 +1,12 @@
 forms:
+  answer:
+    fields:
+      label: Antwort
+      value: Wert
+      information: Weiter Informationen
+    placeholder:
+      title: Title der Kategorie eingeben
+
   category:
     fields:
       title: Title
