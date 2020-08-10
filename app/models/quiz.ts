@@ -1,10 +1,10 @@
 import Model, { attr, hasMany } from '@ember-data/model';
 import { alias } from '@ember/object/computed';
-import GameValidations from 'quizzen/validations/game';
+import QuizValidations from 'quizzen/validations/quiz';
 import Category from 'quizzen/models/category';
 
-export default class GameModel extends Model {
-  validations = GameValidations;
+export default class QuizModel extends Model {
+  validations = QuizValidations;
 
   // Attributes
   @attr('string') title!: string;

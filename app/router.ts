@@ -12,8 +12,8 @@ Router.map(function() {
       this.route('new');
       this.route('category', { path: '/:category_id' });
     });
-    this.route('games', function() {
-      this.route('game', { path: '/:game_id' });
+    this.route('quizzes', function() {
+      this.route('quiz', { path: '/:quiz_id' });
       this.route('new');
     });
     this.route('questions', function() {

@@ -5,18 +5,14 @@ import { action } from '@ember/object';
 import Store from '@ember-data/store';
 import confirmUnsavedChanges from 'quizzen/utils/confirm-unsaved-changes';
 
-interface Params {
-  game_id: string
-}
-
-export default class ProfilGamesGameRoute extends Route {
+export default class ProfilQuizzesNewRoute extends Route {
   // Services
   @service store!: Store;
 
 
   // Hooks
-  model({ game_id }: Params) {
-    return this.store.findRecord('game', game_id);
+  model() {
+    return this.store.createRecord('quiz');
   }
 
 

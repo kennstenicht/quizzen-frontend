@@ -9,8 +9,6 @@ export default class LoginRoute extends Route {
 
   // Hooks
   beforeModel() {
-    console.log(this.get('session'));
-
     this.get('session').prohibitAuthentication('profil');
   }
 }
