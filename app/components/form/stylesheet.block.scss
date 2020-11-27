@@ -2,13 +2,21 @@
    # FORM
    ========================================================================== */
 
-@export form from '../../styles/objects/objects.form.scss';
-@export button from '../../styles/objects/objects.button.scss';
+// Imports
+@import 'setup';
+@block form from 'objects/objects.form.block.scss';
+@block button from 'objects/objects.button.block.scss';
 
+
+// Exports
+@export (form, button);
+
+
+// Block
 :scope {
   block-name: c-form;
 }
 
   .actions {
-    margin-top: var(--spacing-base);
+    margin-top: spacing('base');
   }

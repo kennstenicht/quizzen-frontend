@@ -2,16 +2,24 @@
    # ROUTE. PROFIL
    ========================================================================== */
 
-@export wrapper from '../../styles/objects/objects.wrapper.scss';
+// Imports
+@import 'setup';
+@block wrapper from 'objects/objects.wrapper.block.scss';
 
+
+// Exports
+@export (wrapper);
+
+
+// Block
 :scope {
   block-name: c-profile;
 }
 
   .header {
     position: fixed;
-    top: var(--spacing-base);
-    right: var(--spacing-base);
+    top: spacing('base');
+    right: spacing('base');
     display: flex;
     justify-content: space-between;
     width: 75%;
@@ -26,17 +34,17 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background-color: var(--color-white);
+        background-color: $color-white;
       }
 
       .display-label {
-        margin-left: var(--spacing-small);
+        margin-left: spacing('small');
       }
 
   .navigation {
     position: fixed;
-    top: var(--spacing-base);
-    left: var(--spacing-base);
+    top: spacing('base');
+    left: spacing('base');
   }
 
     .item {

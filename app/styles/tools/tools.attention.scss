@@ -1,0 +1,28 @@
+/* ==========================================================================
+   # ATTENTION
+   ========================================================================== */
+
+/**
+ * Inuit Addon
+ *
+ * Apply ‘attention’ styles in one go.
+ */
+
+@mixin attention($self: false) {
+  @if($self != false) {
+    &,
+    &:hover,
+    &:active,
+    &:focus {
+      @content;
+    }
+  }
+
+  @else {
+    &:hover,
+    &:active,
+    &:focus {
+      @content;
+    }
+  }
+}

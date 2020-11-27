@@ -1,107 +1,116 @@
-///* ========================================================================
-//   #GLOBAL
-//   ======================================================================== */
+/* ==========================================================================
+   # GLOBALS
+   ========================================================================== */
 
 // The global settings file contains any project-wide variables; things that
 // need to be made available to the entire codebase.
 
-:root {
-  /* Spacing
-     ======================================================================== */
 
-  // Baseline
-  --baseline:               7px;
+/* Spacing
+  ======================================================================== */
 
-  // Spacing
-  --spacing-tiny:           calc(var(--baseline) * 1);
-  --spacing-small:          calc(var(--baseline) * 2);
-  --spacing-small-tiny:     calc(var(--baseline) * 3);
-  --spacing-base:           calc(var(--baseline) * 4);
-  --spacing-base-tiny:      calc(var(--baseline) * 5);
-  --spacing-base-small:     calc(var(--baseline) * 6);
-  --spacing-large:          calc(var(--baseline) * 8);
-  --spacing-large-tiny:     calc(var(--baseline) * 9);
-  --spacing-large-small:    calc(var(--baseline) * 10);
-  --spacing-large-base:     calc(var(--baseline) * 12);
-  --spacing-huge:           calc(var(--baseline) * 16);
+// Baseline
+$baseline:               7px;
+
+// Spacing
+$spacing-tiny:           $baseline * 1;
+$spacing-small:          $baseline * 2;
+$spacing-base:           $baseline * 4;
+$spacing-large:          $baseline * 8;
+$spacing-huge:           $baseline * 16;
+$spacing-giant:          $baseline * 32;
 
 
 
 
 
-  /* Typographic
-     ======================================================================== */
+/* Typographic
+  ======================================================================== */
 
-  // Base font size
-  --font-size-huge:         48px;
-  --font-size-large:        20px;
-  --font-size:              18px;
-  --font-size-small:        16px;
-  --font-size-tiny:         14px;
-
-
-  // Heading sizes
-  --font-size-h1:           52px;
-  --font-size-h2:           36px;
-  --font-size-h3:           24px;
-  --font-size-h4:           18px;
-  --font-size-h5:           18px;
-  --font-size-h6:           18px;
-
-  // Letter spacing
-  --letter-spacing:         0.05em;
-
-  // Font family
-  --font-family:            'Inconsolata', sans-serif;
-  --font-family-decoration: 'Playfair Display', serif;
+// Base font size
+$font-size-huge:         48px;
+$font-size-large:        20px;
+$font-size:              18px;
+$font-size-small:        16px;
+$font-size-tiny:         14px;
 
 
+// Heading sizes
+$font-size-h1:           52px;
+$font-size-h2:           36px;
+$font-size-h3:           24px;
+$font-size-h4:           18px;
+$font-size-h5:           18px;
+$font-size-h6:           18px;
 
+// Letter spacing
+$letter-spacing:         0.05rem;
 
-
-  /* Color
-     ======================================================================== */
-
-  // Main colors
-  --color-primary:         #4F759B;
-  --color-primary-dark:    #5fa6af;
-  --color-secondary:       #80ae83;
-  --color-black:           #16171b;
-  --color-white:           #ffffff;
-
-  // Shades of grey
-  --color-grey-light:      #f8f9fb;
-  --color-grey:            #f4f4f4;
-  --color-grey-dark:       #e4e5e7;
-
-  // State colors
-  --color-error:           #da6848;
-  --color-warning:         #d4a958;
-  --color-success:         #33b96f;
-  --color-info:            #ffffe8;
+// Font family
+$font-family:            'Inconsolata', sans-serif;
+$font-family-decoration: 'Playfair Display', serif;
 
 
 
 
 
-  /* Stuff
-     ======================================================================== */
+/* Color
+  ======================================================================== */
 
-  // Border
-  --border-width-small:   1px;
-  --border-width:         2px;
-  --border-width-large:   4px;
+// Main colors
+$color-primary:         #4F759B;
+$color-primary-dark:    #5fa6af;
+$color-secondary:       #80ae83;
+$color-black:           #16171b;
+$color-white:           #ffffff;
 
-  // Transition
-  --transition-base:      0.3s ease-in-out;
+// Shades of grey
+$color-grey-light:      #f8f9fb;
+$color-grey:            #f4f4f4;
+$color-grey-dark:       #cfbebe;
+$color-grey-darker:     #ad9e9e;
+
+// State colors
+$color-error:           #da6848;
+$color-warning:         #d4a958;
+$color-success:         #33b96f;
+$color-info:            #ffffe8;
 
 
 
 
 
-  /* Elements
-     ======================================================================== */
+/* Media queries
+   ======================================================================== */
 
-  // Navigation
-  --navigation-width:      240px;
-}
+$mq-breakpoints: (
+  mobile:  576px,
+  tablet:  768px,
+  desktop: 1024px,
+  wide:    1200px,
+);
+
+
+
+
+
+/* Stuff
+  ======================================================================== */
+
+// Border
+$border-width-small:     1px;
+$border-width:           2px;
+$border-width-large:     4px;
+
+// Transition
+$transition-base:        0.3s ease-in-out;
+$transition-slow:        0.6s ease-in-out;
+
+
+
+
+/* Objects
+========================================================================== */
+// Object Wrapper
+$wrapper-width-small:    1100px;
+$wrapper-width:          1700px;

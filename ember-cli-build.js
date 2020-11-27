@@ -3,40 +3,34 @@
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 const sass = require('node-sass');
 const eyeglass = require('eyeglass');
+const { adaptor, adaptorSync } = require('@css-blocks/eyeglass');
+const path = require('path');
 
-function scssPreprocessor(file, data, _configuration, _sourceMap) {
-  return new Promise((resolve, reject) => {
-    const sassOptions = {
-      file,
-      data,
-      outputStyle: 'expanded',
-      sourceMap: true,
-      outFile: file,
-      eyeglass: {},
-    };
-    sass.render(eyeglass(sassOptions), (err, res) => {
-      if (err) {
-        reject(err)
-      } else {
-        resolve({
-          content: res.css.toString(),
-          sourceMap: res.map.toString(),
-          dependencies: [],
-        })
-      }
-    });
-  })
-}
+const sassOptions = {
+  outputStyle: "expanded",
+  includePaths: ['app/styles', 'node_modules'],
+};
+
+const scss = adaptor(sass, eyeglass, sassOptions);
+const scssSync = adaptorSync(sass, eyeglass, sassOptions);
 
 module.exports = function(defaults) {
   let app = new EmberApp(defaults, {
     'css-blocks': {
+      aliases: {
+        objects: path.resolve(__dirname, 'app/styles/objects')
+      },
       parserOpts: {
+        outputMode: 'BEM',
         preprocessors: {
-          scss: scssPreprocessor
-         }
+          scss
+        },
+        preprocessorsSync: {
+          scss: scssSync
+        }
       }
-    }
+    },
+    sassOptions
   });
 
   // Use `app.import` to add additional libraries to the generated

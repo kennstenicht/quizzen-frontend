@@ -6,12 +6,17 @@
 * Button Object for basic styling
 */
 
+// Imports
+@import 'setup';
+
+
+// Block
 :scope {
   block-name: o-btn;
   display: inline-block;
-  padding: var(--spacing-tiny) var(--spacing-base);
+  padding: spacing('tiny') spacing('base');
   border: 0;
-  color: var(--color-white);
+  color: $color-white;
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
@@ -19,9 +24,9 @@
 }
 
 :scope[primary] {
-  background-color: var(--color-primary);
+  background-color: $color-primary;
 }
 
 :scope[secondary] {
-  background-color: var(--color-secondary);
+  background-color: $color-secondary;
 }

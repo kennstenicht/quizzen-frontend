@@ -14,18 +14,18 @@ input:not([type=submit]),
 input:not([type=file]),
 input:not([type=search]),
 input:not([type=checkbox]) {
-  padding: var(--spacing-tiny) var(--spacing-small);
+  padding: spacing('tiny') spacing('small');
   width: 100%;
-  border-width: var(--border-width-small);
+  border-width: $border-width-small;
   border-style: solid;
-  border-color: var(--color-grey-dark);
-  background-color: var(--color-grey-light);
+  border-color: $color-grey-dark;
+  background-color: $color-grey-light;
 
   // @include inuit-font-size($inuit-global-font-size);
 
   &:focus {
     outline: none;
-    border-color: var(--color-grey-darker);
+    border-color: $color-grey-darker;
   }
 }
 
@@ -37,18 +37,18 @@ input:not([type=checkbox]) {
    ========================================================================== */
 
 textarea {
-  padding: var(--spacing-small);
+  padding: spacing('small');
   width: 100%;
-  border-width: var(--border-width-small);
+  border-width: $border-width-small;
   border-style: solid;
-  border-color: var(--color-grey-dark);
-  background-color: var(--color-white);
+  border-color: $color-grey-dark;
+  background-color: $color-white;
 
   // @include inuit-font-size($inuit-global-font-size);
 
   &:focus {
     outline: none;
-    border-color: var(--color-grey-dark);
+    border-color: $color-grey-dark;
   }
 }
 
@@ -76,7 +76,7 @@ button {
 
 label {
   display: block;
-  color: var(--color-black);
+  color: $color-black;
 
   // @include inuit-font-size($inuit-global-font-size--small);
 }

@@ -6,13 +6,18 @@
 * Page-level constraining and wrapping elements.
 */
 
+// Imports
+@import 'setup';
+
+
+// Block
 :scope {
   block-name: o-wrapper;
   margin-right: 0;
   margin-left: auto;
-  background-color: var(--color-white);
-  border-radius: var(--spacing-base);
-  padding: var(--spacing-base-small);
+  background-color: $color-white;
+  border-radius: spacing('base');
+  padding: spacing('base+small');
   width: 80%;
 }
 

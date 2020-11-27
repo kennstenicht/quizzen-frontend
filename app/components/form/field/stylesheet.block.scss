@@ -2,19 +2,24 @@
    # FORM FIELD
    ========================================================================== */
 
+// Imports
+@import 'setup';
+
+
+// Block
 :scope {
   block-name: c-form-field;
-  margin-bottom: var(--spacing-small);
+  margin-bottom: spacing('small');
 }
   .label {
-    margin-bottom: var(--spacing-tiny);
+    margin-bottom: spacing('tiny');
   }
 
   .errors {
     color: red;
-    margin-top: var(--spacing-tiny);
+    margin-top: spacing('tiny');
   }
 
     .error {
-      margin-top: var(--spacing-tiny);
+      margin-top: spacing('tiny');
     }

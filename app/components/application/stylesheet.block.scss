@@ -2,10 +2,15 @@
    # APPLICATION
    ========================================================================== */
 
+// Imports
+@import 'setup';
+
+
+// Block
 :scope {
   block-name: c-application;
   height: 100vh;
-  padding: var(--spacing-large);
+  padding: spacing('large');
   background-image: url(/undraw_best_place_r685.svg);
   background-size: 65% auto;
   background-position: left -20% bottom -1%;
@@ -14,8 +19,8 @@
 
   .notifications {
     position: fixed;
-    top: var(--spacing-base);
-    right: var(--spacing-base);
+    top: spacing('base');
+    right: spacing('base');
     z-index: 900;
   }
 

@@ -2,20 +2,28 @@
    #COOCKIE NOTICE
    ========================================================================== */
 
-@export button from '../../../styles/objects/objects.button.scss';
+// Imports
+@import 'setup';
+@block button from 'objects/objects.button.block.scss';
 
+
+// Exports
+@export (button);
+
+
+// Block
 :scope {
   block-name: c-application-cookie-notice;
   position: fixed;
-  right: var(--spacing-small);
-  bottom: var(--spacing-small);
-  left: var(--spacing-small);
+  right: spacing('small');
+  bottom: spacing('small');
+  left: spacing('small');
   z-index: 999;
-  padding: var(--spacing-small);
-  max-height: calc(100vh - var(--spacing-large));
-  border: 2px solid var(--color-black);
-  background-color: var(--color-white);
-  color: var(--color-black);
+  padding: spacing('small');
+  max-height: calc(100vh - spacing('large'));
+  border: 2px solid $color-black;
+  background-color: $color-white;
+  color: $color-black;
   transition: transform 0.3s ease-in-out;
   transform: translate(0, 150%);
 }
@@ -55,9 +63,9 @@
 
 // @include mq($until: desktop) {
 //   .c-cookie-notice {
-//     right: var(--spacing-small);
-//     left: var(--spacing-small);
-//     padding: var(--spacing-small);
+//     right: spacing('small');
+//     left: spacing('small');
+//     padding: spacing('small');
 //     @include inuit-font-size($inuit-global-font-size--small);
 
 //     &__content {
@@ -65,7 +73,7 @@
 //     }
 
 //       &__settings {
-//         margin-top: var(--spacing-base);
+//         margin-top: spacing('base');
 //         width: 100%;
 //       }
 //   }
@@ -75,10 +83,10 @@
 //   .c-cookie-notice {
 //     right: $global-wrapper-offset/4 - spacing('base', 0, false);
 //     left: $global-wrapper-offset/2 - spacing('base', 0, false);
-//     padding: var(--spacing-base);
+//     padding: spacing('base');
 
 //     &__settings {
-//       margin-left: var(--spacing-base);
+//       margin-left: spacing('base');
 //       width: 300px;
 //     }
 //   }

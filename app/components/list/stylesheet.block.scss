@@ -2,8 +2,15 @@
    # LIST
    ========================================================================== */
 
-@export button from '../../styles/objects/objects.button.scss';
+// Imports
+@block button from 'objects/objects.button.block.scss';
 
+
+// Exports
+@export (button);
+
+
+// Block
 :scope {
   block-name: c-list;
 }

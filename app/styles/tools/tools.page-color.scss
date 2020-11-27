@@ -1,0 +1,14 @@
+/* ==========================================================================
+   # STYLE STATE
+   ========================================================================== */
+
+/**
+ * Apply style state with default fallback
+ */
+
+@function style-state($page) {
+  $isDefault: $page == 'default';
+
+  @return if($isDefault, '', '[style=#{$page}]');
+}
+

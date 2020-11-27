@@ -6,10 +6,15 @@
 * Form object for basic form styling
 */
 
+// Imports
+@import 'setup';
+
+
+// Block
 :scope {
   block-name: o-form;
 }
 
 .field {
-  margin-bottom: var(--spacing-small);
+  margin-bottom: spacing('small');
 }

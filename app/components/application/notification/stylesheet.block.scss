@@ -2,21 +2,26 @@
    # APPLICATION NOTIFICATION
    ========================================================================== */
 
+// Imports
+@import 'setup';
+
+
+// Block
 :scope {
   block-name: c-application-notification;
-  margin-bottom: var(--spacing-tiny);
-  padding: var(--spacing-tiny) var(--spacing-small);
+  margin-bottom: spacing('tiny');
+  padding: spacing('tiny') spacing('small');
   transition: all 0.3s ease-in-out;
 }
 
 :scope[type='warning'] {
-  background-color: var(--color-error);
-  color: var(--color-black);
+  background-color: $color-error;
+  color: $color-black;
 }
 
 :scope[type='success'] {
-  background-color: var(--color-success);
-  color: var(--color-black);
+  background-color: $color-success;
+  color: $color-black;
 }
 
 :scope[is-exiting] {

@@ -1,0 +1,58 @@
+/* ==========================================================================
+   # INUIT SPACING
+   ========================================================================== */
+
+/**
+ * Inuit Addon
+ *
+ * provide basic spacing variables and a spacing function to calculate a
+ * spacing with an optional offset (e.g. if the element has a board)
+ *
+ * required tools: inuit-rem
+ *
+ * @param {String} size
+ * @param {String} offset (px)
+ * @param {boolean} rem
+ * @return {Value} spacing with offset (rem or px)
+ */
+
+
+
+$spacings: (
+  base:  $spacing-base,
+  tiny:  $spacing-tiny,
+  small: $spacing-small,
+  large: $spacing-large,
+  huge:  $spacing-huge,
+  giant: $spacing-giant
+) !default;
+
+$spacings_combinations: (
+  none:  0
+);
+
+
+// Generate all posible combinations of base_spacings
+@each $base_name, $base_size in $spacings {
+  $base_index: index(($spacings), ($base_name $base_size));
+
+  @each $additional_name, $additional_size in $spacings {
+    $additional_index: index(($spacings), ($additional_name $additional_size));
+
+    @if $additional_index == $base_index {
+      $spacings_combinations: map-merge($spacings_combinations, ($base_name: $base_size));
+    } @else {
+      $spacings_combinations: map-merge($spacings_combinations, (#{$base_name+'+'+$additional_name}: $base_size + $additional_size));
+    }
+  }
+}
+
+
+// Get value of generated spacings
+@function spacing($spacing_name: 'base', $offset: 0, $rem: true) {
+  @if ($rem) {
+    @return rem(map-get($spacings_combinations, $spacing_name) + $offset);
+  } @else {
+    @return map-get($spacings_combinations, $spacing_name) + $offset;
+  }
+}
