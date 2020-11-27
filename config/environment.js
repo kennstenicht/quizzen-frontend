@@ -8,6 +8,10 @@ module.exports = function(environment) {
     rootURL: '/',
     locationType: 'auto',
 
+    'ember-simple-auth': {
+      routeAfterAuthentication: 'profil.quizzes'
+    },
+
     'ember-simple-auth-token': {
       serverTokenEndpoint: '/v1/user_token',
       tokenPropertyName: 'jwt',

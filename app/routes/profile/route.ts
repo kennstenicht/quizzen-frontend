@@ -10,6 +10,6 @@ export default class ProfileRoute extends Route {
 
   // Hooks
   beforeModel(transition: Transition) {
-    this.get('session').requireAuthentication(transition, 'login');
+    this.session.requireAuthentication(transition, 'login');
   }
 }

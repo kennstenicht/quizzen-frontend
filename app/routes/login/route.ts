@@ -9,6 +9,6 @@ export default class LoginRoute extends Route {
 
   // Hooks
   beforeModel() {
-    this.get('session').prohibitAuthentication('profile');
+    this.session.prohibitAuthentication('profile.quizzes');
   }
 }
