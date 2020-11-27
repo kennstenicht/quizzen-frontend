@@ -14,7 +14,7 @@ forms:
     placeholder:
       title: Title der Kategorie eingeben
 
-  game:
+  quiz:
     fields:
       title: Spielname
       categories: Kategorien
