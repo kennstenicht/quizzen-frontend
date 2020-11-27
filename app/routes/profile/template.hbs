@@ -1,0 +1,31 @@
+<div
+  block:scope
+>
+  <header block:class="header">
+    <div block:class="current-user">
+      <div block:class="initials">
+        {{this.currentUser.user.initials}}
+      </div>
+      <div block:class="display-label">
+        {{this.currentUser.user.displayLabel}}
+      </div>
+    </div>
+    <SignOut />
+  </header>
+  <nav block:class="navigation">
+    <ul>
+      <li block:class="item">
+        <LinkTo @route="profile.quizzes">Spiele</LinkTo>
+      </li>
+      <li block:class="item">
+        <LinkTo @route="profile.categories">Kategorien</LinkTo>
+      </li>
+      <li block:class="item">
+        <LinkTo @route="profile.questions">Questions</LinkTo>
+      </li>
+    </ul>
+  </nav>
+  <div wrapper:scope>
+    {{outlet}}
+  </div>
+</div>

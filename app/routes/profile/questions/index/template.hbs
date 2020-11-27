@@ -1,0 +1,16 @@
+<h1>Questions</h1>
+<LinkTo @route="profile.questions.new">New</LinkTo><br><br>
+
+{{#if @model}}
+  <ul>
+    {{#each @model as |question|}}
+      <li>
+        <LinkTo @route="profile.questions.question" @model={{question}}>
+          {{question.displayLabel}}
+        </LinkTo>
+      </li>
+    {{/each}}
+  </ul>
+{{else}}
+  Keine Fragen für diese Auswahl
+{{/if}}

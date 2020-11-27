@@ -1,0 +1,44 @@
+/* ==========================================================================
+   # ROUTE. PROFIL
+   ========================================================================== */
+
+@export wrapper from '../../styles/objects/objects.wrapper.scss';
+
+:scope {
+  block-name: c-profile;
+}
+
+  .header {
+    position: fixed;
+    top: var(--spacing-base);
+    right: var(--spacing-base);
+    display: flex;
+    justify-content: space-between;
+    width: 75%;
+  }
+
+    .current-user {
+      display: flex;
+    }
+
+      .initials {
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--color-white);
+      }
+
+      .display-label {
+        margin-left: var(--spacing-small);
+      }
+
+  .navigation {
+    position: fixed;
+    top: var(--spacing-base);
+    left: var(--spacing-base);
+  }
+
+    .item {
+      display: block;
+    }

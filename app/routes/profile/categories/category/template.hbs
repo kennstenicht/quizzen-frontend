@@ -1,0 +1,10 @@
+<h1>Edit Categories</h1>
+<LinkTo @route="profile.categories.index">&lArr; Overview</LinkTo>
+<LinkTo @route="profile.categories.new">New</LinkTo><br><br>
+
+<Form
+  @changeset={{this.changeset}}
+  @save={{this.save}}
+  @delete={{this.delete}}
+  @rollback={{this.rollback}}
+/>
