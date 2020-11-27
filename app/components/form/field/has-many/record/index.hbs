@@ -7,12 +7,7 @@
   </div>
   {{#if this.showForm}}
     <div block:class="form">
-      <Form
-        @changeset={{this.changeset}}
-        @save={{@save}}
-        @delete={{@delete}}
-        @rollback={{@rollback}}
-      />
+      <Form @model={{@record}} />
     </div>
   {{/if}}
 </div>

@@ -8,8 +8,12 @@ module.exports = function(environment) {
     rootURL: '/',
     locationType: 'auto',
 
+    'changeset-validations': {
+      rawOutput: true
+    },
+
     'ember-simple-auth': {
-      routeAfterAuthentication: 'profil.quizzes'
+      routeAfterAuthentication: 'profile.quizzes'
     },
 
     'ember-simple-auth-token': {

@@ -6,13 +6,13 @@ import ENV from 'quizzen/config/environment';
 import FlashMessages from 'ember-cli-flash/services/flash-messages';
 import Fastboot from 'ember-cli-fastboot/services/fastboot';
 import Session from 'ember-simple-auth/services/session';
-import RouterService from '@ember/routing/router-service';
+import Router from '@ember/routing/router-service';
 
 export default class ApplicationComponent extends Component {
   // Services
   @service fastboot!: Fastboot;
   @service flashMessages!: FlashMessages;
-  @service router!: RouterService;
+  @service router!: Router;
   @service session!: Session;
 
 

@@ -1,9 +1,3 @@
 <h1>New Quiz</h1>
-<LinkTo @route="profile.quizzes.index">&lArr; Overview</LinkTo><br><br>
 
-<Form
-  @changeset={{this.changeset}}
-  @save={{this.save}}
-  @delete={{this.delete}}
-  @rollback={{this.rollback}}
-/>
+<Form @model={{@model}} />

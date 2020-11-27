@@ -10,20 +10,22 @@
 
   {{#if this.isHasMany}}
     <Form::Field::HasMany
-      @delete={{@delete}}
-      @records={{this.value}}
-      @rollback={{@rollback}}
-      @modelName={{@modelName}}
-      @save={{@save}}
+      @disabled={{@disabled}}
+      @property={{@property}}
+      @relationName={{@relationName}}
+      @leftJoin={{@leftJoin}}
+      @parentChangeset={{@changeset}}
+      @records={{changeset-get @changeset @property}}
     />
   {{else}}
     <input
+      disabled={{@disabled}}
       id={{this.fieldId}}
       name={{this.fieldId}}
       placeholder={{this.placeholder}}
       type={{this.type}}
-      value={{this.value}}
-      {{on "input" this.updateChangeset}}
+      value={{changeset-get @changeset @property}}
+      {{on "input" this.updateField}}
     />
   {{/if}}
 
@@ -31,7 +33,7 @@
     <div block:class="errors">
       {{#each (get this.errors "validation") as |error|}}
         <div block:class="error">
-          {{error}}
+          {{t (concat "validations.errors." error.type) description=this.label}}
         </div>
       {{/each}}
     </div>

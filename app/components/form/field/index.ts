@@ -57,16 +57,15 @@ export default class FormFieldComponent extends Component<Args> {
     return this.args.type || 'text';
   }
 
-  get value() {
-    return this.args.changeset[this.args.property];
-  }
-
 
   // Actions
   @action
-  updateChangeset(event: Event) {
+  updateField(
+    event: Event
+  ) {
     const target = event.target as HTMLInputElement;
+    console.log(target.value);
 
-    this.args.changeset[this.args.property] = target.value;
+    this.args.changeset.set(this.args.property, target.value);
   }
 }

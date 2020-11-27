@@ -1,22 +1,31 @@
 <form
   block:scope
   form:scope
-  {{on "submit" (fn @save @changeset)}}
+  {{on "submit" (fn this.saveRecord this.changeset)}}
   ...attributes
 >
-  {{component
-    (concat "form/" this.modelName)
-    changeset=@changeset
-    form=(hash
-      field=(component "form/field"
-        changeset=@changeset
-        delete=@delete
-        rollback=@rollback
-        modelName=this.modelName
-        save=@save
+  {{#if hasBlock}}
+    {{yield (hash
+      changeset=this.changeset
+      form=(hash
+        field=(component "form/field"
+          changeset=this.changeset
+          modelName=this.modelName
+        )
       )
-    )
-  }}
+    )}}
+  {{else}}
+    {{component
+      (concat "form/" this.modelName)
+      changeset=this.changeset
+      form=(hash
+        field=(component "form/field"
+          changeset=this.changeset
+          modelName=this.modelName
+        )
+      )
+    }}
+  {{/if}}
 
   <div block:class="actions">
     <button
@@ -31,7 +40,7 @@
       button:scope
       button:secondary={{true}}
       type="reset"
-      {{on "click" (fn @rollback @changeset)}}
+      {{on "click" (fn this.rollbackRecord this.changeset)}}
     >
       Reset
     </button>
@@ -40,9 +49,16 @@
       button:scope
       button:secondary={{true}}
       type="button"
-      {{on "click" (fn @delete @changeset)}}
+      {{on "click" (fn this.deleteRecord this.changeset)}}
     >
       Delete
     </button>
   </div>
 </form>
+Changes:<br>
+{{log this.changeset.changes}}
+{{#each this.changeset.changes as |change|}}
+  <li>
+    {{change.key}}: {{change.value}}
+  </li>
+{{/each}}

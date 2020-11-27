@@ -6045,7 +6045,7 @@ ember-build-utilities@^0.4.0:
     rimraf "^2.6.1"
     semver "^5.3.0"
 
-ember-changeset-validations@^3.8.0:
+ember-changeset-validations@^3.10.0:
   version "3.10.0"
   resolved "https://registry.yarnpkg.com/ember-changeset-validations/-/ember-changeset-validations-3.10.0.tgz#1fe2cccc7246d104ba832fd006d68f675da7f316"
   integrity sha512-Ye8ATvwI+gZUIkt3vvFweXrrGJJhGcgEiZMxsTNaz0fQLMEU1roG+7A44MZeF3goFcdBoH6e/8zg8xa9Jt06Xg==
@@ -6056,7 +6056,7 @@ ember-changeset-validations@^3.8.0:
     ember-get-config "^0.2.4"
     ember-validators "^2.0.0"
 
-ember-changeset@^3.10.1, ember-changeset@^3.8.1:
+ember-changeset@^3.10.1, ember-changeset@^3.10.2:
   version "3.10.2"
   resolved "https://registry.yarnpkg.com/ember-changeset/-/ember-changeset-3.10.2.tgz#015da2f4a06eb20266ba361164298903795e25b2"
   integrity sha512-usHN38zAb5Zwe0Z8oqrhymSRWUC0NN5ogy/hUIIhqtpfZE+/FnDbzHrLZzjfOrwvwc0DcCIIuJLOe3JwZcFbqw==
