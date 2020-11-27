@@ -1,16 +1,4 @@
 <h1>Quizzes</h1>
 <LinkTo @route="profile.quizzes.new">New</LinkTo><br><br>
 
-{{#if @model}}
-  <ul>
-    {{#each @model as |quiz|}}
-      <li>
-        <LinkTo @route="profile.quizzes.quiz" @model={{quiz}}>
-          {{quiz.displayLabel}}
-        </LinkTo>
-      </li>
-    {{/each}}
-  </ul>
-{{else}}
-  Keine Fragen für diese Auswahl
-{{/if}}
+<List @records={{@model}} @modelName="quiz" />

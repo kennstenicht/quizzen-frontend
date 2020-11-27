@@ -1,16 +1,5 @@
 <h1>Categories</h1>
 <LinkTo @route="profile.categories.new">New</LinkTo><br><br>
 
-{{#if @model}}
-  <ul>
-    {{#each @model as |category|}}
-      <li>
-        <LinkTo @route="profile.categories.category" @model={{category}}>
-          {{category.displayLabel}}
-        </LinkTo>
-      </li>
-    {{/each}}
-  </ul>
-{{else}}
-  Keine Fragen für diese Auswahl
-{{/if}}
+<List @records={{@model}} @modelName="category" />
+

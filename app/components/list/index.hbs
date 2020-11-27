@@ -1,0 +1,18 @@
+<div block:scope ...attributes>
+  {{#if @records}}
+    <ul>
+      {{#each @records as |record|}}
+        <li>
+          <LinkTo
+            @route={{this.editRoute}}
+            @model={{record}}
+          >
+            {{record.displayLabel}}
+          </LinkTo>
+        </li>
+      {{/each}}
+    </ul>
+  {{else}}
+    Keine {{@modelName}} für diese Auswahl
+  {{/if}}
+</div>
