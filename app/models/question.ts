@@ -2,6 +2,7 @@ import Model, { attr, hasMany } from '@ember-data/model';
 import { alias } from '@ember/object/computed';
 import QuestionValidations from 'quizzen/validations/question';
 import Answer from 'quizzen/models/answer';
+import Category from 'quizzen/models/category';
 
 export default class QuestionModel extends Model {
   validations = QuestionValidations;
@@ -19,6 +20,7 @@ export default class QuestionModel extends Model {
 
   // Relations
   @hasMany('answer') answers?: Answer;
+  @hasMany('category') categories?: Category;
 
 
   // Getter and setter
