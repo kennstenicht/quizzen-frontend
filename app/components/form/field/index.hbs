@@ -10,12 +10,8 @@
 
   {{#if this.isHasMany}}
     <Form::Field::HasMany
-      @disabled={{@disabled}}
       @property={{@property}}
-      @relationName={{@relationName}}
-      @leftJoin={{@leftJoin}}
-      @parentChangeset={{@changeset}}
-      @records={{changeset-get @changeset @property}}
+      @changeset={{@changeset}}
     />
   {{else}}
     <input
