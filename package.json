@@ -72,6 +72,7 @@
     "ember-simple-auth-token": "^5.1.2",
     "ember-source": "~3.19.0",
     "ember-template-lint": "^2.8.0",
+    "ember-uuid": "^2.1.0",
     "eslint": "^7.1.0",
     "eslint-plugin-ember": "^8.6.0",
     "eslint-plugin-node": "^11.1.0",

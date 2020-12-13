@@ -4,6 +4,8 @@ import { getOwner } from '@ember/application';
 import { computed } from '@ember/object';
 import Session from 'ember-simple-auth/services/session';
 import Fastboot from 'ember-cli-fastboot/services/fastboot';
+// @ts-ignore
+import { v4 } from 'ember-uuid';
 
 export default class ApplicationAdapter extends JSONAPIAdapter {
   // Services
@@ -41,5 +43,11 @@ export default class ApplicationAdapter extends JSONAPIAdapter {
     }
 
     return headers;
+  }
+
+
+  // Functions
+  generateIdForRecord() {
+    return v4();
   }
 }
