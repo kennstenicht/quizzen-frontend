@@ -19,7 +19,8 @@ import QuizValidations from 'quizzen/validations/quiz';
 
 
 interface Args {
-  model: Model
+  model: Model,
+  transitionAfterAction: boolean
 }
 
 export default class FormComponent extends Component<Args> {
@@ -91,7 +92,9 @@ export default class FormComponent extends Component<Args> {
 
         this.flashMessages.success(message);
 
-        this.transitionToByModel(this.args.model, true);
+        if(this.args.transitionAfterAction) {
+          this.transitionToByModel(this.args.model, true);
+        }
       } catch(error) {
         this.flashMessages.warning(error.message);
       }
@@ -106,7 +109,9 @@ export default class FormComponent extends Component<Args> {
     // Rollback model to destroy new record
     this.args.model.rollbackAttributes();
 
-    this.transitionToByModel(this.args.model, false);
+    if(this.args.transitionAfterAction) {
+      this.transitionToByModel(this.args.model, false);
+    }
   }
 
   @action
@@ -120,7 +125,10 @@ export default class FormComponent extends Component<Args> {
       });
 
       this.flashMessages.success(message);
-      this.transitionToByModel(this.args.model, false);
+
+      if(this.args.transitionAfterAction) {
+        this.transitionToByModel(this.args.model, false);
+      }
     } catch(error) {
       this.flashMessages.success(error);
     }
