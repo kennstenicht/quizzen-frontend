@@ -91,7 +91,7 @@ export default class FormComponent extends Component<Args> {
 
         this.flashMessages.success(message);
 
-        // this.transitionToByModel(changeset.data, true);
+        this.transitionToByModel(this.args.model, true);
       } catch(error) {
         this.flashMessages.warning(error.message);
       }
@@ -103,8 +103,10 @@ export default class FormComponent extends Component<Args> {
   @action
   rollbackRecord(changeset: BufferedChangeset) {
     changeset.rollback();
+    // Rollback model to destroy new record
+    this.args.model.rollbackAttributes();
 
-    // this.transitionToByModel(changeset.data);
+    this.transitionToByModel(this.args.model, false);
   }
 
   @action
@@ -118,7 +120,7 @@ export default class FormComponent extends Component<Args> {
       });
 
       this.flashMessages.success(message);
-      // this.transitionToByModel(changeset.data);
+      this.transitionToByModel(this.args.model, false);
     } catch(error) {
       this.flashMessages.success(error);
     }
