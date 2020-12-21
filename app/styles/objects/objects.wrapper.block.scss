@@ -16,9 +16,9 @@
   margin-right: 0;
   margin-left: auto;
   background-color: $color-white;
-  border-radius: spacing('base');
+  border-radius: spacing('small+tiny');
   padding: spacing('base+small');
-  width: 80%;
+  width: 100%;
 }
 
 :scope[size=small] {

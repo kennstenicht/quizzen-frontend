@@ -7,6 +7,17 @@
  * than simple basic style changes should likely be applied via classes
  */
 
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+
+  @include font-size($font-size);
+}
+
 /* Input
    ========================================================================== */
 
@@ -20,8 +31,6 @@ input:not([type=checkbox]) {
   border-style: solid;
   border-color: $color-grey-dark;
   background-color: $color-grey-light;
-
-  // @include inuit-font-size($inuit-global-font-size);
 
   &:focus {
     outline: none;
@@ -43,8 +52,6 @@ textarea {
   border-style: solid;
   border-color: $color-grey-dark;
   background-color: $color-white;
-
-  // @include inuit-font-size($inuit-global-font-size);
 
   &:focus {
     outline: none;
@@ -77,6 +84,4 @@ button {
 label {
   display: block;
   color: $color-black;
-
-  // @include inuit-font-size($inuit-global-font-size--small);
 }

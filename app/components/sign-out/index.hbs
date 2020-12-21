@@ -1,12 +1,7 @@
 {{#if this.session.isAuthenticated}}
-  <button
-    block:scope
-    button:scope
-    button:primary
-    type="button"
-    {{on "click" this.signOut}}
+  <Ui::Button
+    @label={{t "signOut.button"}}
+    @onClick={{this.signOut}}
     ...attributes
-  >
-    {{t "signOut.button"}}
-  </button>
+  />
 {{/if}}

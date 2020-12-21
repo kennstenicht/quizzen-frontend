@@ -12,7 +12,7 @@ export default class CurrentUserService extends Service {
 
 
   // Defaults
-  @tracked user?: User;
+  @tracked model?: User;
 
 
   // Functions
@@ -22,7 +22,7 @@ export default class CurrentUserService extends Service {
         let userId = this.session.data.authenticated.tokenData.sub;
 
         let user = await this.store.findRecord('user', userId);
-        this.user = user;
+        this.model = user;
       }
     } catch(err) {
       await this.session.invalidate();

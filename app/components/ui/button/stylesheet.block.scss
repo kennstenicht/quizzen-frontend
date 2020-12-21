@@ -1,0 +1,16 @@
+/* ==========================================================================
+   # UI AVATAR
+   ========================================================================== */
+
+// Imports
+@block button from 'objects/objects.button.block.scss';
+
+
+// Exports
+@export (button);
+
+
+// Block
+:scope {
+  block-name: c-ui-button;
+}
