@@ -19,6 +19,7 @@ export default class ApplicationAdapter extends JSONAPIAdapter {
 
   // Getter and setter
   @computed('fastboot.{isFastBoot,request.host,request.protocol}')
+  // @ts-ignore
   get host(): string {
     const ENV = getOwner(this).resolveRegistration('config:environment');
 
@@ -33,6 +34,7 @@ export default class ApplicationAdapter extends JSONAPIAdapter {
   }
 
   @computed('session.{isAuthenticated,data.authenticated.jwt}')
+  // @ts-ignore
   get headers() {
     let headers: any = {};
 
