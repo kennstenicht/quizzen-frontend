@@ -10,8 +10,16 @@ application:
       marketing: Marketing
       required: Nur notwendige
 
+# Form
 form:
   saveRecord: '{title} wurde gespeichert'
+
+# Navigation
+navigation:
+  profile:
+    quizzes: Quizze
+    categories: Kategorien
+    questions: Fragen
 
 # Sign In
 signIn:

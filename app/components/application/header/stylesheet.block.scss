@@ -1,0 +1,26 @@
+/* ==========================================================================
+   # APPLICATION
+   ========================================================================== */
+
+// Imports
+@import 'setup';
+
+
+// Block
+:scope {
+  block-name: c-application-header;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: spacing('base+small');
+  grid-area: header;
+}
+
+  .current-user {
+    display: flex;
+    align-items: center;
+  }
+
+    .display-label {
+      margin-left: spacing('small');
+    }

@@ -1,0 +1,11 @@
+<header block:scope ...attributes>
+  {{#if this.currentUser.model}}
+    <div block:class="current-user">
+      <Ui::Avatar @user={{this.currentUser.model}} />
+      <div block:class="display-label">
+        {{this.currentUser.model.displayLabel}}
+      </div>
+    </div>
+    <SignOut />
+  {{/if}}
+</header>

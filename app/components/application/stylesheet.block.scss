@@ -9,14 +9,20 @@
 // Block
 :scope {
   block-name: c-application;
-  height: 100vh;
+  display: grid;
   padding: spacing('base');
-  background-image: url(/undraw_best_place_r685.svg);
-  background-size: 65% auto;
+  height: 100vh;
+  background-image: url('/undraw_best_place_r685.svg');
   background-position: left -20% bottom -1%;
+  background-size: 65% auto;
   background-repeat: no-repeat;
+  grid-template-areas: 'logo header'
+                       'aside content';
+  grid-template-rows: spacing('base+small') auto;
+  grid-template-columns: min-content auto;
+  column-gap: spacing('small');
+  row-gap: spacing('small');
 }
-
   .notifications {
     position: fixed;
     top: spacing('base');
@@ -24,14 +30,22 @@
     z-index: 900;
   }
 
+  .aside {
+    grid-area: aside;
+    transition: width $transition-slow;
+  }
 
+  :scope[size=base] .aside {
+    width: 250px
+  }
 
+  :scope[size=small] .aside {
+    width: 60vw;
+  }
 
-
-
-
-
-
-
-
-
+  .content {
+    padding: spacing('base+small');
+    border-radius: spacing('small+tiny');
+    background-color: $color-white;
+    grid-area: content
+  }

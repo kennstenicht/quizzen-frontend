@@ -26,6 +26,7 @@ export default class CurrentUserService extends Service {
       }
     } catch(err) {
       await this.session.invalidate();
+      this.model = undefined;
     }
   }
 }

@@ -1,29 +1,9 @@
-<div
-  block:scope
->
-  <nav block:class="navigation">
-    <ul>
-      <li block:class="item">
-        <LinkTo @route="profile.quizzes">Spiele</LinkTo>
-      </li>
-      <li block:class="item">
-        <LinkTo @route="profile.categories">Kategorien</LinkTo>
-      </li>
-      <li block:class="item">
-        <LinkTo @route="profile.questions">Questions</LinkTo>
-      </li>
-    </ul>
-  </nav>
-  <header block:class="header">
-    <div block:class="current-user">
-      <Ui::Avatar @user={{this.currentUser.model}} />
-      <div block:class="display-label">
-        {{this.currentUser.model.displayLabel}}
-      </div>
-    </div>
-    <SignOut />
-  </header>
-  <div block:class="content" wrapper:scope>
-    {{outlet}}
-  </div>
-</div>
+{{#in-element (query-selector "#aside")}}
+  <Navigation @links={{array
+    "profile.quizzes"
+    "profile.categories"
+    "profile.questions"
+  }} />
+{{/in-element}}
+
+{{outlet}}

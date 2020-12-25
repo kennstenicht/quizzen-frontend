@@ -1,0 +1,9 @@
+<nav block:scope ...attributes>
+  <ul block:class="list">
+    {{#each @links as |link|}}
+      <li block:class="item">
+        <LinkTo @route={{link}}>{{t (concat "navigation." link)}}</LinkTo>
+      </li>
+    {{/each}}
+  </ul>
+</nav>

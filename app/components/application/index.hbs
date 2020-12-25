@@ -1,5 +1,6 @@
 <div
   block:scope
+  block:size={{this.size}}
   ...attributes
 >
   {{#if this.isDevelopment}}
@@ -12,8 +13,15 @@
     {{/each}}
   </div>
 
+  <Application::Header />
 
-  {{yield}}
+  <div block:class="aside" id="aside">
+
+  </div>
+
+  <div block:class="content">
+    {{yield}}
+  </div>
 
   <Application::CookieNotice
     @toggleCookieNotice={{this.toggleCookieNotice}}

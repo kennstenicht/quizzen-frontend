@@ -8,6 +8,10 @@ import Fastboot from 'ember-cli-fastboot/services/fastboot';
 import Session from 'ember-simple-auth/services/session';
 import Router from '@ember/routing/router-service';
 
+interface RouteSizeMap {
+  [key: string]: string;
+}
+
 export default class ApplicationComponent extends Component {
   // Services
   @service fastboot!: Fastboot;
@@ -24,6 +28,15 @@ export default class ApplicationComponent extends Component {
   get isDevelopment() {
     return ENV.environment === 'development';
   }
+
+  get size() {
+    const routeSizes: RouteSizeMap = {
+      'login': 'small'
+    }
+
+    return routeSizes[this.router.currentRouteName] ?? 'base';
+  }
+
 
   // Hooks
   constructor(owner: unknown, args: any) {
