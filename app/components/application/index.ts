@@ -31,7 +31,8 @@ export default class ApplicationComponent extends Component {
 
   get size() {
     const routeSizes: RouteSizeMap = {
-      'login': 'small'
+      'login': 'small',
+      'user': 'small',
     }
 
     return routeSizes[this.router.currentRouteName] ?? 'base';

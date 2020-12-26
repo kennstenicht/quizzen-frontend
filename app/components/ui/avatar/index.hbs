@@ -1,7 +1,14 @@
-<div block:scope block:size={{@size}} ...attributes>
+<LinkTo
+  @route="user"
+  @model={{@user}}
+  block:scope
+  block:size={{@size}}
+  block:color={{@color}}
+  ...attributes
+>
   {{#if @user.avatar}}
     <img src="" alt="{{@user.nickname}} Avatar" block:class="image">
   {{else}}
     {{@user.initials}}
   {{/if}}
-</div>
+</LinkTo>

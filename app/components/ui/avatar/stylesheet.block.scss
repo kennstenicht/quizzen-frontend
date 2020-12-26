@@ -15,13 +15,17 @@
   width: spacing('base+small');
   height: spacing('base+small');
   border-radius: 50%;
-  background-color: $color-white;
+  background-color: #ddd;
   font-weight: bold;
 }
 
-:scope[size=base] {
-  width: spacing('base');
-  height: spacing('base');
+:scope[size=large] {
+  width: spacing('large+base');
+  height: spacing('large+base');
+}
+
+:scope[color=white] {
+  background-color: $color-white;
 }
 
   .image {

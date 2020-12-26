@@ -2,9 +2,10 @@ import Model, { attr } from '@ember-data/model';
 
 export default class UserModel extends Model {
   // Attributes
+  @attr('string') email!: string;
   @attr('string') firstname!: string;
   @attr('string') lastname!: string;
-  @attr('string') email!: string;
+  @attr('string') nickname!: string;
 
 
   // Meta
