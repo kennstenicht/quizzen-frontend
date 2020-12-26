@@ -1,5 +1,5 @@
 /* ==========================================================================
-   # APPLICATION NAVIGATION
+   # APPLICATION HEADLINE
    ========================================================================== */
 
 // Imports
@@ -8,12 +8,9 @@
 
 // Block
 :scope {
-  block-name: c-application-navigation;
+  block-name: c-application-headline;
+  @include font-size(90px);
+  text-transform: uppercase;
+  opacity: 0.2;
+  color: $color-white;
 }
-  .list {
-    margin: 0;
-  }
-
-    .item {
-      display: block;
-    }

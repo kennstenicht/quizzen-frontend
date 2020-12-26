@@ -1,5 +1,5 @@
 /* ==========================================================================
-   # APPLICATION
+   # APPLICATION HEADER
    ========================================================================== */
 
 // Imports
@@ -11,9 +11,6 @@
   block-name: c-application-header;
   display: flex;
   justify-content: space-between;
-  width: 100%;
-  height: spacing('base+small');
-  grid-area: header;
 }
 
   .current-user {

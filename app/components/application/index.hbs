@@ -13,10 +13,15 @@
     {{/each}}
   </div>
 
-  <Application::Header />
+  <div block:class="headline" data-in-element="application-headline">
+    {{!-- Placeholder for in-element content --}}
+  </div>
 
+  <div block:class="header">
+    <Application::Header />
+  </div>
 
-  <div block:class="navigation" id="application-navigation">
+  <div block:class="navigation" data-in-element="application-navigation">
     {{!-- Placeholder for in-element content --}}
   </div>
 

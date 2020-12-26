@@ -16,13 +16,13 @@
   background-position: left -20% bottom -1%;
   background-size: 65% auto;
   background-repeat: no-repeat;
-  grid-template-areas: 'logo header'
-                       'aside content';
+  grid-template-columns: 1fr min-content;
   grid-template-rows: spacing('base+small') auto;
-  grid-template-columns: min-content auto;
-  column-gap: spacing('small');
+  grid-template-areas: 'logo header'
+                       'navigation content';
   row-gap: spacing('small');
 }
+
   .notifications {
     position: fixed;
     top: spacing('base');
@@ -30,22 +30,33 @@
     z-index: 900;
   }
 
-  .aside {
-    grid-area: aside;
-    transition: width $transition-slow;
+  .header {
+    grid-area: header;
   }
 
-  :scope[size=base] .aside {
-    width: 250px
+  .headline {
+    z-index: 1;
+    grid-area: navigation;
+    overflow-y: hidden;
   }
 
-  :scope[size=small] .aside {
-    width: 60vw;
+  .navigation {
+    z-index: 2;
+    grid-area: navigation;
   }
 
   .content {
     padding: spacing('base+small');
     border-radius: spacing('small+tiny');
     background-color: $color-white;
-    grid-area: content
+    transition: width $transition-slow;
+    grid-area: content;
+  }
+
+  :scope[size=base] .content {
+    width: calc(100vw - 350px);
+  }
+
+  :scope[size=small] .content {
+    width: 700px;
   }
