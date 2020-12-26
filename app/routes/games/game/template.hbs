@@ -1,0 +1,32 @@
+<Application::Headline>
+  Quizzen mit {{@model.quizMaster.nickname}}
+</Application::Headline>
+
+<div
+  {{did-insert (fn this.subscribe @model)}}
+  {{will-destroy this.unsubscribe}}
+>
+  Game: {{@model.title}}<br>
+  Quiz Master: {{@model.quizMaster.displayLabel}}
+  <br><br>
+  {{#if this.session.isAuthenticated}}
+    {{#if @model.joined}}
+      Du bist im Game! Warte bis es los geht.
+    {{else}}
+      <Ui::Button
+        @onClick={{this.join}}
+        @label="Join"
+      />
+    {{/if}}
+  {{else}}
+    <Ui::Button
+      @onClick={{this.transitionToLogin}}
+      @label="Login"
+    />
+  {{/if}}
+  <br><br>
+  Players:<br>
+  {{#each @model.players as |player|}}
+    <Ui::Avatar @user={{player}} />
+  {{/each}}
+</div>

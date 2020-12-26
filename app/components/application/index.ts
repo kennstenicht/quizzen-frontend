@@ -33,6 +33,7 @@ export default class ApplicationComponent extends Component {
     const routeSizes: RouteSizeMap = {
       'login': 'small',
       'user': 'small',
+      'games.game': 'small'
     }
 
     return routeSizes[this.router.currentRouteName] ?? 'base';

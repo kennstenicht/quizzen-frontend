@@ -20,8 +20,11 @@
   },
   "devDependencies": {
     "@ember/optional-features": "^2.0.0",
+    "@ember/render-modifiers": "^1.0.2",
     "@glimmer/component": "^1.0.2",
     "@glimmer/tracking": "^1.0.2",
+    "@rails/actioncable": "^6.1.0",
+    "@types/actioncable": "^5.2.3",
     "@types/ember": "^3.16.0",
     "@types/ember-data": "^3.16.2",
     "@types/ember-data__adapter": "^3.16.0",

@@ -7,6 +7,11 @@ export default class Router extends EmberRouter {
 }
 
 Router.map(function() {
+  this.route('games', { path: '/mit' }, function() {
+    this.route('index', { path: '/' });
+    this.route('game', { path: '/:user_nickname' });
+  });
+
   this.route('login', { path: '/' });
 
   this.route('profile', function() {
