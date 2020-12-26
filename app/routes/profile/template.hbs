@@ -1,9 +1,7 @@
-{{#in-element (query-selector "#aside")}}
-  <Navigation @links={{array
-    "profile.quizzes"
-    "profile.categories"
-    "profile.questions"
-  }} />
-{{/in-element}}
+<Application::Navigation @links={{array
+  "profile.quizzes"
+  "profile.categories"
+  "profile.questions"
+}} />
 
 {{outlet}}
