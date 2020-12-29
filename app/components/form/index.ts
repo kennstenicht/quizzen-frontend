@@ -79,11 +79,10 @@ export default class FormComponent extends Component<Args> {
   @action
   async saveRecord(changeset: BufferedChangeset, event: Event) {
     event.preventDefault();
+    try {
+      await changeset.validate();
 
-    await changeset.validate();
-
-    if (changeset.isValid) {
-      try {
+      if (changeset.isValid) {
         await changeset.save();
 
         const message = this.intl.t('form.saveRecord', {
@@ -95,11 +94,11 @@ export default class FormComponent extends Component<Args> {
         if(this.args.transitionAfterAction) {
           this.transitionToByModel(this.args.model, true);
         }
-      } catch(error) {
-        this.flashMessages.warning(error.message);
+      } else {
+        this.flashMessages.warning('not valid');
       }
-    } else {
-      this.flashMessages.warning('not valid');
+    } catch(error) {
+      this.flashMessages.warning(error.message);
     }
   }
 
