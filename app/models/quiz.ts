@@ -16,7 +16,7 @@ export default class QuizModel extends Model {
 
 
   // Relations
-  @hasMany('category') categories?: Category;
+  @hasMany('category') categories?: Category[];
 
 
   // Getter and setter

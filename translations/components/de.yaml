@@ -17,9 +17,10 @@ form:
 # Navigation
 navigation:
   profile:
-    quizzes: Quizze
     categories: Kategorien
+    games: Spiele
     questions: Fragen
+    quizzes: Quizze
 
 # Sign In
 signIn:

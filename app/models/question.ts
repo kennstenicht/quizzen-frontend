@@ -19,10 +19,14 @@ export default class QuestionModel extends Model {
 
 
   // Relations
-  @hasMany('answer') answers?: Answer;
-  @hasMany('category') categories?: Category;
+  @hasMany('answer') answers?: Answer[];
+  @hasMany('category') categories?: Category[];
 
 
   // Getter and setter
   @alias('label') displayLabel!: string;
+
+  get numAnswers() {
+    return this.answers?.length;
+  }
 }

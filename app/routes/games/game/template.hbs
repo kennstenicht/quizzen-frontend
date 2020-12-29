@@ -11,7 +11,7 @@
   <br><br>
   {{#if this.session.isAuthenticated}}
     {{#if @model.joined}}
-      Du bist im Game! Warte bis es los geht.
+      Du bist im Game! Warte bis es los geht.<br><br>
     {{else}}
       <Ui::Button
         @onClick={{this.join}}
@@ -24,8 +24,7 @@
       @label="Login"
     />
   {{/if}}
-  <br><br>
-  Players:<br>
+  <strong>Players:</strong><br>
   {{#each @model.players as |player|}}
     <Ui::Avatar @user={{player}} />
   {{/each}}

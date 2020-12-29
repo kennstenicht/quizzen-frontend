@@ -17,10 +17,14 @@ export default class CategoryModel extends Model {
 
 
   // Relations
-  @hasMany('question') questions?: Question;
-  @hasMany('quiz') quizzes?: Quiz;
+  @hasMany('question') questions?: Question[];
+  @hasMany('quiz') quizzes?: Quiz[];
 
 
   // Getter and setter
   @alias('title') displayLabel!: string;
+
+  get numQuestions() {
+    return this.questions?.length;
+  }
 }

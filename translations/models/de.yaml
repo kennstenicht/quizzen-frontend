@@ -1,11 +1,13 @@
 models:
   answer: Antwort
   category: Kategorie
-  quiz: Spiel
+  game: Spiel
+  quiz: Quiz
   question: Frage
 
   plurals:
     answer: Antworten
     category: Kategorien
-    quiz: Spiele
+    game: Spiele
+    quiz: Quizze
     question: Fragen

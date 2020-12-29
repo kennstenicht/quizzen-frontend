@@ -1,0 +1,36 @@
+<h1>{{@model.title}}</h1>
+
+{{#each @model.gameQuestions as |gameQuestion index|}}
+  <strong>Question {{index}}:</strong><br>
+  {{gameQuestion.question.displayLabel}} (Top {{gameQuestion.question.numAnswers}})<br><br>
+
+  {{#if gameQuestion.selfAssessments}}
+    <strong>Self Assassments:</strong><br>
+    {{#each gameQuestion.selfAssessments as |selfAssessment|}}
+      {{selfAssessment.user.nickname}}: {{selfAssessment.assessment}}<br>
+    {{/each}}<br>
+  {{/if}}
+
+  <strong>Winner:</strong><br>
+  <Ui::Avatar @user={{gameQuestion.winner}} /><br><br>
+
+  {{#if gameQuestion.gameAnswers}}
+    <strong>Answers:</strong><br>
+    {{#each gameQuestion.gameAnswers as |gameAnswer|}}
+      {{gameAnswer.answer.displayLabel}} <Ui::Avatar @user={{gameAnswer.user}} /><br>
+    {{/each}}
+  {{/if}}
+{{/each}}
+<br>
+<strong>Players:</strong><br>
+{{#each @model.players as |player|}}
+  <Ui::Avatar @user={{player}} />
+{{/each}}
+<br><br>
+<strong>Teams:</strong><br>
+{{#each @model.teams as |team|}}
+  {{team.name}}<br>
+  {{#each team.users as |user|}}
+    <Ui::Avatar @user={{user}} />
+  {{/each}}<br>
+{{/each}}

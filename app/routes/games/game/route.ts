@@ -17,7 +17,7 @@ export default class GamesGameRoute extends Route {
 
   // Hooks
   beforeModel(transition: Transition) {
-    // Set transition to redirect after login
+    // Set transition to come back after login
     if (!this.session.isAuthenticated) {
       this.session.set('attemptedTransition', transition);
     }

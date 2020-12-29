@@ -16,18 +16,25 @@ Router.map(function() {
 
   this.route('profile', function() {
     this.route('categories', function() {
-      this.route('new');
       this.route('category', { path: '/:category_id' });
+      this.route('index', { path: '/' });
+      this.route('new');
+    });
+    this.route('games', function() {
+      this.route('game', { path: '/:game_id' });
+      this.route('index', { path: '/' });
+      this.route('new');
     });
     this.route('quizzes', function() {
-      this.route('quiz', { path: '/:quiz_id' });
+      this.route('index', { path: '/' });
       this.route('new');
+      this.route('quiz', { path: '/:quiz_id' });
     });
     this.route('questions', function() {
+      this.route('index', { path: '/' });
       this.route('new');
       this.route('question', { path: '/:question_id' });
     });
+    this.route('user', { path: '/:user_nickname' });
   });
-
-  this.route('user', { path: 'users/:user_nickname' });
 });

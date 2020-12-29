@@ -14,12 +14,18 @@ forms:
     placeholder:
       title: Title der Kategorie eingeben
 
-  quiz:
+  game:
     fields:
       title: Spielname
-      categories: Kategorien
     placeholder:
       title: Spielname eingeben
+
+  quiz:
+    fields:
+      title: Quizname
+      categories: Kategorien
+    placeholder:
+      title: Quizname eingeben
 
   question:
     fields:
