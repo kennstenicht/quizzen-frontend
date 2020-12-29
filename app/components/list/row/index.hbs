@@ -1,0 +1,16 @@
+<div
+  block:scope
+  block:layout={{this.modelName}}
+  block:is-head={{@head}}
+  {{on "click" @onClick}}
+  ...attributes
+>
+  {{#each this.columns as |column|}}
+    <List::Row::Column
+      @column={{column}}
+      @head={{@head}}
+      @modelName={{this.modelName}}
+      @record={{@record}}
+    />
+  {{/each}}
+</div>

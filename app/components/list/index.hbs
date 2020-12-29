@@ -1,17 +1,23 @@
-<div block:scope ...attributes>
+<div
+  block:scope
+  ...attributes
+>
   {{#if @records}}
-    <ul>
-      {{#each @records as |record|}}
-        <li>
-          <LinkTo
-            @route={{this.editRoute}}
-            @model={{record}}
-          >
-            {{record.displayLabel}}
-          </LinkTo>
-        </li>
-      {{/each}}
-    </ul>
+    {{#each @records as |record index|}}
+        {{#unless index}}
+          <List::Row
+            @metaFields={{@metaFields}}
+            @onClick={{fn this.openRecord record}}
+            @record={{record}}
+            @head={{true}}
+          />
+        {{/unless}}
+        <List::Row
+          @metaFields={{@metaFields}}
+          @onClick={{fn this.openRecord record}}
+          @record={{record}}
+        />
+    {{/each}}
   {{else}}
     Keine {{@modelName}} für diese Auswahl
   {{/if}}

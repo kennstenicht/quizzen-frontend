@@ -1,0 +1,30 @@
+/* ==========================================================================
+   # LIST ROW
+   ========================================================================== */
+
+// Imports
+@import 'setup';
+
+
+// Block
+:scope {
+  block-name: c-list-row;
+  border-bottom: 1px solid #000;
+  display: grid;
+}
+
+:scope[is-head] {
+  background-color: #ddd;
+}
+
+:scope[layout=category] {
+  grid-template-columns: 1fr 150px;
+}
+
+:scope[layout=game] {
+  grid-template-columns: 1fr 150px 150px;
+}
+
+:scope[layout=question] {
+  grid-template-columns: 1fr 150px;
+}

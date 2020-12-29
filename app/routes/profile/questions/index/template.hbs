@@ -1,5 +1,7 @@
-<h1>Questions</h1>
+<h1>{{t "models.plurals.question"}}</h1>
 <LinkTo @route="profile.questions.new">New</LinkTo><br><br>
 
-<List @records={{@model}} @modelName="question" />
-
+<List
+  @records={{@model}}
+  @metaFields={{array "numAnswers"}}
+/>

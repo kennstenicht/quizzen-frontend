@@ -1,0 +1,20 @@
+tables:
+  category:
+    fields:
+      displayLabel: Kategoriename
+      numQuestions: Fragen
+
+  game:
+    fields:
+      displayLabel: Spielname
+      yourGame: Dein Spiel?
+      joined: Mitspieler?
+
+  question:
+    fields:
+      displayLabel: Top-Frage
+      numAnswers: Top
+
+  quiz:
+    fields:
+      displayLabel: Quizname

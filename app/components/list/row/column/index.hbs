@@ -1,0 +1,7 @@
+<div block:scope ...attributes>
+  {{#if @head}}
+    {{this.columnName}}
+  {{else}}
+    {{get @record @column}}
+  {{/if}}
+</div>
