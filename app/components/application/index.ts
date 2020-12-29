@@ -32,7 +32,7 @@ export default class ApplicationComponent extends Component {
   get size() {
     const routeSizes: RouteSizeMap = {
       'login': 'small',
-      'user': 'small',
+      'profile.user': 'small',
       'games.game': 'small'
     }
 

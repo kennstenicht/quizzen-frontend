@@ -7,7 +7,7 @@ interface Params {
   user_nickname: string
 }
 
-export default class UserRoute extends Route {
+export default class ProfileUserRoute extends Route {
   // Services
   @service store!: Store;
 
@@ -25,7 +25,7 @@ export default class UserRoute extends Route {
 
   serialize(model: User){
     return {
-      user_nickname: model.nickname
+      user_nickname: model.get('nickname')
     };
   }
 }
