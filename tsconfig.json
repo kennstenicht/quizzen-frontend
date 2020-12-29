@@ -36,6 +36,7 @@
     "app/**/*",
     "tests/**/*",
     "types/**/*",
-    "node_modules/ember-cli-flash/index.d.ts"
+    "node_modules/ember-cli-flash/index.d.ts",
+    "node_modules/@types/actioncable/index.d.ts"
   ]
 }
