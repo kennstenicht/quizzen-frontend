@@ -1,3 +1,5 @@
 validations:
   errors:
     present: '{description} muss ausgefüllt werden.'
+    tooShort: '{description} ist zu kurz.'
+    url: '{description} ist keine gültige URL.'

@@ -34,6 +34,10 @@ export default class FormFieldComponent extends Component<Args> {
     return this.args.type === 'has-many';
   }
 
+  get isTextarea() {
+    return this.args.type === 'textarea';
+  }
+
   get label() {
     const { label, modelName, property } = this.args;
     const lookups = [

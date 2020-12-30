@@ -5,14 +5,14 @@ forms:
       value: Wert
       information: Weiter Informationen
     placeholder:
-      title: Title der Kategorie eingeben
+      title: Title der Antwor eingeben
 
   category:
     fields:
-      title: Title
+      title: Name
       questions: Fragen
     placeholder:
-      title: Title der Kategorie eingeben
+      title: Name der Kategorie eingeben
 
   game:
     fields:
