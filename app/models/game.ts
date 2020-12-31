@@ -1,13 +1,10 @@
 import Model, { attr, belongsTo , hasMany} from '@ember-data/model';
 import { alias } from '@ember/object/computed';
-import GameValidations from 'quizzen/validations/game';
 import User from 'quizzen/models/user';
 import Quiz from 'quizzen/models/quiz';
 import Team from 'quizzen/models/team';
 
 export default class GameModel extends Model {
-  validations = GameValidations;
-
   // Attributes
   @attr('boolean') active!: boolean;
   @attr('string') title!: string;

@@ -14,6 +14,7 @@ import Session from 'ember-simple-auth/services/session';
 import Intl from 'ember-intl/services/intl';
 import AnswerValidations from 'quizzen/validations/answer';
 import CategoryValidations from 'quizzen/validations/category';
+import GameValidations from 'quizzen/validations/game';
 import QuestionValidations from 'quizzen/validations/question';
 import QuizValidations from 'quizzen/validations/quiz';
 
@@ -62,9 +63,11 @@ export default class FormComponent extends Component<Args> {
   get validations() {
     switch (this.modelName) {
       case 'answer':
-      return AnswerValidations
+        return AnswerValidations
       case 'category':
         return CategoryValidations
+      case 'game':
+        return GameValidations
       case 'question':
         return QuestionValidations
       case 'quiz':
@@ -80,6 +83,8 @@ export default class FormComponent extends Component<Args> {
   async saveRecord(changeset: BufferedChangeset, event: Event) {
     event.preventDefault();
     try {
+      console.log(changeset);
+
       await changeset.validate();
 
       if (changeset.isValid) {
@@ -98,6 +103,8 @@ export default class FormComponent extends Component<Args> {
         this.flashMessages.warning('not valid');
       }
     } catch(error) {
+      console.log(error);
+
       this.flashMessages.warning(error.message);
     }
   }

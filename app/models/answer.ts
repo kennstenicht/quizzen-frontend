@@ -1,11 +1,8 @@
 import Model, { attr, belongsTo } from '@ember-data/model';
 import { alias } from '@ember/object/computed';
-import AnswerValidations from 'quizzen/validations/answer';
 import Question from 'quizzen/models/question';
 
 export default class AnswerModel extends Model {
-  validations = AnswerValidations;
-
   // Attributes
   @attr('string') label!: string;
   @attr('string') value!: string;
