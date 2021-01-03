@@ -4,28 +4,25 @@
   {{on "submit" (fn this.saveRecord this.changeset)}}
   ...attributes
 >
-  {{#if hasBlock}}
-    {{yield (hash
+  {{#let (hash
+    field=(component "form/field"
       changeset=this.changeset
-      form=(hash
-        field=(component "form/field"
-          changeset=this.changeset
-          modelName=this.modelName
-        )
-      )
-    )}}
-  {{else}}
-    {{component
-      (concat "form/" this.modelName)
-      changeset=this.changeset
-      form=(hash
-        field=(component "form/field"
-          changeset=this.changeset
-          modelName=this.modelName
-        )
-      )
-    }}
-  {{/if}}
+      modelName=this.modelName
+    ))
+    as |form|
+  }}
+    {{#if hasBlock}}
+      {{yield (hash
+        changeset=this.changeset
+        form=form
+      )}}
+    {{else}}
+      {{component
+        (concat "form/for/" this.modelName)
+        changeset=this.changeset
+        form=form
+      }}
+    {{/if}}
 
   <div block:class="actions">
     <button

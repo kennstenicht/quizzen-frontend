@@ -5,7 +5,7 @@ import {
 
 export default {
   label: [
-    validatePresence({ presence: true, ignoreBlank: true }),
+    validatePresence({ presence: true }),
     validateLength({ min: 4 })
   ]
 };
