@@ -52,8 +52,6 @@ export default class SignInComponent extends Component {
   }
 
   _throwError(reason: ApiError) {
-    console.log(reason);
-
     this.flashMessages.warning(reason.statusText);
   }
 }

@@ -13,21 +13,49 @@
 // Block
 :scope {
   block-name: o-btn;
-  display: inline-block;
   padding: spacing('tiny') spacing('base');
   border: 0;
-  color: $color-white;
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
   font-weight: bold;
+  transition: background-color $transition-base;
+}
+
+:scope[style=primary] {
   border-radius: spacing('small+tiny');
-}
-
-:scope[primary] {
   background-color: $color-primary;
+  color: $color-white;
+
+  @include attention() {
+    background-color: $color-primary-dark;
+  }
 }
 
-:scope[secondary] {
+:scope[style=secondary] {
+  border-radius: spacing('small+tiny');
   background-color: $color-secondary;
+  color: $color-white;
+
+  @include attention() {
+    background-color: $color-secondary-dark;
+  }
+}
+
+:scope[style=inline] {
+  border-radius: spacing('tiny');
+  color: inherit;
+  width: spacing('base+small');
+  padding: 0;
+
+  @include attention() {
+    background-color: rgba($color-black, 0.1);
+  }
+}
+
+:scope[style=outline] {
+  border-radius: spacing('small+tiny');
+  color: inherit;
+  width: spacing('base+small');
+  border: 1px solid $color-grey-dark;
 }

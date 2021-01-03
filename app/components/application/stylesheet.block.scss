@@ -48,7 +48,7 @@
   .content {
     padding: spacing('base+small');
     border-radius: spacing('small+tiny');
-    background-color: $color-white;
+    background-color: $color-grey-light;
     transition: width $transition-slow;
     grid-area: content;
   }

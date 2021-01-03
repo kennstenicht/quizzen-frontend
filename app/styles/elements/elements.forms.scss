@@ -31,10 +31,12 @@ input:not([type=checkbox]) {
   border-style: solid;
   border-color: $color-grey-dark;
   background-color: $color-grey-light;
+  border-radius: spacing('tiny');
 
   &:focus {
     outline: none;
-    border-color: $color-grey-darker;
+    box-shadow: 0 0 0 1px $color-secondary;
+    border-color: $color-secondary;
   }
 }
 
@@ -68,9 +70,16 @@ textarea {
 
 button {
   border: 0;
+  background-color: transparent;
+  text-align: left;
 
   -webkit-appearance: none;
      -moz-appearance: none;
+
+  &:focus,
+  &:-moz-focusring {
+    outline: 0;
+  }
 }
 
 
@@ -84,4 +93,5 @@ button {
 label {
   display: block;
   color: $color-black;
+  font-weight: bold;
 }

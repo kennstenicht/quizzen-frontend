@@ -5,10 +5,11 @@
 // Imports
 @import 'setup';
 @block form from 'objects/objects.form.block.scss';
+@block button from 'objects/objects.button.block.scss';
 
 
 // Exports
-@export (form);
+@export (form, button);
 
 
 // Block
@@ -17,5 +18,5 @@
 }
 
   .headline {
-    color: $color-secondary;
+    color: $color-primary;
   }

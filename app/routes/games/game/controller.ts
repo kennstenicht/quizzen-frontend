@@ -45,8 +45,6 @@ export default class GamesGameController extends Controller {
         this.store.pushPayload(payload);
       }
     });
-    console.log(this.game);
-
   }
 
   @action

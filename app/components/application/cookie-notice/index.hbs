@@ -48,7 +48,7 @@
       <button
         type="button"
         button:scope
-        button:primary
+        button:style="primary"
         {{on "click" this.allowAllCookies}}
       >
         {{t "application.cookieNotice.allowAllCookies"}}
@@ -56,7 +56,7 @@
       <a
         href="#"
         button:scope
-        button:secondary
+        button:style="primary"
         {{on "click" this.allowSelectedCookies}}
       >
         {{t "application.cookieNotice.allowSelectedCookies"}}
