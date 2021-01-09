@@ -21,7 +21,12 @@ import QuizValidations from 'quizzen/validations/quiz';
 
 interface Args {
   model: Model,
-  transitionAfterAction: boolean
+  transitionAfterAction: boolean,
+  formActions?: {
+    saveRecord?: Function,
+    deleteRecord?: Function,
+    rollbackRecord?: Function
+  }
 }
 
 export default class FormComponent extends Component<Args> {
@@ -77,49 +82,21 @@ export default class FormComponent extends Component<Args> {
     }
   }
 
+  get formActions() {
+    let defaultActions = {
+      deleteRecord: this.deleteRecord,
+      rollbackRecord: this.rollbackRecord,
+      saveRecord: this.saveRecord,
+    }
+
+    return {
+      ...defaultActions,
+      ...this.args.formActions
+    }
+  }
+
 
   // Actions
-  @action
-  async saveRecord(changeset: BufferedChangeset, event: Event) {
-    event.preventDefault();
-    try {
-      console.log(changeset);
-
-      await changeset.validate();
-
-      if (changeset.isValid) {
-        await changeset.save();
-
-        const message = this.intl.t('form.saveRecord', {
-          title: changeset.displayLabel
-        });
-
-        this.flashMessages.success(message);
-
-        if(this.args.transitionAfterAction) {
-          this.transitionToByModel(this.args.model, true);
-        }
-      } else {
-        this.flashMessages.warning('not valid');
-      }
-    } catch(error) {
-      console.log(error);
-
-      this.flashMessages.warning(error.message);
-    }
-  }
-
-  @action
-  rollbackRecord(changeset: BufferedChangeset) {
-    changeset.rollback();
-    // Rollback model to destroy new record
-    this.args.model.rollbackAttributes();
-
-    if(this.args.transitionAfterAction) {
-      this.transitionToByModel(this.args.model, false);
-    }
-  }
-
   @action
   async deleteRecord(changeset: BufferedChangeset) {
     try {
@@ -133,23 +110,59 @@ export default class FormComponent extends Component<Args> {
       this.flashMessages.success(message);
 
       if(this.args.transitionAfterAction) {
-        this.transitionToByModel(this.args.model, false);
+        this.transitionToByModel(this.modelName);
       }
     } catch(error) {
       this.flashMessages.success(error);
     }
   }
 
+  @action
+  rollbackRecord(changeset: BufferedChangeset) {
+    let modelName = this.modelName;
+
+    changeset.rollback();
+    // Rollback model to destroy new record
+    this.args.model.rollbackAttributes();
+
+    if(this.args.transitionAfterAction) {
+      this.transitionToByModel(modelName);
+    }
+  }
+
+  @action
+  async saveRecord(changeset: BufferedChangeset, event: Event) {
+    event.preventDefault();
+    try {
+      await changeset.validate();
+
+      if (changeset.isValid) {
+        await changeset.save();
+
+        const message = this.intl.t('form.saveRecord', {
+          title: changeset.displayLabel
+        });
+
+        this.flashMessages.success(message);
+
+        if(this.args.transitionAfterAction) {
+          this.transitionToByModel(this.modelName, this.args.model);
+        }
+      } else {
+        this.flashMessages.warning('not valid');
+      }
+    } catch(error) {
+      this.flashMessages.warning(error.message);
+    }
+  }
+
 
   // Functions
-  transitionToByModel(model: Model, single: boolean) {
-    // @ts-ignore
-    let indexRoute = pluralize(this.modelName);
-    let path = ['profile'];
+  transitionToByModel(modelName: string, model?: Model) {
+    let indexRoute = pluralize(modelName);
+    let path = ['profile', indexRoute];
 
-    path.push(indexRoute);
-
-    if (single) {
+    if (model) {
       path.push(this.modelName);
 
       return this.router.transitionTo(path.join('.'), model);

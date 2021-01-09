@@ -1,7 +1,8 @@
 <form
   block:scope
   form:scope
-  {{on "submit" (fn this.saveRecord this.changeset)}}
+  {{on "submit" (fn this.formActions.saveRecord this.changeset)}}
+  {{on "reset" (fn this.formActions.rollbackRecord this.changeset)}}
   ...attributes
 >
   {{#let (hash
@@ -23,11 +24,12 @@
         form=form
       }}
     {{/if}}
+  {{/let}}
 
   <div block:class="actions">
     <button
       button:scope
-      button:primary={{true}}
+      button:style="primary"
       type="submit"
     >
       Save
@@ -35,21 +37,17 @@
 
     <button
       button:scope
-      button:secondary={{true}}
+      button:style="secondary"
       type="reset"
-      {{on "click" (fn this.rollbackRecord this.changeset)}}
     >
       Reset
     </button>
 
-    <button
-      button:scope
-      button:secondary={{true}}
-      type="button"
-      {{on "click" (fn this.deleteRecord this.changeset)}}
-    >
-      Delete
-    </button>
+    <Ui::Button
+      @icon="delete"
+      @onClick={{fn this.formActions.deleteRecord this.changeset}}
+      @style="outline"
+    />
   </div>
 </form>
 Changes:<br>
