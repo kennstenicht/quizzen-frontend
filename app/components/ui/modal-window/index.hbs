@@ -1,0 +1,20 @@
+<ModalDialog
+  @clickOutsideToClose={{true}}
+  @overlayPosition="sibling"
+  @containerClass={{style-of block:class="container"}}
+  @onClose={{@onClose}}
+  @overlayClass={{style-of block:class="overlay"}}
+  @wrapperClassNames={{style-of block:scope}}
+>
+  <Ui::Button
+    @label="Close"
+    @icon="cancel"
+    @onClick={{@onClose}}
+    @style="inline"
+    block:class="close"
+  />
+  <div block:class="content">
+    {{yield}}
+  </div>
+</ModalDialog>
+

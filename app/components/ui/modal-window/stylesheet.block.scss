@@ -1,0 +1,78 @@
+/* ==========================================================================
+   # MODAL WINDOW
+   ========================================================================== */
+
+// Imports
+@import 'setup';
+
+
+// Block
+:scope {
+  block-name: c-modal-window;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2039;
+}
+
+  .overlay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    background: rgba($color-black, 0.4);
+  }
+
+  .container {
+    position: absolute;
+    bottom: spacing('large');
+    right: spacing('large');
+    overflow: auto;
+    max-width: 850px;
+    max-height: 95%;
+    width: 95%;
+    border-radius: spacing('small');
+    background-color: $color-white;
+  }
+
+  .close {
+    position: absolute;
+    top: spacing('small+tiny');
+    right: spacing('small+tiny');
+  }
+
+  .content {
+    padding: spacing('large+small') spacing('base') spacing('base');
+  }
+
+
+
+
+
+/* Media queries
+========================================================================== */
+
+// @include mq($until: tablet) {
+//   .container {
+//     top: 42%;
+//     max-height: 82%;
+//   }
+
+//   .content {
+//     padding: spacing();
+//   }
+// }
+
+// @include mq($from: tablet) {
+//   .container {
+//     top: 50%;
+//     max-height: 95%;
+//   }
+
+//   .content {
+//     padding: spacing('large');
+//   }
+// }
