@@ -17,6 +17,7 @@ forms:
   game:
     fields:
       title: Spielname
+      quiz: Quiz auswählen
     placeholder:
       title: Spielname eingeben
 
