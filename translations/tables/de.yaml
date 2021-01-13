@@ -1,4 +1,8 @@
 tables:
+  answer:
+    fields:
+      displayLabel: Antwort
+
   category:
     fields:
       displayLabel: Kategoriename

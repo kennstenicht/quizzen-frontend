@@ -15,6 +15,12 @@ Router.map(function() {
   this.route('login', { path: '/' });
 
   this.route('profile', function() {
+    this.route('answers', function() {
+      this.route('answer', { path: '/:answer_id' });
+      this.route('index', { path: '/' });
+      this.route('new');
+    });
+
     this.route('categories', function() {
       this.route('category', { path: '/:category_id' });
       this.route('index', { path: '/' });

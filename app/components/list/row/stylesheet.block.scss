@@ -17,6 +17,10 @@
   background-color: #ddd;
 }
 
+:scope[layout=answer] {
+  grid-template-columns: 1fr 150px;
+}
+
 :scope[layout=category] {
   grid-template-columns: 1fr 150px;
 }
