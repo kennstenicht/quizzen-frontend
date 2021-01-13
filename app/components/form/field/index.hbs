@@ -8,8 +8,8 @@
     </label>
   {{/if}}
 
-  {{#if this.isHasMany}}
-    <Form::Field::HasMany
+  {{#if this.isRelation}}
+    <Form::Field::Relation
       @property={{@property}}
       @changeset={{@changeset}}
     />

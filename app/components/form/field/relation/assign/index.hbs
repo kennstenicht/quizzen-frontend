@@ -1,0 +1,31 @@
+<div
+  block:scope
+  ...attributes
+>
+  <Await @promise={{this.fetchRecords}} as |await|>
+    <await.Pending>
+      Loading records...
+    </await.Pending>
+
+    <await.Fulfilled as |records|>
+      <List @records={{records}} @listActions={{hash
+        openRecord=this.selectRecord
+      }}/>
+
+      <Ui::Button
+        @label="Assign"
+        @onClick={{fn @onAssign this.selectedRecords}}
+        @style="primary"
+      />
+      <Ui::Button
+        @label="Close"
+        @onClick={{@onClose}}
+        @style="secondary"
+      />
+    </await.Fulfilled>
+
+    <await.Rejected>
+      Something went wrong :(
+    </await.Rejected>
+  </Await>
+</div>

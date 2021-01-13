@@ -1,0 +1,38 @@
+/* ==========================================================================
+   # FORM FIELD RELATION RECORD
+   ========================================================================== */
+
+// Imports
+@import 'setup';
+
+
+// Block
+:scope {
+  block-name: c-form-field-relation-record;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: spacing('tiny');
+  padding: spacing('tiny') spacing('tiny') spacing('tiny') spacing('small');
+  border: 1px solid $color-grey-dark;
+  border-radius: spacing('tiny');
+  background-color: $color-white;
+}
+
+:scope[is-dragging] {
+  z-index: 2;
+  box-shadow: 0 0 spacing() rgba($color-black, 0.1);
+}
+
+  .handle {
+    display: flex;
+    align-items: center;
+    padding-right: spacing('tiny');
+    cursor: grab;
+  }
+
+  .label {
+    flex-grow: 1;
+  }

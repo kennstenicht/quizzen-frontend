@@ -1,0 +1,45 @@
+/* ==========================================================================
+   # FORM FIELD RELATION
+   ========================================================================== */
+
+// Imports
+@import "setup";
+
+
+// Block
+:scope {
+  block-name: c-form-field-relation;
+}
+
+:scope[disabled] {
+  opacity: 0.6;
+}
+
+  .records {
+    padding: 0;
+    margin: 0;
+  }
+
+  .assign {
+    display: flex;
+    border: 1px solid $color-grey-dark;
+    border-radius: spacing('tiny');
+  }
+
+    .search {
+      flex-grow: 1;
+      padding: spacing('tiny') spacing('small');
+
+      @include attention() {
+        background-color: $color-grey;
+      }
+    }
+
+    .add {
+      border-left: 1px solid $color-grey-dark;
+      padding: spacing('tiny') spacing('small');
+
+      @include attention() {
+        background-color: $color-grey;
+      }
+    }

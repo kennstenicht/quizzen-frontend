@@ -1,0 +1,46 @@
+<div block:scope block:disabled={{@disabled}} ...attributes>
+  <ol
+    block:class="records"
+    {{sortable-group onChange=this.reorderRecords groupName=this.groupName}}
+  >
+    {{#each this.records as |record|}}
+      <Form::Field::Relation::Record
+        @record={{record}}
+        @openRecord={{fn this.openRecord}}
+        @removeRecord={{fn this.removeRecord}}
+        @sortable={{this.isHasManyRelation}}
+        @groupName={{this.groupName}}
+      />
+    {{/each}}
+  </ol>
+
+  {{#if this.isRecordAssignable}}
+    <div block:class="assign">
+      <Ui::Button
+        @icon="search"
+        @label="Suchen und hinzufügen"
+        @onClick={{fn this.openRecordList}}
+        block:class="search"
+      />
+
+      <Ui::Button
+        @icon="add"
+        @label="Neu"
+        @onClick={{fn this.openNewRecord}}
+        block:class="add"
+      />
+    </div>
+  {{/if}}
+</div>
+
+{{#if this.isRecordListOpen}}
+  <Ui::ModalWindow @onClose={{this.closeRecordList}}>
+    <Form::Field::Relation::Assign
+      @multiple={{this.isHasManyRelation}}
+      @modelName={{this.relationType}}
+      @assigned={{this.records}}
+      @onAssign={{this.assignRecords}}
+      @onClose={{this.closeRecordList}}
+    />
+  </Ui::ModalWindow>
+{{/if}}

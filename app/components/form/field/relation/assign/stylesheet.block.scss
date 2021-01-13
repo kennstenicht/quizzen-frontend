@@ -1,16 +1,13 @@
 /* ==========================================================================
-   # FORM FIELD HAS MANY
+   # FORM FIELD RELATION ASSIGN
    ========================================================================== */
 
 // Imports
-@block button from 'objects/objects.button.block.scss';
-
-
-// Exports
-@export (button);
+@import 'setup';
 
 
 // Block
 :scope {
-  block-name: c-form-field-has-many;
+  block-name: c-form-field-relation-assign;
+  margin-bottom: 0;
 }

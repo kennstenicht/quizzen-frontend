@@ -1,0 +1,34 @@
+<li
+  block:scope
+  block:is-dragging={{this.isDragging}}
+  {{sortable-item
+    model=@record
+    isDraggingDisabled=(not @sortable)
+    groupName=@groupName
+    onDragStart=this.dragStarted
+    onDragStop=this.dragStopped
+  }}
+  ...attributes
+>
+  {{#if @sortable}}
+    <div block:class="handle" {{sortable-handle}}>
+      {{svg-jar "drag_indicator"}}
+    </div>
+  {{/if}}
+
+  <div block:class="label">
+    {{@record.displayLabel}}
+  </div>
+
+  <Ui::Button
+    @icon="open"
+    @onClick={{fn @openRecord @record}}
+    @style="inline"
+  />
+
+  <Ui::Button
+    @icon="delete"
+    @onClick={{fn @removeRecord @record}}
+    @style="inline"
+  />
+</li>

@@ -30,8 +30,8 @@ export default class FormFieldComponent extends Component<Args> {
     return `${modelName}-${changeset.id}-${property}`;
   }
 
-  get isHasMany() {
-    return this.args.type === 'has-many';
+  get isRelation() {
+    return this.args.type === 'relation';
   }
 
   get isTextarea() {
@@ -68,7 +68,6 @@ export default class FormFieldComponent extends Component<Args> {
     event: Event
   ) {
     const target = event.target as HTMLInputElement;
-    console.log(target.value);
 
     this.args.changeset.set(this.args.property, target.value);
   }

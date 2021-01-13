@@ -1,9 +1,0 @@
-<div block:scope ...attributes>
-  {{#each (changeset-get @changeset @property) as |record|}}
-    <Form::Field::HasMany::Record @record={{record}} />
-  {{/each}}
-
-  <button button:scope type="button" {{on "click" this.addRecord}}>
-    Add
-  </button>
-</div>
