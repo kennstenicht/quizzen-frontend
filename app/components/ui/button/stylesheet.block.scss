@@ -1,16 +1,90 @@
 /* ==========================================================================
-   # UI AVATAR
+   # UI BUTTON
    ========================================================================== */
 
 // Imports
-@block button from 'objects/objects.button.block.scss';
-
-
-// Exports
-@export (button);
+@import 'setup';
 
 
 // Block
 :scope {
   block-name: c-ui-button;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: spacing('base+small');
+  min-height: spacing('base+small');
+  transition: background-color $transition-base;
+}
+
+  .icon {
+    flex-shrink: 0;
+
+    fill: currentColor;
+  }
+
+  .icon[has-label] {
+    margin-right: spacing('tiny');
+  }
+
+  .label {
+    flex-grow: 1;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+
+    @include font-size($font-size-small);
+  }
+
+
+// Primary
+:scope[style=primary] {
+  padding: spacing('tiny') spacing('base');
+  border-radius: spacing('small+tiny');
+  background-color: $color-primary;
+  color: $color-white;
+
+  @include attention() {
+    background-color: $color-primary-dark;
+  }
+}
+
+
+// Secondary
+:scope[style=secondary] {
+  padding: spacing('tiny') spacing('base');
+  border-radius: spacing('small+tiny');
+  background-color: $color-secondary;
+  color: $color-white;
+
+  @include attention() {
+    background-color: $color-secondary-dark;
+  }
+}
+
+
+// Inline
+:scope[style=inline] {
+  padding: 0 spacing('tiny');
+  min-width: spacing('base');
+  min-height: spacing('base');
+  border-radius: spacing('tiny');
+  color: inherit;
+
+  @include attention() {
+    background-color: $color-grey;
+  }
+}
+
+
+// Outline
+:scope[style=outline] {
+  padding: spacing('tiny');
+  border: 1px solid $color-grey-dark;
+  border-radius: spacing('small+tiny');
+  color: inherit;
+
+  @include attention() {
+    background-color: $color-grey;
+  }
 }

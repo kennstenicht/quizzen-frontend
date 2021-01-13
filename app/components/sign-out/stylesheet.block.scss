@@ -2,14 +2,6 @@
    # SIGN OUT
    ========================================================================== */
 
-// Imports
-@block button from 'objects/objects.button.block.scss';
-
-
-// Exports
-@export (button);
-
-
 // Block
 :scope {
   block-name: c-sign-out;

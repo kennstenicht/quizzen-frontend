@@ -5,11 +5,10 @@
 // Imports
 @import 'setup';
 @block form from 'objects/objects.form.block.scss';
-@block button from 'objects/objects.button.block.scss';
 
 
 // Exports
-@export (form, button);
+@export (form);
 
 
 // Block

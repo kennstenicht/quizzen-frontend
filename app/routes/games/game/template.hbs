@@ -16,12 +16,14 @@
       <Ui::Button
         @onClick={{this.join}}
         @label="Join"
+        @style="primary"
       />
     {{/if}}
   {{else}}
     <Ui::Button
       @onClick={{this.transitionToLogin}}
       @label="Login"
+      @style="primary"
     />
   {{/if}}
   <strong>Players:</strong><br>

@@ -27,21 +27,19 @@
   {{/let}}
 
   <div block:class="actions">
-    <button
-      button:scope
-      button:style="primary"
-      type="submit"
-    >
-      Save
-    </button>
+    <Ui::Button
+      @icon="save"
+      @label="Save"
+      @style="primary"
+      @type="submit"
+    />
 
-    <button
-      button:scope
-      button:style="secondary"
-      type="reset"
-    >
-      Reset
-    </button>
+    <Ui::Button
+      @icon="cancel"
+      @label="Cancel"
+      @style="secondary"
+      @type="reset"
+    />
 
     <Ui::Button
       @icon="delete"

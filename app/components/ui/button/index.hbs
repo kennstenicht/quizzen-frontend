@@ -1,10 +1,16 @@
 <button
   block:scope
-  button:scope
-  button:primary
-  type="button"
-  {{on "click" @onClick}}
+  block:style={{@style}}
+  type={{this.type}}
+  {{on "click" this.onClick}}
   ...attributes
 >
-  {{@label}}
+  {{#if @icon}}
+    {{svg-jar @icon class=(style-of block:class="icon" block:has-label=@label)}}
+  {{/if}}
+  {{#if @label}}
+    <div block:class="label">
+      {{@label}}
+    </div>
+  {{/if}}
 </button>

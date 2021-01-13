@@ -23,9 +23,11 @@
       />
     </div>
     <div form:class="field">
-      <button button:scope button:style="primary" type="submit">
-        {{t "signIn.submit"}}
-      </button>
+      <Ui::Button
+        @label={{t "signIn.submit"}}
+        @style="primary"
+        @type="submit"
+      />
     </div>
   </form>
 </div>

@@ -45,22 +45,17 @@
           {{t "application.cookieNotice.options.marketing"}}
         </label>
       </div>
-      <button
-        type="button"
-        button:scope
-        button:style="primary"
-        {{on "click" this.allowAllCookies}}
-      >
-        {{t "application.cookieNotice.allowAllCookies"}}
-      </button>
-      <a
-        href="#"
-        button:scope
-        button:style="primary"
-        {{on "click" this.allowSelectedCookies}}
-      >
-        {{t "application.cookieNotice.allowSelectedCookies"}}
-      </a>
+      <Ui::Button
+        @label={{t "application.cookieNotice.allowAllCookies"}}
+        @onClick={{this.allowAllCookies}}
+        @style="primary"
+      />
+
+      <Ui::Button
+        @label={{t "application.cookieNotice.allowSelectedCookies"}}
+        @onClick={{this.allowSelectedCookies}}
+        @style="primary"
+      />
     </div>
   </div>
 </div>
