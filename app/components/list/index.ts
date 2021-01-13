@@ -6,9 +6,13 @@ import { pluralize } from 'ember-inflector';
 import Model from '@ember-data/model';
 
 interface Args {
-  records: any,
-  layout: string,
+  records: any
+  layout: string
+  listActions?: {
+    onSelect?: Function
+  }
   modelName: string
+  selectedRecords: Model[]
 }
 
 export default class ListComponent extends Component<Args> {
@@ -19,6 +23,18 @@ export default class ListComponent extends Component<Args> {
   // Getter and setter
   get isCardLayout() {
     return this.args.layout === 'card';
+  }
+
+  get listActions() {
+    let listActions = this.args.listActions ?? {};
+    let defaultActions = {
+      onSelect: this.openRecord
+    }
+
+    return {
+      ...defaultActions,
+      ...listActions
+    }
   }
 
 

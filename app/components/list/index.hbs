@@ -8,14 +8,16 @@
         <List::Row
           @metaFields={{@metaFields}}
           @record={{record}}
-          @onClick={{fn this.openRecord record}}
+          @onSelect={{this.listActions.onSelect}}
           @head={{true}}
         />
       {{/unless}}
       <List::Row
+        @disabledRecords={{@disabledRecords}}
         @metaFields={{@metaFields}}
-        @onClick={{fn this.openRecord record}}
+        @onSelect={{this.listActions.onSelect}}
         @record={{record}}
+        @selectedRecords={{@selectedRecords}}
       />
     {{/each}}
   {{else}}

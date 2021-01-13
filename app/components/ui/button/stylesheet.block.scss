@@ -88,3 +88,9 @@
     background-color: $color-grey;
   }
 }
+
+
+:scope:disabled {
+  background-color: $color-grey-dark;
+  cursor: not-allowed;
+}

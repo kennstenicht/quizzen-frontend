@@ -2,29 +2,42 @@ import Component from '@glimmer/component';
 import { inject as service } from '@ember/service';
 import Store from '@ember-data/store';
 import { action } from '@ember/object';
-import { tracked } from '@glimmer/tracking';
 import Model from '@ember-data/model';
+import { A } from '@ember/array';
 
 interface Args {
-  modelName: string,
-  multiple: boolean,
-  onAssign: Function,
+  modelName: string
+  multiple: boolean
+  onAssign: Function
   onClose: Function
+  selectedRecords: Model[]
 }
 
 export default class FormFieldRelationAssignComponent extends Component<Args> {
   // Services
   @service store!: Store;
 
-  @tracked selectedRecords: Model[] = [];
+
+  // Defaults
+  selectedRecords: Model[] = A([]);
+
 
   // Getter and setter
   get fetchRecords() {
     return this.store.findAll(this.args.modelName);
   }
 
+  // Actions
   @action
-  selectRecord(record: Model) {
-    this.selectedRecords.push(record);
+  selectRecord(record: Model, disabled: boolean) {
+    if (disabled) {
+      return
+    }
+
+    if (this.selectedRecords.includes(record)) {
+      this.selectedRecords.removeObject(record);
+    } else {
+      this.selectedRecords.pushObject(record);
+    }
   }
 }

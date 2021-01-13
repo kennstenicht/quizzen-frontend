@@ -13,8 +13,18 @@
   display: grid;
 }
 
+:scope[is-disabled] {
+  color: $color-grey-dark;
+  cursor: not-allowed;
+}
+
 :scope[is-head] {
   background-color: #ddd;
+}
+
+:scope[is-selected] {
+  background-color: $color-secondary;
+  color: $color-white;
 }
 
 :scope[layout=answer] {

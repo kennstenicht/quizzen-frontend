@@ -78,13 +78,13 @@ export default class FormFieldRelationComponent extends Component<Args> {
 
   @action
   assignRecords(records: Model[]) {
-    console.log('openNewRecord', records);
-    // let model = this.args.changeset.data;
-    // // @ts-ignore
-    // let relationships = model.constructor.relationshipsByName;
-    // let relationship = relationships.get(property);
+    let changeset = this.args.changeset;
+    let property = this.args.property;
+    let recordsToAssign = this.isHasManyRelation ? records : records[0];
 
-    // return relationship.type;
+    changeset.get(property).pushObjects(recordsToAssign);
+
+    this.closeRecordList();
   }
 
   @action

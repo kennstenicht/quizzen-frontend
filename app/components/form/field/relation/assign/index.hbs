@@ -8,11 +8,17 @@
     </await.Pending>
 
     <await.Fulfilled as |records|>
-      <List @records={{records}} @listActions={{hash
-        openRecord=this.selectRecord
-      }}/>
+      <List
+        @records={{records}}
+        @listActions={{hash
+          onSelect=this.selectRecord
+        }}
+        @disabledRecords={{@disabledRecords}}
+        @selectedRecords={{this.selectedRecords}}
+      />
 
       <Ui::Button
+        @disabled={{is-empty this.selectedRecords}}
         @label="Assign"
         @onClick={{fn @onAssign this.selectedRecords}}
         @style="primary"

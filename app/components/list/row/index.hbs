@@ -2,7 +2,9 @@
   block:scope
   block:layout={{this.modelName}}
   block:is-head={{@head}}
-  {{on "click" @onClick}}
+  block:is-selected={{this.isSelected}}
+  block:is-disabled={{this.isDisabled}}
+  {{on "click" (fn @onSelect @record this.isDisabled)}}
   ...attributes
 >
   {{#each this.columns as |column|}}

@@ -2,9 +2,11 @@ import Component from '@glimmer/component';
 import Model from '@ember-data/model';
 
 interface Args {
-  metaFields: string[],
+  disabledRecords: Model[]
+  metaFields: string[]
   onClick: Function
-  record: Model,
+  record: Model
+  selectedRecords: Model[]
 }
 
 export default class ListRowComponent extends Component<Args> {
@@ -22,5 +24,21 @@ export default class ListRowComponent extends Component<Args> {
   get modelName() {
     // @ts-ignore
     return this.args.record.constructor.modelName;
+  }
+
+  get isDisabled() {
+    if (!this.args.disabledRecords) {
+      return false;
+    }
+
+    return this.args.disabledRecords.includes(this.args.record);
+  }
+
+  get isSelected() {
+    if (!this.args.selectedRecords) {
+      return false;
+    }
+
+    return this.args.selectedRecords.includes(this.args.record);
   }
 }
