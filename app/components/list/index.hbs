@@ -4,19 +4,19 @@
 >
   {{#if @records}}
     {{#each @records as |record index|}}
-        {{#unless index}}
-          <List::Row
-            @metaFields={{@metaFields}}
-            @onClick={{fn this.openRecord record}}
-            @record={{record}}
-            @head={{true}}
-          />
-        {{/unless}}
+      {{#unless index}}
         <List::Row
           @metaFields={{@metaFields}}
-          @onClick={{fn this.openRecord record}}
           @record={{record}}
+          @onClick={{fn this.openRecord record}}
+          @head={{true}}
         />
+      {{/unless}}
+      <List::Row
+        @metaFields={{@metaFields}}
+        @onClick={{fn this.openRecord record}}
+        @record={{record}}
+      />
     {{/each}}
   {{else}}
     Keine {{@modelName}} für diese Auswahl
