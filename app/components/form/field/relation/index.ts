@@ -80,9 +80,12 @@ export default class FormFieldRelationComponent extends Component<Args> {
   assignRecords(records: Model[]) {
     let changeset = this.args.changeset;
     let property = this.args.property;
-    let recordsToAssign = this.isHasManyRelation ? records : records[0];
 
-    changeset.get(property).pushObjects(recordsToAssign);
+    if (this.isHasManyRelation) {
+      changeset.get(property).pushObjects(records);
+    } else {
+      changeset.set(property, records[0]);
+    }
 
     this.closeRecordList();
   }
