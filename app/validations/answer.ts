@@ -6,6 +6,6 @@ import {
 export default {
   label: [
     validatePresence({ presence: true }),
-    validateLength({ min: 4 })
+    validateLength({ min: 3 })
   ]
 };

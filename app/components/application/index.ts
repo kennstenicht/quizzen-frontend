@@ -2,11 +2,11 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
-import ENV from 'quizzen/config/environment';
+import Router from '@ember/routing/router-service';
 import FlashMessages from 'ember-cli-flash/services/flash-messages';
 import Fastboot from 'ember-cli-fastboot/services/fastboot';
 import Session from 'ember-simple-auth/services/session';
-import Router from '@ember/routing/router-service';
+import ENV from 'quizzen/config/environment';
 
 interface RouteSizeMap {
   [key: string]: string;

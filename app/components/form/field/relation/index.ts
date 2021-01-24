@@ -8,6 +8,7 @@ import Store from '@ember-data/store';
 import { BufferedChangeset } from 'ember-changeset/types';
 import Model from '@ember-data/model';
 import { pluralize } from 'ember-inflector';
+import Breadcrumb from 'quizzen/services/breadcrumb';
 
 interface Args {
   records: any[],
@@ -17,6 +18,7 @@ interface Args {
 
 export default class FormFieldRelationComponent extends Component<Args> {
   // Services
+  @service breadcrumb!: Breadcrumb;
   @service router!: Router;
   @service store!: Store;
 
@@ -68,15 +70,6 @@ export default class FormFieldRelationComponent extends Component<Args> {
 
   // Actions
   @action
-  addRecord() {
-    let changeset = this.args.changeset;
-    let property = this.args.property;
-    let newRecord = this.store.createRecord(this.relationType);
-
-    changeset.set(property, [...changeset.get(property).toArray(), newRecord]);
-  }
-
-  @action
   assignRecords(records: Model[]) {
     let changeset = this.args.changeset;
     let property = this.args.property;
@@ -105,12 +98,17 @@ export default class FormFieldRelationComponent extends Component<Args> {
     let relationType = this.relationType;
     let editRoute = `profile.${pluralize(relationType)}.${relationType}`;
 
+    this.breadcrumb.registerItem(editRoute, record);
     this.router.transitionTo(editRoute, record);
   }
 
   @action
   openNewRecord() {
-    this.router.transitionTo(`profile.${pluralize(this.relationType)}.new`);
+    let relationType = this.relationType;
+    let newRoute = `profile.${pluralize(relationType)}.new`;
+
+    this.breadcrumb.registerItem(newRoute);
+    this.router.transitionTo(newRoute);
   }
 
   @action

@@ -5,19 +5,11 @@ import { inject as service } from '@ember/service';
 import Router from '@ember/routing/router-service';
 import Model from '@ember-data/model';
 import Store from '@ember-data/store';
-import { pluralize } from 'ember-inflector';
-import { Changeset } from 'ember-changeset';
-import lookupValidator from 'ember-changeset-validations';
 import { BufferedChangeset } from 'ember-changeset/types';
 import FlashMessages from 'ember-cli-flash/services/flash-messages';
 import Session from 'ember-simple-auth/services/session';
 import Intl from 'ember-intl/services/intl';
-import AnswerValidations from 'quizzen/validations/answer';
-import CategoryValidations from 'quizzen/validations/category';
-import GameValidations from 'quizzen/validations/game';
-import QuestionValidations from 'quizzen/validations/question';
-import QuizValidations from 'quizzen/validations/quiz';
-
+import Breadcrumb from 'quizzen/services/breadcrumb';
 
 interface Args {
   model: Model,
@@ -31,55 +23,39 @@ interface Args {
 
 export default class FormComponent extends Component<Args> {
   // Services
-  @service intl!: Intl;
-  @service store!: Store;
   @service flashMessages!: FlashMessages;
-  @service session!: Session;
+  @service breadcrumb!: Breadcrumb;
+  @service intl!: Intl;
   @service router!: Router;
+  @service session!: Session;
+  @service store!: Store;
 
 
   // Defaults
-  @tracked changeset: BufferedChangeset;
+  @tracked changeset?: BufferedChangeset;
 
 
   // Hooks
   constructor(owner: unknown, args: Args) {
     super(owner, args);
 
+    let routeName = this.router.currentRoute.name;
     // @ts-ignore
-    this.changeset = new Changeset(
-      this.args.model,
-      lookupValidator(this.validations),
-      this.validations
-    );
+    let model = this.router.currentRoute.attributes;
+    let route = this.breadcrumb.getItem(routeName, model);
+
+    this.changeset = route.getChangeset(this.args.model);
   }
 
 
   // Getter and setter
-  get modelName() {
+  get modelName(): string {
     // @ts-ignore
     return this.args.model.constructor.modelName;
   }
 
   get modelId() {
     return this.args.model.id;
-  }
-
-  get validations() {
-    switch (this.modelName) {
-      case 'answer':
-        return AnswerValidations
-      case 'category':
-        return CategoryValidations
-      case 'game':
-        return GameValidations
-      case 'question':
-        return QuestionValidations
-      case 'quiz':
-        return QuizValidations
-      default:
-        return null;
-    }
   }
 
   get formActions() {
@@ -110,7 +86,7 @@ export default class FormComponent extends Component<Args> {
       this.flashMessages.success(message);
 
       if(this.args.transitionAfterAction) {
-        this.transitionToByModel(this.modelName);
+        this.breadcrumb.transitionTo(this.breadcrumb.prevItem, this.modelName);
       }
     } catch(error) {
       this.flashMessages.success(error);
@@ -119,14 +95,12 @@ export default class FormComponent extends Component<Args> {
 
   @action
   rollbackRecord(changeset: BufferedChangeset) {
-    let modelName = this.modelName;
-
     changeset.rollback();
     // Rollback model to destroy new record
     this.args.model.rollbackAttributes();
 
     if(this.args.transitionAfterAction) {
-      this.transitionToByModel(modelName);
+      this.breadcrumb.transitionTo(this.breadcrumb.prevItem, this.modelName);
     }
   }
 
@@ -146,7 +120,7 @@ export default class FormComponent extends Component<Args> {
         this.flashMessages.success(message);
 
         if(this.args.transitionAfterAction) {
-          this.transitionToByModel(this.modelName, this.args.model);
+          this.breadcrumb.transitionTo(this.breadcrumb.prevItem, this.modelName, this.args.model);
         }
       } else {
         this.flashMessages.warning('not valid');
@@ -154,20 +128,5 @@ export default class FormComponent extends Component<Args> {
     } catch(error) {
       this.flashMessages.warning(error.message);
     }
-  }
-
-
-  // Functions
-  transitionToByModel(modelName: string, model?: Model) {
-    let indexRoute = pluralize(modelName);
-    let path = ['profile', indexRoute];
-
-    if (model) {
-      path.push(this.modelName);
-
-      return this.router.transitionTo(path.join('.'), model);
-    }
-
-    return this.router.transitionTo(path.join('.'));
   }
 }

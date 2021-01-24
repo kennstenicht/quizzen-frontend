@@ -17,15 +17,16 @@
     {{!-- Placeholder for in-element content --}}
   </div>
 
-  <div block:class="header">
-    <Application::Header />
-  </div>
-
   <div block:class="navigation" data-in-element="application-navigation">
     {{!-- Placeholder for in-element content --}}
   </div>
 
+  <div block:class="header">
+    <Application::Header />
+  </div>
+
   <div block:class="content">
+    <Application::Breadcrumb />
     {{yield}}
   </div>
 
