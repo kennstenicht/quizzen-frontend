@@ -34,7 +34,7 @@
 </div>
 
 {{#if this.isRecordListOpen}}
-  <Ui::ModalWindow @onClose={{this.closeRecordList}}>
+  <Ui::Modal @onClose={{this.closeRecordList}}>
     <Form::Field::Relation::Assign
       @multiple={{this.isHasManyRelation}}
       @modelName={{this.relationType}}
@@ -43,5 +43,5 @@
       @onClose={{this.closeRecordList}}
       @disabledRecords={{this.records}}
     />
-  </Ui::ModalWindow>
+  </Ui::Modal>
 {{/if}}
