@@ -1,0 +1,28 @@
+<div block:scope block:is-compact={{this.isToolbarCompact}} ...attributes>
+  <div block:class="header">
+    {{#if (has-block "title")}}
+      <h1 block:class="title">
+        {{yield to="title"}}
+      </h1>
+    {{/if}}
+
+    {{#if (has-block "toolbar")}}
+      <div block:class="toolbar">
+        {{yield to="toolbar"}}
+      </div>
+    {{/if}}
+  </div>
+
+
+  {{#if (has-block "body")}}
+    <div block:class="body" {{on "scroll" this.onBodyScroll}}>
+      {{yield to="body"}}
+    </div>
+  {{/if}}
+
+  {{#if (has-block "bottombar")}}
+    <div block:class="bottombar">
+      {{yield to="bottombar"}}
+    </div>
+  {{/if}}
+</div>

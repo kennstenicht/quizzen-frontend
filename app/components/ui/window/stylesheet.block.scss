@@ -1,0 +1,55 @@
+/* ==========================================================================
+   # WINDOW
+   ========================================================================== */
+
+// Imports
+@import 'setup';
+
+
+// Block
+:scope {
+  block-name: c-ui-window;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+  .header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: spacing('base') spacing('base');
+    border-bottom: 1px solid transparent;
+    transition: all 0.3s ease-in-out;
+  }
+
+  :scope[is-compact] .header {
+    padding: spacing('small') spacing('base');
+    border-color: $color-grey;
+  }
+
+    .title {
+      margin: 0;
+      line-height: 1;
+      transition: all 0.3s ease-in-out;
+    }
+
+    :scope[is-compact] .title {
+      @include font-size($font-size-h2);
+    }
+
+    .toolbar {
+      flex-shrink: 0;
+    }
+
+  .body {
+    flex-grow: 1;
+    overflow: scroll;
+    margin: 0 spacing('small');
+    padding: spacing('base') spacing('small');
+  }
+
+  .bottombar {
+    padding: spacing('small') spacing('base');
+    border-top: 1px solid $color-grey;
+  }
