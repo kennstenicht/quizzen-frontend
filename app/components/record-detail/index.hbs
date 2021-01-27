@@ -1,0 +1,45 @@
+<Ui::Window ...attributes>
+  <:title>
+    {{this.changeset.displayLabel}}
+  </:title>
+
+  <:toolbar>
+    <Ui::Button
+      @icon="save"
+      @label="Save"
+      @style="primary"
+      @type="submit"
+      form={{this.changeset.id}}
+    />
+
+    <Ui::Button
+      @icon="cancel"
+      @label="Cancel"
+      @style="secondary"
+      @type="reset"
+      form={{this.changeset.id}}
+    />
+
+    <Ui::Button
+      @icon="delete"
+      @onClick={{this.deleteRecord}}
+      @style="outline"
+    />
+  </:toolbar>
+
+  <:body>
+    <Ui::Form
+      @changeset={{this.changeset}}
+      @onInit={{this.registerChangeset}}
+      {{on "submit" (fn this.saveRecord this.changeset)}}
+      {{on "reset" (fn this.rollbackRecord this.changeset)}}
+      id={{this.changeset.id}}
+      as |form|
+    >
+      {{component
+        (concat "record-detail/for/" this.modelName)
+        form=form
+      }}
+    </Ui::Form>
+  </:body>
+</Ui::Window>
