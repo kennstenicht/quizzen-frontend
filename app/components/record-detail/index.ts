@@ -68,7 +68,7 @@ export default class RecordDetailComponent extends Component<Args> {
       // TODO: Destroy changeset?
       await this.args.model.destroyRecord();
 
-      const message = this.intl.t('form.deleteRecord', {
+      const message = this.intl.t('recordDetail.deleteRecord', {
         title: title
       });
 
@@ -101,7 +101,7 @@ export default class RecordDetailComponent extends Component<Args> {
       if (changeset.isValid) {
         await changeset.save();
 
-        const message = this.intl.t('form.saveRecord', {
+        const message = this.intl.t('recordDetail.saveRecord', {
           title: changeset.displayLabel
         });
 

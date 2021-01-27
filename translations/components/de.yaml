@@ -11,8 +11,10 @@ application:
       required: Nur notwendige
 
 # Form
-form:
-  saveRecord: '{title} wurde gespeichert'
+recordDetail:
+  deleteRecord: '{title} wurde gespeichert'
+  new: '{modelName} hinzufügen'
+  saveRecord: '{title} wurde gelöscht'
 
 # Navigation
 navigation:

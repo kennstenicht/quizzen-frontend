@@ -1,6 +1,10 @@
 <Ui::Window ...attributes>
   <:title>
-    {{this.changeset.displayLabel}}
+    {{#if this.changeset.isNew}}
+      {{t "recordDetail.new" modelName=(t (concat "models." this.modelName))}}
+    {{else}}
+      {{this.changeset.displayLabel}}
+    {{/if}}
   </:title>
 
   <:toolbar>
