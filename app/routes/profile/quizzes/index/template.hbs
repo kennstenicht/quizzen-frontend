@@ -1,4 +1,4 @@
-<h1>{{t "models.plurals.quiz"}}</h1>
-<LinkTo @route="profile.quizzes.new">New</LinkTo><br><br>
-
-<List @records={{@model}} />
+<RecordExplorer
+  @records={{@model}}
+  @modelName="quiz"
+/>

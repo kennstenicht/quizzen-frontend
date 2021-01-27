@@ -1,7 +1,5 @@
-<h1>{{t "models.plurals.question"}}</h1>
-<LinkTo @route="profile.questions.new">New</LinkTo><br><br>
-
-<List
+<RecordExplorer
   @records={{@model}}
-  @metaFields={{array "numAnswers"}}
+  @modelName="question"
+  @recordFields={{array "numAnswers"}}
 />

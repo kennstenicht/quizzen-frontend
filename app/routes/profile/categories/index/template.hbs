@@ -1,7 +1,5 @@
-<h1>{{t "models.plurals.category"}}</h1>
-<LinkTo @route="profile.categories.new">New</LinkTo><br><br>
-
-<List
+<RecordExplorer
   @records={{@model}}
-  @metaFields={{array "numQuestions"}}
+  @modelName="category"
+  @recordFields={{array "numQuestions"}}
 />

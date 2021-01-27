@@ -1,0 +1,20 @@
+<Ui::Window ...attributes>
+  <:title>
+    {{this.headline}}
+  </:title>
+
+  <:toolbar>
+    <LinkTo @route={{this.newPath}}>New</LinkTo><br><br>
+  </:toolbar>
+
+  <:body>
+    <List
+      @records={{@records}}
+      @metaFields={{@recordFields}}
+    />
+  </:body>
+
+  <:bottombar>
+    Pagination
+  </:bottombar>
+</Ui::Window>

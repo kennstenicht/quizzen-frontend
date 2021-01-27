@@ -1,7 +1,5 @@
-<h1>{{t "models.plurals.game"}}</h1>
-<LinkTo @route="profile.games.new">New</LinkTo><br><br>
-
-<List
+<RecordExplorer
   @records={{@model}}
-  @metaFields={{array "joined" "yourGame"}}
+  @modelName="game"
+  @recordFields={{array "joined" "yourGame"}}
 />
