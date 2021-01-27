@@ -46,6 +46,9 @@ class BreadcrumbItem {
   }
 
   get name() {
+    if (!this.model) {
+      return 'New';
+    }
     // @ts-ignore
     return this.model.displayLabel;
   }
@@ -133,7 +136,7 @@ export default class BreadcrumbService extends Service {
   }
 
   rollback(item: BreadcrumbItem, transition: Transition) {
-    if (item.hasDirtyChangeset && confirm("Discard changes?")) {
+    if (item.hasDirtyChangeset && !confirm("Discard changes?")) {
       transition.abort();
     } else {
       this.items.pop();
