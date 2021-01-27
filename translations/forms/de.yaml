@@ -38,3 +38,8 @@ forms:
       label: Frage eingeben
       source: Quelle eingeben
       data: Stand eingeben
+
+  user:
+    fields:
+      email: E-Mail
+      password: Passwort

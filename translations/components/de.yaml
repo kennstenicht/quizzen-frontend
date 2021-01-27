@@ -24,9 +24,8 @@ navigation:
 
 # Sign In
 signIn:
-  email: E-Mail
-  password: Passwort
   submit: Einloggen
+  headline: Los gehts!
   successMessage: Du hast dich erfolgreich eingeloggt
 
 # Sign Out

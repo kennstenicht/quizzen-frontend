@@ -1,12 +1,18 @@
 import Component from '@glimmer/component';
 import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
-import CurrentUser from 'quizzen/services/current-user';
 import FlashMessages from 'ember-cli-flash/services/flash-messages';
 import Intl from 'ember-intl/services/intl';
 import Session from 'ember-simple-auth/services/session';
+import CurrentUser from 'quizzen/services/current-user';
+import { BufferedChangeset } from 'ember-changeset/types';
+import UserValidations from 'quizzen/validations/user';
+import lookupValidator from 'ember-changeset-validations';
+import { Changeset } from 'ember-changeset';
 
-export default class SignInComponent extends Component {
+interface Args {}
+
+export default class SignInComponent extends Component<Args> {
   // Services
   @service currentUser!: CurrentUser;
   @service flashMessages!: FlashMessages;
@@ -15,43 +21,50 @@ export default class SignInComponent extends Component {
 
 
   // Defaults
-  password = null;
-  email = null;
+  user: BufferedChangeset;
+
+
+  // Hooks
+  constructor(owner: unknown, args: Args) {
+    super(owner, args);
+
+    let user = {
+      id: 0,
+      email: null,
+      password: null,
+      constructor: {
+        modelName: 'user'
+      }
+    };
+
+    this.user = Changeset(
+      user,
+      lookupValidator(UserValidations),
+      UserValidations
+    );
+  }
+
 
   // Actions
   @action
-  async signIn(event: Event) {
+  async signIn(user: BufferedChangeset, event: Event) {
     event.preventDefault();
 
+    const authenticator = 'authenticator:jwt';
     const credentials = {
       "auth": {
-        "password": this.password,
-        "email": this.email
+        "password": user.password,
+        "email": user.email
       }
     };
-    const authenticator = 'authenticator:jwt';
 
     try {
       await this.session.authenticate(authenticator, credentials);
       await this.currentUser.load();
+
+      this.flashMessages.success(this.intl.t('signIn.successMessage'));
     } catch(error) {
-      this._throwError(error);
+      this.flashMessages.warning(error.statusText);
     }
-
-    if (this.session.isAuthenticated) {
-      this._throwSuccess;
-    }
-  }
-
-
-  // Privat functions
-  _throwSuccess() {
-    const message = this.intl.t('signIn.successMessage');
-
-    this.flashMessages.success(message);
-  }
-
-  _throwError(reason: ApiError) {
-    this.flashMessages.warning(reason.statusText);
   }
 }
