@@ -14,7 +14,7 @@ interface Args {
   type: string,
 }
 
-export default class FormFieldComponent extends Component<Args> {
+export default class UiFormFieldComponent extends Component<Args> {
   // Services
   @service intl!: Intl;
 

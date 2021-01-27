@@ -11,7 +11,7 @@ interface Args {
   groupName: string
 }
 
-export default class FormFieldRelationRecordComponent extends Component<Args> {
+export default class UiFormFieldRelationRecordComponent extends Component<Args> {
   // Defaults
   @tracked isDragging = false;
 

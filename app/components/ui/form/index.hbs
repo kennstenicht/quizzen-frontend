@@ -1,0 +1,12 @@
+<form
+  block:scope
+  form:scope
+  ...attributes
+>
+  {{yield (hash
+    field=(component "ui/form/field"
+      changeset=@changeset
+      modelName=this.modelName
+    ))
+  }}
+</form>

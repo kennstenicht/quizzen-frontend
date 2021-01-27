@@ -4,7 +4,7 @@
     {{sortable-group onChange=this.reorderRecords groupName=this.groupName}}
   >
     {{#each this.records as |record|}}
-      <Form::Field::Relation::Record
+      <Ui::Form::Field::Relation::Record
         @record={{record}}
         @openRecord={{fn this.openRecord}}
         @removeRecord={{fn this.removeRecord}}
@@ -35,7 +35,7 @@
 
 {{#if this.isRecordListOpen}}
   <Ui::Modal @onClose={{this.closeRecordList}}>
-    <Form::Field::Relation::Assign
+    <Ui::Form::Field::Relation::Assign
       @multiple={{this.isHasManyRelation}}
       @modelName={{this.relationType}}
       @assigned={{this.records}}

@@ -16,7 +16,7 @@ interface Args {
   changeset: BufferedChangeset
 }
 
-export default class FormFieldRelationComponent extends Component<Args> {
+export default class UiFormFieldRelationComponent extends Component<Args> {
   // Services
   @service breadcrumb!: Breadcrumb;
   @service router!: Router;

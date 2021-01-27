@@ -13,7 +13,7 @@ interface Args {
   selectedRecords: Model[]
 }
 
-export default class FormFieldRelationAssignComponent extends Component<Args> {
+export default class UiFormFieldRelationAssignComponent extends Component<Args> {
   // Services
   @service store!: Store;
 
