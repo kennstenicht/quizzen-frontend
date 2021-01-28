@@ -1,5 +1,7 @@
 import Component from '@glimmer/component';
 import { inject as service } from '@ember/service';
+import { action } from '@ember/object';
+import Router from '@ember/routing/router-service';
 import Model from '@ember-data/model';
 import { pluralize } from 'ember-inflector';
 import Intl from 'ember-intl/services/intl';
@@ -12,6 +14,7 @@ interface Args {
 export default class RecordDetailComponent extends Component<Args> {
   // Services
   @service intl!: Intl;
+  @service router!: Router;
 
 
   // Getter and setter
@@ -21,5 +24,16 @@ export default class RecordDetailComponent extends Component<Args> {
 
   get newPath() {
     return `profile.${pluralize(this.args.modelName)}.new`;
+  }
+
+
+  // Actions
+  @action
+  openRecord(record: Model) {
+    // @ts-ignore
+    let modelName = record.constructor.modelName;
+    let editRoute = `profile.${pluralize(modelName)}.${modelName}`;
+
+    this.router.transitionTo(editRoute, record);
   }
 }

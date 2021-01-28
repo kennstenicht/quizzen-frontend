@@ -2,14 +2,16 @@ import Component from '@glimmer/component';
 import { inject as service } from '@ember/service';
 import { lookupTranslation } from 'quizzen/utils/intl';
 import Intl from 'ember-intl/services/intl';
+import Model from '@ember-data/model';
 
 interface Args {
   modelName: string,
   column: string,
-  record: any,
+  head?: boolean,
+  record: Model,
 }
 
-export default class ListRowColumnComponent extends Component<Args> {
+export default class UiListRowColumnComponent extends Component<Args> {
   // Services
   @service intl!: Intl;
 

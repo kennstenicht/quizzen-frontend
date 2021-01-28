@@ -5,17 +5,17 @@
   {{#if @records}}
     {{#each @records as |record index|}}
       {{#unless index}}
-        <List::Row
+        <Ui::List::Row
           @metaFields={{@metaFields}}
           @record={{record}}
-          @onSelect={{this.listActions.onSelect}}
+          @onClick={{@onClick}}
           @head={{true}}
         />
       {{/unless}}
-      <List::Row
+      <Ui::List::Row
         @disabledRecords={{@disabledRecords}}
         @metaFields={{@metaFields}}
-        @onSelect={{this.listActions.onSelect}}
+        @onClick={{@onClick}}
         @record={{record}}
         @selectedRecords={{@selectedRecords}}
       />

@@ -2,14 +2,14 @@ import Component from '@glimmer/component';
 import Model from '@ember-data/model';
 
 interface Args {
-  disabledRecords: Model[]
-  metaFields: string[]
+  disabledRecords?: Model[]
+  metaFields?: string[]
   onClick: Function
   record: Model
-  selectedRecords: Model[]
+  selectedRecords?: Model[]
 }
 
-export default class ListRowComponent extends Component<Args> {
+export default class UiListRowComponent extends Component<Args> {
   // Getter and setter
   get columns() {
     let columns = ['displayLabel'];

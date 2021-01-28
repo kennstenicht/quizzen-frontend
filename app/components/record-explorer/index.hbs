@@ -8,9 +8,10 @@
   </:toolbar>
 
   <:body>
-    <List
+    <Ui::List
       @records={{@records}}
       @metaFields={{@recordFields}}
+      @onClick={{this.openRecord}}
     />
   </:body>
 

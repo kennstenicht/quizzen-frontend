@@ -8,11 +8,9 @@
     </await.Pending>
 
     <await.Fulfilled as |records|>
-      <List
+      <Ui::List
         @records={{records}}
-        @listActions={{hash
-          onSelect=this.selectRecord
-        }}
+        @onClick={{this.selectRecord}}
         @disabledRecords={{@disabledRecords}}
         @selectedRecords={{this.selectedRecords}}
       />
