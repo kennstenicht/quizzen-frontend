@@ -7,11 +7,13 @@ import Moment from 'ember-moment/services/moment';
 import Intl from 'ember-intl/services/intl';
 import Session from 'ember-simple-auth/services/session';
 import Breadcrumb from 'quizzen/services/breadcrumb';
+import HeadData from 'quizzen/services/head-data';
 
 export default class ApplicationRoute extends Route {
   // Services
   @service currentUser!: CurrentUser;
   @service breadcrumb!: Breadcrumb;
+  @service headData!: HeadData;
   @service intl!: Intl;
   @service moment!: Moment;
   @service session!: Session;
@@ -19,9 +21,20 @@ export default class ApplicationRoute extends Route {
 
   // Hooks
   beforeModel() {
+    // Set Locale
     this.moment.setLocale('de');
     this.intl.setLocale('de');
 
+    // Setup head data fallback tags
+    this.headData.fallbackMetaTags = {
+      title: this.intl.t('application.meta.title'),
+      description: this.intl.t('application.meta.description'),
+      image: '/assets/meta/sharing-image--default.jpg',
+      type: 'website',
+      structuredData: null,
+    }
+
+    // Load current User
     return this.currentUser.load();
   }
 

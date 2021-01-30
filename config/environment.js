@@ -8,6 +8,11 @@ module.exports = function(environment) {
     rootURL: '/',
     locationType: 'auto',
 
+    company: {
+      name: 'quizzen.jetzt',
+      twitter: '@quizzen'
+    },
+
     'changeset-validations': {
       rawOutput: true
     },

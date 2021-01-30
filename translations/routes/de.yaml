@@ -1,0 +1,105 @@
+application:
+  meta:
+    description: Wir verbinden die analoge mit der digtalen Spielewelt. Die aktuellsten Quizze können immer online geladen werden, doch gespielt wird zuhause mit Freunden.
+    title: Wer kennt mehr? Das analoge online Quiz.
+
+games:
+  game:
+    meta:
+      title: '{displayLabel}'
+      blurTitle: 'Komm zurück! Googeln verboten! | quizzen.jetzt'
+
+profile:
+  meta:
+    title: Dein Profil
+    description: Verwalte dein Profil und deine Quizze oder starte ein neues Spiel
+
+  answers:
+    meta:
+      title: Profil » Deine Antworten
+      description: Verwalte alle deine Antworten die du gekauft oder selber angelegt hast.
+
+    answer:
+      meta:
+        title: Antwort » {displayLabel}
+        description: Korrigiere oder aktualisiere die Antwort "{displayLabel}".
+
+    new:
+      meta:
+        title: Antwort » Neu anlegen
+        description: Füge jetzt eine neue Antwort hinzu.
+
+  categories:
+    meta:
+      title: Profil » Deine Kategorien
+      description: Verwalte alle deine Kategorien die du gekauft oder selber angelegt hast.
+
+    categorie:
+      meta:
+        title: Kategorie » {displayLabel}
+        description: Korrigiere oder optimiere die Kategorie "{displayLabel}".
+
+    new:
+      meta:
+        title: Kategorie » Neu anlegen
+        description: Lege jetzt eine neue Kategorie an und verknüpfe alle passenden Fragen.
+
+  games:
+    meta:
+      title: Profil » Deine Spiele
+      description: Alle deine Spiele bei denen du Quiz Master bist oder mitgespielt hast.
+
+    game:
+      meta:
+        title: Spiel » {displayLabel}
+        description: Dir Würfel sind gefallen, jetzt wird gequizzed.
+
+    new:
+      meta:
+        title: Spiel » Neu anlegen
+        description: Lege jetzt ein neues Spiel an und lade deine Freunde ein.
+
+  questions:
+    meta:
+      title: Profil » Deine Fragen
+      description: Verwalte alle deine Fragen die du gekauft oder selber angelegt hast.
+
+    question:
+      meta:
+        title: Frage » {displayLabel}
+        description: Korrigiere oder aktualisiere die Frage "{displayLabel}".
+
+    new:
+      meta:
+        title: Frage » Neu anlegen
+        description: Lege jetzt eine neue Frage mit allen Antwortmöglichkeiten an.
+
+  quizzes:
+    meta:
+      title: Profil » Deine Quizze
+      description: Alle deine Quizze die du gekauft oder selber angelegt hast.
+
+    quiz:
+      meta:
+        title: Quiz » {displayLabel}
+        description: Korrigiere oder aktualisiere das Quiz "{displayLabel}".
+
+    new:
+      meta:
+        title: Quiz » Neu anlegen
+        description: Lege jetzt ein neues Quiz an mit alle Fragen aus deiner Datenbank
+
+  user:
+    meta:
+      title: Profil » {displayLabel}
+      description: '{displayLabel} ist schon Teil der Quizzer Community. Melde dich jetzt an und verbinde dich mit {displayLabel} um gemeinsam zu quizzen.'
+
+error:
+  meta:
+    description: Fehler sind menschlich, aber natürlich arbeiten wir mit Hochdruck daran auch diesen Fehler zu reparieren, damit du nicht noch mal hier landest.
+    title: Autsch! Da gab es einen Fehler!
+
+login:
+  meta:
+    description: Auf was wartest du denn noch? Jetzt direkt Einloggen und quizzen!
+    title: Los gehts! Einloggen!

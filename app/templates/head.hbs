@@ -1,0 +1,39 @@
+{{#if this.model.title}}
+  <title>{{this.model.title}}</title>
+  <meta property="og:title" content={{this.model.title}}>
+  <meta property="twitter:title" content={{this.model.title}}>
+{{/if}}
+
+{{#if this.model.description}}
+  <meta name="description" content={{this.model.description}}>
+  <meta property="og:description" content={{this.model.description}}>
+  <meta property="twitter:description" content={{this.model.description}}>
+{{/if}}
+
+{{#if this.model.image}}
+  <meta property="og:image" content={{this.model.image}}>
+  <meta property="twitter:image" content={{this.model.image}}>
+{{/if}}
+
+{{#if this.model.url}}
+  <meta property="og:url" content={{this.model.url}}>
+{{/if}}
+
+{{#if this.model.type}}
+  <meta property="og:type" content={{this.model.type}}>
+{{/if}}
+
+{{#if this.model.locale}}
+  <meta property="og:locale" content={{this.model.locale}}>
+{{/if}}
+
+<meta property="og:site_name" content={{this.company.name}}>
+<meta property="twitter:card" content="summary">
+<meta property="twitter:site" content={{this.company.twitter}}>
+<meta name="google-site-verification" content="XXX">
+<meta name="apple-mobile-web-app-title" content={{this.company.name}}>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<link rel="icon" href="/assets/meta/favicon.png">
+<link rel="apple-touch-icon-precomposed" href="/assets/meta/touch-icon.png">

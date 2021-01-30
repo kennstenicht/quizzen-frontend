@@ -2,8 +2,8 @@ import Route from '@ember/routing/route';
 import Transition from '@ember/routing/-private/transition';
 import { inject as service } from '@ember/service';
 import Store from '@ember-data/store';
-import Game from 'quizzen/models/game';
 import Session from 'ember-simple-auth/services/session';
+import Game from 'quizzen/models/game';
 
 interface Params {
   user_nickname: string
@@ -11,8 +11,8 @@ interface Params {
 
 export default class GamesGameRoute extends Route {
   // Services
-  @service store!: Store;
   @service session!: Session;
+  @service store!: Store;
 
 
   // Hooks
