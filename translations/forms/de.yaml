@@ -19,7 +19,7 @@ forms:
       active: Aktives Spiel
       gameQuestions: Gespiele Fragen
       joined: Teilnehmer
-      players: Mitspieler
+      users: Mitspieler
       quiz: Quiz auswählen
       quizMaster: Quiz Master
       teams: Teams

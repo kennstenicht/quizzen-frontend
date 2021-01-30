@@ -22,6 +22,15 @@
       rows="5"
       {{on "input" this.updateField}}
     >{{changeset-get @changeset @property}}</textarea>
+  {{else if this.isCheckbox}}
+    <input
+      checked={{changeset-get @changeset @property}}
+      disabled={{@disabled}}
+      id={{this.fieldId}}
+      name={{this.fieldId}}
+      type={{this.type}}
+      {{on "input" this.updateCheckbox}}
+    />
   {{else}}
     <input
       disabled={{@disabled}}

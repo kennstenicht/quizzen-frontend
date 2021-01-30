@@ -21,10 +21,7 @@ textarea {
 /* Input
    ========================================================================== */
 
-input:not([type=submit]),
-input:not([type=file]),
-input:not([type=search]),
-input:not([type=checkbox]) {
+input:not([type=submit]):not([type=reset]):not([type=file]):not([type=checkbox]):not([type=radio]):not([type=range]) {
   padding: spacing('tiny') spacing('small');
   width: 100%;
   border-width: $border-width-small;

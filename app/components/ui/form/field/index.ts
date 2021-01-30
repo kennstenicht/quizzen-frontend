@@ -30,6 +30,10 @@ export default class UiFormFieldComponent extends Component<Args> {
     return `${modelName}-${changeset.id}-${property}`;
   }
 
+  get isCheckbox() {
+    return this.args.type === 'checkbox';
+  }
+
   get isRelation() {
     return this.args.type === 'relation';
   }
@@ -70,5 +74,15 @@ export default class UiFormFieldComponent extends Component<Args> {
     const target = event.target as HTMLInputElement;
 
     this.args.changeset.set(this.args.property, target.value);
+  }
+
+  @action
+  updateCheckbox(
+    event: Event
+  ) {
+    const target = event.target as HTMLInputElement;
+    console.log(target.checked);
+
+    this.args.changeset.set(this.args.property, target.checked);
   }
 }
