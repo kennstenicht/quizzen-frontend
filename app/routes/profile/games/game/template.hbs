@@ -1,4 +1,6 @@
-<Ui:Window>
+<RecordDetail @model={{@model}} />
+
+{{!-- <Ui::Window>
   <:title>
     {{@model.title}}
   </:title>
@@ -26,8 +28,8 @@
     {{/each}}
     <br>
     <strong>Players:</strong><br>
-    {{#each @model.players as |player|}}
-      <Ui::Avatar @user={{player}} />
+    {{#each @model.users as |user|}}
+      <Ui::Avatar @user={{user}} />
     {{/each}}
     <br><br>
     <strong>Teams:</strong><br>
@@ -38,4 +40,4 @@
       {{/each}}<br>
     {{/each}}
   </:body>
-</Ui:Window>
+</Ui::Window> --}}

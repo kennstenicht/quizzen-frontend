@@ -1,4 +1,11 @@
-<@form.field @property="title" />
-<@form.field @property="quiz" @type="relation" />
 
-{{!-- <@form.field @property="quizMaster" @type="belongs-to" /> --}}
+<@form.field @property="title" />
+<@form.field @property="active" @type="checkbox" />
+<@form.field @property="joined" @type="checkbox" />
+<@form.field @property="yourGame" @type="checkbox" />
+
+<@form.field @property="quizMaster" @type="relation" />
+<@form.field @property="quiz" @type="relation" />
+<@form.field @property="users" @type="relation" />
+<@form.field @property="teams" @type="relation" />
+<@form.field @property="gameQuestions" @type="relation" />

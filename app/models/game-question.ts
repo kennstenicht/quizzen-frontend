@@ -1,4 +1,5 @@
 import Model, { attr, belongsTo , hasMany} from '@ember-data/model';
+import { alias } from '@ember/object/computed';
 import User from 'quizzen/models/user';
 import Question from 'quizzen/models/question';
 import Game from 'quizzen/models/game';
@@ -17,4 +18,8 @@ export default class GameQuestionModel extends Model {
   @belongsTo('question') question?: Question;
   @hasMany('selfAssessment') selfAssessments?: SelfAssessment[];
   @belongsTo('user') winner?: User;
+
+
+  // Getter and setter
+  @alias('question.label') displayLabel!: string;
 }

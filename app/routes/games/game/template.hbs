@@ -26,8 +26,9 @@
       @style="primary"
     />
   {{/if}}
+  <br><br>
   <strong>Players:</strong><br>
-  {{#each @model.players as |player|}}
-    <Ui::Avatar @user={{player}} />
+  {{#each @model.users as |user|}}
+    <Ui::Avatar @user={{user}} />
   {{/each}}
 </div>

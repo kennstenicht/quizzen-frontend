@@ -20,7 +20,7 @@ export default class GameModel extends Model {
   // Relations
   @belongsTo('user') quizMaster?: User;
   @belongsTo('quiz') quiz?: Quiz;
-  @hasMany('user') players?: User[];
+  @hasMany('user') users?: User[];
   @hasMany('gameQuestion') gameQuestions?: User[];
   @hasMany('team') teams?: Team[];
 

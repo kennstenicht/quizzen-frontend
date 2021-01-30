@@ -16,8 +16,15 @@ forms:
 
   game:
     fields:
-      title: Spielname
+      active: Aktives Spiel
+      gameQuestions: Gespiele Fragen
+      joined: Teilnehmer
+      players: Mitspieler
       quiz: Quiz auswählen
+      quizMaster: Quiz Master
+      teams: Teams
+      title: Spielname
+      yourGame: Dein Spiel
     placeholder:
       title: Spielname eingeben
 

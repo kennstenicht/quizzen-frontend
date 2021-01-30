@@ -27,6 +27,7 @@ export default class GamesGameRoute extends Route {
     const games = await this.store.query('game', {
       filter: {
         quiz_master_eq: user_nickname,
+        active_eq: true
       }
     });
 
