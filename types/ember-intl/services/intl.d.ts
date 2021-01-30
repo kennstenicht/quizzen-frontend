@@ -4,6 +4,7 @@ declare module 'ember-intl/services/intl' {
   export default class Intl extends Service {
     readonly formats: unknown;
     readonly locales: string[];
+    readonly primaryLocale: string;
     locale: string[];
 
     formatRelative(date: Date, options: {}): string;
