@@ -1,0 +1,31 @@
+/* ==========================================================================
+   # ERROR
+   ========================================================================== */
+
+// Imports
+@import 'setup';
+
+
+// Block
+:scope {
+  block-name: c-error;
+  text-align: center;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+  .status {
+    @include font-size(120px);
+    color: $color-grey-dark;
+  }
+
+  .title {
+    margin-bottom: spacing();
+  }
+
+  .detail {
+    padding-bottom: spacing('large');
+  }

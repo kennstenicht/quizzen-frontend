@@ -1,0 +1,18 @@
+<Ui::Window>
+  <:body>
+    <div block:scope>
+      {{#each @model.errors as |error|}}
+        <div block:class="status">
+          {{error.status}}
+        </div>
+        <h1 block:class="title">
+          {{error.title}}
+        </h1>
+        <div block:class="detail">
+          {{error.detail}}
+        </div>
+      {{/each}}
+    </div>
+  </:body>
+</Ui::Window>
+{{log @model}}
