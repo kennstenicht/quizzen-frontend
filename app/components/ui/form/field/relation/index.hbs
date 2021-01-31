@@ -1,5 +1,5 @@
-  <div block:scope block:disabled={{@disabled}} ...attributes>
-<AnimatedContainer>
+<div block:scope block:disabled={{@disabled}} ...attributes>
+  <AnimatedContainer>
     <ol
       block:class="records"
       {{sortable-group onChange=this.reorderRecords groupName=this.groupName}}
@@ -18,26 +18,26 @@
         />
       {{/animated-each}}
     </ol>
-    </AnimatedContainer>
+  </AnimatedContainer>
 
-    {{#if this.isRecordAssignable}}
-      <div block:class="assign">
-        <Ui::Button
-          @icon="search"
-          @label="Suchen und hinzufügen"
-          @onClick={{fn this.openRecordList}}
-          block:class="search"
-        />
+  {{#if this.isRecordAssignable}}
+    <div block:class="assign">
+      <Ui::Button
+        @icon="search"
+        @label="Suchen und hinzufügen"
+        @onClick={{fn this.openRecordList}}
+        block:class="search"
+      />
 
-        <Ui::Button
-          @icon="add"
-          @label="Neu"
-          @onClick={{fn this.openNewRecord}}
-          block:class="add"
-        />
-      </div>
-    {{/if}}
-  </div>
+      <Ui::Button
+        @icon="add"
+        @label="Neu"
+        @onClick={{fn this.openNewRecord}}
+        block:class="add"
+      />
+    </div>
+  {{/if}}
+</div>
 
 
 {{#if this.isRecordListOpen}}
