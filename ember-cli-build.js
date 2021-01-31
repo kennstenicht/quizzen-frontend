@@ -14,7 +14,7 @@ const sassOptions = {
 const scss = adaptor(sass, eyeglass, sassOptions);
 const scssSync = adaptorSync(sass, eyeglass, sassOptions);
 
-module.exports = function(defaults) {
+module.exports = function (defaults) {
   let app = new EmberApp(defaults, {
     'css-blocks': {
       aliases: {
