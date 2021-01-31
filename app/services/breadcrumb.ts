@@ -8,6 +8,7 @@ import { Changeset } from 'ember-changeset';
 import lookupValidator from 'ember-changeset-validations';
 import { BufferedChangeset } from 'ember-changeset/types';
 import { TrackedArray } from 'tracked-built-ins';
+import Confirm from 'quizzen/services/confirm';
 import AnswerValidations from 'quizzen/validations/answer';
 import CategoryValidations from 'quizzen/validations/category';
 import GameValidations from 'quizzen/validations/game';
@@ -22,23 +23,32 @@ let validations = {
   quiz: QuizValidations
 }
 
-class BreadcrumbItem {
+export class BreadcrumbItem {
   // Defaults
   changesets: TrackedArray<BufferedChangeset> = new TrackedArray([]);
   model?: Model;
   routeName: string;
-
+  modelName: string;
 
   // Hooks
   constructor(routeName: string, model?: Model) {
     this.routeName = routeName;
     this.model = model?.isNew ? undefined : model;
+    // @ts-ignore
+    this.modelName = model?.constructor.modelName;
   }
 
 
   // Getter and setter
   get changes() {
-    return this.changesets.reduce((a, b) => a + (b.changes.length || 0), 0);
+    return this.changesets.reduce((a, b) => {
+      let changes = b.changes.map((change) => {
+        change.original = b.data[change.key];
+        return change;
+      })
+
+      return a.concat(changes)
+    }, []);
   }
 
   get hasDirtyChangeset() {
@@ -84,13 +94,19 @@ class BreadcrumbItem {
 export default class BreadcrumbService extends Service {
   // Services
   @service router!: Router;
+  @service confirm!: Confirm;
 
 
   // Defaults
   items: TrackedArray<BreadcrumbItem> = new TrackedArray([])
+  isTransitionRetry: boolean = false;
 
 
   // Getter and setter
+  get firstItem() {
+    return this.items.get(0);
+  }
+
   get currentItem() {
     return this.items.get('lastObject');
   }
@@ -102,9 +118,7 @@ export default class BreadcrumbService extends Service {
 
   // Functions
   clear(transition: Transition) {
-    this.items.reverse().forEach((item) => {
-      this.rollback(item, transition);
-    });
+    this.rollback(this.items, transition);
   }
 
   findItem(routeName: string, model: Model) {
@@ -135,21 +149,41 @@ export default class BreadcrumbService extends Service {
     return item;
   }
 
-  rollback(item: BreadcrumbItem, transition: Transition) {
-    if (item.hasDirtyChangeset && !confirm("Discard changes?")) {
-      transition.abort();
-    } else {
+  // Rollback new records to destroy unsaved records
+  async rollback(items: BreadcrumbItem[], transition: Transition) {
+    if (this.isTransitionRetry) {
+      this.isTransitionRetry = false;
+      return transition;
+    }
+
+    transition.abort();
+
+    for (let item of items.reverse()) {
+      if (item.hasDirtyChangeset) {
+        let confirmed = await this.confirm.ask({
+          title: 'Discard changes',
+          message: `${item.name} hat ungespeicherte Informationen, möchtest du ohne speichern fortfahren?`,
+          changes: item.changes
+        });
+
+        if (!confirmed) {
+          return true;
+        }
+      }
+
       this.items.pop();
     }
+
+    this.isTransitionRetry = true;
+    return transition.retry();
+
   }
 
   rollbackTo(item: BreadcrumbItem, transition: Transition) {
     let index = this.items.indexOf(item);
     let itemsToRemove = this.items.slice(index + 1);
 
-    itemsToRemove.reverse().forEach((item) => {
-      this.rollback(item, transition);
-    });
+    this.rollback(itemsToRemove, transition);
   }
 
   // TODO: Refactor

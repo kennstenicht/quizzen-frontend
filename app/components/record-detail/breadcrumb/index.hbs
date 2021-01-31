@@ -1,0 +1,54 @@
+<ol block:scope ...attributes>
+  {{#if this.breadcrumb.firstItem}}
+    <li
+      block:class="item"
+      {{on "mouseover" (fn this.setHoverIndex item)}}
+      {{on "mouseout" this.removeHoverIndex}}
+    >
+      <LinkTo @route={{this.indexRoute}}>
+        <div block:class="name">
+          {{t (concat "models.plurals." this.indexModelName)}}
+        </div>
+      </LinkTo>
+    </li>
+  {{/if}}
+  {{this.indexOfHoveredItem}}
+  {{#each this.breadcrumb.items as |item index|}}
+    <li
+      block:class="item"
+      block:is-to-rollback={{gt index this.hoverIndex}}
+      {{on "mouseover" (fn this.setHoverIndex item)}}
+      {{on "mouseout" this.removeHoverIndex}}
+    >
+      <LinkTo @route={{item.routeName}} @model={{item.model}}>
+        <div block:class="name">
+          {{item.name}}
+        </div>
+      </LinkTo>
+      {{#if item.changes}}
+        <div block:class="changes">
+          {{log item.changes}}
+          {{item.changes.length}}
+        </div>
+      {{/if}}
+    </li>
+  {{/each}}
+</ol>
+
+{{#if this.confirm.showPrompt}}
+  <Ui::Modal @onClose={{this.confirm.cancel}}>
+    {{this.confirm.message}}<br>
+    {{#each this.confirm.changes as |change|}}
+      {{change.key}} {{change.original}} => {{change.value}}<br>
+    {{/each}}
+    <Ui::Button
+      @label="ok"
+      @onClick={{this.confirm.confirm}}
+    />
+
+    <Ui::Button
+      @label="cancel"
+      @onClick={{this.confirm.cancel}}
+    />
+  </Ui::Modal>
+{{/if}}

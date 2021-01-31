@@ -17,7 +17,7 @@
   background-size: 65% auto;
   background-repeat: no-repeat;
   grid-template-columns: 1fr min-content;
-  grid-template-rows: spacing('base+small') auto;
+  grid-template-rows: spacing('base+small') calc(100% - #{spacing('large')});
   grid-template-areas: 'logo header'
                        'navigation content';
   row-gap: spacing('small');
@@ -46,7 +46,6 @@
   }
 
   .content {
-    padding: spacing('base+small');
     border-radius: spacing('small+tiny');
     background-color: $color-grey-light;
     transition: width $transition-slow;
@@ -54,7 +53,7 @@
   }
 
   :scope[size=base] .content {
-    width: calc(100vw - 350px);
+    width: calc(100vw - #{$navigation-width});
   }
 
   :scope[size=small] .content {

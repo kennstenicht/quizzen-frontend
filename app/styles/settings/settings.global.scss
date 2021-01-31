@@ -73,8 +73,8 @@ $color-grey-dark:       #dddddd;
 $color-grey-darker:     #a0a0a0;
 
 // State colors
-$color-error:           #da6848;
-$color-warning:         #d4a958;
+$color-error:           #da3535;
+$color-warning:         #e75a5a;
 $color-success:         #33b96f;
 $color-info:            #ffffe8;
 
@@ -114,5 +114,4 @@ $transition-slow:        0.6s ease-in-out;
 /* Objects
 ========================================================================== */
 // Object Wrapper
-$wrapper-width-small:    1100px;
-$wrapper-width:          1700px;
+$navigation-width:      350px;

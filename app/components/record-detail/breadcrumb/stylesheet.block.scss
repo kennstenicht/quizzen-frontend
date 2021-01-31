@@ -1,0 +1,52 @@
+/* ==========================================================================
+   # RECORD DETAIL BREADCRUMB
+   ========================================================================== */
+
+// Imports
+@import 'setup';
+
+
+// Block
+:scope {
+  block-name: c-record-detail-breadcrumb;
+  margin: 0;
+  list-style: none;
+  overflow-x: auto;
+}
+
+  .item {
+    display: inline-flex;
+    transition: opacity $transition-base;
+    align-items: center;
+
+    &::before {
+      margin-right: spacing('tiny');
+      content: '»';
+    }
+  }
+
+  .item[is-to-rollback] {
+    opacity: 0.3;
+
+    &::before {
+      content: '«';
+    }
+  }
+
+    .name {
+      position: relative;
+      overflow: hidden;
+      max-width: 250px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .changes {
+      margin-left: spacing('tiny');
+      width: spacing('base');
+      height: spacing('base');
+      border-radius: 50%;
+      background-color: $color-warning;
+      color: $color-white;
+      text-align: center;
+    }
