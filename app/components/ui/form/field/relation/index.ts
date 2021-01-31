@@ -9,7 +9,13 @@ import { BufferedChangeset } from 'ember-changeset/types';
 import Model from '@ember-data/model';
 import { pluralize } from 'ember-inflector';
 import Breadcrumb from 'quizzen/services/breadcrumb';
+// @ts-ignore
+import move from 'ember-animated/motions/move';
+// @ts-ignore
+import { fadeOut } from 'ember-animated/motions/opacity';
 
+
+import TransitionContext from 'ember-animated/-private/transition-context';
 interface Args {
   records: any[],
   property: string,
@@ -129,5 +135,19 @@ export default class UiFormFieldRelationComponent extends Component<Args> {
     let property = this.args.property;
 
     changeset.set(property, orderedRecords);
+  }
+
+
+  // Functions
+  transition = function*({ keptSprites, removedSprites }: TransitionContext) {
+    for (let sprite of keptSprites) {
+      sprite.applyStyles({ 'z-index': '2' });
+      move(sprite);
+    }
+
+    for (let sprite of removedSprites) {
+      sprite.applyStyles({ 'z-index': '1' });
+      fadeOut(sprite);
+    }
   }
 }

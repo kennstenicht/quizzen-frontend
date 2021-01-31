@@ -1,37 +1,44 @@
-<div block:scope block:disabled={{@disabled}} ...attributes>
-  <ol
-    block:class="records"
-    {{sortable-group onChange=this.reorderRecords groupName=this.groupName}}
-  >
-    {{#each this.records as |record|}}
-      <Ui::Form::Field::Relation::Record
-        @record={{record}}
-        @openRecord={{fn this.openRecord}}
-        @removeRecord={{fn this.removeRecord}}
-        @sortable={{this.isHasManyRelation}}
-        @groupName={{this.groupName}}
-      />
-    {{/each}}
-  </ol>
+  <div block:scope block:disabled={{@disabled}} ...attributes>
+<AnimatedContainer>
+    <ol
+      block:class="records"
+      {{sortable-group onChange=this.reorderRecords groupName=this.groupName}}
+    >
+      {{#animated-each this.records
+        use=this.transition
+        duration=300
+        as |record|
+      }}
+        <Ui::Form::Field::Relation::Record
+          @record={{record}}
+          @openRecord={{fn this.openRecord}}
+          @removeRecord={{fn this.removeRecord}}
+          @sortable={{this.isHasManyRelation}}
+          @groupName={{this.groupName}}
+        />
+      {{/animated-each}}
+    </ol>
+    </AnimatedContainer>
 
-  {{#if this.isRecordAssignable}}
-    <div block:class="assign">
-      <Ui::Button
-        @icon="search"
-        @label="Suchen und hinzufügen"
-        @onClick={{fn this.openRecordList}}
-        block:class="search"
-      />
+    {{#if this.isRecordAssignable}}
+      <div block:class="assign">
+        <Ui::Button
+          @icon="search"
+          @label="Suchen und hinzufügen"
+          @onClick={{fn this.openRecordList}}
+          block:class="search"
+        />
 
-      <Ui::Button
-        @icon="add"
-        @label="Neu"
-        @onClick={{fn this.openNewRecord}}
-        block:class="add"
-      />
-    </div>
-  {{/if}}
-</div>
+        <Ui::Button
+          @icon="add"
+          @label="Neu"
+          @onClick={{fn this.openNewRecord}}
+          block:class="add"
+        />
+      </div>
+    {{/if}}
+  </div>
+
 
 {{#if this.isRecordListOpen}}
   <Ui::Modal @onClose={{this.closeRecordList}}>
