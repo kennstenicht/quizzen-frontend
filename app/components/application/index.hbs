@@ -1,6 +1,7 @@
 <div
   block:scope
   block:size={{this.size}}
+  block:has-breadcrumb={{this.breadcrumb.hasItems}}
   ...attributes
 >
   {{#if this.isDevelopment}}
@@ -33,6 +34,8 @@
     </div>
   </div>
 
+  <div block:class="breadcrumb">
+    <Application::Breadcrumb />
 
   <Application::Confirm />
 

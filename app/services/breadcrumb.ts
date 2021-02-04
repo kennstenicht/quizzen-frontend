@@ -7,7 +7,8 @@ import { pluralize } from 'ember-inflector';
 import { Changeset } from 'ember-changeset';
 import lookupValidator from 'ember-changeset-validations';
 import { BufferedChangeset } from 'ember-changeset/types';
-import { TrackedArray } from 'tracked-built-ins';
+// @ts-ignore
+import { TrackedArray, tracked } from 'tracked-built-ins';
 import Confirm from 'quizzen/services/confirm';
 import AnswerValidations from 'quizzen/validations/answer';
 import CategoryValidations from 'quizzen/validations/category';
@@ -30,6 +31,7 @@ export class BreadcrumbItem {
   routeName: string;
   modelName: string;
 
+
   // Hooks
   constructor(routeName: string, model?: Model) {
     this.routeName = routeName;
@@ -42,13 +44,8 @@ export class BreadcrumbItem {
   // Getter and setter
   get changes() {
     return this.changesets.reduce((a, b) => {
-      let changes = b.changes.map((change) => {
-        change.original = b.data[change.key];
-        return change;
-      })
-
-      return a.concat(changes)
-    }, []);
+      return a + b.changes.length
+    }, 0);
   }
 
   get hasDirtyChangeset() {
@@ -98,21 +95,25 @@ export default class BreadcrumbService extends Service {
 
 
   // Defaults
-  items: TrackedArray<BreadcrumbItem> = new TrackedArray([])
+  items: TrackedArray<BreadcrumbItem> = new TrackedArray([]);
   isTransitionRetry: boolean = false;
 
 
   // Getter and setter
-  get firstItem() {
-    return this.items.get(0);
+  get currentItem() {
+    return this.items.lastObject;
   }
 
-  get currentItem() {
-    return this.items.get('lastObject');
+  get firstItem() {
+    return this.items[0];
+  }
+
+  get hasItems() {
+    return this.items.length > 0;
   }
 
   get prevItem() {
-    return this.items.get(this.items.length - 2);
+    return this.items[this.items.length - 2];
   }
 
 
@@ -158,7 +159,9 @@ export default class BreadcrumbService extends Service {
 
     transition.abort();
 
-    for (let item of items.reverse()) {
+    for(let i = items.length - 1; i >= 0; i--) {
+      let item = items[i];
+
       if (item.hasDirtyChangeset) {
         let confirmed = await this.confirm.ask('rollback', item);
 

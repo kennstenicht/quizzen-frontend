@@ -10,19 +10,19 @@
 :scope {
   block-name: c-application;
   display: grid;
-  padding: spacing('base');
+  padding: spacing('small');
   height: 100vh;
   background-image: url('/undraw_best_place_r685.svg');
   background-position: left -20% bottom -1%;
   background-size: 65% auto;
   background-repeat: no-repeat;
   grid-template-columns: 1fr min-content;
-  grid-template-rows: spacing('base+small') calc(100% - #{spacing('large')});
+  grid-template-rows: spacing('base+small') calc(100% - #{spacing('huge')}) spacing('base+small');
   grid-template-areas: 'logo header'
-                       'navigation content';
+                       'navigation content'
+                       'navigation breadcrumb';
   row-gap: spacing('small');
 }
-
   .notifications {
     position: fixed;
     top: spacing('base');
@@ -36,8 +36,8 @@
 
   .headline {
     z-index: 1;
-    grid-area: navigation;
     overflow-y: hidden;
+    grid-area: navigation;
   }
 
   .navigation {
@@ -45,15 +45,26 @@
     grid-area: navigation;
   }
 
+  :scope[has-breadcrumb] .breadcrumb {
+    z-index: 2;
+    width: calc(100vw - #{$navigation-width});
+    border-radius: spacing('small+tiny');
+    background-color: $color-grey-light;
+    grid-area: breadcrumb;
+  }
+
   .content {
     border-radius: spacing('small+tiny');
     background-color: $color-grey-light;
-    transition: width $transition-slow;
+    transition: width $transition-slow, height $transition-slow;
+    grid-area: content / content / breadcrumb / breadcrumb;
+  }
 
     .modal {
       position: relative;
     }
 
+  :scope[has-breadcrumb] .content {
     grid-area: content;
   }
 

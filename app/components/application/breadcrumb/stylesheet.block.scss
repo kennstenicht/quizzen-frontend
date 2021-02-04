@@ -1,5 +1,5 @@
 /* ==========================================================================
-   # RECORD DETAIL BREADCRUMB
+   # APPLICATION BREADCRUMB
    ========================================================================== */
 
 // Imports
@@ -8,20 +8,27 @@
 
 // Block
 :scope {
-  block-name: c-record-detail-breadcrumb;
+  block-name: c-application-breadcrumb;
   margin: 0;
   list-style: none;
   overflow-x: auto;
+  padding: spacing('tiny') spacing();
+  display: flex;
+  width: 100%;
 }
 
   .item {
     display: inline-flex;
-    transition: opacity $transition-base;
     align-items: center;
+    margin-right: spacing('small');
 
     &::before {
-      margin-right: spacing('tiny');
+      margin-right: spacing('small');
       content: '»';
+    }
+
+    &:first-child::before {
+      display: none;
     }
   }
 

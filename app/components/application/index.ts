@@ -7,6 +7,7 @@ import FlashMessages from 'ember-cli-flash/services/flash-messages';
 import Fastboot from 'ember-cli-fastboot/services/fastboot';
 import Session from 'ember-simple-auth/services/session';
 import ENV from 'quizzen/config/environment';
+import Breadcrumb from 'quizzen/services/breadcrumb';
 
 interface RouteSizeMap {
   [key: string]: string;
@@ -14,6 +15,7 @@ interface RouteSizeMap {
 
 export default class ApplicationComponent extends Component {
   // Services
+  @service breadcrumb!: Breadcrumb;
   @service fastboot!: Fastboot;
   @service flashMessages!: FlashMessages;
   @service router!: Router;

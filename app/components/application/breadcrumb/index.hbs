@@ -1,0 +1,39 @@
+{{#if this.breadcrumb.hasItems}}
+  <ol block:scope ...attributes>
+    <li
+      block:class="item"
+      {{on "mouseover" (fn this.setHoverIndex -1)}}
+      {{on "mouseout" this.removeHoverIndex}}
+    >
+      <LinkTo @route={{this.indexRoute}}>
+        <div block:class="name">
+          {{t (concat "models.plurals." this.indexModelName)}}
+        </div>
+      </LinkTo>
+    </li>
+    {{#animated-each this.breadcrumb.items
+      use=this.transition
+      duration=300
+      as |item index|
+    }}
+      <li
+        block:class="item"
+        block:is-to-rollback={{gt index this.hoverIndex}}
+        {{on "mouseover" (fn this.setHoverIndex index)}}
+        {{on "mouseout" this.removeHoverIndex}}
+      >
+        <LinkTo @route={{item.routeName}} @model={{item.model}}>
+          <div block:class="name">
+            {{item.name}}
+          </div>
+        </LinkTo>
+        {{#if item.changes}}
+          <div block:class="changes">
+            {{item.changes}}
+          </div>
+        {{/if}}
+      </li>
+    {{/animated-each}}
+  </ol>
+{{/if}}
+
