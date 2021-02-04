@@ -63,6 +63,19 @@
 }
 
 
+// Danger
+:scope[style=danger] {
+  padding: spacing('tiny') spacing('base');
+  border-radius: spacing('small+tiny');
+  background-color: $color-error;
+  color: $color-white;
+
+  @include attention() {
+    background-color: $color-error-dark;
+  }
+}
+
+
 // Inline
 :scope[style=inline] {
   padding: 0 spacing('tiny');
