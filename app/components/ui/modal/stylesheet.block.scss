@@ -9,70 +9,46 @@
 // Block
 :scope {
   block-name: c-modal;
-  position: fixed;
-  top: 0;
+  position: absolute;
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 2039;
+  z-index: 30;
+  display: flex;
+  align-items: flex-end;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  transition-delay: 0.1s;
+  pointer-events: none;
+}
+
+:scope[is-open] {
+  opacity: 1;
+  transition-delay: 0s;
+  pointer-events: initial;
 }
 
   .overlay {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100vw;
-    height: 100vh;
-    background: rgba($color-black, 0.4);
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    background: rgba($color-black, 0.5);
   }
 
   .container {
-    position: absolute;
-    bottom: spacing('large');
-    right: spacing('large');
-    overflow: auto;
-    max-width: 850px;
-    max-height: 95%;
-    width: 95%;
-    border-radius: spacing('small');
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+    min-height: spacing('base+small');
+    width: 100%;
+    border-radius: spacing('small+tiny');
     background-color: $color-white;
   }
 
-  .close {
-    position: absolute;
-    top: spacing('small+tiny');
-    right: spacing('small+tiny');
-  }
-
   .content {
-    padding: spacing('large+small') spacing('base') spacing('base');
+    position: relative;
+    max-height: calc(100vh - 200px);
   }
-
-
-
-
-
-/* Media queries
-========================================================================== */
-
-// @include mq($until: tablet) {
-//   .container {
-//     top: 42%;
-//     max-height: 82%;
-//   }
-
-//   .content {
-//     padding: spacing();
-//   }
-// }
-
-// @include mq($from: tablet) {
-//   .container {
-//     top: 50%;
-//     max-height: 95%;
-//   }
-
-//   .content {
-//     padding: spacing('large');
-//   }
-// }

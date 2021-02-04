@@ -40,15 +40,13 @@
 </div>
 
 
-{{#if this.isRecordListOpen}}
-  <Ui::Modal @onClose={{this.closeRecordList}}>
-    <Ui::Form::Field::Relation::Assign
-      @multiple={{this.isHasManyRelation}}
-      @modelName={{this.relationType}}
-      @assigned={{this.records}}
-      @onAssign={{this.assignRecords}}
-      @onClose={{this.closeRecordList}}
-      @disabledRecords={{this.records}}
-    />
-  </Ui::Modal>
-{{/if}}
+<Ui::Modal @onClose={{this.closeRecordList}} @isOpen={{this.isRecordListOpen}}>
+  <Ui::Form::Field::Relation::Assign
+    @multiple={{this.isHasManyRelation}}
+    @modelName={{this.relationType}}
+    @assigned={{this.records}}
+    @onAssign={{this.assignRecords}}
+    @onClose={{this.closeRecordList}}
+    @disabledRecords={{this.records}}
+  />
+</Ui::Modal>

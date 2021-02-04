@@ -1,20 +1,21 @@
-<ModalDialog
-  @clickOutsideToClose={{true}}
-  @overlayPosition="sibling"
-  @containerClass={{style-of block:class="container"}}
-  @onClose={{@onClose}}
-  @overlayClass={{style-of block:class="overlay"}}
-  @wrapperClassNames={{style-of block:scope}}
->
-  <Ui::Button
-    @label="Close"
-    @icon="cancel"
-    @onClick={{@onClose}}
-    @style="inline"
-    block:class="close"
-  />
-  <div block:class="content">
-    {{yield}}
+{{#in-element
+  (query-selector "[data-in-element=application-modal]")
+  insertBefore=null
+}}
+  <div block:scope block:is-open={{@isOpen}} ...attributes>
+    <div block:class="overlay" {{on "click" @onClose}}></div>
+    <div block:class="container">
+      <AnimatedContainer>
+        {{#animated-if @isOpen
+          use=this.slideFromBottom
+          duration=400
+          initialInsertion=true
+        }}
+          <div block:class="content">
+            {{yield}}
+          </div>
+        {{/animated-if}}
+      </AnimatedContainer>
+    </div>
   </div>
-</ModalDialog>
-
+{{/in-element}}

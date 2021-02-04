@@ -27,6 +27,10 @@
 
   <div block:class="content">
     {{yield}}
+
+    <div block:class="modal" data-in-element="application-modal">
+      {{!-- Placeholder for modals --}}
+    </div>
   </div>
 
   <Application::CookieNotice

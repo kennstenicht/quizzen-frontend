@@ -49,6 +49,11 @@
     border-radius: spacing('small+tiny');
     background-color: $color-grey-light;
     transition: width $transition-slow;
+
+    .modal {
+      position: relative;
+    }
+
     grid-area: content;
   }
 
