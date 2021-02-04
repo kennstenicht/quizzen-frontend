@@ -29,19 +29,6 @@ export default class RecordDetailComponent extends Component<Args> {
   @tracked changeset?: BufferedChangeset;
 
 
-  // Hooks
-  constructor(owner: unknown, args: Args) {
-    super(owner, args);
-
-    let routeName = this.router.currentRoute.name;
-    // @ts-ignore
-    let model = this.router.currentRoute.attributes;
-    let route = this.breadcrumb.getItem(routeName, model);
-
-    this.changeset = route.getChangeset(this.args.model);
-  }
-
-
   // Getter and setter
   get modelName(): string {
     // @ts-ignore
@@ -50,16 +37,6 @@ export default class RecordDetailComponent extends Component<Args> {
 
 
   // Actions
-  @action
-  registerChangeset() {
-    let routeName = this.router.currentRoute.name;
-    // @ts-ignore
-    let model = this.router.currentRoute.attributes;
-    let route = this.breadcrumb.getItem(routeName, model);
-
-    this.changeset = route.getChangeset(this.args.model);
-  }
-
   @action
   async deleteRecord() {
     try {
@@ -78,6 +55,16 @@ export default class RecordDetailComponent extends Component<Args> {
     } catch(error) {
       this.flashMessages.warning(error);
     }
+  }
+
+  @action
+  loadChangeset() {
+    let routeName = this.router.currentRoute.name;
+    // @ts-ignore
+    let model = this.router.currentRoute.attributes;
+    let route = this.breadcrumb.getItem(routeName, model);
+
+    this.changeset = route.getChangeset(this.args.model);
   }
 
   @action

@@ -1,4 +1,4 @@
-<Ui::Window ...attributes>
+<Ui::Window {{did-insert this.loadChangeset}} ...attributes>
   <:title>
     {{#if this.changeset.isNew}}
       {{t "recordDetail.new" modelName=(t (concat "models." this.modelName))}}
@@ -32,19 +32,20 @@
   </:toolbar>
 
   <:body>
-    <Ui::Form
-      @changeset={{this.changeset}}
-      @onInit={{this.registerChangeset}}
-      {{on "submit" (fn this.saveRecord this.changeset)}}
-      {{on "reset" (fn this.rollbackRecord this.changeset)}}
-      id={{this.changeset.id}}
-      as |form|
-    >
-      {{component
-        (concat "record-detail/for/" this.modelName)
-        form=form
-      }}
-    </Ui::Form>
+    {{#if this.changeset}}
+      <Ui::Form
+        @changeset={{this.changeset}}
+        {{on "submit" (fn this.saveRecord this.changeset)}}
+        {{on "reset" (fn this.rollbackRecord this.changeset)}}
+        id={{this.changeset.id}}
+        as |form|
+      >
+        {{component
+          (concat "record-detail/for/" this.modelName)
+          form=form
+        }}
+      </Ui::Form>
+    {{/if}}
   </:body>
 
   <:bottombar>
