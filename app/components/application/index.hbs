@@ -5,7 +5,7 @@
   ...attributes
 >
   {{#if this.isDevelopment}}
-    <AnimatedTools />
+    <AnimatedTools @hideUntilKeys="Shift-KeyD" />
   {{/if}}
 
   <div block:class="notifications">
@@ -15,11 +15,11 @@
   </div>
 
   <div block:class="headline" data-in-element="application-headline">
-    {{!-- Placeholder for in-element content --}}
+    {{!-- Placeholder for application headline --}}
   </div>
 
   <div block:class="navigation" data-in-element="application-navigation">
-    {{!-- Placeholder for in-element content --}}
+    {{!-- Placeholder for application navigation --}}
   </div>
 
   <div block:class="header">
@@ -36,6 +36,7 @@
 
   <div block:class="breadcrumb">
     <Application::Breadcrumb />
+  </div>
 
   <Application::Confirm />
 
