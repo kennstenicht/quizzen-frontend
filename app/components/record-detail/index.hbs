@@ -36,7 +36,7 @@
       <Ui::Form
         @changeset={{this.changeset}}
         {{on "submit" (fn this.saveRecord this.changeset)}}
-        {{on "reset" (fn this.rollbackRecord this.changeset)}}
+        {{on "reset" this.rollbackRecord}}
         id={{this.changeset.id}}
         as |form|
       >

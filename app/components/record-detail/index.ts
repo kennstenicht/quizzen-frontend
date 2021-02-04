@@ -68,12 +68,8 @@ export default class RecordDetailComponent extends Component<Args> {
   }
 
   @action
-  rollbackRecord(changeset: BufferedChangeset, event: Event) {
+  rollbackRecord(event: Event) {
     event.preventDefault();
-
-    changeset.rollback();
-    // Rollback model to destroy new record
-    this.args.model.rollbackAttributes();
 
     this.breadcrumb.transitionTo(this.breadcrumb.prevItem, this.modelName);
   }
