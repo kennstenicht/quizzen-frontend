@@ -29,8 +29,8 @@
     "@glimmer/tracking": "^1.0.3",
     "@rails/actioncable": "^6.1.0",
     "@types/actioncable": "^5.2.3",
-    "@types/ember": "^3.16.2",
-    "@types/ember-data": "^3.16.8",
+    "@types/ember": "^3.16.3",
+    "@types/ember-data": "^3.16.9",
     "@types/ember-data__adapter": "^3.16.1",
     "@types/ember-data__model": "^3.16.2",
     "@types/ember-data__serializer": "^3.16.1",
@@ -66,7 +66,7 @@
     "ember-cli-sri": "^2.1.1",
     "ember-cli-terser": "^4.0.1",
     "ember-cli-test-loader": "^2.2.0",
-    "ember-cli-typescript": "^4.0.0",
+    "ember-cli-typescript": "^4.1.0",
     "ember-cli-typescript-blueprints": "^3.0.0",
     "ember-data": "^3.25.0-beta.0",
     "ember-export-application-global": "^2.0.1",
@@ -118,7 +118,8 @@
     "crypto"
   ],
   "resolutions": {
-    "ember-simple-auth": "^3.1.0-beta.1"
+    "ember-simple-auth": "^3.1.0-beta.1",
+    "@types/ember-resolver": "5.0.10"
   },
   "private": true
 }
