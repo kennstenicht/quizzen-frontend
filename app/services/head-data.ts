@@ -4,7 +4,6 @@ import { inject as service } from '@ember/service';
 import { getOwner } from '@ember/application';
 import Intl from 'ember-intl/services/intl';
 import Router from '@ember/routing/router-service';
-import Route from '@ember/routing/route';
 
 interface JsonObject {
   [key: string]: any
@@ -59,7 +58,7 @@ export default class HeadDataService extends Service {
   }
 
   get translationMetaTags() {
-    let metaTags: MetaTags = {};
+    let metaTags: JsonObject = {};
 
     ['title', 'description'].forEach((key) => {
       const translation = this._getTranslation(key);
