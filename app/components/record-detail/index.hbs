@@ -49,6 +49,12 @@
   </:body>
 
   <:bottombar>
-    <RecordDetail::Breadcrumb />
+    <div block:class="meta">
+      {{t "recordDetail.updatedAt"}}
+      {{format-date this.changeset.updatedAt}}
+      /
+      {{t "recordDetail.createdAt"}}
+      {{format-date this.changeset.createdAt}}
+    </div>
   </:bottombar>
 </Ui::Window>

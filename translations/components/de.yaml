@@ -15,6 +15,8 @@ recordDetail:
   deleteRecord: '{title} wurde gespeichert'
   new: '{modelName} hinzufügen'
   saveRecord: '{title} wurde gelöscht'
+  createdAt: 'Erstellt am:'
+  updatedAt: 'Zuletzt aktualisiert: '
 
 # Navigation
 navigation:

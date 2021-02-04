@@ -1,0 +1,18 @@
+/* ==========================================================================
+   # RECORD DETAIL
+   ========================================================================== */
+
+// Imports
+@import 'setup';
+
+
+// Block
+:scope {
+  block-name: c-record-detail;
+}
+
+  .meta {
+    color: $color-grey-darker;
+
+    @include font-size($font-size-small);
+  }
