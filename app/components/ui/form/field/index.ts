@@ -65,6 +65,10 @@ export default class UiFormFieldComponent extends Component<Args> {
     return this.args.type || 'text';
   }
 
+  get isDirty() {
+    return this.args.changeset.changes.findBy('key', this.args.property);
+  }
+
 
   // Actions
   @action
@@ -81,8 +85,12 @@ export default class UiFormFieldComponent extends Component<Args> {
     event: Event
   ) {
     const target = event.target as HTMLInputElement;
-    console.log(target.checked);
 
     this.args.changeset.set(this.args.property, target.checked);
+  }
+
+  @action
+  rollbackProperty() {
+    this.args.changeset.rollbackProperty(this.args.property);
   }
 }

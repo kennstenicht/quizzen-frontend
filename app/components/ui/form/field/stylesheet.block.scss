@@ -9,14 +9,24 @@
 // Block
 :scope {
   block-name: c-form-field;
+  position: relative;
   margin-bottom: spacing('base');
 }
+
   .label {
+    display: flex;
+    justify-content: space-between;
     margin-bottom: spacing('tiny');
   }
 
+  .rollback {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
   .errors {
-    color: red;
+    color: $color-error;
     margin-top: spacing('tiny');
   }
 

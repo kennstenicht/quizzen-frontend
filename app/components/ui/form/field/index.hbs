@@ -8,6 +8,16 @@
     </label>
   {{/if}}
 
+  {{#if this.isDirty}}
+    <Ui::Button
+      @icon="restore"
+      @style="inline"
+      @onClick={{this.rollbackProperty}}
+      block:class="rollback"
+    />
+  {{/if}}
+
+
   {{#if this.isRelation}}
     <Ui::Form::Field::Relation
       @property={{@property}}
