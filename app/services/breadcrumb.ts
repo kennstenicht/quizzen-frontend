@@ -160,11 +160,7 @@ export default class BreadcrumbService extends Service {
 
     for (let item of items.reverse()) {
       if (item.hasDirtyChangeset) {
-        let confirmed = await this.confirm.ask({
-          title: 'Discard changes',
-          message: `${item.name} hat ungespeicherte Informationen, möchtest du ohne speichern fortfahren?`,
-          changes: item.changes
-        });
+        let confirmed = await this.confirm.ask('rollback', item);
 
         if (!confirmed) {
           return true;

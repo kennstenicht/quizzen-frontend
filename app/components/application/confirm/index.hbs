@@ -1,0 +1,10 @@
+<Ui::Modal
+  @isOpen={{this.confirm.showPrompt}}
+  @onClose={{this.confirm.cancel}}
+>
+  {{component
+    (concat "application/confirm/" this.confirm.componentName)
+    confirm=this.confirm
+  }}
+</Ui::Modal>
+

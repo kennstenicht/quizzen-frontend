@@ -1,4 +1,12 @@
 application:
+  # Confirm
+  confirm:
+    rollback:
+      title: Ungespeicherte Änderungen
+      message: '"{title}" hat ungespeicherte Änderungen. Bist du dir sicher, dass du die Änderungen ohne zu speichern verwerfen möchtest?'
+      confirm: Verwerfen
+      cancel: Abbrechen
+
   # Cookie Notice
   cookieNotice:
     allowAllCookies: Alle Cookies zulassen

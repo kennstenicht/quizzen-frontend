@@ -1,0 +1,26 @@
+<div block:scope ...attributes>
+  <h2 block:class="title">{{t "application.confirm.rollback.title"}}</h2>
+  <div block:class="message">
+    {{t "application.confirm.rollback.message" title=@confirm.data.name}}
+  </div>
+
+  {{#each @confirm.data as |changeset|}}
+    {{#each changeset.changes as |change|}}
+      {{change.key}} {{get changeset.data change.key}} => {{change.value}}<br>
+    {{/each}}
+  {{/each}}
+
+  <Ui::Button
+    @label={{t "application.confirm.rollback.confirm"}}
+    @onClick={{@confirm.confirm}}
+    @icon="done_all"
+    @style="danger"
+  />
+
+  <Ui::Button
+    @label={{t "application.confirm.rollback.cancel"}}
+    @onClick={{@confirm.cancel}}
+    @icon="cancel"
+    @style="secondary"
+  />
+</div>
