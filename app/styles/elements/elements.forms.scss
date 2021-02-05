@@ -29,6 +29,7 @@ input:not([type=submit]):not([type=reset]):not([type=file]):not([type=checkbox])
   border-color: $color-grey-dark;
   background-color: $color-grey-light;
   border-radius: spacing('tiny');
+  transition: all $transition-base;
 
   &:focus {
     outline: none;
@@ -45,16 +46,19 @@ input:not([type=submit]):not([type=reset]):not([type=file]):not([type=checkbox])
    ========================================================================== */
 
 textarea {
-  padding: spacing('small');
+  padding: spacing('tiny') spacing('small');
   width: 100%;
   border-width: $border-width-small;
   border-style: solid;
   border-color: $color-grey-dark;
-  background-color: $color-white;
+  background-color: $color-grey-light;
+  border-radius: spacing('tiny');
+  transition: all $transition-base;
 
   &:focus {
     outline: none;
-    border-color: $color-grey-dark;
+    box-shadow: 0 0 0 1px $color-secondary;
+    border-color: $color-secondary;
   }
 }
 
