@@ -43,6 +43,7 @@
   border-radius: spacing('small+tiny');
   background-color: $color-primary;
   color: $color-white;
+  text-align: center;
 
   @include attention() {
     background-color: $color-primary-dark;
@@ -56,6 +57,7 @@
   border-radius: spacing('small+tiny');
   background-color: $color-secondary;
   color: $color-white;
+  text-align: center;
 
   @include attention() {
     background-color: $color-secondary-dark;
@@ -69,6 +71,7 @@
   border-radius: spacing('small+tiny');
   background-color: $color-error;
   color: $color-white;
+  text-align: center;
 
   @include attention() {
     background-color: $color-error-dark;

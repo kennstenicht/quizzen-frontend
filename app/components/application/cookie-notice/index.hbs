@@ -45,16 +45,21 @@
           {{t "application.cookieNotice.options.marketing"}}
         </label>
       </div>
-      <Ui::Button
-        @label={{t "application.cookieNotice.allowAllCookies"}}
-        @onClick={{this.allowAllCookies}}
-        @style="primary"
-      />
+
+      <div block:class="spacer"></div>
 
       <Ui::Button
         @label={{t "application.cookieNotice.allowSelectedCookies"}}
         @onClick={{this.allowSelectedCookies}}
         @style="primary"
+        block:class="button"
+      />
+
+      <Ui::Button
+        @label={{t "application.cookieNotice.allowAllCookies"}}
+        @onClick={{this.allowAllCookies}}
+        @style="primary"
+        block:class="button"
       />
     </div>
   </div>

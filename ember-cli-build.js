@@ -8,7 +8,7 @@ const path = require('path');
 
 const sassOptions = {
   outputStyle: "expanded",
-  includePaths: ['app/styles', 'node_modules'],
+  includePaths: ['app/styles', 'node_modules', 'node_modules/sass-mq'],
 };
 
 const scss = adaptor(sass, eyeglass, sassOptions);
