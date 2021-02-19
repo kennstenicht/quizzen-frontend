@@ -1,0 +1,22 @@
+/* ==========================================================================
+   # RECORD EXPLORER PAGINATION
+   ========================================================================== */
+
+// Imports
+@import 'setup';
+
+
+// Block
+:scope {
+  block-name: c-record-explorer-pagination;
+  display: flex;
+}
+
+  .more {
+    padding: 0 spacing('tiny');
+    min-width: spacing('base');
+    font-weight: bold;
+    text-align: center;
+
+    @include font-size($font-size-small);
+  }

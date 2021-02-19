@@ -2,13 +2,29 @@ import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
 import Store from '@ember-data/store';
 
+interface Params {
+  page: number
+}
+
 export default class ProfileCategoriesIndexRoute extends Route {
   // Services
   @service store!: Store;
 
 
+  // Defaults
+  queryParams = {
+    page: {
+      refreshModel: true
+    }
+  }
+
+
   // Hooks
-  model() {
-    return this.store.findAll('category');
+  model({ page }: Params) {
+    return this.store.query('category', {
+      page: {
+        number: page || 1
+      }
+    });
   }
 }

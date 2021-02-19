@@ -21,7 +21,7 @@
     </div>
   {{/if}}
 
-  {{#if (has-block "bottombar")}}
+  {{#if (and (has-block "bottombar") this.showBottombar)}}
     <div block:class="bottombar">
       {{yield to="bottombar"}}
     </div>

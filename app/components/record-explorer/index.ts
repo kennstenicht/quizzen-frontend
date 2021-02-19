@@ -1,6 +1,7 @@
 import Component from '@glimmer/component';
 import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
+import { notEmpty } from '@ember/object/computed';
 import Router from '@ember/routing/router-service';
 import Model from '@ember-data/model';
 import { pluralize } from 'ember-inflector';
@@ -18,6 +19,11 @@ export default class RecordDetailComponent extends Component<Args> {
 
 
   // Getter and setter
+  get hasPagination() {
+    // @ts-ignore
+    return this.args.records.meta.pagination.pages > 1;
+  }
+
   get headline() {
     return this.intl.t(`models.plurals.${this.args.modelName}`);
   }

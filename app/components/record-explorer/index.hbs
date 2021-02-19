@@ -1,4 +1,7 @@
-<Ui::Window ...attributes>
+<Ui::Window
+  @showBottombar={{this.hasPagination}}
+  ...attributes
+>
   <:title>
     {{this.headline}}
   </:title>
@@ -16,6 +19,6 @@
   </:body>
 
   <:bottombar>
-    Pagination
+    <Ui::Pagination @records={{@records}} @selectPage={{@selectPage}} />
   </:bottombar>
 </Ui::Window>

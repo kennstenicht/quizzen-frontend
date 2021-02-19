@@ -1,6 +1,7 @@
 <button
   block:scope
   block:style={{@style}}
+  block:is-active={{@isActive}}
   disabled={{@disabled}}
   type={{this.type}}
   {{on "click" this.onClick}}

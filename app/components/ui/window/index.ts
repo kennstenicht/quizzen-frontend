@@ -2,10 +2,19 @@ import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 
-export default class UiWindowComponent extends Component {
+interface Args {
+  showBottombar?: boolean
+}
+
+export default class UiWindowComponent extends Component<Args> {
   // Defaults
   @tracked isToolbarCompact: boolean = false;
 
+
+  // Getter, setter and computed properties
+  get showBottombar() {
+    return this.args.showBottombar ?? true;
+  }
 
   // Actions
   @action

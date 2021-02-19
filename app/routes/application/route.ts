@@ -47,15 +47,17 @@ export default class ApplicationRoute extends Route {
 
   @action
   willTransition(transition: Transition) {
-    let attemptedBreadcrumbItem = this.breadcrumb.findItem(
-      transition.to.name,
-      this.controller.model
-    );
+    if (this.breadcrumb.hasItems) {
+      let attemptedBreadcrumbItem = this.breadcrumb.findItem(
+        transition.to.name,
+        this.controller.model
+      );
 
-    if (attemptedBreadcrumbItem) {
-      this.breadcrumb.rollbackTo(attemptedBreadcrumbItem, transition);
-    } else {
-      this.breadcrumb.clear(transition);
+      if (attemptedBreadcrumbItem) {
+        this.breadcrumb.rollbackTo(attemptedBreadcrumbItem, transition);
+      } else {
+        this.breadcrumb.clear(transition);
+      }
     }
   }
 }

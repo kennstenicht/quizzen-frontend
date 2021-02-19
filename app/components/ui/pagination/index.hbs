@@ -1,0 +1,52 @@
+<div block:scope ...attributes>
+  <Ui::Button
+    @disabled={{not this.pagination.prev}}
+    @icon="chevron_left"
+    @onClick={{fn @selectPage this.pagination.prev}}
+    @style="inline"
+  />
+
+  {{#if this.showFirstPage}}
+    <Ui::Button
+      @label={{this.firstPage}}
+      @onClick={{fn @selectPage this.firstPage}}
+      @style="inline"
+    />
+  {{/if}}
+
+  {{#if this.showStartMore}}
+    <div block:class="more">
+      …
+    </div>
+  {{/if}}
+
+  {{#each this.pages as |page|}}
+    <Ui::Button
+      @isActive={{eq this.currentPage page}}
+      @label={{page}}
+      @onClick={{fn @selectPage page}}
+      @style="inline"
+    />
+  {{/each}}
+
+  {{#if this.showEndMore}}
+    <div block:class="more">
+      …
+    </div>
+  {{/if}}
+
+  {{#if this.showLastPage}}
+    <Ui::Button
+      @label={{this.lastPage}}
+      @onClick={{fn @selectPage this.lastPage}}
+      @style="inline"
+    />
+  {{/if}}
+
+  <Ui::Button
+    @disabled={{not this.pagination.next}}
+    @icon="chevron_right"
+    @onClick={{fn @selectPage this.pagination.next}}
+    @style="inline"
+  />
+</div>
