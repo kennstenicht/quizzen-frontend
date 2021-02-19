@@ -30,6 +30,8 @@
       name={{this.fieldId}}
       placeholder={{this.placeholder}}
       rows="5"
+      type="text"
+      value={{changeset-get @changeset @property}}
       {{on "input" this.updateField}}
     >{{changeset-get @changeset @property}}</textarea>
   {{else if this.isCheckbox}}
