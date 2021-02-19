@@ -24,6 +24,7 @@
     display: flex;
     border: 1px solid $color-grey-dark;
     border-radius: spacing('tiny');
+    background-color: $color-grey-light;
   }
 
     .search {

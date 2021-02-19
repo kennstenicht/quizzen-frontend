@@ -1,20 +1,13 @@
 <div
   block:scope
+  {{did-insert (perform this.queryRecords)}}
   ...attributes
 >
-  <Await @promise={{this.fetchRecords}} as |await|>
-    <await.Pending>
-      Loading records...
-    </await.Pending>
-
-    <await.Fulfilled as |records|>
-      <Ui::List
-        @records={{records}}
-        @onClick={{this.selectRecord}}
-        @disabledRecords={{@disabledRecords}}
-        @selectedRecords={{this.selectedRecords}}
-      />
-
+  <Ui::Window>
+    <:title>
+      {{t (concat "models.plurals." @modelName)}}
+    </:title>
+    <:toolbar>
       <Ui::Button
         @disabled={{is-empty this.selectedRecords}}
         @label="Assign"
@@ -26,10 +19,25 @@
         @onClick={{@onClose}}
         @style="secondary"
       />
-    </await.Fulfilled>
+    </:toolbar>
+    <:body>
+      {{#if this.records}}
+        <Ui::List
+          @records={{this.records}}
+          @onClick={{this.selectRecord}}
+          @disabledRecords={{@disabledRecords}}
+          @selectedRecords={{this.selectedRecords}}
+        />
+      {{/if}}
+    </:body>
 
-    <await.Rejected>
-      Something went wrong :(
-    </await.Rejected>
-  </Await>
+    <:bottombar>
+      {{#if this.records}}
+        <Ui::Pagination
+          @records={{this.records}}
+          @selectPage={{this.selectPage}}
+        />
+      {{/if}}
+    </:bottombar>
+  </Ui::Window>
 </div>

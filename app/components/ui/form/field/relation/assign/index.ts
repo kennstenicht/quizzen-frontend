@@ -1,9 +1,12 @@
 import Component from '@glimmer/component';
+import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
-import Store from '@ember-data/store';
 import { action } from '@ember/object';
+import Store from '@ember-data/store';
 import Model from '@ember-data/model';
-import { A } from '@ember/array';
+import { task } from 'ember-concurrency';
+import { taskFor } from 'ember-concurrency-ts';
+import FlashMessage from 'ember-cli-flash/services/flash-messages';
 
 interface Args {
   modelName: string
@@ -15,17 +18,15 @@ interface Args {
 
 export default class UiFormFieldRelationAssignComponent extends Component<Args> {
   // Services
+  @service flashMessages!: FlashMessage;
   @service store!: Store;
 
 
   // Defaults
-  selectedRecords: Model[] = A([]);
+  selectedRecords: Model[] = [];
+  @tracked selectedPage: number = 1;
+  @tracked records: Model[] = [];
 
-
-  // Getter and setter
-  get fetchRecords() {
-    return this.store.findAll(this.args.modelName);
-  }
 
   // Actions
   @action
@@ -38,6 +39,31 @@ export default class UiFormFieldRelationAssignComponent extends Component<Args> 
       this.selectedRecords.removeObject(record);
     } else {
       this.selectedRecords.pushObject(record);
+    }
+  }
+
+  @action
+  selectPage(page: number) {
+    this.selectedPage = page;
+
+    taskFor(this.queryRecords).perform();
+  }
+
+
+  // Tasks
+  @task *queryRecords() {
+    try {
+      let records = yield this.store.query(this.args.modelName, {
+        page: {
+          number: this.selectedPage
+        }
+      });
+
+      this.records = records;
+
+      return records;
+    } catch (error) {
+      this.flashMessages.warning(error);
     }
   }
 }
