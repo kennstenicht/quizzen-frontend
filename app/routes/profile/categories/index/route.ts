@@ -4,6 +4,7 @@ import Store from '@ember-data/store';
 
 interface Params {
   page: number
+  q: string
 }
 
 export default class ProfileCategoriesIndexRoute extends Route {
@@ -15,15 +16,21 @@ export default class ProfileCategoriesIndexRoute extends Route {
   queryParams = {
     page: {
       refreshModel: true
+    },
+    q: {
+      refreshModel: true
     }
   }
 
 
   // Hooks
-  model({ page }: Params) {
+  model({ page, q }: Params) {
     return this.store.query('category', {
       page: {
         number: page || 1
+      },
+      filter: {
+        search_i_cont: q
       }
     });
   }

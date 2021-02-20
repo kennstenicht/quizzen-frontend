@@ -8,7 +8,7 @@
       {{on "submit" (fn this.signIn this.user)}}
       as |form|
     >
-      <form.field @property="email" />
+      <form.field @property="email" @type="email" />
       <form.field @property="password" @type="password" />
 
       <Ui::Button

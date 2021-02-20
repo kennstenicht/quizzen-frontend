@@ -101,10 +101,11 @@
 
 // Outline
 :scope[style=outline] {
-  padding: spacing('tiny');
-  border: 1px solid $color-grey;
+  padding: spacing('tiny', - $border-width-small);
+  border: $border-width-small solid $color-grey;
   border-radius: spacing('small+tiny');
   color: inherit;
+  text-align: center;
 
   @include attention() {
     background-color: $color-grey-light;

@@ -1,0 +1,7 @@
+<input
+  block:scope
+  type="search"
+  placeholder={{t "ui.search.placeholder"}}
+  {{on "input" (perform this.throtteldSearch)}}
+  ...attributes
+/>

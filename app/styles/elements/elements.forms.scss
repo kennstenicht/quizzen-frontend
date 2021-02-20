@@ -21,14 +21,17 @@ textarea {
 /* Input
    ========================================================================== */
 
-input:not([type=submit]):not([type=reset]):not([type=file]):not([type=checkbox]):not([type=radio]):not([type=range]) {
-  padding: spacing('tiny') spacing('small');
-  width: 100%;
+input[type=text],
+input[type=number],
+input[type=password],
+input[type=email],
+input[type=date],
+input[type=search] {
+  padding: spacing('tiny', - $border-width-small) spacing('small');
   border-width: $border-width-small;
   border-style: solid;
   border-color: $color-grey;
   background-color: $color-grey-lighter;
-  border-radius: spacing('tiny');
   transition: all $transition-base;
 
   &:focus {
@@ -36,6 +39,19 @@ input:not([type=submit]):not([type=reset]):not([type=file]):not([type=checkbox])
     box-shadow: 0 0 0 1px $color-active;
     border-color: $color-active;
   }
+}
+
+input[type=text],
+input[type=number],
+input[type=password],
+input[type=email],
+input[type=date] {
+  width: 100%;
+  border-radius: spacing('tiny');
+}
+
+input[type=search] {
+  border-radius: spacing('base');
 }
 
 

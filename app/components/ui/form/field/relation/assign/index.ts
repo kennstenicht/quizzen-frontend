@@ -25,6 +25,7 @@ export default class UiFormFieldRelationAssignComponent extends Component<Args> 
   // Defaults
   selectedRecords: Model[] = [];
   @tracked selectedPage: number = 1;
+  @tracked searchString: string = '';
   @tracked records: Model[] = [];
 
 
@@ -56,6 +57,13 @@ export default class UiFormFieldRelationAssignComponent extends Component<Args> 
     taskFor(this.queryRecords).perform();
   }
 
+  @action
+  updateSearch(searchString: string) {
+    this.searchString = searchString;
+
+    taskFor(this.queryRecords).perform();
+  }
+
 
   // Tasks
   @task *queryRecords() {
@@ -63,6 +71,9 @@ export default class UiFormFieldRelationAssignComponent extends Component<Args> 
       let records = yield this.store.query(this.args.modelName, {
         page: {
           number: this.selectedPage
+        },
+        filter: {
+          search_i_cont: this.searchString
         }
       });
 

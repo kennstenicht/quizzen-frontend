@@ -4,13 +4,19 @@ import { action } from '@ember/object';
 
 export default class ProfileQuizzesIndexController extends Controller {
   // Defaults
-  queryParams = ['page'];
+  queryParams = ['page', 'q'];
   @tracked page = 1;
+  @tracked q?: string;
 
 
   // Actions
   @action
   selectPage(page: number) {
     this.page = page;
+  }
+
+  @action
+  updateSearch(searchString: string) {
+    this.q = searchString;
   }
 }

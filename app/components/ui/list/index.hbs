@@ -22,6 +22,6 @@
       />
     {{/each}}
   {{else}}
-    Keine {{t (concat "models.plurals." @modelName)}} für diese Auswahl
+    {{t "ui.list.noResults" model=(t (concat "models.plurals." @modelName))}}
   {{/if}}
 </div>

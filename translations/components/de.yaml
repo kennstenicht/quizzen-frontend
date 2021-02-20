@@ -44,3 +44,11 @@ signIn:
 signOut:
   button: Ausloggen
   successMessage: Du wurdest erfolgreich ausgeloggt
+
+ui:
+  #List
+  list:
+    noResults: Wir konnten leider keine {model} zu deiner Suche finden.
+  # Search
+  search:
+    placeholder: Suchen...

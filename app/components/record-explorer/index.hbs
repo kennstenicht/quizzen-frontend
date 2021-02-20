@@ -7,14 +7,16 @@
   </:title>
 
   <:toolbar>
+    <Ui::Search @updateSearch={{@updateSearch}} />
     <LinkTo @route={{this.newPath}}>New</LinkTo><br><br>
   </:toolbar>
 
   <:body>
     <Ui::List
-      @records={{@records}}
       @metaFields={{@recordFields}}
+      @modelName={{@modelName}}
       @onClick={{this.openRecord}}
+      @records={{@records}}
     />
   </:body>
 
