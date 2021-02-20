@@ -1,0 +1,22 @@
+<div block:scope ...attributes>
+  <h2 block:class="title">
+    {{t "application.confirm.delete.title" displayLabel=@confirm.data.name}}
+  </h2>
+  <div block:class="message">
+    {{t "application.confirm.delete.message" displayLabel=@confirm.data.name}}
+  </div>
+
+  <Ui::Button
+    @label={{t "application.confirm.delete.confirm"}}
+    @onClick={{@confirm.confirm}}
+    @icon="delete"
+    @style="danger"
+  />
+
+  <Ui::Button
+    @label={{t "application.confirm.delete.cancel"}}
+    @onClick={{@confirm.cancel}}
+    @icon="cancel"
+    @style="secondary"
+  />
+</div>

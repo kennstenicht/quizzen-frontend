@@ -10,6 +10,7 @@ import FlashMessages from 'ember-cli-flash/services/flash-messages';
 import Session from 'ember-simple-auth/services/session';
 import Intl from 'ember-intl/services/intl';
 import Breadcrumb from 'quizzen/services/breadcrumb';
+import Confirm from 'quizzen/services/confirm';
 
 interface Args {
   model: Model
@@ -17,8 +18,9 @@ interface Args {
 
 export default class RecordDetailComponent extends Component<Args> {
   // Services
-  @service flashMessages!: FlashMessages;
   @service breadcrumb!: Breadcrumb;
+  @service confirm!: Confirm;
+  @service flashMessages!: FlashMessages;
   @service intl!: Intl;
   @service router!: Router;
   @service session!: Session;
@@ -35,6 +37,10 @@ export default class RecordDetailComponent extends Component<Args> {
     return this.args.model.constructor.modelName;
   }
 
+  get breadcrumbItem() {
+    return this.breadcrumb.currentItem;
+  }
+
 
   // Actions
   @action
@@ -42,6 +48,13 @@ export default class RecordDetailComponent extends Component<Args> {
     try {
       // @ts-ignore
       let title = this.args.model.title;
+
+      let confirmed = await this.confirm.ask('delete', this.breadcrumbItem);
+
+      if (!confirmed) {
+        return
+      }
+
       // TODO: Destroy changeset?
       await this.args.model.destroyRecord();
 

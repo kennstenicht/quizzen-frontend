@@ -17,17 +17,16 @@
     />
 
     <Ui::Button
-      @icon="cancel"
-      @label="Cancel"
-      @style="secondary"
-      @type="reset"
-      form={{this.changeset.id}}
-    />
-
-    <Ui::Button
       @icon="delete"
       @onClick={{this.deleteRecord}}
       @style="outline"
+    />
+
+    <Ui::Button
+      @icon="close"
+      @style="outline"
+      @type="reset"
+      form={{this.changeset.id}}
     />
   </:toolbar>
 

@@ -11,7 +11,7 @@ export default class ConfirmService extends Service {
 
 
   // Functions
-  ask(componentName: string, data: any) {
+  ask(componentName: string, data?: any) {
     this.componentName = componentName;
     this.data = data;
     this.showPrompt = true;

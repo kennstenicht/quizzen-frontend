@@ -1,0 +1,21 @@
+/* ==========================================================================
+   # APPLICATION CONFIRM DELETE
+   ========================================================================== */
+
+// Imports
+@import 'setup';
+
+
+// Block
+:scope {
+  block-name: c-application-confirm-delete;
+  padding: spacing();
+}
+
+  .title {
+    margin-bottom: spacing('small');
+  }
+
+  .message {
+    margin-bottom: spacing();
+  }

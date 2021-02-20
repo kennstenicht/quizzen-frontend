@@ -1,6 +1,11 @@
 application:
   # Confirm
   confirm:
+    delete:
+      title: '"{displayLabel}" löschen?'
+      message: 'Bist du dir sicher, dass du "{displayLabel}" wirklich löschen möchtest?'
+      confirm: Löschen
+      cancel: Abbrechen
     rollback:
       title: Ungespeicherte Änderungen
       message: '"{title}" hat ungespeicherte Änderungen. Bist du dir sicher, dass du die Änderungen ohne zu speichern verwerfen möchtest?'
@@ -20,9 +25,9 @@ application:
 
 # Form
 recordDetail:
-  deleteRecord: '{title} wurde gespeichert'
+  deleteRecord: 'Du hast {title} erfolgreich gelöscht'
   new: '{modelName} hinzufügen'
-  saveRecord: '{title} wurde gelöscht'
+  saveRecord: 'Du hast {title} erfolgreich gespeichert'
   createdAt: 'Erstellt am:'
   updatedAt: 'Zuletzt aktualisiert: '
 
