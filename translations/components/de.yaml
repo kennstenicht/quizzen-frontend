@@ -25,9 +25,9 @@ application:
 
 # Form
 recordDetail:
-  deleteRecord: 'Du hast {title} erfolgreich gelöscht'
+  deleteRecord: '"{title}" wurde erfolgreich gelöscht.'
   new: '{modelName} hinzufügen'
-  saveRecord: 'Du hast {title} erfolgreich gespeichert'
+  saveRecord: '"{title}" wurde erfolgreich gespeichert.'
   createdAt: 'Erstellt am:'
   updatedAt: 'Zuletzt aktualisiert: '
 

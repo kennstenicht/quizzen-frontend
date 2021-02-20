@@ -26,4 +26,13 @@ export default class ApplicationNotificationComponent extends Component<Args> {
       flash.allowExit();
     }
   }
+
+  @action
+  startProgress(element: HTMLElement) {
+    // @ts-ignore
+    const duration = this.args.flash?.timeout || 0;
+
+    element.style.transitionDuration = `${duration}ms`;
+    element.style.width = '100%';
+  }
 }

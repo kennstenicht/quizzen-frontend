@@ -8,9 +8,25 @@
   {{on "mouseleave" this.allowExiting}}
   ...attributes
 >
-  {{#if hasBlock}}
-    {{yield this @flash}}
-  {{else}}
-    {{@flash.message}}
-  {{/if}}
+  <div
+    block:class="close"
+    {{on "click" @flash.destroyMessage}}
+  >
+    {{svg-jar "cancel" class="o-icon"}}
+  </div>
+    {{#if (eq @flash.type "success")}}
+      {{svg-jar "check_circle" class=(style-of block:class="icon")}}
+    {{else}}
+      {{svg-jar "error" class=(style-of block:class="icon")}}
+    {{/if}}
+  <div block:class="content">
+    <div block:class="message">
+      {{@flash.message}}
+    </div>
+    {{#unless @flash.sticky}}
+      <div block:class="progress">
+        <div block:class="bar" {{did-insert this.startProgress}}></div>
+      </div>
+    {{/unless}}
+  </div>
 </div>
