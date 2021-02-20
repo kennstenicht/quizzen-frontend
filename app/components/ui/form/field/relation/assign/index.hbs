@@ -3,7 +3,7 @@
   {{did-insert (perform this.queryRecords)}}
   ...attributes
 >
-  <Ui::Window>
+  <Ui::Window @showBottombar={{this.hasPagination}}>
     <:title>
       {{t (concat "models.plurals." @modelName)}}
     </:title>

@@ -28,6 +28,13 @@ export default class UiFormFieldRelationAssignComponent extends Component<Args> 
   @tracked records: Model[] = [];
 
 
+  // Getter, setter and computed properties
+  get hasPagination() {
+    // @ts-ignore
+    return this.records.meta?.pagination.pages > 1;
+  }
+
+
   // Actions
   @action
   selectRecord(record: Model, disabled: boolean) {
