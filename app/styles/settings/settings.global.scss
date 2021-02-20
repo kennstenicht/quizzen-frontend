@@ -60,17 +60,18 @@ $font-family-decoration: 'Playfair Display', serif;
 // Main colors
 $color-primary:         #80ae83;
 $color-primary-dark:    #659268;
-$color-secondary-light: #5fa6af;
-$color-secondary:       #4F759B;
-$color-secondary-dark:  #3e6083;
+$color-active-light:    #5fa6af;
+$color-active:          #4F759B;
+$color-active-dark:     #3e6083;
 $color-black:           #16171b;
 $color-white:           #ffffff;
 
 // Shades of grey
-$color-grey-light:      #f8f9fb;
-$color-grey:            #eeeeee;
-$color-grey-dark:       #dddddd;
-$color-grey-darker:     #a0a0a0;
+$color-grey-lighter:    #f8f9fb;
+$color-grey-light:      #eeeeee;
+$color-grey:            #dddddd;
+$color-grey-dark:       #a0a0a0;
+$color-grey-darker:     #6e7d84;
 
 // State colors
 $color-error-dark:      #b83030;

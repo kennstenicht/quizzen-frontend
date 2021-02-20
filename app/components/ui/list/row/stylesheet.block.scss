@@ -14,16 +14,16 @@
 }
 
 :scope[is-disabled] {
-  color: $color-grey-dark;
+  color: $color-grey;
   cursor: not-allowed;
 }
 
 :scope[is-head] {
-  background-color: #ddd;
+  background-color: $color-grey-darker;
 }
 
 :scope[is-selected] {
-  background-color: $color-secondary;
+  background-color: $color-active;
   color: $color-white;
 }
 

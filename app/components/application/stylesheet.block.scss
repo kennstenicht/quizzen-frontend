@@ -50,13 +50,13 @@
     z-index: 2;
     width: calc(100vw - #{$navigation-width});
     border-radius: spacing('small+tiny');
-    background-color: $color-grey-light;
+    background-color: $color-grey-lighter;
     grid-area: breadcrumb;
   }
 
   .content {
     border-radius: spacing('small+tiny');
-    background-color: $color-grey-light;
+    background-color: $color-grey-lighter;
     transition: width $transition-slow, height $transition-slow;
     grid-area: content / content / breadcrumb / breadcrumb;
   }

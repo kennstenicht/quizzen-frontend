@@ -26,15 +26,15 @@ input:not([type=submit]):not([type=reset]):not([type=file]):not([type=checkbox])
   width: 100%;
   border-width: $border-width-small;
   border-style: solid;
-  border-color: $color-grey-dark;
-  background-color: $color-grey-light;
+  border-color: $color-grey;
+  background-color: $color-grey-lighter;
   border-radius: spacing('tiny');
   transition: all $transition-base;
 
   &:focus {
     outline: none;
-    box-shadow: 0 0 0 1px $color-secondary;
-    border-color: $color-secondary;
+    box-shadow: 0 0 0 1px $color-active;
+    border-color: $color-active;
   }
 }
 
@@ -50,15 +50,15 @@ textarea {
   width: 100%;
   border-width: $border-width-small;
   border-style: solid;
-  border-color: $color-grey-dark;
-  background-color: $color-grey-light;
+  border-color: $color-grey;
+  background-color: $color-grey-lighter;
   border-radius: spacing('tiny');
   transition: all $transition-base;
 
   &:focus {
     outline: none;
-    box-shadow: 0 0 0 1px $color-secondary;
-    border-color: $color-secondary;
+    box-shadow: 0 0 0 1px $color-active;
+    border-color: $color-active;
   }
 }
 

@@ -22,9 +22,9 @@
 
   .assign {
     display: flex;
-    border: 1px solid $color-grey-dark;
+    border: 1px solid $color-grey;
     border-radius: spacing('tiny');
-    background-color: $color-grey-light;
+    background-color: $color-grey-lighter;
   }
 
     .search {
@@ -32,15 +32,15 @@
       padding: spacing('tiny') spacing('small');
 
       @include attention() {
-        background-color: $color-grey;
+        background-color: $color-grey-light;
       }
     }
 
     .add {
-      border-left: 1px solid $color-grey-dark;
+      border-left: 1px solid $color-grey;
       padding: spacing('tiny') spacing('small');
 
       @include attention() {
-        background-color: $color-grey;
+        background-color: $color-grey-light;
       }
     }

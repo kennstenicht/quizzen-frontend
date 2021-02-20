@@ -55,12 +55,12 @@
 :scope[style=secondary] {
   padding: spacing('tiny') spacing('base');
   border-radius: spacing('small+tiny');
-  background-color: $color-grey-darker;
+  background-color: $color-grey-dark;
   color: $color-white;
   text-align: center;
 
   @include attention() {
-    background-color: darken($color-grey-darker, 10%);
+    background-color: darken($color-grey-dark, 10%);
   }
 }
 
@@ -89,11 +89,11 @@
   text-align: center;
 
   @include attention() {
-    background-color: rgba($color-grey-dark, 0.5);
+    background-color: rgba($color-grey, 0.5);
   }
 
   &[is-active] {
-    background-color: $color-secondary;
+    background-color: $color-active;
     color: $color-white;
   }
 }
@@ -102,12 +102,12 @@
 // Outline
 :scope[style=outline] {
   padding: spacing('tiny');
-  border: 1px solid $color-grey-dark;
+  border: 1px solid $color-grey;
   border-radius: spacing('small+tiny');
   color: inherit;
 
   @include attention() {
-    background-color: $color-grey;
+    background-color: $color-grey-light;
   }
 }
 

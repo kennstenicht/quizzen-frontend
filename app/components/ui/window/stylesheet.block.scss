@@ -26,7 +26,7 @@
 
   :scope[is-compact] .header {
     padding: spacing('small') spacing('base');
-    border-color: $color-grey;
+    border-color: $color-grey-light;
   }
 
     .title {
@@ -47,13 +47,13 @@
     flex-grow: 1;
     overflow: scroll;
     margin: 0 spacing('small');
-    padding: spacing('base') spacing('small');
+    padding: spacing('small');
   }
 
   .bottombar {
-    background-color: $color-grey;
+    background-color: $color-grey-light;
     padding: spacing('small') spacing('base');
-    border-top: 1px solid $color-grey-dark;
+    border-top: 1px solid $color-grey;
     border-bottom-left-radius: spacing('small+tiny');
     border-bottom-right-radius: spacing('small+tiny');
   }
