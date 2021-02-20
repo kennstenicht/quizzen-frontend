@@ -3,6 +3,7 @@ import Model from '@ember-data/model';
 
 interface Args {
   disabledRecords?: Model[]
+  index: number
   metaFields?: string[]
   onClick: Function
   record: Model
@@ -32,6 +33,10 @@ export default class UiListRowComponent extends Component<Args> {
     }
 
     return this.args.disabledRecords.includes(this.args.record);
+  }
+
+  get isEven() {
+    return this.args.index % 2;
   }
 
   get isSelected() {

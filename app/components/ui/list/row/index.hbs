@@ -2,6 +2,7 @@
   block:scope
   block:layout={{this.modelName}}
   block:is-head={{@head}}
+  block:is-even={{this.isEven}}
   block:is-selected={{this.isSelected}}
   block:is-disabled={{this.isDisabled}}
   {{on "click" (fn @onClick @record this.isDisabled)}}
@@ -16,3 +17,4 @@
     />
   {{/each}}
 </div>
+

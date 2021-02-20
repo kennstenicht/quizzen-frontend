@@ -18,9 +18,10 @@
         @onClick={{@onClick}}
         @record={{record}}
         @selectedRecords={{@selectedRecords}}
+        @index={{index}}
       />
     {{/each}}
   {{else}}
-    Keine {{@modelName}} für diese Auswahl
+    Keine {{t (concat "models.plurals." @modelName)}} für diese Auswahl
   {{/if}}
 </div>

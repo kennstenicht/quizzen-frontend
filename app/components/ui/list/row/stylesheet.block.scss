@@ -9,8 +9,12 @@
 // Block
 :scope {
   block-name: c-list-row;
-  border-bottom: 1px solid #000;
   display: grid;
+  border-radius: spacing('tiny');
+
+  @include attention() {
+    background-color: $color-grey-light;
+  }
 }
 
 :scope[is-disabled] {
@@ -20,15 +24,29 @@
 
 :scope[is-head] {
   background-color: $color-grey-darker;
+  color: $color-white;
+  font-weight: bold;
+
+  @include attention() {
+    background-color: $color-grey-darker;
+  }
+}
+
+:scope[is-even] {
+  background-color: lighten($color-grey-light, 2%);
 }
 
 :scope[is-selected] {
   background-color: $color-active;
   color: $color-white;
+
+  @include attention() {
+    background-color: $color-active-dark;
+  }
 }
 
 :scope[layout=answer] {
-  grid-template-columns: 1fr 150px;
+  grid-template-columns: 2fr 1fr;
 }
 
 :scope[layout=category] {

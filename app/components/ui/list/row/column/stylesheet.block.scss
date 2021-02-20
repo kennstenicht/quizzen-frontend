@@ -9,10 +9,5 @@
 // Block
 :scope {
   block-name: c-list-row-column;
-  border-right: 1px solid #000;
-  padding: spacing('tiny');
-
-  &:last-child {
-    border-right: 0;
-  }
+  padding: spacing('tiny') spacing('small');
 }
