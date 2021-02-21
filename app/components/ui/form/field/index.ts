@@ -6,12 +6,13 @@ import { BufferedChangeset } from 'ember-changeset/types';
 import Intl from 'ember-intl/services/intl';
 
 interface Args {
-  changeset: BufferedChangeset,
-  label: string,
-  modelName: string,
-  property: string,
-  placeholder: string,
-  type: string,
+  changeset: BufferedChangeset
+  hint: string
+  label: string
+  modelName: string
+  placeholder: string
+  property: string
+  type: string
 }
 
 export default class UiFormFieldComponent extends Component<Args> {
@@ -55,10 +56,19 @@ export default class UiFormFieldComponent extends Component<Args> {
   get placeholder() {
     const { modelName, placeholder, property } = this.args;
     const lookups = [
-      `forms.${modelName}.placeholder.${property}`,
-      `forms.defaults.placeholder.${property}`
+      `forms.${modelName}.placeholders.${property}`,
+      `forms.defaults.placeholders.${property}`
     ];
     return translate.call(this, placeholder, lookups, { silent: true });
+  }
+
+  get hint() {
+    const { modelName, hint, property } = this.args;
+    const lookups = [
+      `forms.${modelName}.hints.${property}`,
+      `forms.defaults.hints.${property}`
+    ];
+    return translate.call(this, hint, lookups, { silent: true });
   }
 
   get type() {

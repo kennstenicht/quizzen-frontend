@@ -4,14 +4,14 @@ forms:
       label: Antwort
       value: Wert
       information: Weiter Informationen
-    placeholder:
+    placeholders:
       title: Title der Antwor eingeben
 
   category:
     fields:
       title: Name
       questions: Fragen
-    placeholder:
+    placeholders:
       title: Name der Kategorie eingeben
 
   game:
@@ -25,14 +25,14 @@ forms:
       teams: Teams
       title: Spielname
       yourGame: Dein Spiel
-    placeholder:
+    placeholders:
       title: Spielname eingeben
 
   quiz:
     fields:
       title: Quizname
       categories: Kategorien
-    placeholder:
+    placeholders:
       title: Quizname eingeben
 
   question:
@@ -41,7 +41,7 @@ forms:
       source: Quelle
       date: Stand
       answers: Antworten
-    placeholder:
+    placeholders:
       label: Frage eingeben
       source: Quelle eingeben
       data: Stand eingeben

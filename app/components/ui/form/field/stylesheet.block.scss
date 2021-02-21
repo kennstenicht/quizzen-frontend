@@ -25,6 +25,12 @@
     top: 0;
   }
 
+  .hint {
+    color: $color-grey-dark;
+
+    @include font-size($font-size-small);
+  }
+
   .errors {
     color: $color-error;
     margin-top: spacing('tiny');

@@ -55,6 +55,12 @@
     />
   {{/if}}
 
+  {{#if this.hint}}
+    <div block:class="hint">
+      {{this.hint}}
+    </div>
+  {{/if}}
+
   {{#if this.errors}}
     <div block:class="errors">
       {{#each (get this.errors "validation") as |error|}}
