@@ -5,7 +5,7 @@ import { action } from '@ember/object';
 export default class ProfileAnswersIndexController extends Controller {
   // Defaults
   queryParams = ['page', 'q'];
-  @tracked page = 1;
+  @tracked page?: number;
   @tracked q?: string;
 
 

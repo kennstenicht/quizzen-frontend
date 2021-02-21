@@ -27,7 +27,7 @@ export default class ProfileCategoriesIndexRoute extends Route {
   model({ page, q }: Params) {
     return this.store.query('category', {
       page: {
-        number: page || 1
+        number: page
       },
       filter: {
         search_i_cont: q
