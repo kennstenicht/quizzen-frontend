@@ -18,6 +18,7 @@ forms:
     fields:
       active: Aktives Spiel
       gameQuestions: Gespiele Fragen
+      guessQuestion: Schätzfrage
       joined: Teilnehmer
       users: Mitspieler
       quiz: Quiz auswählen
@@ -27,6 +28,16 @@ forms:
       yourGame: Dein Spiel
     placeholders:
       title: Spielname eingeben
+    hints:
+      guessQuestion: Die Frage wird benötigt um das Start-Team zu bestimmen.
+
+  guess-question:
+    fields:
+      answer: Antwort
+      date: Stand
+      label: Frage
+      source: Quelle
+      unit: Einheit
 
   quiz:
     fields:

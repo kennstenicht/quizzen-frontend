@@ -26,21 +26,31 @@ Router.map(function() {
       this.route('index', { path: '/' });
       this.route('new');
     });
+
     this.route('games', function() {
       this.route('game', { path: '/:game_id' });
       this.route('index', { path: '/' });
       this.route('new');
     });
+
+    this.route('guess-questions', function() {
+      this.route('guess-question', { path: '/:guess_question_id' });
+      this.route('index', { path: '/' });
+      this.route('new');
+    });
+
     this.route('quizzes', function() {
       this.route('index', { path: '/' });
       this.route('new');
       this.route('quiz', { path: '/:quiz_id' });
     });
+
     this.route('questions', function() {
       this.route('index', { path: '/' });
       this.route('new');
       this.route('question', { path: '/:question_id' });
     });
+
     this.route('user', { path: '/:user_nickname' });
   });
 });

@@ -14,6 +14,11 @@ tables:
       yourGame: Dein Spiel?
       joined: Mitspieler?
 
+  guess-question:
+    fields:
+      displayLabel: Schätzfrage
+      answerLabel: Antwort
+
   question:
     fields:
       displayLabel: Top-Frage

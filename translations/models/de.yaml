@@ -2,6 +2,7 @@ models:
   answer: Antwort
   category: Kategorie
   game: Spiel
+  guess-question: Schätzfrage
   quiz: Quiz
   question: Frage
 
@@ -9,5 +10,6 @@ models:
     answer: Antworten
     category: Kategorien
     game: Spiele
+    guess-question: Schätzfragen
     quiz: Quizze
     question: Fragen

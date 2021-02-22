@@ -3,6 +3,8 @@ import { alias } from '@ember/object/computed';
 import User from 'quizzen/models/user';
 import Quiz from 'quizzen/models/quiz';
 import Team from 'quizzen/models/team';
+import GameQuestion from 'quizzen/models/game-question';
+import GuessQuestion from 'quizzen/models/guess-question';
 
 export default class GameModel extends Model {
   // Attributes
@@ -21,7 +23,8 @@ export default class GameModel extends Model {
   @belongsTo('user') quizMaster?: User;
   @belongsTo('quiz') quiz?: Quiz;
   @hasMany('user') users?: User[];
-  @hasMany('gameQuestion') gameQuestions?: User[];
+  @hasMany('gameQuestion') gameQuestions?: GameQuestion[];
+  @belongsTo('guessQuestion') guessQuestion?: GuessQuestion;
   @hasMany('team') teams?: Team[];
 
 
