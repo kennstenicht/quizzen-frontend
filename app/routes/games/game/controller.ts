@@ -33,10 +33,6 @@ export default class GamesGameController extends Controller {
       channel: `V1::GamesChannel`,
       game_id: game.id
     }, {
-      connected: () => {
-        this.flashMessages.success("Erfolgreich mit dem Quiz Master verbunden");
-      },
-
       disconnected: () => {
         this.flashMessages.warning("Fehler bei der Verbindung");
       },
