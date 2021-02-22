@@ -2,6 +2,8 @@ import JSONAPIAdapter from '@ember-data/adapter/json-api';
 import { inject as service } from '@ember/service';
 import { getOwner } from '@ember/application';
 import { computed } from '@ember/object';
+import { underscore } from '@ember/string';
+import { pluralize } from 'ember-inflector';
 import Session from 'ember-simple-auth/services/session';
 import Fastboot from 'ember-cli-fastboot/services/fastboot';
 // @ts-ignore
@@ -51,5 +53,9 @@ export default class ApplicationAdapter extends JSONAPIAdapter {
   // Functions
   generateIdForRecord() {
     return v4();
+  }
+
+  pathForType(type: any) {
+    return underscore(pluralize(type));
   }
 }
