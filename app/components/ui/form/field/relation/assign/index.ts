@@ -46,6 +46,10 @@ export default class UiFormFieldRelationAssignComponent extends Component<Args> 
     if (this.selectedRecords.includes(record)) {
       this.selectedRecords.removeObject(record);
     } else {
+      if (!this.args.multiple) {
+        this.selectedRecords.clear()
+      }
+
       this.selectedRecords.pushObject(record);
     }
   }
