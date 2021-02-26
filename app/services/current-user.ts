@@ -22,10 +22,10 @@ export default class CurrentUserService extends Service {
         let userId = this.session.data.authenticated.tokenData.sub;
 
         let user = await this.store.findRecord('user', userId);
+
         this.model = user;
       }
     } catch(err) {
-      await this.session.invalidate();
       this.model = undefined;
     }
   }
