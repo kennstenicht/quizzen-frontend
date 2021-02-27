@@ -5,6 +5,7 @@ models:
   guess-question: Schätzfrage
   quiz: Quiz
   question: Frage
+  user: Spieler
 
   plurals:
     answer: Antworten
@@ -13,3 +14,4 @@ models:
     guess-question: Schätzfragen
     quiz: Quizze
     question: Fragen
+    user: Spieler

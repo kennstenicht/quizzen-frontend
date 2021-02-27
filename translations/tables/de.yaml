@@ -27,3 +27,7 @@ tables:
   quiz:
     fields:
       displayLabel: Quizname
+
+  user:
+    fields:
+      displayLabel: Spielername
