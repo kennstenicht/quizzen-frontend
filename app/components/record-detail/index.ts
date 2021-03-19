@@ -28,7 +28,7 @@ export default class RecordDetailComponent extends Component<Args> {
 
 
   // Defaults
-  @tracked changeset?: BufferedChangeset;
+  @tracked changeset!: BufferedChangeset;
 
 
   // Getter and setter
@@ -50,8 +50,8 @@ export default class RecordDetailComponent extends Component<Args> {
         return
       }
 
-      // TODO: Destroy changeset?
       await this.args.model.destroyRecord();
+      await this.changeset.rollback();
 
       const message = this.intl.t('recordDetail.deleteRecord', {
         title: title
