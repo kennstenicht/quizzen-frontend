@@ -55,8 +55,6 @@
   }
 
   .content {
-    border-radius: spacing('small+tiny');
-    background-color: $color-grey-lighter;
     transition: width $transition-slow, height $transition-slow;
     grid-area: content / content / breadcrumb / breadcrumb;
   }
