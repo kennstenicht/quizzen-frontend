@@ -1,5 +1,6 @@
 import Component from '@glimmer/component';
 import { BufferedChangeset } from 'ember-changeset/types';
+import Model from 'quizzen/models/base';
 
 interface Args {
   changeset: BufferedChangeset,
@@ -12,7 +13,8 @@ interface Args {
 export default class UiFormComponent extends Component<Args> {
   // Getter and setter
   get modelName(): string {
-    // @ts-ignore
-    return this.args.changeset.data.constructor.modelName;
+    let model = this.args.changeset.data as Model;
+
+    return model.modelName;
   }
 }

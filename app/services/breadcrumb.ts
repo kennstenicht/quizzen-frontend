@@ -1,5 +1,5 @@
 import Service from '@ember/service';
-import Model from '@ember-data/model';
+import Model from 'quizzen/models/base';
 import { inject as service } from '@ember/service';
 import Router from '@ember/routing/router-service';
 import Transition from '@ember/routing/-private/transition';
@@ -9,6 +9,7 @@ import lookupValidator from 'ember-changeset-validations';
 import { BufferedChangeset } from 'ember-changeset/types';
 // @ts-ignore
 import { TrackedArray, tracked } from 'tracked-built-ins';
+import Intl from 'ember-intl/services/intl';
 import Confirm from 'quizzen/services/confirm';
 import AnswerValidations from 'quizzen/validations/answer';
 import CategoryValidations from 'quizzen/validations/category';
@@ -16,28 +17,27 @@ import GameValidations from 'quizzen/validations/game';
 import QuestionValidations from 'quizzen/validations/question';
 import QuizValidations from 'quizzen/validations/quiz';
 
-let validations = {
-  answer: AnswerValidations,
-  category: CategoryValidations,
-  game: GameValidations,
-  question: QuestionValidations,
-  quiz: QuizValidations
+let validations: { [key: string]: Object } = {
+  'answer': AnswerValidations,
+  'category': CategoryValidations,
+  'game': GameValidations,
+  'question': QuestionValidations,
+  'quiz': QuizValidations
 }
 
 export class BreadcrumbItem {
   // Defaults
   changesets: TrackedArray<BufferedChangeset> = new TrackedArray([]);
+  intl: Intl;
   model?: Model;
   routeName: string;
-  modelName: string;
 
 
   // Hooks
-  constructor(routeName: string, model?: Model) {
+  constructor(intl: Intl, routeName: string, model?: Model) {
+    this.intl = intl;
+    this.model = model;
     this.routeName = routeName;
-    this.model = model?.isNew ? undefined : model;
-    // @ts-ignore
-    this.modelName = model?.constructor.modelName;
   }
 
 
@@ -53,11 +53,19 @@ export class BreadcrumbItem {
   }
 
   get name() {
-    if (!this.model) {
-      return 'New';
+    // @ts-ignore
+    if (this.model?.isNew) {
+      return this.intl.t('recordDetail.new', {
+        modelName: this.intl.t(`models.${this.model.modelName}`)
+      });
     }
+
     // @ts-ignore
     return this.model.displayLabel;
+  }
+
+  get routeParams(): [string, Model?] {
+    return [this.routeName, this.model];
   }
 
 
@@ -73,8 +81,7 @@ export class BreadcrumbItem {
   }
 
   registerChangeset(model: Model) {
-    // @ts-ignore
-    const validation = validations[model.constructor.modelName];
+    const validation = validations[model.modelName];
 
     let changeset = Changeset(
       model,
@@ -90,18 +97,27 @@ export class BreadcrumbItem {
 
 export default class BreadcrumbService extends Service {
   // Services
-  @service router!: Router;
   @service confirm!: Confirm;
-
+  @service intl!: Intl;
+  @service router!: Router;
 
   // Defaults
   items: TrackedArray<BreadcrumbItem> = new TrackedArray([]);
-  isTransitionRetry: boolean = false;
 
 
   // Getter and setter
+  get baseItem() {
+    let baseModelName = this.firstItem.model?.modelName || '';
+
+    return {
+      routeName: `profile.${pluralize(baseModelName)}`,
+      name: this.intl.t(`models.plurals.${baseModelName}`),
+      routeParams: [`profile.${pluralize(baseModelName)}`]
+    };
+  }
+
   get currentItem() {
-    return this.items.lastObject;
+    return this.items[this.items.length - 1];
   }
 
   get firstItem() {
@@ -113,17 +129,18 @@ export default class BreadcrumbService extends Service {
   }
 
   get prevItem() {
-    return this.items[this.items.length - 2];
+    return this.items[this.items.length - 2] ?? this.baseItem;
   }
 
 
   // Functions
   clear(transition: Transition) {
-    this.rollback(this.items, transition);
+    return this.rollbackItems(this.items, transition);
   }
 
   findItem(routeName: string, model: Model) {
     return this.items.find((item) => {
+      // @ts-ignore
       if (!model || model.isNew) {
         return item.routeName === routeName;
       }
@@ -142,8 +159,8 @@ export default class BreadcrumbService extends Service {
     }
   }
 
-  registerItem(routeName: string, model?: Model) {
-    let item = new BreadcrumbItem(routeName, model);
+  registerItem(routeName: string, model: Model) {
+    let item = new BreadcrumbItem(this.intl, routeName, model);
 
     this.items.push(item);
 
@@ -151,18 +168,17 @@ export default class BreadcrumbService extends Service {
   }
 
   // Rollback new records to destroy unsaved records
-  async rollback(items: BreadcrumbItem[], transition: Transition) {
-    if (this.isTransitionRetry) {
-      this.isTransitionRetry = false;
-      return transition;
-    }
-
+  async rollbackItems(items: BreadcrumbItem[], transition: Transition) {
     transition.abort();
 
     for(let i = items.length - 1; i >= 0; i--) {
       let item = items[i];
 
+      // @ts-ignore
+      this.router.transitionTo(...item.routeParams);
+
       if (item.hasDirtyChangeset) {
+
         let confirmed = await this.confirm.ask('rollback', item);
 
         if (!confirmed) {
@@ -173,47 +189,13 @@ export default class BreadcrumbService extends Service {
       this.items.pop();
     }
 
-    this.isTransitionRetry = true;
     return transition.retry();
-
   }
 
   rollbackTo(item: BreadcrumbItem, transition: Transition) {
     let index = this.items.indexOf(item);
     let itemsToRemove = this.items.slice(index + 1);
 
-    this.rollback(itemsToRemove, transition);
-  }
-
-  // TODO: Refactor
-  transitionTo(item: BreadcrumbItem, modelName: string, model?: Model) {
-    if (item) {
-      if (item.model) {
-        this.router.transitionTo(
-          item.routeName,
-          item.model
-        )
-      } else {
-        this.router.transitionTo(
-          item.routeName
-        )
-      }
-    } else {
-      this._transitionToByModel(
-        modelName,
-        model
-      );
-    }
-  }
-
-  _transitionToByModel(modelName: string, model?: Model) {
-    let indexRoute = pluralize(modelName);
-    let path = ['profile', indexRoute];
-
-    if (model) {
-      return this.router.transitionTo(path.join('.'), model);
-    }
-
-    return this.router.transitionTo(path.join('.'));
+    return this.rollbackItems(itemsToRemove, transition);
   }
 }

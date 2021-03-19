@@ -2,7 +2,6 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
-import { pluralize } from 'ember-inflector';
 import Breadcrumb from 'quizzen/services/breadcrumb';
 // @ts-ignore
 import { fadeOut, fadeIn } from 'ember-animated/motions/opacity';
@@ -16,16 +15,6 @@ export default class ApplicationBreadcrumb extends Component {
 
   // Defaults
   @tracked hoverIndex?: number;
-
-
-  // Getter and setter
-  get indexModelName() {
-    return this.breadcrumb.firstItem.modelName;
-  }
-
-  get indexRoute() {
-    return `profile.${pluralize(this.indexModelName)}`;
-  }
 
 
   // Actions

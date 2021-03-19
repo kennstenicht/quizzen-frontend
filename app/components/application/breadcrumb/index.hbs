@@ -5,12 +5,15 @@
       {{on "mouseover" (fn this.setHoverIndex -1)}}
       {{on "mouseout" this.removeHoverIndex}}
     >
-      <LinkTo @route={{this.indexRoute}}>
-        <div block:class="name">
-          {{t (concat "models.plurals." this.indexModelName)}}
-        </div>
-      </LinkTo>
+      {{#let this.breadcrumb.baseItem as |item|}}
+        <LinkTo @route={{item.routeName}}>
+          <div block:class="name">
+            {{item.name}}
+          </div>
+        </LinkTo>
+      {{/let}}
     </li>
+
     {{#animated-each this.breadcrumb.items
       use=this.transition
       duration=300
@@ -22,7 +25,10 @@
         {{on "mouseover" (fn this.setHoverIndex index)}}
         {{on "mouseout" this.removeHoverIndex}}
       >
-        <LinkTo @route={{item.routeName}} @model={{item.model}}>
+        <LinkTo
+          @route={{item.routeName}}
+          @model={{unless item.model.isNew item.model}}
+        >
           <div block:class="name">
             {{item.name}}
           </div>

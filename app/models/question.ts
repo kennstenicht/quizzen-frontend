@@ -1,5 +1,5 @@
-import Model, { attr, hasMany } from '@ember-data/model';
-import { alias } from '@ember/object/computed';
+import Model from 'quizzen/models/base';
+import { attr, hasMany } from '@ember-data/model';
 import Answer from 'quizzen/models/answer';
 import Category from 'quizzen/models/category';
 
@@ -10,18 +10,15 @@ export default class QuestionModel extends Model {
   @attr('date') date!: string;
 
 
-  // Meta
-  @attr('date') createdAt!: Date;
-  @attr('date') updatedAt!: Date;
-
-
   // Relations
   @hasMany('answer') answers?: Answer[];
   @hasMany('category') categories?: Category[];
 
 
   // Getter and setter
-  @alias('label') displayLabel!: string;
+  get displayLabel() {
+    return this.label;
+  }
 
   get numAnswers() {
     return this.answers?.length;

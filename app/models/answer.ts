@@ -1,5 +1,5 @@
-import Model, { attr, belongsTo } from '@ember-data/model';
-import { alias } from '@ember/object/computed';
+import Model from 'quizzen/models/base';
+import { attr, belongsTo } from '@ember-data/model';
 import Question from 'quizzen/models/question';
 
 export default class AnswerModel extends Model {
@@ -9,15 +9,12 @@ export default class AnswerModel extends Model {
   @attr('string') information!: string;
 
 
-  // Meta
-  @attr('date') createdAt!: Date;
-  @attr('date') updatedAt!: Date;
-
-
   // Relations
   @belongsTo('question') question?: Question;
 
 
   // Getter and setter
-  @alias('label') displayLabel!: string;
+  get displayLabel() {
+    return this.label;
+  }
 }

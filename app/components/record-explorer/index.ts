@@ -1,11 +1,10 @@
 import Component from '@glimmer/component';
 import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
-import { notEmpty } from '@ember/object/computed';
 import Router from '@ember/routing/router-service';
-import Model from '@ember-data/model';
 import { pluralize } from 'ember-inflector';
 import Intl from 'ember-intl/services/intl';
+import Model from 'quizzen/models/base';
 
 interface Args {
   records: Model[],
@@ -36,8 +35,7 @@ export default class RecordDetailComponent extends Component<Args> {
   // Actions
   @action
   openRecord(record: Model) {
-    // @ts-ignore
-    let modelName = record.constructor.modelName;
+    let modelName = record.modelName;
     let editRoute = `profile.${pluralize(modelName)}.${modelName}`;
 
     this.router.transitionTo(editRoute, record);

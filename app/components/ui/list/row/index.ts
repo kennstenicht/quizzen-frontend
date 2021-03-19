@@ -1,5 +1,5 @@
 import Component from '@glimmer/component';
-import Model from '@ember-data/model';
+import Model from 'quizzen/models/base';
 
 interface Args {
   disabledRecords?: Model[]
@@ -20,11 +20,6 @@ export default class UiListRowComponent extends Component<Args> {
     }
 
     return columns;
-  }
-
-  get modelName() {
-    // @ts-ignore
-    return this.args.record.constructor.modelName;
   }
 
   get isDisabled() {

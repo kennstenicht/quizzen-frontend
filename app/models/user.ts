@@ -1,4 +1,5 @@
-import Model, { attr } from '@ember-data/model';
+import Model from 'quizzen/models/base';
+import { attr } from '@ember-data/model';
 
 export default class UserModel extends Model {
   // Attributes
@@ -6,14 +7,6 @@ export default class UserModel extends Model {
   @attr('string') firstname!: string;
   @attr('string') lastname!: string;
   @attr('string') nickname!: string;
-
-
-  // Meta
-  @attr('date') createdAt!: Date;
-  @attr('date') updatedAt!: Date;
-
-
-  // Relations
 
 
   // Getter and setter

@@ -3,7 +3,7 @@ import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
 import Router from '@ember/routing/router-service';
-import Model from '@ember-data/model';
+import Model from 'quizzen/models/base';
 import Store from '@ember-data/store';
 import { BufferedChangeset } from 'ember-changeset/types';
 import FlashMessages from 'ember-cli-flash/services/flash-messages';
@@ -32,11 +32,6 @@ export default class RecordDetailComponent extends Component<Args> {
 
 
   // Getter and setter
-  get modelName(): string {
-    // @ts-ignore
-    return this.args.model.constructor.modelName;
-  }
-
   get breadcrumbItem() {
     return this.breadcrumb.currentItem;
   }
@@ -64,7 +59,8 @@ export default class RecordDetailComponent extends Component<Args> {
 
       this.flashMessages.success(message);
 
-      this.breadcrumb.transitionTo(this.breadcrumb.prevItem, this.modelName);
+      // @ts-ignore
+      this.router.transitionTo(...this.breadcrumb.prevItem.routeParams);
     } catch(error) {
       this.flashMessages.warning(error);
     }
@@ -84,7 +80,8 @@ export default class RecordDetailComponent extends Component<Args> {
   rollbackRecord(event: Event) {
     event.preventDefault();
 
-    this.breadcrumb.transitionTo(this.breadcrumb.prevItem, this.modelName);
+    // @ts-ignore
+    this.router.transitionTo(...this.breadcrumb.prevItem.routeParams);
   }
 
   @action
@@ -103,7 +100,8 @@ export default class RecordDetailComponent extends Component<Args> {
 
         this.flashMessages.success(message);
 
-        this.breadcrumb.transitionTo(this.breadcrumb.prevItem, this.modelName);
+        // @ts-ignore
+        this.router.transitionTo(...this.breadcrumb.prevItem.routeParams);
       } else {
         this.flashMessages.warning('not valid');
       }

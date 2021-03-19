@@ -1,6 +1,6 @@
 <div
   block:scope
-  block:layout={{this.modelName}}
+  block:layout={{@record.modelName}}
   block:is-head={{@head}}
   block:is-even={{this.isEven}}
   block:is-selected={{this.isSelected}}
@@ -12,7 +12,7 @@
     <Ui::List::Row::Column
       @column={{column}}
       @head={{@head}}
-      @modelName={{this.modelName}}
+      @modelName={{@record.modelName}}
       @record={{@record}}
     />
   {{/each}}

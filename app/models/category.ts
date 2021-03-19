@@ -1,5 +1,5 @@
-import Model, { attr, hasMany } from '@ember-data/model';
-import { alias } from '@ember/object/computed';
+import Model from 'quizzen/models/base';
+import { attr, hasMany } from '@ember-data/model';
 import Question from 'quizzen/models/question';
 import Quiz from 'quizzen/models/quiz';
 
@@ -8,18 +8,15 @@ export default class CategoryModel extends Model {
   @attr('string') title!: string;
 
 
-  // Meta
-  @attr('date') createdAt!: Date;
-  @attr('date') updatedAt!: Date;
-
-
   // Relations
   @hasMany('question') questions?: Question[];
   @hasMany('quiz') quizzes?: Quiz[];
 
 
   // Getter and setter
-  @alias('title') displayLabel!: string;
+  get displayLabel() {
+    return this.title;
+  }
 
   get numQuestions() {
     return this.questions?.length;

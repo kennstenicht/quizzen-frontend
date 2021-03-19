@@ -32,9 +32,7 @@ export default class SignInComponent extends Component<Args> {
       id: 0,
       email: null,
       password: null,
-      constructor: {
-        modelName: 'user'
-      }
+      modelName: 'user'
     };
 
     this.user = Changeset(

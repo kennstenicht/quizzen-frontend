@@ -1,7 +1,7 @@
 <Ui::Window {{did-insert this.loadChangeset}} ...attributes>
   <:title>
     {{#if this.changeset.isNew}}
-      {{t "recordDetail.new" modelName=(t (concat "models." this.modelName))}}
+      {{t "recordDetail.new" modelName=(t (concat "models." @model.modelName))}}
     {{else}}
       {{this.changeset.displayLabel}}
     {{/if}}
@@ -40,7 +40,7 @@
         as |form|
       >
         {{component
-          (concat "record-detail/for/" this.modelName)
+          (concat "record-detail/for/" @model.modelName)
           form=form
         }}
       </Ui::Form>

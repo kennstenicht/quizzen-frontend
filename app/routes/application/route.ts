@@ -57,11 +57,17 @@ export default class ApplicationRoute extends Route {
         this.controller.model
       );
 
-      if (attemptedBreadcrumbItem) {
-        this.breadcrumb.rollbackTo(attemptedBreadcrumbItem, transition);
-      } else {
-        this.breadcrumb.clear(transition);
+      if (attemptedBreadcrumbItem === this.breadcrumb.currentItem) {
+        return true
       }
+
+      if (attemptedBreadcrumbItem) {
+        return this.breadcrumb.rollbackTo(attemptedBreadcrumbItem, transition);
+      }
+
+      return this.breadcrumb.clear(transition);
     }
+
+    return true
   }
 }
