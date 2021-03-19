@@ -48,6 +48,10 @@ export class BreadcrumbItem {
     }, 0);
   }
 
+  get hasChanges() {
+    return this.changes > 0;
+  }
+
   get hasDirtyChangeset() {
     return this.changesets.isAny('isDirty');
   }

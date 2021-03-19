@@ -12,31 +12,39 @@
   margin: 0;
   list-style: none;
   overflow-x: auto;
-  padding: spacing('tiny') spacing();
+  padding: spacing('tiny');
   display: flex;
   width: 100%;
 }
 
   .item {
+    position: relative;
     display: inline-flex;
     align-items: center;
-    margin-right: spacing('small');
+    margin-right: spacing('tiny');
+    padding: 0 spacing('small');
+    border-radius: spacing('small+tiny');
+    background-color: $color-grey;
+    transition: background-color 0.3s ease-in-out;
 
-    &::before {
-      margin-right: spacing('small');
-      content: '»';
+    &:hover {
+      background-color: $color-active;
+      color: $color-white;
     }
 
-    &:first-child::before {
-      display: none;
+    &[is-current] {
+      background-color: $color-active;
+      color: $color-white;
     }
-  }
 
-  .item[is-to-rollback] {
-    opacity: 0.3;
+    &[is-to-rollback] {
+      opacity: 0.3;
+      background-color: $color-grey;
+      color: $color-black;
+    }
 
-    &::before {
-      content: '«';
+    &[has-changes] {
+      padding-right: 0;
     }
   }
 

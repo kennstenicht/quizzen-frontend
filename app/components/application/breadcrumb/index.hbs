@@ -15,13 +15,17 @@
     </li>
 
     {{#animated-each this.breadcrumb.items
-      use=this.transition
-      duration=300
+      use=this.breadcrumbTransitiom
+      duration=400
+      initialInsertion=false
+      finalRemoval=false
       as |item index|
     }}
       <li
         block:class="item"
+        block:is-current={{eq item this.breadcrumb.currentItem}}
         block:is-to-rollback={{gt index this.hoverIndex}}
+        block:has-changes={{item.hasChanges}}
         {{on "mouseover" (fn this.setHoverIndex index)}}
         {{on "mouseout" this.removeHoverIndex}}
       >

@@ -10,13 +10,10 @@
 :scope {
   block-name: c-application;
   display: grid;
+  overflow-x: hidden;
   padding: spacing('small');
-  height: 100vh;
   min-height: 500px;
-  background-image: url('/undraw_best_place_r685.svg');
-  background-position: left -20% bottom -1%;
-  background-size: 65% auto;
-  background-repeat: no-repeat;
+  height: 100vh;
   grid-template-columns: 1fr min-content;
   grid-template-rows: spacing('base+small') calc(100% - #{spacing('huge')}) spacing('base+small');
   grid-template-areas: 'logo header'
@@ -48,7 +45,9 @@
   }
 
   :scope[has-breadcrumb] .breadcrumb {
+    position: relative;
     z-index: 2;
+    overflow: hidden;
     width: calc(100vw - #{$navigation-width});
     border-radius: spacing('small+tiny');
     background-color: $color-grey-lighter;
