@@ -1,0 +1,6 @@
+<li block:scope block:is-active={{this.isActive}}>
+  <LinkTo @route={{@link}} block:class="link">
+    <div block:class="icon">{{svg-jar @link}}</div>
+    <div block:class="label">{{t (concat "navigation." @link)}}</div>
+  </LinkTo>
+</li>

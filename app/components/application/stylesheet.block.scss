@@ -51,6 +51,7 @@
     width: calc(100vw - #{$navigation-width});
     border-radius: spacing('small+tiny');
     background-color: $color-grey-lighter;
+    box-shadow: 0 0 spacing() 0 rgba($color-black, 0.3);
     grid-area: breadcrumb;
   }
 

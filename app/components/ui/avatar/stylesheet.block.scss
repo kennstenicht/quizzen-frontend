@@ -15,8 +15,9 @@
   width: spacing('base+small');
   height: spacing('base+small');
   border-radius: 50%;
-  background-color: #ddd;
+  background-color: $color-grey-lighter;
   font-weight: bold;
+  box-shadow: 0 0 spacing() 0 rgba($color-black, 0.2);
 }
 
 :scope[size=large] {
