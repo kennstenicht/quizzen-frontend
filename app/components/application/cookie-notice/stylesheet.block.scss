@@ -14,13 +14,14 @@
   bottom: spacing('small');
   left: spacing('small');
   z-index: 999;
-  padding: spacing('small');
+  padding: spacing();
   max-height: calc(100vh - spacing('large'));
-  border: 2px solid $color-black;
-  background-color: $color-white;
+  background-color: $color-grey-lighter;
   color: $color-black;
   transition: transform 0.3s ease-in-out;
   transform: translate(0, 150%);
+  border-radius: spacing('small+tiny');
+  box-shadow: 0 0 spacing() 0 rgba($color-black, 0.3);
 }
 
 :scope[is-visible] {
