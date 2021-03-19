@@ -29,12 +29,12 @@ export class BreadcrumbItem {
   // Defaults
   changesets: TrackedArray<BufferedChangeset> = new TrackedArray([]);
   intl: Intl;
-  model?: Model;
-  routeName: string;
+  model: Model;
+  @tracked routeName: string;
 
 
   // Hooks
-  constructor(intl: Intl, routeName: string, model?: Model) {
+  constructor(intl: Intl, routeName: string, model: Model) {
     this.intl = intl;
     this.model = model;
     this.routeName = routeName;
@@ -58,7 +58,7 @@ export class BreadcrumbItem {
 
   get name() {
     // @ts-ignore
-    if (this.model?.isNew) {
+    if (this.model.isNew) {
       return this.intl.t('recordDetail.new', {
         modelName: this.intl.t(`models.${this.model.modelName}`)
       });
@@ -111,7 +111,11 @@ export default class BreadcrumbService extends Service {
 
   // Getter and setter
   get baseItem() {
-    let baseModelName = this.firstItem.model?.modelName || '';
+    let baseModelName = this.firstItem?.model.modelName;
+
+    if (!baseModelName) {
+      return
+    }
 
     return {
       routeName: `profile.${pluralize(baseModelName)}`,
