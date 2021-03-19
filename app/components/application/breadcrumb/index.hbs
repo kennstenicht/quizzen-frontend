@@ -1,5 +1,9 @@
 {{#if this.breadcrumb.hasItems}}
-  <ol block:scope ...attributes>
+  <ol
+    block:scope
+    {{did-insert (fn this.setHoverIndex undefined)}}
+    ...attributes
+  >
     <li
       block:class="item"
       {{on "mouseover" (fn this.setHoverIndex -1)}}
