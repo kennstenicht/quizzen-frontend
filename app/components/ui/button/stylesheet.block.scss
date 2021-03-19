@@ -65,6 +65,19 @@
   }
 }
 
+// Secondary
+:scope[style=light] {
+  padding: spacing('tiny') spacing('base');
+  border-radius: spacing('small+tiny');
+  background-color: $color-grey-lighter;
+  color: $color-black;
+  text-align: center;
+
+  @include attention() {
+    background-color: darken($color-grey-light, 10%);
+  }
+}
+
 
 // Danger
 :scope[style=danger] {
