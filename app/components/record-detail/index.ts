@@ -1,5 +1,4 @@
 import Component from '@glimmer/component';
-import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
 import Router from '@ember/routing/router-service';
@@ -27,10 +26,6 @@ export default class RecordDetailComponent extends Component<Args> {
   @service store!: Store;
 
 
-  // Defaults
-  @tracked changeset!: BufferedChangeset;
-
-
   // Getter and setter
   get breadcrumbItem() {
     return this.breadcrumb.currentItem;
@@ -50,7 +45,6 @@ export default class RecordDetailComponent extends Component<Args> {
       }
 
       await this.args.model.destroyRecord();
-      await this.changeset.rollback();
 
       const message = this.intl.t('recordDetail.deleteRecord', {
         title: title
@@ -63,16 +57,6 @@ export default class RecordDetailComponent extends Component<Args> {
     } catch(error) {
       this.flashMessages.warning(error);
     }
-  }
-
-  @action
-  loadChangeset() {
-    let routeName = this.router.currentRoute.name;
-    // @ts-ignore
-    let model = this.router.currentRoute.attributes;
-    let route = this.breadcrumb.getItem(routeName, model);
-
-    this.changeset = route.getChangeset(this.args.model);
   }
 
   @action

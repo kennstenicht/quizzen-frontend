@@ -1,12 +1,16 @@
 <form
   block:scope
   form:scope
+  {{did-insert this.loadChangeset}}
+  {{on "submit" @submit}}
   ...attributes
 >
-  {{yield (hash
-    field=(component "ui/form/field"
-      changeset=@changeset
-      modelName=this.modelName
-    ))
-  }}
+  {{#if this.changeset}}
+    {{yield (hash
+      field=(component "ui/form/field"
+        changeset=this.changeset
+        modelName=this.modelName
+      ))
+    }}
+  {{/if}}
 </form>

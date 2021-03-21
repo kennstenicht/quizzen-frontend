@@ -1,9 +1,9 @@
-<Ui::Window {{did-insert this.loadChangeset}} ...attributes>
+<Ui::Window ...attributes>
   <:title>
-    {{#if this.changeset.isNew}}
+    {{#if @model.isNew}}
       {{t "recordDetail.new" modelName=(t (concat "models." @model.modelName))}}
     {{else}}
-      {{this.changeset.displayLabel}}
+      {{@model.displayLabel}}
     {{/if}}
   </:title>
 
@@ -13,7 +13,7 @@
       @label="Save"
       @style="primary"
       @type="submit"
-      form={{this.changeset.id}}
+      form={{@model.id}}
     />
 
     <Ui::Button
@@ -25,35 +25,31 @@
     <Ui::Button
       @icon="close"
       @style="outline"
-      @type="reset"
-      form={{this.changeset.id}}
+      @onClick={{this.rollbackRecord}}
     />
   </:toolbar>
 
   <:body>
-    {{#if this.changeset}}
-      <Ui::Form
-        @changeset={{this.changeset}}
-        {{on "submit" (fn this.saveRecord this.changeset)}}
-        {{on "reset" this.rollbackRecord}}
-        id={{this.changeset.id}}
-        as |form|
-      >
-        {{component
-          (concat "record-detail/for/" @model.modelName)
-          form=form
-        }}
-      </Ui::Form>
-    {{/if}}
+    <Ui::Form
+      @model={{@model}}
+      @submit={{this.saveRecord}}
+      id={{@model.id}}
+      as |form|
+    >
+      {{component
+        (concat "record-detail/for/" @model.modelName)
+        form=form
+      }}
+    </Ui::Form>
   </:body>
 
   <:bottombar>
     <div block:class="meta">
       {{t "recordDetail.updatedAt"}}
-      {{format-date this.changeset.updatedAt}}
+      {{format-date @model.updatedAt}}
       /
       {{t "recordDetail.createdAt"}}
-      {{format-date this.changeset.createdAt}}
+      {{format-date @model.createdAt}}
     </div>
   </:bottombar>
 </Ui::Window>
