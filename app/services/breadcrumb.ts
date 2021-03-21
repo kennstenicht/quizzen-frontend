@@ -8,7 +8,7 @@ import { Changeset } from 'ember-changeset';
 import lookupValidator from 'ember-changeset-validations';
 import { BufferedChangeset } from 'ember-changeset/types';
 // @ts-ignore
-import { TrackedArray, tracked } from 'tracked-built-ins';
+import { TrackedArray } from 'tracked-built-ins';
 import Intl from 'ember-intl/services/intl';
 import Confirm from 'quizzen/services/confirm';
 import AnswerValidations from 'quizzen/validations/answer';
@@ -30,7 +30,8 @@ export class BreadcrumbItem {
   changesets: TrackedArray<BufferedChangeset> = new TrackedArray([]);
   intl: Intl;
   model: Model;
-  @tracked routeName: string;
+  routeModel?: Model;
+  routeName: string;
 
 
   // Hooks
@@ -38,6 +39,10 @@ export class BreadcrumbItem {
     this.intl = intl;
     this.model = model;
     this.routeName = routeName;
+
+    if (!model.isNew) {
+      this.routeModel = model;
+    }
   }
 
 
@@ -68,7 +73,13 @@ export class BreadcrumbItem {
   }
 
   get routeParams(): [string, Model?] {
-    return [this.routeName, this.model];
+    let routeParams: [string, Model?] = [this.routeName];
+
+    if (this.routeModel) {
+      routeParams.push(this.routeModel);
+    }
+
+    return routeParams;
   }
 
 

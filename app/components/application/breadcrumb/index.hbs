@@ -35,7 +35,7 @@
       >
         <LinkTo
           @route={{item.routeName}}
-          @model={{unless item.model.isNew item.model}}
+          @model={{if model.routeModel item.routeModel}}
         >
           <div block:class="name">
             {{item.name}}
