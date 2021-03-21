@@ -14,6 +14,10 @@
   padding: spacing('small');
   min-height: 500px;
   height: 100vh;
+  background-image: url('/undraw_best_place_r685.svg');
+  background-position: left -20% bottom -1%;
+  background-size: 65% auto;
+  background-repeat: no-repeat;
   grid-template-columns: 1fr min-content;
   grid-template-rows: spacing('base+small') calc(100% - #{spacing('huge')}) spacing('base+small');
   grid-template-areas: 'logo header'
@@ -50,7 +54,7 @@
     overflow: hidden;
     width: calc(100vw - #{$navigation-width});
     border-radius: spacing('small+tiny');
-    background-color: $color-grey-lighter;
+    background-color: $color-grey-light;
     box-shadow: 0 0 spacing() 0 rgba($color-black, 0.3);
     grid-area: breadcrumb;
   }
