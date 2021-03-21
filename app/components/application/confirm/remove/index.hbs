@@ -1,0 +1,28 @@
+<div block:scope ...attributes>
+  <h2 block:class="title">
+    {{t
+      "application.confirm.remove.title"
+      modelName=(t (concat "models." @confirm.data.modelName))
+    }}
+  </h2>
+  <div block:class="message">
+    {{t
+      "application.confirm.remove.message"
+      displayLabel=@confirm.data.displayLabel
+    }}
+  </div>
+
+  <Ui::Button
+    @label={{t "application.confirm.remove.confirm"}}
+    @onClick={{@confirm.confirm}}
+    @icon="remove"
+    @style="danger"
+  />
+
+  <Ui::Button
+    @label={{t "application.confirm.remove.cancel"}}
+    @onClick={{@confirm.cancel}}
+    @icon="cancel"
+    @style="secondary"
+  />
+</div>

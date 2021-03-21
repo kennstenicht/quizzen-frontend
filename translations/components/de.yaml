@@ -6,6 +6,11 @@ application:
       message: 'Bist du dir sicher, dass du "{displayLabel}" wirklich löschen möchtest?'
       confirm: Löschen
       cancel: Abbrechen
+    remove:
+      title: '{modelName} entfernen?'
+      message: 'Bist du dir sicher, dass du "{displayLabel}" wirklich von diesem Eintrag entfernen möchtest?'
+      confirm: Entfernen
+      cancel: Abbrechen
     rollback:
       title: Ungespeicherte Änderungen
       message: '"{title}" hat ungespeicherte Änderungen. Bist du dir sicher, dass du die Änderungen ohne zu speichern verwerfen möchtest?'

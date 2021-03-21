@@ -6,9 +6,8 @@ import { inject as service } from '@ember/service';
 import Router from '@ember/routing/router-service';
 import Store from '@ember-data/store';
 import { BufferedChangeset } from 'ember-changeset/types';
-import Model from '@ember-data/model';
+import Model from 'quizzen/models/base';
 import { pluralize } from 'ember-inflector';
-import Breadcrumb from 'quizzen/services/breadcrumb';
 // @ts-ignore
 import move from 'ember-animated/motions/move';
 // @ts-ignore
@@ -16,6 +15,9 @@ import { fadeOut } from 'ember-animated/motions/opacity';
 
 
 import TransitionContext from 'ember-animated/-private/transition-context';
+import Breadcrumb from 'quizzen/services/breadcrumb';
+import Confirm from 'quizzen/services/confirm';
+
 interface Args {
   records: any[],
   property: string,
@@ -24,6 +26,7 @@ interface Args {
 
 export default class UiFormFieldRelationComponent extends Component<Args> {
   // Services
+  @service confirm!: Confirm;
   @service breadcrumb!: Breadcrumb;
   @service router!: Router;
   @service store!: Store;
@@ -118,9 +121,14 @@ export default class UiFormFieldRelationComponent extends Component<Args> {
   }
 
   @action
-  removeRecord(record: Model) {
+  async removeRecord(record: Model) {
     let changeset = this.args.changeset;
     let property = this.args.property;
+    let confirmed = await this.confirm.ask('remove', record);
+
+    if (!confirmed) {
+      return
+    }
 
     if (this.isHasManyRelation) {
       changeset.get(property).removeObject(record);
