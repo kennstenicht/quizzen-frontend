@@ -2,33 +2,38 @@
   Quizzen mit {{@model.quizMaster.nickname}}
 </Application::Headline>
 
-<div
+<Ui::Window
   {{did-insert (fn this.subscribe @model)}}
   {{will-destroy this.unsubscribe}}
 >
-  Game: {{@model.title}}<br>
-  Quiz Master: {{@model.quizMaster.displayLabel}}
-  <br><br>
-  {{#if this.session.isAuthenticated}}
-    {{#if @model.joined}}
-      Du bist im Game! Warte bis es los geht.<br><br>
+  <:title>
+    {{@model.title}}
+  </:title>
+
+  <:body>
+    Quiz Master: {{@model.quizMaster.displayLabel}}
+    <br><br>
+    {{#if this.session.isAuthenticated}}
+      {{#if @model.joined}}
+        Du bist im Game! Warte bis es los geht.<br><br>
+      {{else}}
+        <Ui::Button
+          @onClick={{this.join}}
+          @label="Join"
+          @style="primary"
+        />
+      {{/if}}
     {{else}}
       <Ui::Button
-        @onClick={{this.join}}
-        @label="Join"
+        @onClick={{this.transitionToLogin}}
+        @label="Login"
         @style="primary"
       />
     {{/if}}
-  {{else}}
-    <Ui::Button
-      @onClick={{this.transitionToLogin}}
-      @label="Login"
-      @style="primary"
-    />
-  {{/if}}
-  <br><br>
-  <strong>Players:</strong><br>
-  {{#each @model.users as |user|}}
-    <Ui::Avatar @user={{user}} />
-  {{/each}}
-</div>
+    <br><br>
+    <strong>Players:</strong><br>
+    {{#each @model.users as |user|}}
+      <Ui::Avatar @user={{user}} />
+    {{/each}}
+  </:body>
+</Ui::Window>
