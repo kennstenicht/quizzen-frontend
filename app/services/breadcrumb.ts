@@ -190,13 +190,11 @@ export default class BreadcrumbService extends Service {
     transition.abort();
 
     for(let i = items.length - 1; i >= 0; i--) {
-      let item = items[i];
+      let currentItem = items[i];
+      let prevItem = items[i - 1];
 
-      // @ts-ignore
-      this.router.transitionTo(...item.routeParams);
-
-      if (item.hasDirtyChangeset) {
-        let confirmed = await this.confirm.ask('rollback', item);
+      if (currentItem.hasDirtyChangeset) {
+        let confirmed = await this.confirm.ask('rollback', currentItem);
 
         if (!confirmed) {
           return true;
@@ -204,6 +202,11 @@ export default class BreadcrumbService extends Service {
       }
 
       this.items.pop();
+
+      if (prevItem) {
+        // @ts-ignore
+        this.router.transitionTo(...prevItem.routeParams);
+      }
     }
 
     return transition.retry();
