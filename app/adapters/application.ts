@@ -6,7 +6,6 @@ import { underscore } from '@ember/string';
 import { pluralize } from 'ember-inflector';
 import Session from 'ember-simple-auth/services/session';
 import Fastboot from 'ember-cli-fastboot/services/fastboot';
-// @ts-ignore
 import { v4 } from 'ember-uuid';
 
 export default class ApplicationAdapter extends JSONAPIAdapter {
@@ -21,7 +20,6 @@ export default class ApplicationAdapter extends JSONAPIAdapter {
 
   // Getter and setter
   @computed('fastboot.{isFastBoot,request.host,request.protocol}')
-  // @ts-ignore
   get host(): string {
     const ENV = getOwner(this).resolveRegistration('config:environment');
 
@@ -36,7 +34,6 @@ export default class ApplicationAdapter extends JSONAPIAdapter {
   }
 
   @computed('session.{isAuthenticated,data.authenticated.jwt}')
-  // @ts-ignore
   get headers() {
     let headers: any = {};
 

@@ -41,8 +41,7 @@ export default class RecordDetailComponent extends Component<Args> {
   @action
   async deleteRecord() {
     try {
-      // @ts-ignore
-      let title = this.args.model.title;
+      let title = this.args.model.displayLabel;
 
       let confirmed = await this.confirm.ask('delete', this.breadcrumbItem);
 

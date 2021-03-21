@@ -1,9 +1,6 @@
 import Component from '@glimmer/component';
-// @ts-ignore
 import move from 'ember-animated/motions/move';
-// @ts-ignore
 import TransitionContext from 'ember-animated/-private/transition-context';
-// @ts-ignore
 import { easeOut, easeIn } from 'ember-animated/easings/cosine';
 
 interface Args {

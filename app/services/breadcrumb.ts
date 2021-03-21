@@ -64,7 +64,6 @@ export class BreadcrumbItem {
       });
     }
 
-    // @ts-ignore
     return this.model.displayLabel;
   }
 
@@ -186,7 +185,6 @@ export default class BreadcrumbService extends Service {
       this.router.transitionTo(...item.routeParams);
 
       if (item.hasDirtyChangeset) {
-
         let confirmed = await this.confirm.ask('rollback', item);
 
         if (!confirmed) {

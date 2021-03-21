@@ -3,9 +3,7 @@ import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
 import Breadcrumb from 'quizzen/services/breadcrumb';
-// @ts-ignore
 import move from 'ember-animated/motions/move';
-// @ts-ignore
 import TransitionContext from 'ember-animated/-private/transition-context';
 
 export default class ApplicationBreadcrumb extends Component {

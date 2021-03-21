@@ -8,11 +8,8 @@ import Store from '@ember-data/store';
 import { BufferedChangeset } from 'ember-changeset/types';
 import Model from 'quizzen/models/base';
 import { pluralize } from 'ember-inflector';
-// @ts-ignore
 import move from 'ember-animated/motions/move';
-// @ts-ignore
 import { fadeOut } from 'ember-animated/motions/opacity';
-// @ts-ignore
 import TransitionContext from 'ember-animated/-private/transition-context';
 import Breadcrumb from 'quizzen/services/breadcrumb';
 import Confirm from 'quizzen/services/confirm';
