@@ -15,8 +15,10 @@ export default class ApplicationNavigationItemComponent extends Component<Args> 
 
   // Getter, setter and computed properties
   get isActive() {
-    let routeName = this.breadcrumb.baseItem?.routeName ?? this.router.currentRoute.name.replace('.index', '')
+    if (this.breadcrumb.baseItem) {
+      return this.args.link === this.breadcrumb.baseItem.routeName;
+    }
 
-    return this.args.link === routeName;
+    return this.router.currentRoute.name.includes(this.args.link);
   }
 }
