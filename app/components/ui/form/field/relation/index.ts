@@ -12,8 +12,7 @@ import { pluralize } from 'ember-inflector';
 import move from 'ember-animated/motions/move';
 // @ts-ignore
 import { fadeOut } from 'ember-animated/motions/opacity';
-
-
+// @ts-ignore
 import TransitionContext from 'ember-animated/-private/transition-context';
 import Breadcrumb from 'quizzen/services/breadcrumb';
 import Confirm from 'quizzen/services/confirm';
@@ -147,15 +146,15 @@ export default class UiFormFieldRelationComponent extends Component<Args> {
 
 
   // Functions
-  transition = function*({ keptSprites, removedSprites }: TransitionContext) {
-    for (let sprite of keptSprites) {
-      sprite.applyStyles({ 'z-index': '2' });
-      move(sprite);
-    }
-
+  *listTransition({ keptSprites, removedSprites }: TransitionContext) {
     for (let sprite of removedSprites) {
       sprite.applyStyles({ 'z-index': '1' });
       fadeOut(sprite);
+    }
+
+    for (let sprite of keptSprites) {
+      sprite.applyStyles({ 'z-index': '2' });
+      move(sprite);
     }
   }
 }

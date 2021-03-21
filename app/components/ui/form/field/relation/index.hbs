@@ -5,7 +5,7 @@
       {{sortable-group onChange=this.reorderRecords groupName=this.groupName}}
     >
       {{#animated-each this.records
-        use=this.transition
+        use=this.listTransition
         duration=300
         as |record|
       }}
