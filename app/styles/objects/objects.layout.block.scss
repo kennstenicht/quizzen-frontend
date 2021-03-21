@@ -1,0 +1,57 @@
+/* ==========================================================================
+   # LAYOUT
+   ========================================================================== */
+
+@import 'setup';
+
+:scope {
+  block-name: o-layout;
+  display: block;
+  margin: 0;
+  margin-left: - spacing('base');
+  padding: 0;
+  list-style: none;
+  letter-spacing: 0;
+  font-size: 0;
+}
+
+
+  .item {
+    display: inline-block;
+    box-sizing: border-box;
+    padding-left: spacing('base');
+    width: 100%;
+    vertical-align: top;
+    letter-spacing: $letter-spacing;
+    font-size: $font-size;
+    font-size: 1rem;
+  }
+
+
+
+
+
+/* Widths
+  ========================================================================== */
+
+$fractions: 1 2 3 4 5 6 12;
+
+@mixin widths($columns, $bp-name: null) {
+  @each $denominator in $columns {
+    @for $numerator from 1 through $denominator {
+      .item[#{$bp-name}=width-#{$numerator}-#{$denominator}] {
+        width: ($numerator / $denominator) * 100%;
+      }
+    }
+  }
+}
+
+// Default widths
+@include widths($fractions, global);
+
+// Responsive widths
+@each $bp-name, $bp-value in $mq-breakpoints {
+  @include mq($from: $bp-name) {
+    @include widths($fractions, #{$bp-name});
+  }
+}
