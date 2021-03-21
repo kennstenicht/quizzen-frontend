@@ -111,8 +111,11 @@ export default class UiFormFieldRelationComponent extends Component<Args> {
   openNewRecord() {
     let relationType = this.relationType;
     let newRoute = `profile.${pluralize(relationType)}.new`;
+    let newRecord = this.store.createRecord(relationType);
 
-    this.breadcrumb.registerItem(newRoute);
+    this.assignRecords([newRecord]);
+
+    this.breadcrumb.registerItem(newRoute, newRecord);
     this.router.transitionTo(newRoute);
   }
 
