@@ -8,6 +8,7 @@ import Model from 'quizzen/models/base';
 import Breadcrumb from 'quizzen/services/breadcrumb';
 
 interface Args {
+  changeset?: BufferedChangeset,
   model: Model,
   submit?: Function,
 }
@@ -30,11 +31,15 @@ export default class UiFormComponent extends Component<Args> {
 
   @action
   loadChangeset() {
-    let routeName = this.router.currentRoute.name;
-    // @ts-ignore
-    let model = this.router.currentRoute.attributes;
-    let route = this.breadcrumb.getItem(routeName, model);
+    if (this.args.changeset) {
+      this.changeset = this.args.changeset;
+    } else {
+      let routeName = this.router.currentRoute.name;
+      // @ts-ignore
+      let model = this.router.currentRoute.attributes;
+      let route = this.breadcrumb.getItem(routeName, model);
 
-    this.changeset = route.getChangeset(this.args.model);
+      this.changeset = route.getChangeset(this.args.model);
+    }
   }
 }

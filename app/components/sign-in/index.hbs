@@ -4,8 +4,10 @@
   </:title>
 
   <:body>
-    <Ui::Form @changeset={{this.user}}
-      {{on "submit" (fn this.signIn this.user)}}
+    <Ui::Form
+      @changeset={{this.userChangeset}}
+      @model={{this.user}}
+      {{on "submit" (fn this.signIn this.userChangeset)}}
       as |form|
     >
       <form.field @property="email" @type="email" />

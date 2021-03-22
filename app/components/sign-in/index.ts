@@ -21,22 +21,24 @@ export default class SignInComponent extends Component<Args> {
 
 
   // Defaults
-  user: BufferedChangeset;
+  user: {};
+  userChangeset: BufferedChangeset;
 
 
   // Hooks
   constructor(owner: unknown, args: Args) {
     super(owner, args);
 
-    let user = {
+    this.user = {
       id: 0,
       email: null,
       password: null,
-      modelName: 'user'
+      modelName: 'user',
+      isNew: true
     };
 
-    this.user = Changeset(
-      user,
+    this.userChangeset = Changeset(
+      this.user,
       lookupValidator(UserValidations),
       UserValidations
     );
