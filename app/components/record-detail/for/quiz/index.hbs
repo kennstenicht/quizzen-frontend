@@ -1,2 +1,8 @@
-<@form.field @property="title" />
-<@form.field @property="categories" @type="relation" />
+<div layout:scope>
+  <div layout:class="item" layout:desktop="width-1-1">
+    <@form.field @property="title" />
+  </div>
+  <div layout:class="item" layout:desktop="width-1-1">
+    <@form.field @property="categories" @type="relation" />
+  </div>
+</div>

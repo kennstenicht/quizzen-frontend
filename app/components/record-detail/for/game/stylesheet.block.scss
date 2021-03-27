@@ -1,0 +1,18 @@
+/* ==========================================================================
+   # RECORD DETAIL FOR GAME
+   ========================================================================== */
+
+// Imports
+@import 'setup';
+@block layout from 'objects/objects.layout.block.scss';
+
+
+// Exports
+@export (layout);
+
+
+// Block
+:scope {
+  block-name: c-record-detail-for-game;
+  display: block;
+}

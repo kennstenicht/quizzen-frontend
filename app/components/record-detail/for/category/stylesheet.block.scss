@@ -1,0 +1,18 @@
+/* ==========================================================================
+   # RECORD DETAIL FOR CATEGORY
+   ========================================================================== */
+
+// Imports
+@import 'setup';
+@block layout from 'objects/objects.layout.block.scss';
+
+
+// Exports
+@export (layout);
+
+
+// Block
+:scope {
+  block-name: c-record-detail-for-category;
+  display: block;
+}

@@ -1,8 +1,20 @@
-
-<@form.field @property="title" />
-<@form.field @property="active" @type="checkbox" />
-<@form.field @property="guessQuestion" @type="relation" />
-<@form.field @property="quizMaster" @type="relation" />
-<@form.field @property="users" @type="relation" />
-
-<@form.field @property="quiz" @type="relation" />
+<div layout:scope>
+  <div layout:class="item" layout:desktop="width-1-1">
+    <@form.field @property="title" />
+  </div>
+  <div layout:class="item" layout:desktop="width-1-1">
+    <@form.field @property="quiz" @type="relation" />
+  </div>
+  <div layout:class="item" layout:desktop="width-1-1">
+    <@form.field @property="guessQuestion" @type="relation" />
+  </div>
+  <div layout:class="item" layout:desktop="width-1-1">
+    <@form.field @property="active" @type="checkbox" />
+  </div>
+  <div layout:class="item" layout:desktop="width-1-1">
+    <@form.field @property="quizMaster" @type="relation" />
+  </div>
+  <div layout:class="item" layout:desktop="width-1-1">
+    <@form.field @property="users" @type="relation" />
+  </div>
+</div>
