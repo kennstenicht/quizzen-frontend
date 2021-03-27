@@ -2,7 +2,14 @@
   (query-selector "[data-in-element=application-modal]")
   insertBefore=null
 }}
-  <div block:scope block:is-open={{@isOpen}} ...attributes>
+  <div
+    block:scope
+    block:is-open={{@isOpen}}
+    aria-labelledby="dialog-title"
+    aria-describedby="dialog-message"
+    role="dialog"
+    ...attributes
+  >
     <div block:class="overlay" {{on "click" @onClose}}></div>
     <div block:class="container">
       <AnimatedContainer>

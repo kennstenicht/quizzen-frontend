@@ -1,9 +1,9 @@
 <div block:scope ...attributes>
-  <h2 block:class="title">
-    {{t "application.confirm.delete.title" displayLabel=@confirm.data.name}}
+  <h2 block:class="title" id="dialog-title">
+    {{t "application.confirm.delete.title" displayLabel=@confirm.data.displayLabel}}
   </h2>
-  <div block:class="message">
-    {{t "application.confirm.delete.message" displayLabel=@confirm.data.name}}
+  <div block:class="message" id="dialog-message">
+    {{t "application.confirm.delete.message" displayLabel=@confirm.data.displayLabel}}
   </div>
 
   <Ui::Button

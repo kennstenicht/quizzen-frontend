@@ -1,6 +1,8 @@
 <div block:scope ...attributes>
-  <h2 block:class="title">{{t "application.confirm.rollback.title"}}</h2>
-  <div block:class="message">
+  <h2 block:class="title" id="dialog-title">
+    {{t "application.confirm.rollback.title"}}
+  </h2>
+  <div block:class="message" id="dialog-message">
     {{t "application.confirm.rollback.message" title=@confirm.data.name}}
   </div>
 

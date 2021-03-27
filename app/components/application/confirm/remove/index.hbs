@@ -1,11 +1,11 @@
 <div block:scope ...attributes>
-  <h2 block:class="title">
+  <h2 block:class="title" id="dialog-title">
     {{t
       "application.confirm.remove.title"
       modelName=(t (concat "models." @confirm.data.modelName))
     }}
   </h2>
-  <div block:class="message">
+  <div block:class="message" id="dialog-message">
     {{t
       "application.confirm.remove.message"
       displayLabel=@confirm.data.displayLabel
