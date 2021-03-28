@@ -29,15 +29,15 @@ export class BreadcrumbItem {
   // Defaults
   changesets: TrackedArray<BufferedChangeset> = new TrackedArray([]);
   intl: Intl;
-  model: Model;
   routeModel?: Model;
   routeName: string;
+  modelName: string;
 
 
   // Hooks
   constructor(intl: Intl, routeName: string, model: Model) {
     this.intl = intl;
-    this.model = model;
+    this.modelName = model.modelName;
     this.routeName = routeName;
 
     if (!model.isNew) {
@@ -62,14 +62,11 @@ export class BreadcrumbItem {
   }
 
   get name() {
-    // @ts-ignore
-    if (this.model.isNew) {
-      return this.intl.t('recordDetail.new', {
-        modelName: this.intl.t(`models.${this.model.modelName}`)
-      });
+    if (!this.routeModel) {
+      return this.intl.t(`models.new.${this.modelName}`);
     }
 
-    return this.model.displayLabel;
+    return this.routeModel.displayLabel;
   }
 
   get routeParams(): [string, Model?] {
@@ -121,7 +118,7 @@ export default class BreadcrumbService extends Service {
 
   // Getter and setter
   get baseItem() {
-    let baseModelName = this.firstItem?.model.modelName;
+    let baseModelName = this.firstItem?.modelName;
 
     if (!baseModelName) {
       return
@@ -163,7 +160,7 @@ export default class BreadcrumbService extends Service {
         return item.routeName === routeName;
       }
 
-      return item.routeName === routeName && item.model === model;
+      return item.routeName === routeName && item.routeModel === model;
     });
   }
 
