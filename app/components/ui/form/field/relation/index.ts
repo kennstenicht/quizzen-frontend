@@ -129,11 +129,10 @@ export default class UiFormFieldRelationComponent extends Component<Args> {
   }
 
   @action
-  async removeRecord(record: Model) {
+  async removeRecord(record: Model, confirmName = 'remove') {
     let changeset = this.args.changeset;
     let property = this.args.property;
-    let type = this.args.isInlineForm ? 'delete' : 'remove';
-    let confirmed = await this.confirm.ask(type, record);
+    let confirmed = await this.confirm.ask(confirmName, record);
 
     if (!confirmed) {
       return
@@ -148,9 +147,13 @@ export default class UiFormFieldRelationComponent extends Component<Args> {
 
   @action
   async deleteRecord(record: Model) {
-    await this.removeRecord(record);
+    let item = this.breadcrumb.getItem(this.router.currentRouteName, record);
+    let changeset = item.getChangeset(record);
+
+    await this.removeRecord(record, 'delete');
 
     record.destroyRecord();
+    item.changesets.removeObject(changeset);
   }
 
   @action
