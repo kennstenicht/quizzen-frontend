@@ -2,7 +2,7 @@
   block:scope
   ...attributes
 >
-  {{#if this.label}}
+  {{#if this.isLabeled}}
     <label block:class="label" for={{this.fieldId}}>
       {{this.label}}
     </label>
@@ -45,6 +45,7 @@
     />
   {{else}}
     <input
+      aria-label={{unless this.isLabeled this.label}}
       disabled={{@disabled}}
       id={{this.fieldId}}
       name={{this.fieldId}}

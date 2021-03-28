@@ -6,12 +6,13 @@ import { BufferedChangeset } from 'ember-changeset/types';
 import Intl from 'ember-intl/services/intl';
 
 interface Args {
-  changeset: BufferedChangeset
-  hint: string
-  label: string
-  modelName: string
-  placeholder: string
-  property: string
+  changeset: BufferedChangeset,
+  hint: string,
+  isLabeled?: boolean,
+  label: string,
+  modelName: string,
+  placeholder: string,
+  property: string,
   type: string
 }
 
@@ -33,6 +34,10 @@ export default class UiFormFieldComponent extends Component<Args> {
 
   get isCheckbox() {
     return this.args.type === 'checkbox';
+  }
+
+  get isLabeled() {
+    return this.args.isLabeled ?? true;
   }
 
   get isRelation() {
