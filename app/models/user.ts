@@ -11,7 +11,7 @@ export default class UserModel extends Model {
 
   // Getter and setter
   get displayLabel(): string {
-    return `${this.firstname} ${this.lastname}`;
+    return `${this.firstname} ${this.lastname}` ?? super.displayLabel;
   }
 
   get initials(): string {

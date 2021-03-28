@@ -19,6 +19,6 @@ export default class BaseModel extends Model {
   }
 
   get displayLabel() {
-    return this.intl.t(`model.${this.modelName}`)
+    return this.intl.t(`models.new.${this.modelName}`)
   }
 }

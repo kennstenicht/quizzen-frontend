@@ -19,7 +19,7 @@ export default class GuessQuestionModel extends Model {
 
   // Getter and setter
   get displayLabel() {
-    return this.label;
+    return this.label ?? super.displayLabel;
   }
 
   get answerLabel() {

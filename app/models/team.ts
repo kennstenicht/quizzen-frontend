@@ -15,6 +15,6 @@ export default class TeamModel extends Model {
 
   // Getter and setter
   get displayLabel() {
-    return this.name;
+    return this.name ?? super.displayLabel;
   }
 }

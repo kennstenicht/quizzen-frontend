@@ -15,3 +15,12 @@ models:
     quiz: Quizze
     question: Fragen
     user: Spieler
+
+  new:
+    answer: Neue Antwort
+    category: Neue Kategorie
+    game: Neues Spiel
+    guess-question: Neue Schätzfrage
+    quiz: Neues Quiz
+    question: Neue Fragen
+    user: Neuen Spieler

@@ -19,6 +19,6 @@ export default class GameQuestionModel extends Model {
 
   // Getter and setter
   get displayLabel() {
-    return this.question.label;
+    return this.question.label ?? super.displayLabel;
   }
 }

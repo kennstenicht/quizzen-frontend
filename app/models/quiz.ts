@@ -13,5 +13,5 @@ export default class QuizModel extends Model {
 
   // Getter and setter
   get displayLabel() {
-    return this.title;
+    return this.title ?? super.displayLabel;
   }}

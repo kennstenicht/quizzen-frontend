@@ -15,6 +15,6 @@ export default class selfAssessmentModel extends Model {
 
   // Getter and setter
   get displayLabel() {
-    return String(this.assessment);
+    return String(this.assessment) ?? super.displayLabel;
   }
 }

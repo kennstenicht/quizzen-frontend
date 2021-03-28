@@ -1,10 +1,6 @@
 <Ui::Window ...attributes>
   <:title>
-    {{#if @model.isNew}}
-      {{t "recordDetail.new" modelName=(t (concat "models." @model.modelName))}}
-    {{else}}
-      {{@model.displayLabel}}
-    {{/if}}
+    {{@model.displayLabel}}
   </:title>
 
   <:toolbar>

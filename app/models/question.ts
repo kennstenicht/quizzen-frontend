@@ -17,7 +17,7 @@ export default class QuestionModel extends Model {
 
   // Getter and setter
   get displayLabel() {
-    return this.label;
+    return this.label ?? super.displayLabel;
   }
 
   get numAnswers() {
