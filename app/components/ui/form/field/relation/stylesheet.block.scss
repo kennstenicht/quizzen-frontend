@@ -20,14 +20,14 @@
     margin: 0;
   }
 
-  .assign {
+  .actions {
     display: flex;
     border: 1px solid $color-grey;
     border-radius: spacing('tiny');
     background-color: $color-grey-lighter;
   }
 
-    .search {
+    .primary {
       flex-grow: 1;
       padding: spacing('tiny') spacing('small');
 
@@ -36,7 +36,7 @@
       }
     }
 
-    .add {
+    .secondary {
       border-left: 1px solid $color-grey;
       padding: spacing('tiny') spacing('small');
 

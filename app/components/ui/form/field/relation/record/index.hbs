@@ -16,19 +16,53 @@
     </div>
   {{/if}}
 
-  <div block:class="label">
-    {{@record.displayLabel}}
+  {{#if @isInlineForm}}
+    <div block:class="form">
+      <Ui::Form
+        @model={{@record}}
+        as |form|
+      >
+        {{component
+          (concat "record-detail/for/" @record.modelName)
+          form=form
+          groupName=@groupName
+        }}
+      </Ui::Form>
+    </div>
+  {{else}}
+    <div block:class="label">
+      {{@record.displayLabel}}
+    </div>
+  {{/if}}
+
+  <div block:class="actions">
+    {{#if @isInlineForm}}
+      <Ui::Button
+        @icon={{if this.isOpen "expand_less" "expand_more"}}
+        @onClick={{fn this.accordion.toggleItem this.accodrionItemId}}
+        @style="inline"
+        aria-expanded={{this.accodionIsOpen}}
+        aria-controls={{this.accordionBodyId}}
+        id={{this.accordionToggleId}}
+      />
+
+      <Ui::Button
+        @icon="delete"
+        @onClick={{fn @deleteRecord @record}}
+        @style="inline"
+      />
+    {{else}}
+      <Ui::Button
+        @icon="open"
+        @onClick={{fn @openRecord @record}}
+        @style="inline"
+      />
+
+      <Ui::Button
+        @icon="remove"
+        @onClick={{fn @removeRecord @record}}
+        @style="inline"
+      />
+    {{/if}}
   </div>
-
-  <Ui::Button
-    @icon="open"
-    @onClick={{fn @openRecord @record}}
-    @style="inline"
-  />
-
-  <Ui::Button
-    @icon="remove"
-    @onClick={{fn @removeRecord @record}}
-    @style="inline"
-  />
 </li>

@@ -7,6 +7,7 @@
 >
   {{#if this.changeset}}
     {{yield (hash
+      changeset=this.changeset
       field=(component "ui/form/field"
         changeset=this.changeset
         modelName=this.modelName

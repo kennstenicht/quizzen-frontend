@@ -7,9 +7,7 @@
 :scope {
   block-name: o-layout;
   display: block;
-  margin: 0;
   margin-left: - spacing('base');
-  padding: 0;
   list-style: none;
   letter-spacing: 0;
   font-size: 0;
@@ -27,7 +25,6 @@
     font-size: $font-size;
     font-size: 1rem;
   }
-
 
 
 
@@ -54,5 +51,41 @@ $fractions: 1 2 3 4 5 6 12;
 @each $bp-name, $bp-value in $mq-breakpoints {
   @include mq($from: $bp-name) {
     @include widths($fractions, #{$bp-name});
+  }
+}
+
+
+:scope[test-desktop] {
+  background-color: red;
+}
+
+
+/* Gaps
+  ========================================================================== */
+
+@each $breakpoint-name, $breakpoint-value in $mq-breakpoints {
+  @include mq($from: $breakpoint-name) {
+    @each $spacing-name, $spacing-size in $spacings_combinations {
+      :scope[#{$breakpoint-name}=gap-#{$spacing-name}] {
+        margin-left: - $spacing-size;
+      }
+
+      :scope[#{$breakpoint-name}=gap-#{$spacing-name}] .item {
+        padding-left: $spacing-size;
+        padding-bottom: $spacing-size;
+      }
+
+      :scope[#{$breakpoint-name}=gap-horizontal-#{$spacing-name}] {
+        margin-left: - $spacing-size;
+      }
+
+      :scope[#{$breakpoint-name}=gap-horizontal-#{$spacing-name}] .item {
+        padding-left: $spacing-size;
+      }
+
+      :scope[#{$breakpoint-name}=gap-vertical-#{$spacing-name}] .item {
+        padding-bottom: $spacing-size;
+      }
+    }
   }
 }

@@ -11,30 +11,41 @@
       }}
         <Ui::Form::Field::Relation::Record
           @record={{record}}
-          @openRecord={{fn this.openRecord}}
-          @removeRecord={{fn this.removeRecord}}
+          @openRecord={{this.openRecord}}
+          @removeRecord={{this.removeRecord}}
+          @deleteRecord={{this.deleteRecord}}
           @sortable={{this.isHasManyRelation}}
           @groupName={{this.groupName}}
+          @isInlineForm={{@isInlineForm}}
         />
       {{/animated-each}}
     </ol>
   </AnimatedContainer>
 
   {{#if this.isRecordAssignable}}
-    <div block:class="assign">
-      <Ui::Button
-        @icon="search"
-        @label="Suchen und hinzufügen"
-        @onClick={{fn this.openRecordList}}
-        block:class="search"
-      />
+    <div block:class="actions">
+      {{#if @isInlineForm}}
+        <Ui::Button
+          @icon="add"
+          @label="Neu"
+          @onClick={{fn this.createNewRecord}}
+          block:class="primary"
+        />
+      {{else}}
+        <Ui::Button
+          @icon="search"
+          @label="Suchen und hinzufügen"
+          @onClick={{fn this.openRecordList}}
+          block:class="primary"
+        />
 
-      <Ui::Button
-        @icon="add"
-        @label="Neu"
-        @onClick={{fn this.openNewRecord}}
-        block:class="add"
-      />
+        <Ui::Button
+          @icon="add"
+          @label="Neu"
+          @onClick={{fn this.openNewRecord}}
+          block:class="secondary"
+        />
+      {{/if}}
     </div>
   {{/if}}
 </div>

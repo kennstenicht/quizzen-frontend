@@ -12,7 +12,7 @@
   position: relative;
   z-index: 1;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   margin-bottom: spacing('tiny');
   padding: spacing('tiny') spacing('tiny') spacing('tiny') spacing('small');
@@ -30,9 +30,21 @@
     display: flex;
     align-items: center;
     padding-right: spacing('tiny');
+    height: spacing();
+    margin: spacing('tiny') 0;
     cursor: grab;
+  }
+
+  .form {
+    flex-grow: 1;
   }
 
   .label {
     flex-grow: 1;
+    margin: spacing('tiny') 0;
+  }
+
+  .actions {
+    display: flex;
+    margin: spacing('tiny') 0 spacing('tiny') spacing('tiny');
   }

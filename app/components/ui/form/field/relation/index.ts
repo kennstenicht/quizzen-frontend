@@ -15,9 +15,10 @@ import Breadcrumb from 'quizzen/services/breadcrumb';
 import Confirm from 'quizzen/services/confirm';
 
 interface Args {
-  records: any[],
+  changeset: BufferedChangeset,
+  isInlineForm: boolean,
   property: string,
-  changeset: BufferedChangeset
+  records: any[]
 }
 
 export default class UiFormFieldRelationComponent extends Component<Args> {
@@ -89,6 +90,16 @@ export default class UiFormFieldRelationComponent extends Component<Args> {
   }
 
   @action
+  createNewRecord() {
+    let relationType = this.relationType;
+    let newRecord = this.store.createRecord(relationType);
+
+    this.assignRecords([newRecord]);
+
+    return newRecord;
+  }
+
+  @action
   closeRecordList() {
     this.isRecordListOpen = false
   }
@@ -111,9 +122,7 @@ export default class UiFormFieldRelationComponent extends Component<Args> {
   openNewRecord() {
     let relationType = this.relationType;
     let newRoute = `profile.${pluralize(relationType)}.new`;
-    let newRecord = this.store.createRecord(relationType);
-
-    this.assignRecords([newRecord]);
+    let newRecord = this.createNewRecord();
 
     this.breadcrumb.registerItem(newRoute, newRecord);
     this.router.transitionTo(newRoute);
@@ -123,7 +132,8 @@ export default class UiFormFieldRelationComponent extends Component<Args> {
   async removeRecord(record: Model) {
     let changeset = this.args.changeset;
     let property = this.args.property;
-    let confirmed = await this.confirm.ask('remove', record);
+    let type = this.args.isInlineForm ? 'delete' : 'remove';
+    let confirmed = await this.confirm.ask(type, record);
 
     if (!confirmed) {
       return
@@ -134,6 +144,13 @@ export default class UiFormFieldRelationComponent extends Component<Args> {
     } else {
       changeset.set(property, null);
     }
+  }
+
+  @action
+  async deleteRecord(record: Model) {
+    await this.removeRecord(record);
+
+    record.destroyRecord();
   }
 
   @action
