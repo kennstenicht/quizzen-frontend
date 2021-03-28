@@ -1,0 +1,29 @@
+<div block:scope block:is-open={{this.isOpen}} ...attributes>
+  {{#if (has-block "toggle")}}
+    <div
+      aria-controls={{this.bodyId}}
+      aria-expanded={{this.isOpen}}
+      block:class="header"
+      id={{this.toggleId}}
+      role="button"
+      {{on "click" (fn this.accordion.toggleItem this.itemId) disabled=true}}
+    >
+      {{yield this.isOpen to="toggle"}}
+    </div>
+  {{/if}}
+
+  {{#if (has-block "header")}}
+    <div block:class="header">
+      {{yield to="header"}}
+    </div>
+  {{/if}}
+
+  <div
+    block:class="body"
+    aria-labelledby={{this.toggleId}}
+    id={{this.bodyId}}
+    role="region"
+  >
+    {{yield to="body"}}
+  </div>
+</div>

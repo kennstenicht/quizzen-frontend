@@ -1,0 +1,26 @@
+/* ==========================================================================
+   # UI ACCORDION ITEM
+   ========================================================================== */
+
+// Imports
+@import 'setup';
+
+
+// Block
+:scope {
+  block-name: c-ui-accordion-item;
+  display: block;
+}
+
+  .header {
+    width: 100%;
+  }
+
+  .body {
+    width: 100%;
+    display: none;
+  }
+
+  :scope[is-open] .body {
+    display: block;
+  }
