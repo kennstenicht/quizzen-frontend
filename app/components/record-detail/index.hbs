@@ -14,22 +14,24 @@
 
     <Ui::Button
       @icon="delete"
-      @onClick={{this.deleteRecord}}
+      @onClick={{this.delete}}
       @style="outline"
     />
 
     <Ui::Button
       @icon="close"
       @style="outline"
-      @onClick={{this.rollbackRecord}}
+      @type="reset"
+      form={{@model.id}}
     />
   </:toolbar>
 
   <:body>
     <Ui::Form
       @model={{@model}}
-      @submit={{this.saveRecord}}
       id={{@model.id}}
+      {{on "submit" this.save}}
+      {{on "reset" this.cancel}}
       as |form|
     >
       {{component

@@ -28,6 +28,7 @@ let validations: { [key: string]: Object } = {
 export class BreadcrumbItem {
   // Defaults
   changesets: TrackedArray<BufferedChangeset> = new TrackedArray([]);
+  models: TrackedArray<Model> = new TrackedArray([]);
   intl: Intl;
   routeModel?: Model;
   routeName: string;
@@ -53,12 +54,23 @@ export class BreadcrumbItem {
     }, 0);
   }
 
+  get errors() {
+    return this.changesets.reduce((a, b) => {
+      // @ts-ignore
+      return a.concat(b.errors)
+    }, []);
+  }
+
   get hasChanges() {
     return this.changes > 0;
   }
 
   get hasDirtyChangeset() {
     return this.changesets.isAny('isDirty');
+  }
+
+  get isValid() {
+    return this.changesets.isEvery('isValid');
   }
 
   get name() {
@@ -101,6 +113,7 @@ export class BreadcrumbItem {
     )
 
     this.changesets.push(changeset);
+    this.models.push(model);
 
     return changeset;
   }
@@ -198,6 +211,10 @@ export default class BreadcrumbService extends Service {
         }
       }
 
+      // @ts-ignore
+      let newModels = currentItem.models.filterBy('isNew');
+
+      await newModels.invoke('destroyRecord');
       this.items.pop();
 
       if (prevItem) {

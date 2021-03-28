@@ -4,7 +4,6 @@ import { inject as service } from '@ember/service';
 import Router from '@ember/routing/router-service';
 import Model from 'quizzen/models/base';
 import Store from '@ember-data/store';
-import { BufferedChangeset } from 'ember-changeset/types';
 import FlashMessages from 'ember-cli-flash/services/flash-messages';
 import Session from 'ember-simple-auth/services/session';
 import Intl from 'ember-intl/services/intl';
@@ -34,24 +33,20 @@ export default class RecordDetailComponent extends Component<Args> {
 
   // Actions
   @action
-  async deleteRecord() {
+  async delete() {
     try {
       let title = this.args.model.displayLabel;
-
-      let confirmed = await this.confirm.ask('delete', this.breadcrumbItem);
+      let message = this.intl.t('recordDetail.deleteRecord', { title: title });
+      let confirmed = await this.confirm.ask('delete', this.args.model);
 
       if (!confirmed) {
         return
       }
 
-      await this.args.model.destroyRecord();
-
-      const message = this.intl.t('recordDetail.deleteRecord', {
-        title: title
-      });
+      await this.breadcrumbItem.models.invoke('destroyRecord');
+      this.breadcrumbItem.changesets = [];
 
       this.flashMessages.success(message);
-
       // @ts-ignore
       this.router.transitionTo(...this.breadcrumb.prevItem.routeParams);
     } catch(error) {
@@ -60,7 +55,7 @@ export default class RecordDetailComponent extends Component<Args> {
   }
 
   @action
-  rollbackRecord(event: Event) {
+  async cancel(event: Event) {
     event.preventDefault();
 
     // @ts-ignore
@@ -68,26 +63,26 @@ export default class RecordDetailComponent extends Component<Args> {
   }
 
   @action
-  async saveRecord(changeset: BufferedChangeset, event: Event) {
+  async save(event: Event) {
     event.preventDefault();
 
     try {
-      await changeset.validate();
+      let title = this.breadcrumbItem.name;
+      let message = this.intl.t('recordDetail.saveRecord', { title: title });
 
-      if (changeset.isValid) {
-        await changeset.save();
+      await Promise.all(this.breadcrumbItem.changesets.invoke('validate'));
 
-        const message = this.intl.t('recordDetail.saveRecord', {
-          title: changeset.displayLabel
-        });
-
-        this.flashMessages.success(message);
-
-        // @ts-ignore
-        this.router.transitionTo(...this.breadcrumb.prevItem.routeParams);
+      if (this.breadcrumbItem.isValid) {
+        await Promise.all(this.breadcrumbItem.changesets.invoke('save'));
       } else {
-        this.flashMessages.warning('not valid');
+        throw {
+          message: 'not valid'
+        }
       }
+
+      this.flashMessages.success(message);
+      // @ts-ignore
+      this.router.transitionTo(...this.breadcrumb.prevItem.routeParams);
     } catch(error) {
       this.flashMessages.warning(error.message);
     }
