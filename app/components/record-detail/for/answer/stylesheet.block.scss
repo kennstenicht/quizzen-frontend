@@ -5,10 +5,11 @@
 // Imports
 @import 'setup';
 @block layout from 'objects/objects.layout.block.scss';
+@block padding from 'utilities/utilities.padding.block.scss';
 
 
 // Exports
-@export (layout);
+@export (layout, padding);
 
 
 // Block

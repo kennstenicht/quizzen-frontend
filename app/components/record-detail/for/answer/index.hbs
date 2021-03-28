@@ -1,11 +1,26 @@
-<div layout:scope>
-  <div layout:class="item" layout:desktop="width-2-3">
-    <@form.field @property="label" />
-  </div>
-  <div layout:class="item" layout:desktop="width-1-3">
-    <@form.field @property="value" />
-  </div>
-  <div layout:class="item" layout:desktop="width-1-1">
-    <@form.field @property="information" @type="textarea" />
-  </div>
-</div>
+<Ui::Accordion @groupName={{@groupName}} as |accordion|>
+  <accordion.Item @id={{@form.changeset.id}}>
+    <:header>
+      <div layout:scope layout:desktop="gap-vertical-none">
+        <div layout:class="item" layout:desktop="width-3-4">
+          <@form.field @property="label" @isLabeled={{false}} />
+        </div>
+        <div layout:class="item" layout:desktop="width-1-4">
+          <@form.field @property="value" @isLabeled={{false}} />
+        </div>
+      </div>
+    </:header>
+    <:body>
+      <div
+        layout:scope
+        padding:scope
+        padding:desktop="top-base"
+        layout:desktop="gap-vertical-none"
+      >
+        <div layout:class="item" layout:desktop="width-1-1">
+          <@form.field @property="information" @type="textarea" />
+        </div>
+      </div>
+    </:body>
+  </accordion.Item>
+</Ui::Accordion>

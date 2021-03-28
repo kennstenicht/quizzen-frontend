@@ -5,7 +5,8 @@ forms:
       value: Wert
       information: Weiter Informationen
     placeholders:
-      title: Title der Antwor eingeben
+      label: Antwort hinzufügen
+      value: Wert (optional)
 
   category:
     fields:
