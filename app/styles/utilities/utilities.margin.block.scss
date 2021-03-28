@@ -1,0 +1,21 @@
+/* ==========================================================================
+   # UTITLITIES MARGIN
+   ========================================================================== */
+
+/*
+ * Utilitie classes to add padding to element
+ * margin:desktop="top-small"
+ * margin:mobile="horizontal-large"
+ */
+
+
+// Imports
+@import 'setup';
+
+:scope {
+  block-name: u-margin;
+  display: block;
+
+  @include spacing-utilities('margin');
+}
+

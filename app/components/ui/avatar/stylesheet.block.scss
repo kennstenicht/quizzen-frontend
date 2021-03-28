@@ -12,8 +12,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: spacing('base+small');
-  height: spacing('base+small');
+  width: spacing('base-small');
+  height: spacing('base-small');
   border-radius: 50%;
   background-color: $color-grey-lighter;
   font-weight: bold;
@@ -21,8 +21,8 @@
 }
 
 :scope[size=large] {
-  width: spacing('large+base');
-  height: spacing('large+base');
+  width: spacing('large-base');
+  height: spacing('large-base');
 }
 
 :scope[color=white] {

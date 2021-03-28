@@ -12,8 +12,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: spacing('base+small');
-  min-height: spacing('base+small');
+  min-width: spacing('base-small');
+  min-height: spacing('base-small');
   vertical-align: bottom;
   transition: background-color $transition-base;
 }
@@ -41,7 +41,7 @@
 // Primary
 :scope[style=primary] {
   padding: spacing('tiny') spacing('base');
-  border-radius: spacing('small+tiny');
+  border-radius: spacing('small-tiny');
   background-color: $color-primary;
   color: $color-white;
   text-align: center;
@@ -55,7 +55,7 @@
 // Secondary
 :scope[style=secondary] {
   padding: spacing('tiny') spacing('base');
-  border-radius: spacing('small+tiny');
+  border-radius: spacing('small-tiny');
   background-color: $color-grey-dark;
   color: $color-white;
   text-align: center;
@@ -68,7 +68,7 @@
 // Secondary
 :scope[style=light] {
   padding: spacing('tiny') spacing('base');
-  border-radius: spacing('small+tiny');
+  border-radius: spacing('small-tiny');
   background-color: $color-grey-lighter;
   color: $color-black;
   text-align: center;
@@ -82,7 +82,7 @@
 // Danger
 :scope[style=danger] {
   padding: spacing('tiny') spacing('base');
-  border-radius: spacing('small+tiny');
+  border-radius: spacing('small-tiny');
   background-color: $color-error;
   color: $color-white;
   text-align: center;
@@ -117,7 +117,7 @@
 :scope[style=outline] {
   padding: spacing('tiny', - $border-width-small);
   border: $border-width-small solid $color-grey;
-  border-radius: spacing('small+tiny');
+  border-radius: spacing('small-tiny');
   color: inherit;
   text-align: center;
 

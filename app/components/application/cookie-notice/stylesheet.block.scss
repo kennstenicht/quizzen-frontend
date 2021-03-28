@@ -20,7 +20,7 @@
   color: $color-black;
   transition: transform 0.3s ease-in-out;
   transform: translate(0, 150%);
-  border-radius: spacing('small+tiny');
+  border-radius: spacing('small-tiny');
   box-shadow: 0 0 spacing() 0 rgba($color-black, 0.3);
 }
 

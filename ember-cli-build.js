@@ -18,7 +18,8 @@ module.exports = function (defaults) {
   let app = new EmberApp(defaults, {
     'css-blocks': {
       aliases: {
-        objects: path.resolve(__dirname, 'app/styles/objects')
+        objects: path.resolve(__dirname, 'app/styles/objects'),
+        utilities: path.resolve(__dirname, 'app/styles/utilities')
       },
       parserOpts: {
         outputMode: 'BEM',

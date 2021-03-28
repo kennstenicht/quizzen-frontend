@@ -42,9 +42,9 @@
     position: relative;
     z-index: 2;
     overflow: hidden;
-    min-height: spacing('base+small');
+    min-height: spacing('base-small');
     width: 100%;
-    border-radius: spacing('small+tiny');
+    border-radius: spacing('small-tiny');
     background-color: $color-grey-lighter;
   }
 

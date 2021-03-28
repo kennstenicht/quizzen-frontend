@@ -21,8 +21,8 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: spacing('base+small');
-      height: spacing('base+small');
+      width: spacing('base-small');
+      height: spacing('base-small');
       border-radius: spacing('tiny');
       background-color: rgba($color-grey-lighter, 0.1);
       box-shadow: 0 0 spacing() 0 rgba($color-black, 0.3);

@@ -31,6 +31,16 @@ $spacings_combinations: (
   none:  0
 );
 
+$directions: (
+  null: null,
+  "top-": "-top",
+  "right-": "-right",
+  "bottom-": "-bottom",
+  "left-": "-left",
+  "horizontal-": "-left" "-right",
+  "vertical-": "-top" "-bottom",
+) !default;
+
 
 // Generate all posible combinations of base_spacings
 @each $base_name, $base_size in $spacings {
@@ -42,7 +52,7 @@ $spacings_combinations: (
     @if $additional_index == $base_index {
       $spacings_combinations: map-merge($spacings_combinations, ($base_name: $base_size));
     } @else {
-      $spacings_combinations: map-merge($spacings_combinations, (#{$base_name+'+'+$additional_name}: $base_size + $additional_size));
+      $spacings_combinations: map-merge($spacings_combinations, (#{$base_name+'-'+$additional_name}: $base_size + $additional_size));
     }
   }
 }
@@ -54,5 +64,23 @@ $spacings_combinations: (
     @return rem(map-get($spacings_combinations, $spacing_name) + $offset);
   } @else {
     @return map-get($spacings_combinations, $spacing_name) + $offset;
+  }
+}
+
+
+// Mixin to generate utilitie classes
+@mixin spacing-utilities($property) {
+  @each $breakpoint-name, $breakpoint-value in $mq-breakpoints {
+    @include mq($from: $breakpoint-name) {
+      @each $direction-name, $direction-rules in $directions {
+        @each $spacing-name, $spacing-size in $spacings_combinations {
+          &[#{$breakpoint-name}=#{$direction-name}#{$spacing-name}] {
+            @each $direction in $direction-rules {
+              #{$property}#{$direction}: $spacing-size;
+            }
+          }
+        }
+      }
+    }
   }
 }

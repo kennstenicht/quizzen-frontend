@@ -1,0 +1,21 @@
+/* ==========================================================================
+   # UTITLITIES PADDING
+   ========================================================================== */
+
+/*
+ * Utilitie classes to add padding to element
+ * padding:desktop="top-small"
+ * padding:mobile="horizontal-large"
+ */
+
+
+// Imports
+@import 'setup';
+
+:scope {
+  block-name: u-padding;
+  display: block;
+
+  @include spacing-utilities('padding');
+}
+

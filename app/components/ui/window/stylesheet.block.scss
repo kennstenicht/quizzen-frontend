@@ -13,7 +13,7 @@
   flex-direction: column;
   align-items: stretch;
   height: 100%;
-  border-radius: spacing('small+tiny');
+  border-radius: spacing('small-tiny');
   background-color: $color-grey-lighter;
   box-shadow: 0 0 spacing() 0 rgba($color-black, 0.3);
 }
@@ -60,7 +60,7 @@
   .bottombar {
     padding: spacing('small') spacing('base');
     border-top: 1px solid $color-grey;
-    border-bottom-right-radius: spacing('small+tiny');
-    border-bottom-left-radius: spacing('small+tiny');
+    border-bottom-right-radius: spacing('small-tiny');
+    border-bottom-left-radius: spacing('small-tiny');
     background-color: $color-grey-light;
   }
