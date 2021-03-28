@@ -26,6 +26,7 @@
     />
   {{else if this.isTextarea}}
     <textarea
+      aria-label={{unless this.isLabeled this.label}}
       disabled={{@disabled}}
       id={{this.fieldId}}
       name={{this.fieldId}}
@@ -37,6 +38,7 @@
     >{{changeset-get @changeset @property}}</textarea>
   {{else if this.isCheckbox}}
     <input
+      aria-label={{unless this.isLabeled this.label}}
       checked={{changeset-get @changeset @property}}
       disabled={{@disabled}}
       id={{this.fieldId}}
