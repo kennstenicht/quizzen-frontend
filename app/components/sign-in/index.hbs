@@ -10,8 +10,14 @@
       {{on "submit" (fn this.signIn this.userChangeset)}}
       as |form|
     >
-      <form.field @property="email" @type="email" />
-      <form.field @property="password" @type="password" />
+      <div layout:scope>
+        <div layout:class="item">
+          <form.field @property="email" @type="email" />
+        </div>
+        <div layout:class="item">
+          <form.field @property="password" @type="password" />
+        </div>
+      </div>
 
       <Ui::Button
         @label={{t "signIn.submit"}}
