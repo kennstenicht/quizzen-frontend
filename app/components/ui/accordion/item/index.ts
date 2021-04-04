@@ -1,7 +1,6 @@
 import Component from '@glimmer/component';
 import { guidFor } from '@ember/object/internals';
 import { inject as service } from '@ember/service';
-import { action } from '@ember/object';
 import Accordion from 'quizzen/services/accordion';
 
 interface Args {
