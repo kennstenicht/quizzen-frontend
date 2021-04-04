@@ -90,9 +90,9 @@ export default class UiFormFieldRelationComponent extends Component<Args> {
   }
 
   @action
-  createNewRecord() {
+  async createNewRecord() {
     let relationType = this.relationType;
-    let newRecord = this.store.createRecord(relationType);
+    let newRecord = await this.store.createRecord(relationType);
 
     this.assignRecords([newRecord]);
 
@@ -119,10 +119,10 @@ export default class UiFormFieldRelationComponent extends Component<Args> {
   }
 
   @action
-  openNewRecord() {
+  async openNewRecord() {
     let relationType = this.relationType;
     let newRoute = `profile.${pluralize(relationType)}.new`;
-    let newRecord = this.createNewRecord();
+    let newRecord = await this.createNewRecord();
 
     this.breadcrumb.registerRoute(newRoute, newRecord);
     this.router.transitionTo(newRoute);

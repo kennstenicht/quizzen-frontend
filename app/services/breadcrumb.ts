@@ -26,10 +26,12 @@ let validations: { [key: string]: Object } = {
 }
 
 export class FormItem {
+  // Defaults
   model!: Model;
   changeset!: BufferedChangeset;
-  isMainForm!: boolean;
 
+
+  // Hooks
   constructor(model: Model) {
     const validation = validations[model.modelName];
 
@@ -106,6 +108,9 @@ export class RouteItem {
   get isValid() {
     return this.forms.isEvery('changeset.isValid');
   }
+
+  get mainForm() {
+    return this.forms[0];
   }
 
   get name() {
@@ -228,6 +233,7 @@ export default class BreadcrumbService extends Service {
     let route = new RouteItem(routeName, model);
 
     this.routes.push(route);
+    route.registerForm(model);
 
     return route;
   }
