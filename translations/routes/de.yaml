@@ -98,6 +98,8 @@ error:
   meta:
     description: Fehler sind menschlich, aber natürlich arbeiten wir mit Hochdruck daran auch diesen Fehler zu reparieren, damit du nicht noch mal hier landest.
     title: Autsch! Da gab es einen Fehler!
+  status: '400'
+  title: Bad Request
 
 login:
   meta:

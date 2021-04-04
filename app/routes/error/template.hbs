@@ -1,17 +1,29 @@
 <Ui::Window>
   <:body>
     <div block:scope>
-      {{#each @model.errors as |error|}}
+      {{#if @model.errors}}
+        {{#each @model.errors as |error|}}
+          <div block:class="status">
+            {{error.status}}
+          </div>
+          <h1 block:class="title">
+            {{error.title}}
+          </h1>
+          <div block:class="detail">
+            {{error.detail}}
+          </div>
+        {{/each}}
+      {{else}}
         <div block:class="status">
-          {{error.status}}
+          {{t "error.status"}}
         </div>
         <h1 block:class="title">
-          {{error.title}}
+          {{t "error.title"}}
         </h1>
         <div block:class="detail">
-          {{error.detail}}
+          {{@model}}
         </div>
-      {{/each}}
+      {{/if}}
     </div>
   </:body>
 </Ui::Window>

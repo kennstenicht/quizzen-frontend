@@ -42,7 +42,7 @@ export default class ApplicationRoute extends Route {
   // Actions
   @action
   error(error: any) {
-    if (error.errors.some((error: ApiError) => error.status === 403)) {
+    if (error.errors?.some((error: ApiError) => error.status === 403)) {
       return this.session.invalidate();
     } else {
       return true;
