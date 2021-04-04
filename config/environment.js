@@ -29,6 +29,10 @@ module.exports = function (environment) {
       tokenExpireName: 'exp'
     },
 
+    emberKeyboard: {
+      disableInputsInitializer: true
+    },
+
     fastboot: {
       hostWhitelist: ['staging.quizzen.jetzt','quizzen.jetzt', /^localhost:\d+$/, /^192.*:\d+$/]
     },
