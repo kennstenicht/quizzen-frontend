@@ -43,28 +43,20 @@ export class FormItem {
     this.changeset = changeset;
   }
 
-  get isValid() {
-    return this.changeset.isValid;
+
+  // Functions
+  async save() {
+    await this.changeset.save();
   }
 
-  get isDirty() {
-    return this.changeset.isDirty;
+  async validate() {
+    await this.changeset.validate();
   }
 
-  get isNew() {
-    return this.model.isNew;
-  }
+  async destroyModel() {
+    console.log('destroy');
 
-  save() {
-    this.changeset.save();
-  }
-
-  validate() {
-    this.changeset.validate();
-  }
-
-  destroyModel() {
-    this.model.destroyRecord();
+    await this.model.destroyRecord();
   }
 }
 
@@ -108,11 +100,12 @@ export class RouteItem {
   }
 
   get hasDirtyChangeset() {
-    return this.forms.isAny('isDirty');
+    return this.forms.isAny('changeset.isDirty');
   }
 
   get isValid() {
-    return this.forms.isEvery('isValid');
+    return this.forms.isEvery('changeset.isValid');
+  }
   }
 
   get name() {
@@ -132,7 +125,7 @@ export class RouteItem {
 
   // Functions
   getForm(model: Model) {
-    let form = this.forms.findBy('id', model.id);
+    let form = this.forms.findBy('changeset.id', model.id);
 
     if (form) {
       return form;
@@ -256,7 +249,7 @@ export default class BreadcrumbService extends Service {
 
       // Rollback new records to destroy unsaved records
       // @ts-ignore
-      let newForms = currentRoute.forms.filterBy('isNew');
+      let newForms = currentRoute.forms.filterBy('model.isNew');
       await newForms.invoke('destroyModel');
 
       this.routes.pop();
