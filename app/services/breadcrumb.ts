@@ -56,8 +56,6 @@ export class FormItem {
   }
 
   async destroyModel() {
-    console.log('destroy');
-
     await this.model.destroyRecord();
   }
 }
