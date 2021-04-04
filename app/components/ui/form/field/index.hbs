@@ -25,7 +25,9 @@
       @isInlineForm={{@isInlineForm}}
     />
   {{else if this.isTextarea}}
-    <textarea
+    <Ui::Form::Field::Textarea
+      @changeset={{@changeset}}
+      @property={{@property}}
       aria-label={{unless this.isLabeled this.label}}
       disabled={{@disabled}}
       id={{this.fieldId}}
@@ -33,29 +35,38 @@
       placeholder={{this.placeholder}}
       rows="5"
       type="text"
-      value={{changeset-get @changeset @property}}
-      {{on "input" this.updateField}}
-    >{{changeset-get @changeset @property}}</textarea>
+    />
   {{else if this.isCheckbox}}
-    <input
+    <Ui::Form::Field::Checkbox
+      @changeset={{@changeset}}
+      @property={{@property}}
       aria-label={{unless this.isLabeled this.label}}
-      checked={{changeset-get @changeset @property}}
       disabled={{@disabled}}
       id={{this.fieldId}}
       name={{this.fieldId}}
       type={{this.type}}
-      {{on "input" this.updateCheckbox}}
     />
-  {{else}}
-    <input
+  {{else if this.isDate}}
+    <Ui::Form::Field::Date
+      @changeset={{@changeset}}
+      @property={{@property}}
       aria-label={{unless this.isLabeled this.label}}
       disabled={{@disabled}}
       id={{this.fieldId}}
       name={{this.fieldId}}
       placeholder={{this.placeholder}}
       type={{this.type}}
-      value={{changeset-get @changeset @property}}
-      {{on "input" this.updateField}}
+    />
+  {{else}}
+    <Ui::Form::Field::Default
+      @changeset={{@changeset}}
+      @property={{@property}}
+      aria-label={{unless this.isLabeled this.label}}
+      disabled={{@disabled}}
+      id={{this.fieldId}}
+      name={{this.fieldId}}
+      placeholder={{this.placeholder}}
+      type={{this.type}}
     />
   {{/if}}
 

@@ -36,6 +36,10 @@ export default class UiFormFieldComponent extends Component<Args> {
     return this.args.type === 'checkbox';
   }
 
+  get isDate() {
+    return this.args.type === 'date';
+  }
+
   get isLabeled() {
     return this.args.isLabeled ?? true;
   }
@@ -86,24 +90,6 @@ export default class UiFormFieldComponent extends Component<Args> {
 
 
   // Actions
-  @action
-  updateField(
-    event: Event
-  ) {
-    const target = event.target as HTMLInputElement;
-
-    this.args.changeset.set(this.args.property, target.value);
-  }
-
-  @action
-  updateCheckbox(
-    event: Event
-  ) {
-    const target = event.target as HTMLInputElement;
-
-    this.args.changeset.set(this.args.property, target.checked);
-  }
-
   @action
   rollbackProperty() {
     this.args.changeset.rollbackProperty(this.args.property);
