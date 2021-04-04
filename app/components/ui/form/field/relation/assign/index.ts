@@ -4,7 +4,7 @@ import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
 import Store from '@ember-data/store';
 import Model from '@ember-data/model';
-import { task } from 'ember-concurrency';
+import { TaskGenerator, task } from 'ember-concurrency';
 import { taskFor } from 'ember-concurrency-ts';
 import FlashMessage from 'ember-cli-flash/services/flash-messages';
 
@@ -70,7 +70,7 @@ export default class UiFormFieldRelationAssignComponent extends Component<Args> 
 
 
   // Tasks
-  @task *queryRecords() {
+  @task *queryRecords(): TaskGenerator<Model|undefined> {
     try {
       let records = yield this.store.query(this.args.modelName, {
         page: {
@@ -86,6 +86,8 @@ export default class UiFormFieldRelationAssignComponent extends Component<Args> 
       return records;
     } catch (error) {
       this.flashMessages.warning(error);
+
+      return undefined;
     }
   }
 }
