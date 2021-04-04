@@ -38,7 +38,7 @@
   <div block:class="actions">
     {{#if @isInlineForm}}
       <Ui::Button
-        @icon={{if this.isOpen "expand_less" "expand_more"}}
+        @icon={{if this.accodrionIsOpen "expand_less" "expand_more"}}
         @onClick={{fn this.accordion.toggleItem this.accodrionItemId}}
         @style="inline"
         aria-expanded={{this.accodionIsOpen}}
