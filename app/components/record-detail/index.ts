@@ -26,8 +26,8 @@ export default class RecordDetailComponent extends Component<Args> {
 
 
   // Getter and setter
-  get breadcrumbItem() {
-    return this.breadcrumb.currentItem;
+  get breadcrumbRoute() {
+    return this.breadcrumb.currentRoute;
   }
 
 
@@ -43,12 +43,11 @@ export default class RecordDetailComponent extends Component<Args> {
         return
       }
 
-      await this.breadcrumbItem.models.invoke('destroyRecord');
-      this.breadcrumbItem.changesets = [];
+      await this.breadcrumbRoute.destroyForms();
 
       this.flashMessages.success(message);
       // @ts-ignore
-      this.router.transitionTo(...this.breadcrumb.prevItem.routeParams);
+      this.router.transitionTo(...this.breadcrumb.prevRoute.routeParams);
     } catch(error) {
       this.flashMessages.warning(error);
     }
@@ -59,7 +58,7 @@ export default class RecordDetailComponent extends Component<Args> {
     event.preventDefault();
 
     // @ts-ignore
-    this.router.transitionTo(...this.breadcrumb.prevItem.routeParams);
+    this.router.transitionTo(...this.breadcrumb.prevRoute.routeParams);
   }
 
   @action
@@ -67,13 +66,13 @@ export default class RecordDetailComponent extends Component<Args> {
     event.preventDefault();
 
     try {
-      let title = this.breadcrumbItem.name;
+      let title = this.breadcrumbRoute.name;
       let message = this.intl.t('recordDetail.saveRecord', { title: title });
 
-      await Promise.all(this.breadcrumbItem.changesets.invoke('validate'));
+      await this.breadcrumbRoute.validateRoute();
 
-      if (this.breadcrumbItem.isValid) {
-        await Promise.all(this.breadcrumbItem.changesets.invoke('save'));
+      if (this.breadcrumbRoute.isValid) {
+        await this.breadcrumbRoute.saveRoute();
       } else {
         throw {
           message: 'not valid'
@@ -82,7 +81,7 @@ export default class RecordDetailComponent extends Component<Args> {
 
       this.flashMessages.success(message);
       // @ts-ignore
-      this.router.transitionTo(...this.breadcrumb.prevItem.routeParams);
+      this.router.transitionTo(...this.breadcrumb.prevRoute.routeParams);
     } catch(error) {
       this.flashMessages.warning(error.message);
     }

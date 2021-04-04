@@ -25,19 +25,61 @@ let validations: { [key: string]: Object } = {
   'quiz': QuizValidations
 }
 
-export class BreadcrumbItem {
+export class FormItem {
+  model!: Model;
+  changeset!: BufferedChangeset;
+  isMainForm!: boolean;
+
+  constructor(model: Model) {
+    const validation = validations[model.modelName];
+
+    let changeset = Changeset(
+      model,
+      lookupValidator(validation),
+      validation
+    )
+
+    this.model = model;
+    this.changeset = changeset;
+  }
+
+  get isValid() {
+    return this.changeset.isValid;
+  }
+
+  get isDirty() {
+    return this.changeset.isDirty;
+  }
+
+  get isNew() {
+    return this.model.isNew;
+  }
+
+  save() {
+    this.changeset.save();
+  }
+
+  validate() {
+    this.changeset.validate();
+  }
+
+  destroyModel() {
+    this.model.destroyRecord();
+  }
+}
+
+export class RouteItem {
   // Defaults
-  changesets: TrackedArray<BufferedChangeset> = new TrackedArray([]);
-  models: TrackedArray<Model> = new TrackedArray([]);
-  intl: Intl;
+  forms: TrackedArray<FormItem> = new TrackedArray([]);
+  model: Model;
   routeModel?: Model;
   routeName: string;
   modelName: string;
 
 
   // Hooks
-  constructor(intl: Intl, routeName: string, model: Model) {
-    this.intl = intl;
+  constructor(routeName: string, model: Model) {
+    this.model = model;
     this.modelName = model.modelName;
     this.routeName = routeName;
 
@@ -49,15 +91,15 @@ export class BreadcrumbItem {
 
   // Getter and setter
   get changes() {
-    return this.changesets.reduce((a, b) => {
-      return a + b.changes.length
+    return this.forms.reduce((a, b) => {
+      return a + b.changeset.changes.length
     }, 0);
   }
 
   get errors() {
-    return this.changesets.reduce((a, b) => {
+    return this.forms.reduce((a, b) => {
       // @ts-ignore
-      return a.concat(b.errors)
+      return a.concat(b.changeset.errors)
     }, []);
   }
 
@@ -66,19 +108,15 @@ export class BreadcrumbItem {
   }
 
   get hasDirtyChangeset() {
-    return this.changesets.isAny('isDirty');
+    return this.forms.isAny('isDirty');
   }
 
   get isValid() {
-    return this.changesets.isEvery('isValid');
+    return this.forms.isEvery('isValid');
   }
 
   get name() {
-    if (!this.routeModel) {
-      return this.intl.t(`models.new.${this.modelName}`);
-    }
-
-    return this.routeModel.displayLabel;
+    return this.model.displayLabel;
   }
 
   get routeParams(): [string, Model?] {
@@ -93,29 +131,35 @@ export class BreadcrumbItem {
 
 
   // Functions
-  getChangeset(model: Model) {
-    let changeset = this.changesets.findBy('id', model.id);
+  getForm(model: Model) {
+    let form = this.forms.findBy('id', model.id);
 
-    if (changeset) {
-      return changeset;
+    if (form) {
+      return form;
     } else {
-      return this.registerChangeset(model);
+      return this.registerForm(model);
     }
   }
 
-  registerChangeset(model: Model) {
-    const validation = validations[model.modelName];
+  registerForm(model: Model) {
+    const form = new FormItem(model);
 
-    let changeset = Changeset(
-      model,
-      lookupValidator(validation),
-      validation
-    )
+    this.forms.push(form)
 
-    this.changesets.push(changeset);
-    this.models.push(model);
+    return form;
+  }
 
-    return changeset;
+  async destroyForms() {
+    await this.forms.invoke('destroyModel');
+    this.forms = [];
+  }
+
+  async saveRoute() {
+    return await Promise.all(this.forms.invoke('save'));
+  }
+
+  async validateRoute() {
+    return await Promise.all(this.forms.invoke('validate'));
   }
 }
 
@@ -126,12 +170,12 @@ export default class BreadcrumbService extends Service {
   @service router!: Router;
 
   // Defaults
-  items: TrackedArray<BreadcrumbItem> = new TrackedArray([]);
+  routes: TrackedArray<RouteItem> = new TrackedArray([]);
 
 
   // Getter and setter
-  get baseItem() {
-    let baseModelName = this.firstItem?.modelName;
+  get baseRoute() {
+    let baseModelName = this.firstRoute?.modelName;
 
     if (!baseModelName) {
       return
@@ -144,92 +188,92 @@ export default class BreadcrumbService extends Service {
     };
   }
 
-  get currentItem() {
-    return this.items[this.items.length - 1];
+  get currentRoute() {
+    return this.routes[this.routes.length - 1];
   }
 
-  get firstItem() {
-    return this.items[0];
+  get firstRoute() {
+    return this.routes[0];
   }
 
-  get hasItems() {
-    return this.items.length > 0;
+  get hasRoutes() {
+    return this.routes.length > 0;
   }
 
-  get prevItem() {
-    return this.items[this.items.length - 2] ?? this.baseItem;
+  get prevRoute() {
+    return this.routes[this.routes.length - 2] ?? this.baseRoute;
   }
 
 
   // Functions
   clear(transition: Transition) {
-    return this.rollbackItems(this.items, transition);
+    return this.rollbackRoutes(this.routes, transition);
   }
 
-  findItem(routeName: string, model: Model) {
-    return this.items.find((item) => {
+  findRoute(routeName: string, model?: Model) {
+    return this.routes.find((route) => {
       // @ts-ignore
       if (!model || model.isNew) {
-        return item.routeName === routeName;
+        return route.routeName === routeName;
       }
 
-      return item.routeName === routeName && item.routeModel === model;
+      return route.routeName === routeName && route.routeModel === model;
     });
   }
 
-  getItem(routeName: string, model: Model) {
-    let item = this.findItem(routeName, model);
+  getRoute(routeName: string, model: Model) {
+    let route = this.findRoute(routeName, model);
 
-    if (item) {
-      return item;
+    if (route) {
+      return route;
     } else {
-      return this.registerItem(routeName, model);
+      return this.registerRoute(routeName, model);
     }
   }
 
-  registerItem(routeName: string, model: Model) {
-    let item = new BreadcrumbItem(this.intl, routeName, model);
+  registerRoute(routeName: string, model: Model) {
+    let route = new RouteItem(routeName, model);
 
-    this.items.push(item);
+    this.routes.push(route);
 
-    return item;
+    return route;
   }
 
-  // Rollback new records to destroy unsaved records
-  async rollbackItems(items: BreadcrumbItem[], transition: Transition) {
+  async rollbackRoutes(routes: RouteItem[], transition: Transition) {
     transition.abort();
 
-    for(let i = items.length - 1; i >= 0; i--) {
-      let currentItem = items[i];
-      let prevItem = items[i - 1];
+    for(let i = routes.length - 1; i >= 0; i--) {
+      let currentRoute = routes[i];
+      let prevRoute = routes[i - 1];
 
-      if (currentItem.hasDirtyChangeset) {
-        let confirmed = await this.confirm.ask('rollback', currentItem);
+      if (currentRoute.hasDirtyChangeset) {
+        let confirmed = await this.confirm.ask('rollback', currentRoute);
 
         if (!confirmed) {
           return true;
         }
       }
 
+      // Rollback new records to destroy unsaved records
       // @ts-ignore
-      let newModels = currentItem.models.filterBy('isNew');
+      let newForms = currentRoute.forms.filterBy('isNew');
+      await newForms.invoke('destroyModel');
 
-      await newModels.invoke('destroyRecord');
-      this.items.pop();
+      this.routes.pop();
 
-      if (prevItem) {
+      if (prevRoute) {
         // @ts-ignore
-        this.router.transitionTo(...prevItem.routeParams);
+        this.router.transitionTo(...prevRoute.routeParams);
       }
     }
 
     return transition.retry();
   }
 
-  rollbackTo(item: BreadcrumbItem, transition: Transition) {
-    let index = this.items.indexOf(item);
-    let itemsToRemove = this.items.slice(index + 1);
+  rollbackToRoute(route: RouteItem, transition: Transition) {
+    let index = this.routes.indexOf(route);
+    let routesToRemove = this.routes.slice(index + 1);
 
-    return this.rollbackItems(itemsToRemove, transition);
+    return this.rollbackRoutes(routesToRemove, transition);
   }
 }

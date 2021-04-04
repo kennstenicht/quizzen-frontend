@@ -51,18 +51,18 @@ export default class ApplicationRoute extends Route {
 
   @action
   willTransition(transition: Transition) {
-    if (this.breadcrumb.hasItems) {
-      let attemptedBreadcrumbItem = this.breadcrumb.findItem(
+    if (this.breadcrumb.hasRoutes) {
+      let attemptedRouteItem = this.breadcrumb.findRoute(
         transition.to.name,
         this.controller.model
       );
 
-      if (attemptedBreadcrumbItem === this.breadcrumb.currentItem) {
+      if (attemptedRouteItem === this.breadcrumb.currentRoute) {
         return true
       }
 
-      if (attemptedBreadcrumbItem) {
-        return this.breadcrumb.rollbackTo(attemptedBreadcrumbItem, transition);
+      if (attemptedRouteItem) {
+        return this.breadcrumb.rollbackToRoute(attemptedRouteItem, transition);
       }
 
       return this.breadcrumb.clear(transition);

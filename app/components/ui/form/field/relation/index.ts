@@ -114,7 +114,7 @@ export default class UiFormFieldRelationComponent extends Component<Args> {
     let relationType = this.relationType;
     let editRoute = `profile.${pluralize(relationType)}.${relationType}`;
 
-    this.breadcrumb.registerItem(editRoute, record);
+    this.breadcrumb.registerRoute(editRoute, record);
     this.router.transitionTo(editRoute, record);
   }
 
@@ -124,7 +124,7 @@ export default class UiFormFieldRelationComponent extends Component<Args> {
     let newRoute = `profile.${pluralize(relationType)}.new`;
     let newRecord = this.createNewRecord();
 
-    this.breadcrumb.registerItem(newRoute, newRecord);
+    this.breadcrumb.registerRoute(newRoute, newRecord);
     this.router.transitionTo(newRoute);
   }
 
@@ -147,13 +147,13 @@ export default class UiFormFieldRelationComponent extends Component<Args> {
 
   @action
   async deleteRecord(record: Model) {
-    let item = this.breadcrumb.getItem(this.router.currentRouteName, record);
-    let changeset = item.getChangeset(record);
+    let route = this.breadcrumb.getRoute(this.router.currentRouteName, record);
+    let form = route.getForm(record);
 
     await this.removeRecord(record, 'delete');
 
     record.destroyRecord();
-    item.changesets.removeObject(changeset);
+    route.forms.removeObject(form);
   }
 
   @action

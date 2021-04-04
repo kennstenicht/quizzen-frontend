@@ -37,9 +37,10 @@ export default class UiFormComponent extends Component<Args> {
       let routeName = this.router.currentRoute.name;
       // @ts-ignore
       let model = this.router.currentRoute.attributes;
-      let route = this.breadcrumb.getItem(routeName, model);
+      let route = this.breadcrumb.getRoute(routeName, model);
+      let form = route.getForm(this.args.model);
 
-      this.changeset = route.getChangeset(this.args.model);
+      this.changeset = form.changeset;
     }
   }
 }

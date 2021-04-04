@@ -1,4 +1,4 @@
-{{#if this.breadcrumb.hasItems}}
+{{#if this.breadcrumb.hasRoutes}}
   <ol
     block:scope
     {{did-insert (fn this.setHoverIndex undefined)}}
@@ -9,7 +9,7 @@
       {{on "mouseover" (fn this.setHoverIndex -1)}}
       {{on "mouseout" this.removeHoverIndex}}
     >
-      {{#let this.breadcrumb.baseItem as |item|}}
+      {{#let this.breadcrumb.baseRoute as |item|}}
         <LinkTo @route={{item.routeName}}>
           <div block:class="name">
             {{item.name}}
@@ -18,7 +18,7 @@
       {{/let}}
     </li>
 
-    {{#animated-each this.breadcrumb.items
+    {{#animated-each this.breadcrumb.routes
       use=this.breadcrumbTransitiom
       duration=400
       initialInsertion=false
@@ -27,7 +27,7 @@
     }}
       <li
         block:class="item"
-        block:is-current={{eq item this.breadcrumb.currentItem}}
+        block:is-current={{eq item this.breadcrumb.currentRoute}}
         block:is-to-rollback={{gt index this.hoverIndex}}
         block:has-changes={{item.hasChanges}}
         {{on "mouseover" (fn this.setHoverIndex index)}}
