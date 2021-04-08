@@ -1,0 +1,6 @@
+Du bist im Game! Warte bis es los geht.<br><br>
+
+<strong>Mitspieler:</strong><br>
+{{#each @game.users as |user|}}
+  <Ui::Avatar @user={{user}} />
+{{/each}}

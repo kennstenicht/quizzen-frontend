@@ -1,0 +1,20 @@
+<Ui::Window
+  {{did-insert (fn this.subscribe @game)}}
+  {{will-destroy this.unsubscribe}}
+>
+  <:title>
+    {{@game.title}}
+  </:title>
+
+  <:body>
+    {{#if (not this.session.isAuthenticated)}}
+      <Game::Login />
+    {{else if (not @game.joined)}}
+      <Game::Join @game={{@game}} @onJoinGame={{this.join}} />
+    {{else}}
+      {{#let (component this.gameStateComponent) as |GameState|}}
+        <GameState @game={{@game}} />
+      {{/let}}
+    {{/if}}
+  </:body>
+</Ui::Window>

@@ -1,0 +1,6 @@
+Warte bis alle Spieler im Game sind.<br><br>
+
+<strong>Spieler:</strong><br>
+{{#each @game.users as |user|}}
+  <Ui::Avatar @user={{user}} />
+{{/each}}

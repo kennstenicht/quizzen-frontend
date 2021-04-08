@@ -27,4 +27,20 @@ export default class GameModel extends Model {
   get displayLabel() {
     return this.title ?? super.displayLabel;
   }
+
+  get currentPlayedQuestion() {
+    return this.playedQuestions?.lastObject
+  }
+
+  get currentPlayedAnswer() {
+    return this.currentPlayedQuestion?.playedAnswers?.lastObject
+  }
+
+  get playerType() {
+    return this.yourGame ? 'master' : 'player';
+  }
+
+  get state() {
+    return 'waiting';
+  }
 }
