@@ -35,7 +35,7 @@ export default class HeadDataService extends Service {
 
   get routeModel() {
     // @ts-ignore
-    return this.router.currentRoute.attributes as Model;
+    return this.router.currentRoute?.attributes as Model;
   }
 
   get routeMetaTags() {
