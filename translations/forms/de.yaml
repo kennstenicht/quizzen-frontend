@@ -18,7 +18,7 @@ forms:
   game:
     fields:
       active: Aktives Spiel
-      gameQuestions: Gespiele Fragen
+      playedQuestions: Gespiele Fragen
       guessQuestion: Schätzfrage
       joined: Teilnehmer
       users: Mitspieler

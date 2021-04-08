@@ -3,7 +3,7 @@ import { attr, belongsTo , hasMany} from '@ember-data/model';
 import User from 'quizzen/models/user';
 import Quiz from 'quizzen/models/quiz';
 import Team from 'quizzen/models/team';
-import GameQuestion from 'quizzen/models/game-question';
+import PlayedQuestion from 'quizzen/models/played-question';
 import GuessQuestion from 'quizzen/models/guess-question';
 
 export default class GameModel extends Model {
@@ -18,7 +18,7 @@ export default class GameModel extends Model {
   @belongsTo('user') quizMaster?: User;
   @belongsTo('quiz') quiz?: Quiz;
   @hasMany('user') users?: User[];
-  @hasMany('gameQuestion') gameQuestions?: GameQuestion[];
+  @hasMany('playedQuestion') playedQuestions?: PlayedQuestion[];
   @belongsTo('guessQuestion') guessQuestion?: GuessQuestion;
   @hasMany('team') teams?: Team[];
 

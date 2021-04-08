@@ -1,7 +1,7 @@
 import Model from 'quizzen/models/base';
 import { attr, belongsTo } from '@ember-data/model';
 import User from 'quizzen/models/user';
-import GameQuestion from 'quizzen/models/game-question';
+import PlayedQuestion from 'quizzen/models/played-question';
 
 export default class selfAssessmentModel extends Model {
   // Attributes
@@ -9,7 +9,7 @@ export default class selfAssessmentModel extends Model {
 
 
   // Relations
-  @belongsTo('gameQuestion') gameQuestion?: GameQuestion;
+  @belongsTo('playedQuestion') playedQuestion?: PlayedQuestion;
   @belongsTo('user') user?: User;
 
 

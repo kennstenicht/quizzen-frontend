@@ -1,7 +1,7 @@
 import Model from 'quizzen/models/base';
 import { attr, hasMany } from '@ember-data/model';
 import Game from 'quizzen/models/game';
-import GameQuestions from 'quizzen/models/game-question';
+import PlayedQuestions from 'quizzen/models/played-question';
 
 export default class GuessQuestionModel extends Model {
   // Attributes
@@ -14,7 +14,7 @@ export default class GuessQuestionModel extends Model {
 
   // Relations
   @hasMany('game') games?: Game[];
-  @hasMany('game-question') gameQuestions?: GameQuestions[];
+  @hasMany('played-question') playedQuestions?: PlayedQuestions[];
 
 
   // Getter and setter

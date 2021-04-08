@@ -5,24 +5,24 @@
     {{@model.title}}
   </:title>
   <:body>
-    {{#each @model.gameQuestions as |gameQuestion index|}}
+    {{#each @model.playedQuestions as |playedQuestion index|}}
       <strong>Question {{index}}:</strong><br>
-      {{gameQuestion.question.displayLabel}} (Top {{gameQuestion.question.numAnswers}})<br><br>
+      {{playedQuestion.question.displayLabel}} (Top {{playedQuestion.question.numAnswers}})<br><br>
 
-      {{#if gameQuestion.selfAssessments}}
+      {{#if playedQuestion.selfAssessments}}
         <strong>Self Assassments:</strong><br>
-        {{#each gameQuestion.selfAssessments as |selfAssessment|}}
+        {{#each playedQuestion.selfAssessments as |selfAssessment|}}
           {{selfAssessment.user.nickname}}: {{selfAssessment.assessment}}<br>
         {{/each}}<br>
       {{/if}}
 
       <strong>Winner:</strong><br>
-      <Ui::Avatar @user={{gameQuestion.winner}} /><br><br>
+      <Ui::Avatar @user={{playedQuestion.winner}} /><br><br>
 
-      {{#if gameQuestion.gameAnswers}}
+      {{#if playedQuestion.playedAnswers}}
         <strong>Answers:</strong><br>
-        {{#each gameQuestion.gameAnswers as |gameAnswer|}}
-          {{gameAnswer.answer.displayLabel}} <Ui::Avatar @user={{gameAnswer.user}} /><br>
+        {{#each playedQuestion.playedAnswers as |playedAnswer|}}
+          {{playedAnswer.answer.displayLabel}} <Ui::Avatar @user={{playedAnswer.user}} /><br>
         {{/each}}
       {{/if}}
     {{/each}}
