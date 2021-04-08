@@ -2,9 +2,13 @@
   {{@model.nickname}}
 </Application::Headline>
 
-<Ui::Avatar @user={{@model}} @size="large" />
+<Ui::Window>
+  <:body>
+    <Ui::Avatar @user={{@model}} @size="large" /><br>
 
-Vorname: {{@model.firstname}}<br>
-Nachname: {{@model.lastname}}<br>
-E-Mail: {{@model.email}}<br>
-{{outlet}}
+    Vorname: {{@model.firstname}}<br>
+    Nachname: {{@model.lastname}}<br>
+    E-Mail: {{@model.email}}<br>
+    {{outlet}}
+  </:body>
+</Ui::Window>
