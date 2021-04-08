@@ -1,0 +1,23 @@
+<div block:scope ...attributes>
+  <h2 block:class="title" id="dialog-title">
+    {{t "application.confirm.leaveGame.title" displayLabel=@confirm.data.displayLabel}}
+  </h2>
+  <div block:class="message" id="dialog-message">
+    {{t "application.confirm.leaveGame.message" displayLabel=@confirm.data.displayLabel}}
+  </div>
+
+  <Ui::Button
+    @label={{t "application.confirm.leaveGame.confirm"}}
+    @onClick={{@confirm.confirm}}
+    @icon="leave"
+    @style="danger"
+  />
+
+  <Ui::Button
+    @label={{t "application.confirm.leaveGame.cancel"}}
+    @onClick={{@confirm.cancel}}
+    @icon="cancel"
+    @style="secondary"
+  />
+</div>
+

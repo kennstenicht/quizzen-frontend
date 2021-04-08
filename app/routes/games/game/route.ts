@@ -1,9 +1,11 @@
 import Route from '@ember/routing/route';
 import Transition from '@ember/routing/-private/transition';
 import { inject as service } from '@ember/service';
+import { action } from '@ember/object';
 import Store from '@ember-data/store';
 import Session from 'ember-simple-auth/services/session';
 import Game from 'quizzen/models/game';
+import ConfirmService from 'quizzen/services/confirm';
 
 interface Params {
   user_nickname: string
@@ -11,8 +13,13 @@ interface Params {
 
 export default class GamesGameRoute extends Route {
   // Services
+  @service confirm!: ConfirmService;
   @service session!: Session;
   @service store!: Store;
+
+
+  // Defaults
+  isTransitionRetry = false;
 
 
   // Hooks
@@ -37,6 +44,25 @@ export default class GamesGameRoute extends Route {
   afterModel(model: Game) {
     if (!model) {
       this.transitionTo('games');
+    }
+  }
+
+  @action
+  async willTransition(transition: Transition) {
+    if (this.controller.model.joined && !this.isTransitionRetry) {
+      transition.abort();
+
+      let confirmed = await this.confirm.ask(
+        'leave-game',
+        this.controller.model
+      );
+
+      if (confirmed) {
+        this.isTransitionRetry = true;
+        transition.retry();
+      }
+    } else {
+      this.isTransitionRetry = false;
     }
   }
 }

@@ -6,6 +6,11 @@ application:
       message: 'Bist du dir sicher, dass du "{displayLabel}" wirklich löschen möchtest?'
       confirm: Löschen
       cancel: Abbrechen
+    leaveGame:
+      title: '"{displayLabel}" verlassen?'
+      message: 'Bist du dir sicher, dass du "{displayLabel}" wirklich verlassen möchtest? Keine sorge, du kannst dem Spiel jederzeit wieder beitreten.'
+      confirm: Verlassen
+      cancel: Abbrechen
     remove:
       title: '{modelName} entfernen?'
       message: 'Bist du dir sicher, dass du "{displayLabel}" wirklich von diesem Eintrag entfernen möchtest?'
