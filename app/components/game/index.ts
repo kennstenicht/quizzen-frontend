@@ -23,7 +23,7 @@ export default class GameComponent extends Component<Args> {
 
 
   // Defaults
-  gameChannel!: CableChannel;
+  gameChannel?: CableChannel;
 
 
   // Getter, setter and computed properties
@@ -35,7 +35,9 @@ export default class GameComponent extends Component<Args> {
   // Actions
   @action
   join() {
-    this.gameChannel.perform('join', {});
+    if (this.gameChannel) {
+      this.gameChannel.perform('join', {});
+    }
   }
 
   @action
@@ -57,6 +59,8 @@ export default class GameComponent extends Component<Args> {
 
   @action
   unsubscribe() {
-    this.gameChannel.unsubscribe();
+    if (this.gameChannel) {
+      this.gameChannel.unsubscribe();
+    }
   }
 }
