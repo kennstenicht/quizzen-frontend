@@ -57,6 +57,7 @@ module.exports = function (environment) {
       // Here you can pass flags/options to your application instance
       // when it is created
       host: 'http://localhost:3000',
+      cableUrl: 'ws://localhost:3000/cable'
     },
   };
 
@@ -82,6 +83,7 @@ module.exports = function (environment) {
 
   if (environment === 'production') {
     ENV.APP.host = 'https://quizzen-api.herokuapp.com';
+    ENV.APP.cableUrl = 'ws://quizzen-api.herokuapp.com/cable';
 
     ENV['ember-simple-auth-token'] = {
       serverTokenEndpoint: 'https://quizzen-api.herokuapp.com/v1/user_token',

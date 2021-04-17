@@ -1,5 +1,5 @@
-import Service from '@ember/service';
-import { inject as service } from '@ember/service';
+import Service, { inject as service } from '@ember/service';
+import { getOwner } from '@ember/application';
 import { tracked } from '@glimmer/tracking';
 import Session from 'ember-simple-auth/services/session';
 import ActionCable, { createConsumer } from "@rails/actioncable"
@@ -17,8 +17,9 @@ export default class CableService extends Service {
   constructor() {
     super(...arguments);
 
+    const ENV = getOwner(this).resolveRegistration('config:environment');
     let token = this.session.data?.authenticated.jwt;
-    var cableUrl = new URL('ws://localhost:3000/cable');
+    var cableUrl = new URL(ENV.APP.cableUrl);
 
     if (token) {
       cableUrl.searchParams.append('token', token);
