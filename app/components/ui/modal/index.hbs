@@ -1,28 +1,30 @@
-{{#in-element
-  (query-selector "[data-in-element=application-modal]")
-  insertBefore=null
-}}
-  <div
-    block:scope
-    block:is-open={{@isOpen}}
-    aria-labelledby="dialog-title"
-    aria-describedby="dialog-message"
-    role="dialog"
-    ...attributes
-  >
-    <div block:class="overlay" {{on "click" @onClose}}></div>
-    <div block:class="container">
-      <AnimatedContainer>
-        {{#animated-if @isOpen
-          use=this.slideFromBottom
-          duration=400
-          initialInsertion=true
-        }}
-          <div block:class="content">
-            {{yield}}
-          </div>
-        {{/animated-if}}
-      </AnimatedContainer>
+{{#unless (is-fastboot)}}
+  {{#in-element
+    (query-selector "[data-in-element=application-modal]")
+    insertBefore=null
+  }}
+    <div
+      block:scope
+      block:is-open={{@isOpen}}
+      aria-labelledby="dialog-title"
+      aria-describedby="dialog-message"
+      role="dialog"
+      ...attributes
+    >
+      <div block:class="overlay" {{on "click" @onClose}}></div>
+      <div block:class="container">
+        <AnimatedContainer>
+          {{#animated-if @isOpen
+            use=this.slideFromBottom
+            duration=400
+            initialInsertion=true
+          }}
+            <div block:class="content">
+              {{yield}}
+            </div>
+          {{/animated-if}}
+        </AnimatedContainer>
+      </div>
     </div>
-  </div>
-{{/in-element}}
+  {{/in-element}}
+{{/unless}}

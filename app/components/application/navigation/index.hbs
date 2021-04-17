@@ -1,9 +1,11 @@
-{{#in-element (query-selector "[data-in-element=application-navigation]")}}
-  <nav block:scope ...attributes>
-    <ul block:class="list">
-      {{#each @links as |link|}}
-        <Application::Navigation::Item @link={{link}} />
-      {{/each}}
-    </ul>
-  </nav>
-{{/in-element}}
+{{#unless (is-fastboot)}}
+  {{#in-element (query-selector "[data-in-element=application-navigation]")}}
+    <nav block:scope ...attributes>
+      <ul block:class="list">
+        {{#each @links as |link|}}
+          <Application::Navigation::Item @link={{link}} />
+        {{/each}}
+      </ul>
+    </nav>
+  {{/in-element}}
+{{/unless}}

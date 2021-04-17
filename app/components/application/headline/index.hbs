@@ -1,5 +1,7 @@
-{{#in-element (query-selector "[data-in-element=application-headline]")}}
-  <div block:scope ...attributes>
-    {{yield}}
-  </div>
-{{/in-element}}
+{{#unless (is-fastboot)}}
+  {{#in-element (query-selector "[data-in-element=application-headline]")}}
+    <div block:scope ...attributes>
+      {{yield}}
+    </div>
+  {{/in-element}}
+{{/unless}}
