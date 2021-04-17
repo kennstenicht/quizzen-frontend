@@ -1,6 +1,6 @@
 import JSONAPIAdapter from '@ember-data/adapter/json-api';
-import { inject as service } from '@ember/service';
 import { getOwner } from '@ember/application';
+import { inject as service } from '@ember/service';
 import { computed } from '@ember/object';
 import { underscore } from '@ember/string';
 import { pluralize } from 'ember-inflector';
@@ -18,21 +18,7 @@ export default class ApplicationAdapter extends JSONAPIAdapter {
   namespace = 'v1';
 
 
-  // Getter and setter
-  @computed('fastboot.{isFastBoot,request.host,request.protocol}')
-  get host(): string {
-    const ENV = getOwner(this).resolveRegistration('config:environment');
-
-    if (ENV.environment !== 'development' && this.fastboot.isFastBoot) {
-      const protocol = this.fastboot.request.protocol;
-      const host = this.fastboot.request.host;
-
-      return `${protocol}//${host}`;
-    } else {
-      return '';
-    }
-  }
-
+  // Getter, setter and computed properties
   @computed('session.{isAuthenticated,data.authenticated.jwt}')
   get headers() {
     let headers: any = {};
@@ -44,6 +30,12 @@ export default class ApplicationAdapter extends JSONAPIAdapter {
     }
 
     return headers;
+  }
+
+  get host() {
+    const ENV = getOwner(this).resolveRegistration('config:environment');
+
+    return ENV.APP.host;
   }
 
 

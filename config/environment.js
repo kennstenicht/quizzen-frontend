@@ -22,7 +22,7 @@ module.exports = function (environment) {
     },
 
     'ember-simple-auth-token': {
-      serverTokenEndpoint: '/v1/user_token',
+      serverTokenEndpoint: 'http://localhost:3000/v1/user_token',
       tokenPropertyName: 'jwt',
       refreshAccessTokens: false,
       tokenExpirationInvalidateSession: true,
@@ -34,7 +34,7 @@ module.exports = function (environment) {
     },
 
     fastboot: {
-      hostWhitelist: ['staging.quizzen.jetzt','quizzen.jetzt', /^localhost:\d+$/, /^192.*:\d+$/]
+      hostWhitelist: ['staging.quizzen.jetzt','quizzen.jetzt', 'quizzen.herokuapp.com', /^localhost:\d+$/, /^192.*:\d+$/]
     },
 
     flashMessageDefaults: {
@@ -56,6 +56,7 @@ module.exports = function (environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+      host: 'http://localhost:3000',
     },
   };
 
@@ -80,7 +81,11 @@ module.exports = function (environment) {
   }
 
   if (environment === 'production') {
-    // here you can enable a production-specific feature
+    ENV.APP.host = 'https://quizzen-api.herokuapp.com';
+
+    EMV['ember-simple-auth-token'] = {
+      serverTokenEndpoint: 'https://quizzen-api.herokuapp.com/v1/user_token',
+    };
   }
 
   return ENV;

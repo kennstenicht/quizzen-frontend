@@ -1,6 +1,5 @@
 {
   "disableAnalytics": false,
-  "proxy": "http://localhost:3000",
   "yarn": true,
   "port": 4100
 }
