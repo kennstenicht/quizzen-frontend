@@ -83,7 +83,7 @@ module.exports = function (environment) {
   if (environment === 'production') {
     ENV.APP.host = 'https://quizzen-api.herokuapp.com';
 
-    EMV['ember-simple-auth-token'] = {
+    ENV['ember-simple-auth-token'] = {
       serverTokenEndpoint: 'https://quizzen-api.herokuapp.com/v1/user_token',
     };
   }
