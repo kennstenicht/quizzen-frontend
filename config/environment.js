@@ -82,12 +82,13 @@ module.exports = function (environment) {
   }
 
   if (environment === 'production') {
-    ENV.APP.host = 'https://quizzen-api.herokuapp.com';
-    ENV.APP.cableUrl = 'ws://quizzen-api.herokuapp.com/cable';
+    const protocol = 'https://';
+    const host = 'quizzen-api.herokuapp.com';
 
-    ENV['ember-simple-auth-token'] = {
-      serverTokenEndpoint: 'https://quizzen-api.herokuapp.com/v1/user_token',
-    };
+    ENV.APP.host = `${protocol}${host}`;
+    ENV.APP.cableUrl = `ws://${host}/cable`;
+
+    ENV['ember-simple-auth-token']['serverTokenEndpoint'] =  `${protocol}${host}/v1/user_token`;
   }
 
   return ENV;
