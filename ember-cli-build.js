@@ -7,7 +7,10 @@ const { adaptor, adaptorSync } = require('@css-blocks/eyeglass');
 const path = require('path');
 
 const sassOptions = {
-  outputStyle: "expanded",
+  outputStyle: "compressed",
+  sourceMap: false,
+  omitSourceMapUrl: true,
+  sourceMapEmbed: false,
   includePaths: ['app/styles', 'node_modules', 'node_modules/sass-mq'],
 };
 
