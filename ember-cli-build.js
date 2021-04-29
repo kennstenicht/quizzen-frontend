@@ -29,6 +29,11 @@ module.exports = function (defaults) {
         preprocessorsSync: {
           scss: scssSync
         }
+      },
+      prember: {
+        urls: [
+          '/'
+        ]
       }
     },
     sassOptions
