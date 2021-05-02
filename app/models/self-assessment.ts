@@ -1,7 +1,7 @@
 import ArrayProxy from '@ember/array/proxy';
 import { attr, belongsTo } from '@ember-data/model';
 import Model from 'quizzen/models/base';
-import User from 'quizzen/models/user';
+import Player from 'quizzen/models/player';
 import PlayedQuestion from 'quizzen/models/played-question';
 
 export default class SelfAssessmentModel extends Model {
@@ -12,7 +12,7 @@ export default class SelfAssessmentModel extends Model {
 
   // Relations
   @belongsTo('playedQuestion') playedQuestion!: ArrayProxy<PlayedQuestion>;
-  @belongsTo('user') user!: ArrayProxy<User>;
+  @belongsTo('player') player!: ArrayProxy<Player>;
 
 
   // Getter and setter

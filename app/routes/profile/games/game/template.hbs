@@ -12,12 +12,12 @@
       {{#if playedQuestion.selfAssessments}}
         <strong>Self Assassments:</strong><br>
         {{#each playedQuestion.selfAssessments as |selfAssessment|}}
-          {{selfAssessment.user.nickname}}: {{selfAssessment.assessment}}<br>
+          {{selfAssessment.player.user.nickname}}: {{selfAssessment.assessment}}<br>
         {{/each}}<br>
       {{/if}}
 
       <strong>Winner:</strong><br>
-      <Ui::Avatar @user={{playedQuestion.winner}} /><br><br>
+      <Ui::Avatar @user={{playedQuestion.winner.user}} /><br><br>
 
       {{#if playedQuestion.playedAnswers}}
         <strong>Answers:</strong><br>
@@ -28,15 +28,15 @@
     {{/each}}
     <br>
     <strong>Players:</strong><br>
-    {{#each @model.users as |user|}}
-      <Ui::Avatar @user={{user}} />
+    {{#each @model.players as |playe|}}
+      <Ui::Avatar @user={{player.user}} />
     {{/each}}
     <br><br>
     <strong>Teams:</strong><br>
     {{#each @model.teams as |team|}}
       {{team.name}}<br>
-      {{#each team.users as |user|}}
-        <Ui::Avatar @user={{user}} />
+      {{#each team.players as |player|}}
+        <Ui::Avatar @user={{player.user}} />
       {{/each}}<br>
     {{/each}}
   </:body>

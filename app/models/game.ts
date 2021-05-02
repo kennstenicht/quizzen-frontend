@@ -1,11 +1,12 @@
 import ArrayProxy from '@ember/array/proxy';
 import { attr, belongsTo , hasMany} from '@ember-data/model';
+import GuessQuestion from 'quizzen/models/guess-question';
 import Model from 'quizzen/models/base';
-import User from 'quizzen/models/user';
+import PlayedQuestion from 'quizzen/models/played-question';
+import Player from 'quizzen/models/guess-question';
 import Quiz from 'quizzen/models/quiz';
 import Team from 'quizzen/models/team';
-import PlayedQuestion from 'quizzen/models/played-question';
-import GuessQuestion from 'quizzen/models/guess-question';
+import User from 'quizzen/models/user';
 
 export default class GameModel extends Model {
   // Attributes
@@ -18,7 +19,7 @@ export default class GameModel extends Model {
   // Relations
   @belongsTo('user') quizMaster?: ArrayProxy<User>;
   @belongsTo('quiz') quiz?: ArrayProxy<Quiz>;
-  @hasMany('user') users?: ArrayProxy<User[]>;
+  @hasMany('player') players?: ArrayProxy<Player[]>;
   @hasMany('playedQuestion') playedQuestions?: ArrayProxy<PlayedQuestion[]>;
   @belongsTo('guessQuestion') guessQuestion?: ArrayProxy<GuessQuestion>;
   @hasMany('team') teams?: ArrayProxy<Team[]>;
