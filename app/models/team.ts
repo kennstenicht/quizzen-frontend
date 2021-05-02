@@ -7,6 +7,7 @@ import SelfAssessment from 'quizzen/models/self-assessment';
 
 export default class TeamModel extends Model {
   // Attributes
+  @attr('string') color!: string;
   @attr('string') name!: string;
 
 
