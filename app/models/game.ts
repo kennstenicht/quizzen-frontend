@@ -1,5 +1,4 @@
-import ArrayProxy from '@ember/array/proxy';
-import { attr, belongsTo , hasMany} from '@ember-data/model';
+import { attr, belongsTo , hasMany, AsyncHasMany, AsyncBelongsTo } from '@ember-data/model';
 import GuessQuestion from 'quizzen/models/guess-question';
 import Model from 'quizzen/models/base';
 import PlayedQuestion from 'quizzen/models/played-question';
@@ -17,12 +16,12 @@ export default class GameModel extends Model {
 
 
   // Relations
-  @belongsTo('user') quizMaster?: ArrayProxy<User>;
-  @belongsTo('quiz') quiz?: ArrayProxy<Quiz>;
-  @hasMany('player') players?: ArrayProxy<Player[]>;
-  @hasMany('playedQuestion') playedQuestions?: ArrayProxy<PlayedQuestion[]>;
-  @belongsTo('guessQuestion') guessQuestion?: ArrayProxy<GuessQuestion>;
-  @hasMany('team') teams?: ArrayProxy<Team[]>;
+  @belongsTo('user') quizMaster?: AsyncBelongsTo<User>;
+  @belongsTo('quiz') quiz?: AsyncBelongsTo<Quiz>;
+  @hasMany('player') players?: AsyncHasMany<Player>;
+  @hasMany('playedQuestion') playedQuestions?: AsyncHasMany<PlayedQuestion>;
+  @belongsTo('guessQuestion') guessQuestion?: AsyncBelongsTo<GuessQuestion>;
+  @hasMany('team') teams?: AsyncHasMany<Team>;
 
 
   // Getter and setter

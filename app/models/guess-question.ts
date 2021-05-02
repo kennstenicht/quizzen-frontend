@@ -1,5 +1,4 @@
-import ArrayProxy from '@ember/array/proxy';
-import { attr, hasMany } from '@ember-data/model';
+import { attr, hasMany, AsyncHasMany } from '@ember-data/model';
 import Model from 'quizzen/models/base';
 import Game from 'quizzen/models/game';
 import PlayedQuestions from 'quizzen/models/played-question';
@@ -14,8 +13,8 @@ export default class GuessQuestionModel extends Model {
 
 
   // Relations
-  @hasMany('game') games?: ArrayProxy<Game[]>;
-  @hasMany('played-question') playedQuestions?: ArrayProxy<PlayedQuestions[]>;
+  @hasMany('game') games?: AsyncHasMany<Game>;
+  @hasMany('played-question') playedQuestions?: AsyncHasMany<PlayedQuestions>;
 
 
   // Getter and setter

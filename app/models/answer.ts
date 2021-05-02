@@ -1,5 +1,4 @@
-import ArrayProxy from '@ember/array/proxy';
-import { attr, belongsTo } from '@ember-data/model';
+import { attr, belongsTo, AsyncBelongsTo } from '@ember-data/model';
 import Model from 'quizzen/models/base';
 import Question from 'quizzen/models/question';
 
@@ -11,7 +10,7 @@ export default class AnswerModel extends Model {
 
 
   // Relations
-  @belongsTo('question') question?: ArrayProxy<Question>;
+  @belongsTo('question') question?: AsyncBelongsTo<Question>;
 
 
   // Getter and setter
