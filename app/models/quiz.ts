@@ -1,5 +1,6 @@
-import Model from 'quizzen/models/base';
+import ArrayProxy from '@ember/array/proxy';
 import { attr, hasMany } from '@ember-data/model';
+import Model from 'quizzen/models/base';
 import Category from 'quizzen/models/category';
 
 export default class QuizModel extends Model {
@@ -8,7 +9,7 @@ export default class QuizModel extends Model {
 
 
   // Relations
-  @hasMany('category') categories?: Category[];
+  @hasMany('category') categories?: ArrayProxy<Category[]>;
 
 
   // Getter and setter

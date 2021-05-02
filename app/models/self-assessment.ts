@@ -1,16 +1,18 @@
-import Model from 'quizzen/models/base';
+import ArrayProxy from '@ember/array/proxy';
 import { attr, belongsTo } from '@ember-data/model';
+import Model from 'quizzen/models/base';
 import User from 'quizzen/models/user';
 import PlayedQuestion from 'quizzen/models/played-question';
 
-export default class selfAssessmentModel extends Model {
+export default class SelfAssessmentModel extends Model {
   // Attributes
   @attr('number') assessment!: number;
+  @attr('boolean') isFalseAssessment!: boolean;
 
 
   // Relations
-  @belongsTo('playedQuestion') playedQuestion?: PlayedQuestion;
-  @belongsTo('user') user?: User;
+  @belongsTo('playedQuestion') playedQuestion!: ArrayProxy<PlayedQuestion>;
+  @belongsTo('user') user!: ArrayProxy<User>;
 
 
   // Getter and setter

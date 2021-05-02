@@ -1,5 +1,6 @@
-import Model from 'quizzen/models/base';
+import ArrayProxy from '@ember/array/proxy';
 import { attr, belongsTo } from '@ember-data/model';
+import Model from 'quizzen/models/base';
 import Question from 'quizzen/models/question';
 
 export default class AnswerModel extends Model {
@@ -10,7 +11,7 @@ export default class AnswerModel extends Model {
 
 
   // Relations
-  @belongsTo('question') question?: Question;
+  @belongsTo('question') question?: ArrayProxy<Question>;
 
 
   // Getter and setter
