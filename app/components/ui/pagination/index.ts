@@ -52,7 +52,7 @@ export default class UiPaginationComponent extends Component<Args> {
   }
 
   get showStartMore() {
-    return this.rangeStart > 2;
+    return this.rangeStart > 2 && (this.pagination.pages > 8);
   }
 
   get showLastPage() {
@@ -60,7 +60,7 @@ export default class UiPaginationComponent extends Component<Args> {
   }
 
   get showEndMore() {
-    return this.rangeEnd < this.lastPage - 1;
+    return this.rangeEnd < this.lastPage - 1 && (this.pagination.pages > 8);
   }
 
   get visiblePages() {
