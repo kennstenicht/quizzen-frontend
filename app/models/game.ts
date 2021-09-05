@@ -2,7 +2,7 @@ import { attr, belongsTo , hasMany, AsyncHasMany, AsyncBelongsTo } from '@ember-
 import GuessQuestion from 'quizzen/models/guess-question';
 import Model from 'quizzen/models/base';
 import PlayedQuestion from 'quizzen/models/played-question';
-import Player from 'quizzen/models/guess-question';
+import Player from 'quizzen/models/player';
 import Quiz from 'quizzen/models/quiz';
 import Team from 'quizzen/models/team';
 import User from 'quizzen/models/user';

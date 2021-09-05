@@ -18,10 +18,10 @@ forms:
   game:
     fields:
       active: Aktives Spiel
-      playedQuestions: Gespiele Fragen
+      playedQuestions: Gespielte Fragen
       guessQuestion: Schätzfrage
       joined: Teilnehmer
-      users: Mitspieler
+      players: Mitspieler
       quiz: Quiz auswählen
       quizMaster: Quiz Master
       teams: Teams
