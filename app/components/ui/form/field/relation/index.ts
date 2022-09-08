@@ -16,6 +16,7 @@ import Confirm from 'quizzen/services/confirm';
 
 interface Args {
   changeset: BufferedChangeset,
+  foreignModelName?: string,
   isInlineForm: boolean,
   property: string,
   records: any[]
@@ -66,7 +67,7 @@ export default class UiFormFieldRelationComponent extends Component<Args> {
   }
 
   get relationType() {
-    return this.relationship.type;
+    return this.args.foreignModelName ?? this.relationship.type;
   }
 
   get relationKind() {

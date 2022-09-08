@@ -20,9 +20,10 @@
 
   {{#if this.isRelation}}
     <Ui::Form::Field::Relation
-      @property={{@property}}
       @changeset={{@changeset}}
+      @foreignModelName={{@foreignModelName}}
       @isInlineForm={{@isInlineForm}}
+      @property={{@property}}
     />
   {{else if this.isTextarea}}
     <Ui::Form::Field::Textarea

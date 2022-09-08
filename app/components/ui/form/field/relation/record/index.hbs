@@ -18,12 +18,9 @@
 
   {{#if @isInlineForm}}
     <div block:class="form">
-      <Ui::Form
-        @model={{@record}}
-        as |form|
-      >
+      <Ui::Form @model={{this.record}} as |form|>
         {{component
-          (concat "record-detail/for/" @record.modelName)
+          (concat "record-detail/for/" this.record.modelName)
           form=form
           groupName=@groupName
         }}
@@ -31,7 +28,7 @@
     </div>
   {{else}}
     <div block:class="label">
-      {{@record.displayLabel}}
+      {{this.record.displayLabel}}
     </div>
   {{/if}}
 
@@ -48,13 +45,13 @@
 
       <Ui::Button
         @icon="delete"
-        @onClick={{fn @deleteRecord @record}}
+        @onClick={{fn @deleteRecord this.record}}
         @style="inline"
       />
     {{else}}
       <Ui::Button
         @icon="open"
-        @onClick={{fn @openRecord @record}}
+        @onClick={{fn @openRecord this.record}}
         @style="inline"
       />
 

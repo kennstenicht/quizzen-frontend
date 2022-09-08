@@ -2,11 +2,14 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
-import Model from '@ember-data/model';
+import Router from '@ember/routing/router-service';
+import BaseModel from 'quizzen/models/base';
 import Accordion from 'quizzen/services/accordion';
+import Breadcrumb from 'quizzen/services/breadcrumb';
 
 interface Args {
-  record: Model
+  record: BaseModel
+  foreignRecord: BaseModel
   openRecord: Function
   removeRecord: Function
   sortable: boolean
@@ -16,6 +19,22 @@ interface Args {
 export default class UiFormFieldRelationRecordComponent extends Component<Args> {
   // Services
   @service accordion!: Accordion;
+  @service breadcrumb!: Breadcrumb;
+  @service router!: Router;
+
+
+  // Hooks
+  constructor(owner: UiFormFieldRelationRecordComponent, args: Args ) {
+    super(owner, args);
+
+    if (args.foreignRecord) {
+      let routeName = this.router.currentRoute.name;
+      // @ts-ignore
+      let model = this.router.currentRoute.attributes;
+      let route = this.breadcrumb.getRoute(routeName, model);
+      route.getForm(args.record);
+    }
+  }
 
 
   // Defaults
@@ -37,6 +56,10 @@ export default class UiFormFieldRelationRecordComponent extends Component<Args> 
 
   get accordionBodyId() {
     return this.accordion.bodyIdFor(this.accodrionItemId);
+  }
+
+  get record() {
+    return this.args.foreignRecord ?? this.args.record;
   }
 
 

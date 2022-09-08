@@ -11,6 +11,7 @@
       }}
         <Ui::Form::Field::Relation::Record
           @record={{record}}
+          @foreignRecord={{get record @foreignModelName}}
           @openRecord={{this.openRecord}}
           @removeRecord={{this.removeRecord}}
           @deleteRecord={{this.deleteRecord}}
@@ -28,21 +29,21 @@
         <Ui::Button
           @icon="add"
           @label="Neu"
-          @onClick={{fn this.createNewRecord}}
+          @onClick={{this.createNewRecord}}
           block:class="primary"
         />
       {{else}}
         <Ui::Button
           @icon="search"
           @label="Suchen und hinzufügen"
-          @onClick={{fn this.openRecordList}}
+          @onClick={{this.openRecordList}}
           block:class="primary"
         />
 
         <Ui::Button
           @icon="add"
           @label="Neu"
-          @onClick={{fn this.openNewRecord}}
+          @onClick={{this.openNewRecord}}
           block:class="secondary"
         />
       {{/if}}

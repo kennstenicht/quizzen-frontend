@@ -10,6 +10,13 @@
       <div layout:class="item">
         <@form.field @property="guessQuestion" @type="relation" />
       </div>
+      <div layout:class="item">
+        <@form.field
+          @foreignModelName="question"
+          @property="playedQuestions"
+          @type="relation"
+        />
+      </div>
     </div>
   </div>
   <div layout:class="item" layout:desktop="width-1-3">
@@ -21,7 +28,11 @@
         <@form.field @property="quizMaster" @type="relation" />
       </div>
       <div layout:class="item">
-        <@form.field @property="players" @type="relation" />
+        <@form.field
+          @foreignModelName="user"
+          @property="players"
+          @type="relation"
+        />
       </div>
     </div>
   </div>

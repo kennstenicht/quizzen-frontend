@@ -7,6 +7,7 @@ import Intl from 'ember-intl/services/intl';
 
 interface Args {
   changeset: BufferedChangeset,
+  foreignModelName?: string,
   hint: string,
   isLabeled?: boolean,
   label: string,
