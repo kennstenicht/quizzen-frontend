@@ -20,7 +20,9 @@ export default class ApplicationRoute extends Route {
 
 
   // Hooks
-  beforeModel() {
+  async beforeModel() {
+    await this.session.setup();
+
     // Set Locale
     this.moment.setLocale('de');
     this.intl.setLocale('de');

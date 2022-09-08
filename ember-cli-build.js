@@ -39,6 +39,9 @@ module.exports = function (defaults) {
         ]
       }
     },
+    'ember-simple-auth': {
+      useSessionSetupMethod: true,
+    },
     sassOptions
   });
 
