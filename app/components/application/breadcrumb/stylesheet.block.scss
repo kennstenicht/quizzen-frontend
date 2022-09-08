@@ -56,6 +56,12 @@
       white-space: nowrap;
     }
 
+    .forms {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+
     .changes {
       margin-left: spacing('tiny');
       width: spacing('base');
