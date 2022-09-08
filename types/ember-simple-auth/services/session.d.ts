@@ -25,5 +25,6 @@ declare module 'ember-simple-auth/services/session' {
     authorize(...args: any[]): Promise<void>;
     requireAuthentication(...args: any[]): any;
     prohibitAuthentication(...args: any[]): any;
+    setup(...args: any[]): any;
   }
 }
