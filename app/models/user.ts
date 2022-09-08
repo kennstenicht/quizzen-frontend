@@ -3,10 +3,10 @@ import { attr } from '@ember-data/model';
 
 export default class UserModel extends Model {
   // Attributes
-  @attr('string') email!: string;
-  @attr('string') firstname!: string;
-  @attr('string') lastname!: string;
-  @attr('string') nickname!: string;
+  @attr('string') declare email: string;
+  @attr('string') declare firstname: string;
+  @attr('string') declare lastname: string;
+  @attr('string') declare nickname: string;
 
 
   // Getter and setter

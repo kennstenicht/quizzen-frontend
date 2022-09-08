@@ -4,13 +4,13 @@ import Question from 'quizzen/models/question';
 
 export default class AnswerModel extends Model {
   // Attributes
-  @attr('string') label!: string;
-  @attr('string') value?: string;
-  @attr('string') information?: string;
+  @attr('string') declare label: string;
+  @attr('string') declare value?: string;
+  @attr('string') declare information?: string;
 
 
   // Relations
-  @belongsTo('question') question?: AsyncBelongsTo<Question>;
+  @belongsTo('question') declare question: AsyncBelongsTo<Question>;
 
 
   // Getter and setter

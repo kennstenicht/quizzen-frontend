@@ -5,16 +5,19 @@ import PlayedQuestions from 'quizzen/models/played-question';
 
 export default class GuessQuestionModel extends Model {
   // Attributes
-  @attr('string') answer!: string;
-  @attr('date') date!: string;
-  @attr('string') label!: string;
-  @attr('string') source!: string;
-  @attr('string') unit?: string;
+  @attr('string') declare answer: string;
+  @attr('date') declare date: string;
+  @attr('string') declare label: string;
+  @attr('string') declare source: string;
+  @attr('string') declare unit?: string;
 
 
   // Relations
-  @hasMany('game') games?: AsyncHasMany<Game>;
-  @hasMany('played-question') playedQuestions?: AsyncHasMany<PlayedQuestions>;
+  @hasMany('game')
+  declare games: AsyncHasMany<Game>;
+
+  @hasMany('played-question')
+  declare playedQuestions: AsyncHasMany<PlayedQuestions>;
 
 
   // Getter and setter

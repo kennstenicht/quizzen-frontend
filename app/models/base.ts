@@ -4,12 +4,12 @@ import Intl from 'ember-intl/services/intl';
 
 export default class BaseModel extends Model {
   // Services
-  @service intl!: Intl;
+  @service declare intl: Intl;
 
 
   // Meta
-  @attr('date') createdAt!: Date;
-  @attr('date') updatedAt!: Date;
+  @attr('date') declare createdAt: Date;
+  @attr('date') declare updatedAt: Date;
 
 
   // Getter and setter

@@ -6,7 +6,12 @@ import PlayedQuestion from 'quizzen/models/played-question';
 
 export default class PlayedAnswerModel extends Model {
   // Relations
-  @belongsTo('answer') answer!: AsyncBelongsTo<Answer>;
-  @belongsTo('playedQuestion') playedQuestion!: AsyncBelongsTo<PlayedQuestion>;
-  @belongsTo('player') player?: AsyncBelongsTo<Player>;
+  @belongsTo('answer')
+  declare answer: AsyncBelongsTo<Answer>;
+
+  @belongsTo('playedQuestion')
+  declare playedQuestion: AsyncBelongsTo<PlayedQuestion>;
+
+  @belongsTo('player')
+  declare player: AsyncBelongsTo<Player>;
 }

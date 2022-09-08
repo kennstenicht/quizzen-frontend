@@ -5,14 +5,17 @@ import Category from 'quizzen/models/category';
 
 export default class QuestionModel extends Model {
   // Attributes
-  @attr('string') label!: string;
-  @attr('string') source!: string;
-  @attr('date') date!: string;
+  @attr('string') declare label: string;
+  @attr('string') declare source: string;
+  @attr('date') declare date: string;
 
 
   // Relations
-  @hasMany('answer') answers?: AsyncHasMany<Answer>;
-  @hasMany('category') categories?: AsyncHasMany<Category>;
+  @hasMany('answer')
+  declare answers: AsyncHasMany<Answer>;
+
+  @hasMany('category')
+  declare categories: AsyncHasMany<Category>;
 
 
   // Getter and setter

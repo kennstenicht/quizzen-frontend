@@ -9,19 +9,30 @@ import User from 'quizzen/models/user';
 
 export default class GameModel extends Model {
   // Attributes
-  @attr('boolean') active!: boolean;
-  @attr('string') title!: string;
-  @attr('boolean') joined!: boolean;
-  @attr('boolean') yourGame!: boolean;
+  @attr('boolean') declare active: boolean;
+  @attr('string') declare title: string;
+  @attr('boolean') declare joined: boolean;
+  @attr('boolean') declare yourGame: boolean;
 
 
   // Relations
-  @belongsTo('user') quizMaster?: AsyncBelongsTo<User>;
-  @belongsTo('quiz') quiz?: AsyncBelongsTo<Quiz>;
-  @hasMany('player') players?: AsyncHasMany<Player>;
-  @hasMany('playedQuestion') playedQuestions?: AsyncHasMany<PlayedQuestion>;
-  @belongsTo('guessQuestion') guessQuestion?: AsyncBelongsTo<GuessQuestion>;
-  @hasMany('team') teams?: AsyncHasMany<Team>;
+  @belongsTo('user')
+  declare quizMaster: AsyncBelongsTo<User>;
+
+  @belongsTo('quiz')
+  declare quiz: AsyncBelongsTo<Quiz>;
+
+  @hasMany('player')
+  declare players: AsyncHasMany<Player>;
+
+  @hasMany('playedQuestion')
+  declare playedQuestions: AsyncHasMany<PlayedQuestion>;
+
+  @belongsTo('guessQuestion')
+  declare guessQuestion: AsyncBelongsTo<GuessQuestion>;
+
+  @hasMany('team')
+  declare teams: AsyncHasMany<Team>;
 
 
   // Getter and setter

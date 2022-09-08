@@ -9,12 +9,23 @@ import SelfAssessment from 'quizzen/models/self-assessment';
 
 export default class PlayedQuestionModel extends Model {
   // Relations
-  @belongsTo('game') game!: AsyncBelongsTo<Game>;
-  @hasMany('playedAnswer') playedAnswers?: AsyncHasMany<PlayedAnswer>;
-  @belongsTo('guessQuestion') guessQuestion?: AsyncBelongsTo<GuessQuestion>;
-  @belongsTo('question') question!: AsyncBelongsTo<Question>;
-  @hasMany('selfAssessment') selfAssessments?: AsyncHasMany<SelfAssessment>;
-  @belongsTo('player') winner?: AsyncBelongsTo<Player>;
+  @belongsTo('game')
+  declare game: AsyncBelongsTo<Game>;
+
+  @hasMany('playedAnswer')
+  declare playedAnswers: AsyncHasMany<PlayedAnswer>;
+
+  @belongsTo('guessQuestion')
+  declare guessQuestion: AsyncBelongsTo<GuessQuestion>;
+
+  @belongsTo('question')
+  declare question: AsyncBelongsTo<Question>;
+
+  @hasMany('selfAssessment')
+  declare selfAssessments: AsyncHasMany<SelfAssessment>;
+
+  @belongsTo('player')
+  declare winner: AsyncBelongsTo<Player>;
 
 
   // Getter and setter

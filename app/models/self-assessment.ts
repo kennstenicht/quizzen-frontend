@@ -5,13 +5,16 @@ import PlayedQuestion from 'quizzen/models/played-question';
 
 export default class SelfAssessmentModel extends Model {
   // Attributes
-  @attr('number') assessment!: number;
-  @attr('boolean') isFalseAssessment!: boolean;
+  @attr('number') declare assessment: number;
+  @attr('boolean') declare isFalseAssessment: boolean;
 
 
   // Relations
-  @belongsTo('playedQuestion') playedQuestion!: AsyncBelongsTo<PlayedQuestion>;
-  @belongsTo('player') player!: AsyncBelongsTo<Player>;
+  @belongsTo('playedQuestion')
+  declare playedQuestion: AsyncBelongsTo<PlayedQuestion>;
+
+  @belongsTo('player')
+  declare player: AsyncBelongsTo<Player>;
 
 
   // Getter and setter

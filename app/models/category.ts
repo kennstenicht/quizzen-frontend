@@ -5,12 +5,12 @@ import Quiz from 'quizzen/models/quiz';
 
 export default class CategoryModel extends Model {
   // Attributes
-  @attr('string') title!: string;
+  @attr('string') declare title: string;
 
 
   // Relations
-  @hasMany('question') questions?: AsyncHasMany<Question>;
-  @hasMany('quiz') quizzes?: AsyncHasMany<Quiz>;
+  @hasMany('question') declare questions: AsyncHasMany<Question>;
+  @hasMany('quiz') declare quizzes: AsyncHasMany<Quiz>;
 
 
   // Getter and setter

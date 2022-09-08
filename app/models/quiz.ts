@@ -4,11 +4,12 @@ import Category from 'quizzen/models/category';
 
 export default class QuizModel extends Model {
   // Attributes
-  @attr('string') title!: string;
+  @attr('string') declare title: string;
 
 
   // Relations
-  @hasMany('category') categories?: AsyncHasMany<Category>;
+  @hasMany('category')
+  declare categories: AsyncHasMany<Category>;
 
 
   // Getter and setter
